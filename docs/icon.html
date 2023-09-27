@@ -8,28 +8,34 @@
 
     <title>Icon</title>
 
-    <link href="../rainforest.css" rel="stylesheet">
+    <link href="../rainforest.css" rel="stylesheet">    
 
   </head>
   <body>
 
     <h2>Icon</h2>
 
-    <rf-icon name="star"></rf-icon>
+    <rf-icon name="settings"></rf-icon><br>
+    <rf-icon name="search" variant="subtle"></rf-icon><br>
+    <rf-icon name="external" variant="link"></rf-icon><br>
+    <rf-icon name="lock-private" size="big" variant="disabled"></rf-icon><br>
+    <rf-icon name="status-negative" size="large" variant="error"></rf-icon><br>    
+    <rf-icon size="large" url="../img/writer.svg"></rf-icon>
 
     <pre>
-&lt;rf-icon name="star"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon name="settings"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon name="search" variant="subtle"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon name="external" variant="link"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon name="lock-private" size="big" variant="disabled"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon name="status-negative" size="large" variant="error"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon size="large" url="../img/writer.svg"&gt;&lt;/rf-icon&gt;
     </pre>
 
     <h4>Styles</h4>
 
     <ul>
-      <li>--icon-color: #161616 (for icon fonts)</li>
       <li>--icon-cursor: default</li>
-      <li>--icon-fit: contain (for image icons)</li>
-      <li>--icon-font-size: 20px</li>            
-      <li>--icon-line-height: 20px</li>      
-      <li>--icon-size: 20px</li>      
+      <li>--icon-object-fit: contain</li>
     </ul>
 
     <h4>Slots</h4>
@@ -47,17 +53,16 @@
     <ul>
       <li>concealed (boolean): Do not show, but leave in DOM flow</li>      
       <li>hidden (boolean): Do not show in DOM</li>      
-      <li>filled (boolean): Fill variation on icon font</li>      
-      <li>name (string): Reference to icon in Google Fonts collection</li>
-      <li>src (string): Source for image icon</li>
-      <li>weight (integer, 100 - 700): Weight variation on icon font</li>
+      <li>name (string): Reference to icon in Cloudscape collection</li>
+      <li>path (string): Custom icon directory name or location</li>      
+      <li>url (string): Source for image icon</li>
+      <li>size (normal | small | medium | big | large): Sizing of the icon</li>      
+      <li>variant (normal | disabled | error | inverted | link | subtle | success | warning): Changes color of icon for desired usage</li>
     </ul>
 
     <h4>Events</h4>
 
-    <ul>
-      <li>adc-load: Provided image source has loaded</li>
-    </ul>
+    <p>None</p>
 
     <h4>Methods</h4>
 
@@ -66,8 +71,7 @@
     <h4>Parts</h4>
 
     <ul>
-      <li>image: Image element to use as alternative icon</li>
-      <li>font: Paragraph element for icon font from Google Fonts</li>      
+      <li>icon: Image element used to display content</li>
     </ul>
 
     <h4>Dependencies</h4>

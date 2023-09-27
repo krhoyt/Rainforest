@@ -21,16 +21,16 @@ export default class RainforestBox extends HTMLElement {
 
         p {
           box-sizing: border-box;
-          color: var( --label-color, #000716 );
-          cursor: var( --label-cursor, default );
+          color: var( --box-color, #000716 );
+          cursor: var( --box-cursor, default );
           font-family: 'Amazon Ember', sans-serif;
-          font-size: var( --label-font-size, 14px );
-          font-weight: var( --label-font-weight, 400 );
-          line-height: var ( --label-line-height, 20px );
-          margin: var( --label-margin, 0 );
-          padding: var( --label-padding, 0 );
-          text-align: var( --label-text-align, left );
-          text-decoration: var( --label-text-decoration, none );
+          font-size: var( --box-font-size, 14px );
+          font-weight: var( --box-font-weight, 400 );
+          line-height: var ( --box-line-height, 20px );
+          margin: var( --box-margin, 0 );
+          padding: var( --box-padding, 0 );
+          text-align: var( --box-text-align, left );
+          text-decoration: var( --box-text-decoration, none );
           text-rendering: optimizeLegibility;
           width: 100%;
         }
@@ -130,11 +130,73 @@ export default class RainforestBox extends HTMLElement {
           line-height: 48px;
         }                                                           
 
+        :host( [font-size=body-s] ) p {
+          font-size: 12px;
+        }
+
+        :host( [font-size=heading-xs] ) p,
+        :host( [font-size=body-m] ) p {
+          font-size: 14px;
+        }        
+
+        :host( [font-size=body-s] ) p {
+          font-size: 12px;
+        }
+
+        :host( [font-size=heading-s] ) p {
+          font-size: 16px;
+        }        
+
+        :host( [font-size=heading-m] ) p {
+          font-size: 18px;
+        }                
+
+        :host( [font-size=heading-l] ) p {
+          font-size: 20px;
+        }                        
+
+        :host( [font-size=heading-xl] ) p {
+          font-size: 24px;
+        }                                
+
+        :host( [font-size=display-l] ) p {
+          font-size: 42px;
+        }                                
+
+        :host( [font-weight=light] ) p {
+          font-weight: 300;
+        }                                
+
+        :host( [font-weight=heavy] ) p,
+        :host( [font-weight=bold] ) p {
+          font-weight: 700;
+        }                                        
+
+        :host( [text-align=center] ) p {
+          text-align: center;
+        }
+
+        :host( [text-align=left] ) p {
+          text-align: left;
+        }
+
+        :host( [text-align=right] ) p {
+          text-align: right;
+        }
+
+        :host( [float=left] ) {
+          float: left;
+        }
+
+        :host( [float=right] ) {
+          float: right;
+        }
+
         :host( [disabled] ) p {
-          color: var( --label-disabled-color, #9ba7b6 );
+          color: var( --box-disabled-color, #9ba7b6 );
         }                
       </style>
-      <p part="label">
+      <p part="box">
         <span></span>
         <slot></slot>
       </p>
@@ -171,9 +233,13 @@ export default class RainforestBox extends HTMLElement {
     this._upgrade( 'color' );            
     this._upgrade( 'concealed' );        
     this._upgrade( 'data' );       
-    this._upgrade( 'disabled' );                    
+    this._upgrade( 'disabled' );      
+    this._upgrade( 'float' );      
+    this._upgrade( 'fontSize' );                        
+    this._upgrade( 'fontWeight' );                            
     this._upgrade( 'hidden' );    
     this._upgrade( 'text' );    
+    this._upgrade( 'textAlign' );        
     this._upgrade( 'truncate' );    
     this._upgrade( 'variant' );        
     this._render();
@@ -185,8 +251,12 @@ export default class RainforestBox extends HTMLElement {
       'color',
       'concealed',
       'disabled',
+      'float',
+      'font-size',
+      'font-weight',
       'hidden',
       'text',
+      'text-align',
       'truncate',
       'variant'
     ];
@@ -268,6 +338,38 @@ export default class RainforestBox extends HTMLElement {
     }
   }  
 
+  get fontSize() {
+    if( this.hasAttribute( 'font-size' ) ) {
+      return this.getAttribute( 'font-size' );
+    }
+
+    return null;
+  }
+
+  set fontSize( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'font-size', value );
+    } else {
+      this.removeAttribute( 'font-size' );
+    }
+  }
+
+  get fontWeight() {
+    if( this.hasAttribute( 'font-weight' ) ) {
+      return this.getAttribute( 'font-weight' );
+    }
+
+    return null;
+  }
+
+  set fontWeight( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'font-weight', value );
+    } else {
+      this.removeAttribute( 'font-weight' );
+    }
+  }  
+
   get hidden() {
     return this.hasAttribute( 'hidden' );
   }
@@ -303,6 +405,22 @@ export default class RainforestBox extends HTMLElement {
       this.removeAttribute( 'text' );
     }
   }     
+
+  get textAlign() {
+    if( this.hasAttribute( 'text-align' ) ) {
+      return this.getAttribute( 'text-align' );
+    }
+
+    return null;
+  }
+
+  set textAlign( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'text-align', value );
+    } else {
+      this.removeAttribute( 'text-align' );
+    }
+  }       
   
   get truncate() {
     return this.hasAttribute( 'truncate' );

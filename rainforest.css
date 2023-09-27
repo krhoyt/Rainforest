@@ -21,11 +21,3 @@
   font-weight: 900;
   src: url( './fonts/AmazonEmber_He.ttf' ) format( 'truetype' );
 }
-
-body {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-}
