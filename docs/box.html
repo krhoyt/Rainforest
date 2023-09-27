@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Box</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <h2>Box</h2>
+
+    <rf-box text="Label (text)"></rb-box><br>
+    <rf-box text="Label (slot)"></rf-box>    
+
+    <pre>
+&lt;rf-box text="Label (text)"&gt;&lt;/rf-box&gt;
+&lt;rf-box&gt;Label (slot)&lt;/rf-box&gt;      
+    </pre>
+
+    <h4>Styles</h4>
+
+    <ul>
+      <li>--label-color: #161616</li>
+      <li>--label-cursor: default</li>
+      <li>--label-disabled-color: #c6c6c6</li>      
+      <li>--label-font-size: 14px</li>
+      <li>--label-font-weight: 400</li>
+      <li>--label-margin: 0</li>
+      <li>--label-padding: 0</li>
+      <li>--label-text-align: left</li>
+      <li>--label-text-decoration: none</li>
+    </ul>
+
+    <h4>Slots</h4>
+
+    <ul>
+      <li>default: Can be used for label content</li>
+    </ul>
+
+    <h4>Properties</h4>
+
+    <ul>
+      <li>data (object): Arbitrary data storage</li>
+    </ul>
+
+    <h4>Attributes</h4>
+
+    <ul>
+      <li>concealed (boolean): Do not show, but leave in DOM flow</li>      
+      <li>disabled (boolean): Show as disabled by altering the color</li>      
+      <li>hidden (boolean): Do not show in DOM</li>      
+      <li>text (string): Can be used for label content</li>
+      <li>truncate (boolean): Add styling to allow paragraph element to trim content</li>      
+    </ul>
+
+    <h4>Events</h4>
+
+    <p>None</p>
+
+    <h4>Methods</h4>
+
+    <p>None</p>
+
+    <h4>Parts</h4>
+
+    <ul>
+      <li>label: Inner paragraph element</li>
+    </ul>
+
+    <h4>Dependencies</h4>
+
+    <p>None</p>
+
+    <script src="../controls/box.js" type="module"></script>
+
+  </body>
+</html>

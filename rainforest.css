@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Amazon Ember';
+  font-weight: 300;
+  src: url( './fonts/AmazonEmber_Lt.ttf' ) format( 'truetype' );
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  font-weight: 400;
+  src: url( './fonts/AmazonEmber_Rg.ttf' ) format( 'truetype' );
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  font-weight: 700;
+  src: url( './fonts/AmazonEmber_Bd.ttf' ) format( 'truetype' );
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  font-weight: 900;
+  src: url( './fonts/AmazonEmber_He.ttf' ) format( 'truetype' );
+}
+
+body {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}

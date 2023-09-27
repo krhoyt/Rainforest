@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Icon</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <h2>Icon</h2>
+
+    <rf-icon name="star"></rf-icon>
+
+    <pre>
+&lt;rf-icon name="star"&gt;&lt;/rf-icon&gt;
+    </pre>
+
+    <h4>Styles</h4>
+
+    <ul>
+      <li>--icon-color: #161616 (for icon fonts)</li>
+      <li>--icon-cursor: default</li>
+      <li>--icon-fit: contain (for image icons)</li>
+      <li>--icon-font-size: 20px</li>            
+      <li>--icon-line-height: 20px</li>      
+      <li>--icon-size: 20px</li>      
+    </ul>
+
+    <h4>Slots</h4>
+
+    <p>None</p>
+
+    <h4>Properties</h4>
+
+    <ul>
+      <li>data (object): Arbitrary data storage</li>
+    </ul>
+
+    <h4>Attributes</h4>
+
+    <ul>
+      <li>concealed (boolean): Do not show, but leave in DOM flow</li>      
+      <li>hidden (boolean): Do not show in DOM</li>      
+      <li>filled (boolean): Fill variation on icon font</li>      
+      <li>name (string): Reference to icon in Google Fonts collection</li>
+      <li>src (string): Source for image icon</li>
+      <li>weight (integer, 100 - 700): Weight variation on icon font</li>
+    </ul>
+
+    <h4>Events</h4>
+
+    <ul>
+      <li>adc-load: Provided image source has loaded</li>
+    </ul>
+
+    <h4>Methods</h4>
+
+    <p>None</p>
+
+    <h4>Parts</h4>
+
+    <ul>
+      <li>image: Image element to use as alternative icon</li>
+      <li>font: Paragraph element for icon font from Google Fonts</li>      
+    </ul>
+
+    <h4>Dependencies</h4>
+
+    <p>None</p>
+
+    <script src="../controls/icon.js" type="module"></script>
+
+  </body>
+</html>

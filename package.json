@@ -1,0 +1,20 @@
+{
+  "name": "rainforest",
+  "version": "0.0.1",
+  "description": "Set of standard web components (Vanilla) based on the Cloudscape Design System.",
+  "main": "components.js",
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krhoyt/Rainforest.git"
+  },
+  "author": "Kevin Hoyt <parkerkrhoyt@gmail.com> (http://kevinhoyt.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krhoyt/Rainforest/issues"
+  },
+  "homepage": "https://github.com/krhoyt/Rainforest#readme"
+}
