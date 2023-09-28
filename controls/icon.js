@@ -34,9 +34,9 @@ export default class RainforestIcon extends HTMLElement {
             hue-rotate( 193deg ) 
             brightness( 91% ) 
             contrast( 106% );          
-          height: 16px;
+          height: var( --icon-height, 16px );
           object-fit: var( --icon-object-fit, contain );
-          width: 16px;
+          width: var( --icon-width, 16px );
         }        
 
         :host( [size=big] ) img {
@@ -152,7 +152,7 @@ export default class RainforestIcon extends HTMLElement {
     } else {
       src = this.url;
     }
-    console.log( src );
+
     this.$image.src = src;    
   }
 
