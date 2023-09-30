@@ -15,10 +15,48 @@
 
     <h2>Button</h2>
 
+    <p>Normal</p>
     <rf-button>Button</rf-button><br>
+    <rf-button disabled>Button</rf-button><br>
+    <rf-button icon-name="settings">Button</rf-button><br>                
+    <rf-button disabled icon-name="settings">Button</rf-button><br>                    
+    <rf-button icon-align="right" icon-name="settings">Button</rf-button><br>            
+    <rf-button disabled icon-align="right" icon-name="settings">Button</rf-button><br>        
+
+    <p>Primary</p>
+    <rf-button variant="primary">Button</rf-button><br>    
+    <rf-button disabled variant="primary">Button</rf-button><br>        
+    <rf-button icon-name="settings" variant="primary">Button</rf-button><br>    
+    <rf-button disabled icon-name="settings" variant="primary">Button</rf-button><br>           
+    <rf-button icon-align="right" icon-name="settings" variant="primary">Button</rf-button><br>    
+    <rf-button icon-align="right" disabled icon-name="settings" variant="primary">Button</rf-button><br>                
+
+    <p>Link</p>
+    <rf-button variant="link">Button</rf-button><br>    
+    <rf-button disabled variant="link">Button</rf-button><br>       
+    <rf-button icon-name="settings" variant="link">Button</rf-button><br>    
+    <rf-button disabled icon-name="settings" variant="link">Button</rf-button><br>            
+    <rf-button icon-align="right" icon-name="settings" variant="link">Button</rf-button><br>    
+    <rf-button icon-align="right"  disabled icon-name="settings" variant="link">Button</rf-button><br>                
+
+    <p>Inline Link</p>
+    <rf-button variant="inline-link">Button</rf-button><br>    
+    <rf-button disabled variant="inline-link">Button</rf-button><br>       
+    <rf-button icon-name="settings" variant="inline-link">Button</rf-button><br>    
+    <rf-button icon-name="settings" disabled variant="inline-link">Button</rf-button><br>           
+    <rf-button icon-align="right" icon-name="settings" variant="inline-link">Button</rf-button><br>    
+    <rf-button icon-align="right"  disabled icon-name="settings" variant="inline-link">Button</rf-button><br>                    
+
+    <p>Icon</p>
+    <rf-button icon-name="settings" variant="icon"></rf-button><br>    
+    <rf-button disabled icon-name="settings" variant="icon"></rf-button><br>        
+
+    <p>Inline Icon</p>
+    <rf-button icon-name="settings" variant="inline-icon"></rf-button><br>    
+    <rf-button disabled icon-name="settings" variant="inline-icon"></rf-button><br>            
 
     <pre>
-&lt;rf-button&gt;Button&lt;/rf-button&gt;     
+&lt;rf-button variant="primary"&gt;Button&lt;/rf-button&gt;     
     </pre>
 
     <h4>Styles</h4>
@@ -70,8 +108,6 @@
     <h4>Methods</h4>
 
     <ul>
-      <li>blur(): Remove focus from button element</li>
-      <li>click(): Click the button element programmatically</li>
       <li>focus(): Place focus on button element</li>
     </ul>
 
@@ -89,6 +125,11 @@
     </ul>
 
     <script src="../controls/button.js" type="module"></script>
+    <script>
+      const buttons = document.querySelectorAll( 'rf-button' );
+      for( let b = 0; b < buttons.length; b++ )
+        buttons[b].addEventListener( 'rf-click', () => console.log( 'CLICK' ) ) ;
+    </script>
 
   </body>
 </html>

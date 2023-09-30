@@ -35,48 +35,100 @@ export default class RainforestButton extends HTMLElement {
           font-family: 'Amazon Ember';
           font-size: 14px;
           font-weight: 700;
-          height: 34px;
+          height: 32px;
           line-height: 20px;
           margin: 0;
           outline: none;
           overflow: hidden;          
           padding: 4px 20px 4px 20px;
           text-overflow: ellipsis;                    
+          text-rendering: optimizeLegibility;
           white-space: nowrap;          
+          width: 100%;
           -webkit-tap-highlight-color: transparent;
         }
 
-        button:hover {
+        button:not( [disabled] ):hover {
           background-color: #f2f8fd;
           border: solid 2px #033160;
           color: #033160;
         }
 
-        button:disabled {
-          border-color: #5f6b7a;
-          color: #5f6b7a;
+        button[disabled] {
+          border-color: #9ba7b6;
+          color: #9ba7b6;
           cursor: not-allowed;
         }
 
-        :host( [variant=header] ) button {
-          align-items: center;
-          background-color: #192534;
-          border-color: transparent;
-          border-radius: 40px;
-          height: 40px;
-          justify-content: center;
-          padding: 0;
-          width: 40px;
+        rf-icon {
+          margin: 0 8px 0 -4px;
+          --icon-cursor: pointer;
         }
 
+        rf-icon::part( icon ) {
+          filter: var( --icon-color-info );
+        }
+
+        button:not( [disabled] ):hover rf-icon::part( icon ) {        
+          filter: var( --icon-color );
+        }
+
+        button[disabled] rf-icon {        
+          --icon-cursor: not-allowed;
+        }
+
+        button[disabled] rf-icon::part( icon ) {        
+          filter: var( --icon-color-disabled );
+        }        
+
+        :host( [icon-align=right] ) button {
+          flex-direction: row-reverse;
+        }
+
+        :host( [icon-align=right] ) rf-icon {
+          margin: 0 -4px 0 8px;
+        }        
+
         :host( [variant=icon] ) button {
-          align-items: center;
           background-color: transparent;
           border-color: transparent;
-          height: 34px;
+          height: 32px;
           justify-content: center;
           padding: 0;
-          width: 34px;
+          width: 32px;
+        }
+
+        :host( [variant=icon] ) button rf-icon::part( icon ) {
+          filter: var( --icon-color-subtle );
+        }
+
+        :host( [variant=inline-icon] ) button:not( [disabled] ):hover rf-icon::part( icon ),
+        :host( [variant=icon] ) button:not( [disabled] ):hover rf-icon::part( icon ) {
+          filter: var( --icon-color );
+        }
+
+        :host( [variant=inline-icon] ) button[disabled] rf-icon::part( icon ),
+        :host( [variant=icon] ) button[disabled] rf-icon::part( icon ) {        
+          filter: var( --icon-color-disabled );
+        }
+
+        :host( [variant=inline-icon] ) button {
+          background-color: transparent;
+          border-color: transparent;
+          height: 20px;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+          width: 20px;          
+        }
+
+        :host( [variant=inline-icon] ) button rf-icon {        
+          margin: 0;
+          padding: 0;
+        }
+
+        :host( [variant=inline-icon] ) button rf-icon::part( icon ) {
+          filter: var( --icon-color-info );
         }
 
         :host( [variant=link] ) button {
@@ -85,20 +137,51 @@ export default class RainforestButton extends HTMLElement {
           color: #0972d3;
         }        
 
-        :host( [variant=link] ) button:disabled {
-          color: #9ba7b6;
+        :host( [variant=link] ) button:not( [disabled] ):hover {
+          background-color: #f2f8fd;
+          border-color: #f2f8fd;
+          color: #033160;
         }                
 
-        :host( [variant=normal] ) button:disabled {
-          border-color: #5f6b7a;
-          color: #5f6b7a;
+        :host( [variant=inline-link] ) button[disabled],
+        :host( [variant=link] ) button[disabled] {
+          color: #9ba7b6;
+        }                        
+
+        :host( [variant=inline-link] ) button {
+          border-color: transparent;
+          background-color: transparent;
+          height: 20px;
+          margin: 0;
+          padding: 0;
+        }                        
+
+        :host( [variant=inline-link] ) button rf-icon {
+          margin: 0 8px 0 0;
         }
+
+        :host( [variant=inline-link][icon-align=right] ) rf-icon {
+          margin: 0 0 0 8px;
+        }
+
+        :host( [variant=inline-link] ) button:not( [disabled] ):hover {
+          color: #033160;
+        }                         
 
         :host( [variant=primary] ) button {
           background-color: #0972d3;
           border-color: #0972d3;
           color: #ffffff;        
         }                
+
+        :host( [variant=primary] ) button:not( [disabled ] ) rf-icon::part( icon ) {
+          filter: var( --icon-color-inverted );
+        }
+
+        :host( [variant=primary] ) button:hover {
+          background-color: #033160;
+          border-color: #033160;          
+        }
 
         :host( [variant=primary] ) button[disabled] {
           background-color: #e9ebed;
@@ -109,14 +192,6 @@ export default class RainforestButton extends HTMLElement {
         
         :host( :not( [icon-name] ) ) rf-icon {
           display: none;
-        }
-
-        :host( [wrap] ) button {
-          white-space: normal;          
-        }
-
-        ::slotted( aws-icon ) {
-          --icon-cursor: pointer;
         }
       </style>
       <button part="button" type="button">
@@ -136,31 +211,34 @@ export default class RainforestButton extends HTMLElement {
 
     // Elements
     this.$button = this.shadowRoot.querySelector( 'button' );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );
+    this.$button.addEventListener( 'click', ( evt ) => {
+      if( this.href !== null ) {
+        if( this.download ) {
+
+        }
+      }
+
+      this.dispatchEvent( new CustomEvent( 'rf-click', {
+        detail: {
+          altKey: evt.altKey,
+          ctrlKey: evt.ctrlKey,
+          metaKey: evt.metaKey,
+          shiftKey: evt.shiftKey
+        }
+      } ) );
+    } );
+    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );    
   }
 
-  // Remove focus for button
-  blur() {
-    this.$button.blur();
-  }
-
-  // Click the button
-  click() {
-    this.$button.click();
-  }
-
-  // Get focus for button
+  // Force focus
   focus() {
     this.$button.focus();
   }
 
   // When things change
   _render() {
-    if( this.label !== null )
-      this.innerText = this.label;
-
     this.$button.disabled = this.disabled;
-    this.$button.type = this.type === null ? 'button' : this.type;
+    this.$icon.name = this.iconName;
   }
 
   // Promote properties
@@ -178,11 +256,15 @@ export default class RainforestButton extends HTMLElement {
     this._upgrade( 'concealed' );
     this._upgrade( 'data' );
     this._upgrade( 'disabled' );    
+    this._upgrade( 'download' );    
     this._upgrade( 'hidden' );
-    this._upgrade( 'label' );  
-    this._upgrade( 'type' );      
+    this._upgrade( 'href' );    
+    this._upgrade( 'iconAlign' );    
+    this._upgrade( 'iconName' );
+    this._upgrade( 'loading' );
+    this._upgrade( 'rel' );    
+    this._upgrade( 'target' );
     this._upgrade( 'variant' );
-    this._upgrade( 'wrap' );
     this._render();
   }
 
@@ -191,11 +273,15 @@ export default class RainforestButton extends HTMLElement {
     return [
       'concealed',
       'disabled',
+      'download',
       'hidden',
-      'label',
-      'type',
-      'variant',
-      'wrap'
+      'href',
+      'icon-align',
+      'icon-name',
+      'loading',
+      'rel',      
+      'target',
+      'variant'
     ];
   }
 
@@ -257,6 +343,26 @@ export default class RainforestButton extends HTMLElement {
     } else {
       this.removeAttribute( 'disabled' );
     }
+  }
+  
+  get download() {
+    return this.hasAttribute( 'download' );
+  }
+
+  set download( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'download' );
+      } else {
+        this.setAttribute( 'download', '' );
+      }
+    } else {
+      this.removeAttribute( 'download' );
+    }
   }  
 
   get hidden() {
@@ -279,35 +385,103 @@ export default class RainforestButton extends HTMLElement {
     }
   }
 
-  get label() {
-    if( this.hasAttribute( 'label' ) ) {
-      return this.getAttribute( 'label' );
+  get href() {
+    if( this.hasAttribute( 'href' ) ) {
+      return this.getAttribute( 'href' );
     }
 
     return null;
   }
 
-  set label( value ) {
+  set href( value ) {
     if( value !== null ) {
-      this.setAttribute( 'label', value );
+      this.setAttribute( 'href', value );
     } else {
-      this.removeAttribute( 'label' );
+      this.removeAttribute( 'href' );
     }
   }
 
-  get type() {
-    if( this.hasAttribute( 'type' ) ) {
-      return this.getAttribute( 'type' );
+  get iconAlign() {
+    if( this.hasAttribute( 'icon-align' ) ) {
+      return this.getAttribute( 'icon-align' );
     }
 
     return null;
   }
 
-  set type( value ) {
+  set iconAlign( value ) {
     if( value !== null ) {
-      this.setAttribute( 'type', value );
+      this.setAttribute( 'icon-align', value );
     } else {
-      this.removeAttribute( 'type' );
+      this.removeAttribute( 'icon-align' );
+    }
+  }
+
+  get iconName() {
+    if( this.hasAttribute( 'icon-name' ) ) {
+      return this.getAttribute( 'icon-name' );
+    }
+
+    return null;
+  }
+
+  set iconName( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'icon-name', value );
+    } else {
+      this.removeAttribute( 'icon-name' );
+    }
+  }
+
+  get loading() {
+    return this.hasAttribute( 'loading' );
+  }
+
+  set loading( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'loading' );
+      } else {
+        this.setAttribute( 'loading', '' );
+      }
+    } else {
+      this.removeAttribute( 'loading' );
+    }
+  }    
+
+  get rel() {
+    if( this.hasAttribute( 'rel' ) ) {
+      return this.getAttribute( 'rel' );
+    }
+
+    return null;
+  }
+
+  set rel( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'rel', value );
+    } else {
+      this.removeAttribute( 'rel' );
+    }
+  }
+
+  get target() {
+    if( this.hasAttribute( 'target' ) ) {
+      return this.getAttribute( 'target' );
+    }
+
+    return null;
+  }
+
+  set target( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'target', value );
+    } else {
+      this.removeAttribute( 'target' );
     }
   }  
 
@@ -326,26 +500,6 @@ export default class RainforestButton extends HTMLElement {
       this.removeAttribute( 'variant' );
     }
   }
-
-  get wrap() {
-    return this.hasAttribute( 'wrap' );
-  }
-
-  set wrap( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'wrap' );
-      } else {
-        this.setAttribute( 'wrap', '' );
-      }
-    } else {
-      this.removeAttribute( 'wrap' );
-    }
-  }  
 }
 
 window.customElements.define( 'rf-button', RainforestButton );

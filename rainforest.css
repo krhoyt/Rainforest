@@ -21,3 +21,79 @@
   font-weight: 900;
   src: url( './fonts/AmazonEmber_He.ttf' ) format( 'truetype' );
 }
+
+:root {
+  --box-color: #000716;
+  --box-color-error: #d91515;
+  --box-color-inactive: #5f6b7a;
+  --box-color-info: #0972d3;  
+  --box-color-secondary: #414d5c;
+  --box-color-success: #037f0c;
+  --box-color-warning: #8d6605;
+
+  /* Convert black to color via filter */
+  /* https://codepen.io/sosuke/pen/Pjoqqp */  
+  --icon-color:
+    brightness( 0 ) 
+    saturate( 100% )          
+    invert( 3% ) 
+    sepia( 65% ) 
+    saturate( 3282% ) 
+    hue-rotate( 193deg ) 
+    brightness( 91% ) 
+    contrast( 106% );
+  --icon-color-disabled: 
+    brightness( 0 ) 
+    saturate( 100% )
+    invert( 80% ) 
+    sepia( 13% ) 
+    saturate( 341% ) 
+    hue-rotate( 173deg ) 
+    brightness( 82% ) 
+    contrast( 87% );
+  --icon-color-error:
+    brightness( 0 ) 
+    saturate( 100% )          
+    invert( 25% ) 
+    sepia( 98% ) 
+    saturate( 1439% ) 
+    hue-rotate( 350deg ) 
+    brightness( 99% ) 
+    contrast( 101% );
+  --icon-color-info:
+    brightness( 0 ) 
+    saturate( 100% )                    
+    invert( 20% ) 
+    sepia( 95% ) 
+    saturate( 3527% ) 
+    hue-rotate( 189deg ) 
+    brightness( 96% ) 
+    contrast( 102% ); 
+  --icon-color-inverted:
+    brightness( 0 ) 
+    saturate( 100% )                             
+    invert( 100% ) 
+    sepia( 100% ) 
+    saturate( 2% ) 
+    hue-rotate( 278deg ) 
+    brightness( 105% ) 
+    contrast( 101% );
+  --icon-color-subtle:
+    brightness( 0 ) 
+    saturate( 100% )  
+    invert( 45% ) 
+    sepia( 8% ) 
+    saturate( 894% ) 
+    hue-rotate( 173deg ) 
+    brightness( 88% ) 
+    contrast( 85% );          
+  --icon-color-success:
+    brightness( 0 ) 
+    saturate( 100% )                              
+    invert( 32% ) 
+    sepia( 97% ) 
+    saturate( 1126% ) 
+    hue-rotate( 76deg ) 
+    brightness( 87% ) 
+    contrast( 98% );  
+}
