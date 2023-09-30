@@ -19,21 +19,11 @@ export default class RainforestIcon extends HTMLElement {
           display: none;
         }        
 
-        /* Convert black to color via filter */
-        /* https://codepen.io/sosuke/pen/Pjoqqp */
         img {
           box-sizing: border-box;
           display: block;
           cursor: var( --icon-cursor, default );
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )          
-            invert( 3% ) 
-            sepia( 65% ) 
-            saturate( 3282% ) 
-            hue-rotate( 193deg ) 
-            brightness( 91% ) 
-            contrast( 106% );          
+          filter: var( --icon-color );          
           height: var( --icon-height, 16px );
           object-fit: var( --icon-object-fit, contain );
           width: var( --icon-width, 16px );
@@ -55,75 +45,29 @@ export default class RainforestIcon extends HTMLElement {
         }
 
         :host( [variant=disabled] ) img {
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )
-            invert( 62% ) 
-            sepia( 11% ) 
-            saturate( 469% ) 
-            hue-rotate( 173deg ) 
-            brightness( 85% ) 
-            contrast( 88% );          
+          filter: var( --icon-color-disabled );          
         }
 
         :host( [variant=subtle] ) img {
-          filter: 
-            invert( 45% ) 
-            sepia( 8% ) 
-            saturate( 894% ) 
-            hue-rotate( 173deg ) 
-            brightness( 88% ) 
-            contrast( 85% );        
+          filter: var( --icon-color-subtle );
         }        
 
         :host( [variant=error] ) img,
         :host( [variant=warning] ) img {
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )          
-            invert( 25% ) 
-            sepia( 98% ) 
-            saturate( 1439% ) 
-            hue-rotate( 350deg ) 
-            brightness( 99% ) 
-            contrast( 101% );
+          filter: var( --icon-color-error );
         }        
 
         :host( [variant=info] ) img,
         :host( [variant=link] ) img {
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )                    
-            invert( 20% ) 
-            sepia( 95% ) 
-            saturate( 3527% ) 
-            hue-rotate( 189deg ) 
-            brightness( 96% ) 
-            contrast( 102% );
+          filter: var( --icon-color-info );
         }                
 
         :host( [variant=inverted] ) img {
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )                             
-            invert( 100% ) 
-            sepia( 100% ) 
-            saturate( 2% ) 
-            hue-rotate( 278deg ) 
-            brightness( 105% ) 
-            contrast( 101% );
+          filter: var( --icon-color-inverted );
         }
 
         :host( [variant=success] ) img {
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )                              
-            invert( 32% ) 
-            sepia( 97% ) 
-            saturate( 1126% ) 
-            hue-rotate( 76deg ) 
-            brightness( 87% ) 
-            contrast( 98% );
+          filter: var( --icon-color-success );
         }        
       </style>
       <img part="icon" />
