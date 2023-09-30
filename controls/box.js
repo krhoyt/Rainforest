@@ -21,7 +21,7 @@ export default class RainforestBox extends HTMLElement {
 
         p {
           box-sizing: border-box;
-          color: var( --box-color, #000716 );
+          color: var( --box-color );
           cursor: var( --box-cursor, default );
           font-family: 'Amazon Ember', sans-serif;
           font-size: var( --box-font-size, 14px );
@@ -36,27 +36,27 @@ export default class RainforestBox extends HTMLElement {
         }
 
         :host( [color=text-body-secondary] ) p {
-          color: #414d5c;
+          color: var( --box-color-secondary );
         }
 
         :host( [color=text-status-error] ) p {
-          color: #d91515;
+          color: var( --box-color-error );
         }        
 
         :host( [color=text-status-success] ) p {
-          color: #037f0c;
+          color: var( --box-color-success );
         }                
 
         :host( [color=text-status-info] ) p {
-          color: #0972d3;
+          color: var( --box-color-info );
         }                        
 
         :host( [color=text-status-inactive] ) p {
-          color: #5f6b7a;
+          color: var( --box-color-inactive );
         }                                
 
         :host( [color=text-status-warning] ) p {
-          color: #8d6605;
+          color: var( --box-color-warning );
         }                                        
 
         :host( [truncate] ) p {
@@ -195,6 +195,22 @@ export default class RainforestBox extends HTMLElement {
         :host( [disabled] ) p {
           color: var( --box-disabled-color, #9ba7b6 );
         }                
+
+        :host( [display=block] ) {
+          display: block;
+        }
+
+        :host( [display=inline] ) {
+          display: inline;
+        }
+
+        :host( [display=inline-block] ) {
+          display: inline-block;
+        }        
+
+        :host( [display=none] ) {
+          display: none;
+        }        
       </style>
       <p part="box">
         <span></span>
@@ -233,7 +249,8 @@ export default class RainforestBox extends HTMLElement {
     this._upgrade( 'color' );            
     this._upgrade( 'concealed' );        
     this._upgrade( 'data' );       
-    this._upgrade( 'disabled' );      
+    this._upgrade( 'disabled' );          
+    this._upgrade( 'display' );      
     this._upgrade( 'float' );      
     this._upgrade( 'fontSize' );                        
     this._upgrade( 'fontWeight' );                            
@@ -251,6 +268,7 @@ export default class RainforestBox extends HTMLElement {
       'color',
       'concealed',
       'disabled',
+      'display',
       'float',
       'font-size',
       'font-weight',
@@ -337,6 +355,22 @@ export default class RainforestBox extends HTMLElement {
       this.removeAttribute( 'disabled' );
     }
   }  
+
+  get display() {
+    if( this.hasAttribute( 'display' ) ) {
+      return this.getAttribute( 'display' );
+    }
+
+    return null;
+  }
+
+  set display( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'display', value );
+    } else {
+      this.removeAttribute( 'display' );
+    }
+  }
 
   get fontSize() {
     if( this.hasAttribute( 'font-size' ) ) {
