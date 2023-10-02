@@ -21,6 +21,13 @@ export default class RainforestButton extends HTMLElement {
           display: none;
         }
 
+        a {
+          display: none;
+          left: 0;
+          position: absolute;
+          top: 0;
+        }
+
         button {
           align-items: center;
           background: none;
@@ -213,9 +220,22 @@ export default class RainforestButton extends HTMLElement {
     this.$button = this.shadowRoot.querySelector( 'button' );
     this.$button.addEventListener( 'click', ( evt ) => {
       if( this.href !== null ) {
+        const link = document.createElement( 'a' );
+        this.shadowRoot.appendChild(  link );
+
         if( this.download ) {
 
+          link.download = this.download;
+          link.href = this.href;
+          link.rel = this.rel === null ? 'noopener noreferrer' : this.rel;          
+        } else if( this.target !== null ) {
+          window.open( this.href, this.target );
+        } else {
+          window.location = this.href;
         }
+
+        link.click();
+        link.remove();        
       }
 
       this.dispatchEvent( new CustomEvent( 'rf-click', {
