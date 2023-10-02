@@ -1,6 +1,6 @@
 {
   "name": "rainforest-web-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of standard web components (Vanilla) based on the Cloudscape Design System.",
   "main": "components.js",
   "keywords": [],

@@ -55,6 +55,10 @@ export default class RainforestButton extends HTMLElement {
           -webkit-tap-highlight-color: transparent;
         }
 
+        button span {
+          text-rendering: optimizeLegibility;
+        }
+
         button:not( [disabled] ):hover {
           background-color: #f2f8fd;
           border: solid 2px #033160;
@@ -230,6 +234,13 @@ export default class RainforestButton extends HTMLElement {
 
         link.click();
         link.remove();        
+
+        this.dispatchEvent( new CustomEvent( 'rf-follow', {
+          detail: {
+            href: this.href,
+            target: this.target
+          }
+        } ) );
       }
 
       this.dispatchEvent( new CustomEvent( 'rf-click', {

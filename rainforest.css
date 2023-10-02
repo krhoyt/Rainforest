@@ -23,6 +23,15 @@
 }
 
 :root {
+  --font-size-body-small: 12px;
+  --font-size-body-medium: 14px;
+  --font-size-heading-extra-small: 14px;
+  --font-size-headin-small: 16px;
+  --font-size-heading-medium: 18px;  
+  --font-size-heading-large: 20px;    
+  --font-size-heading-extra-large: 24px;
+  --font-size-display-large: 42px;
+
   --box-color: #000716;
   --box-color-error: #d91515;
   --box-color-inactive: #5f6b7a;
