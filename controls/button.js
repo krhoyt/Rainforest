@@ -223,16 +223,10 @@ export default class RainforestButton extends HTMLElement {
         const link = document.createElement( 'a' );
         this.shadowRoot.appendChild(  link );
 
-        if( this.download ) {
-
-          link.download = this.download;
-          link.href = this.href;
-          link.rel = this.rel === null ? 'noopener noreferrer' : this.rel;          
-        } else if( this.target !== null ) {
-          window.open( this.href, this.target );
-        } else {
-          window.location = this.href;
-        }
+        link.href = this.href;
+        link.target = this.target === null ? '' : this.target;
+        link.download = this.download === null ? '' : this.download;        
+        link.rel = this.rel === null ? 'noopener noreferrer' : this.rel;          
 
         link.click();
         link.remove();        
