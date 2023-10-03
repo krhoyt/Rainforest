@@ -1,6 +1,6 @@
 # Rainforest Components
 
-Set of standard-based web components following the [Cloudscape Design System](https://cloudscape.design).
+Set of standards-based web components following the [Cloudscape Design System](https://cloudscape.design).
 
 ## Containers
 
