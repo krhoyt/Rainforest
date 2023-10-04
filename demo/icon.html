@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
 
-    <title>Icon</title>
+    <title>Rainforest - Icon</title>
 
     <link href="../rainforest.css" rel="stylesheet">    
 
   </head>
   <body>
-
-    <h2>Icon</h2>
 
     <rf-icon name="settings"></rf-icon><br>
     <rf-icon name="search" variant="subtle"></rf-icon><br>
@@ -21,7 +19,7 @@
     <rf-icon name="lock-private" size="big" variant="disabled"></rf-icon><br>
     <rf-icon name="status-negative" size="large" variant="error"></rf-icon><br>    
     <rf-icon size="large" url="../img/writer.svg"></rf-icon>
-
+    <br>
     <pre>
 &lt;rf-icon name="settings"&gt;&lt;/rf-icon&gt;
 &lt;rf-icon name="search" variant="subtle"&gt;&lt;/rf-icon&gt;
@@ -30,55 +28,6 @@
 &lt;rf-icon name="status-negative" size="large" variant="error"&gt;&lt;/rf-icon&gt;
 &lt;rf-icon size="large" url="../img/writer.svg"&gt;&lt;/rf-icon&gt;
     </pre>
-
-    <h4>Styles</h4>
-
-    <ul>
-      <li>--icon-cursor: default</li>
-      <li>--icon-height: 16px</li>
-      <li>--icon-object-fit: contain</li>
-      <li>--icon-width: 16px</li>
-    </ul>
-
-    <h4>Slots</h4>
-
-    <p>None</p>
-
-    <h4>Properties</h4>
-
-    <ul>
-      <li>data (object): Arbitrary data storage</li>
-    </ul>
-
-    <h4>Attributes</h4>
-
-    <ul>
-      <li>concealed (boolean): Do not show, but leave in DOM flow</li>      
-      <li>hidden (boolean): Do not show in DOM</li>      
-      <li>name (string): Reference to icon in Cloudscape collection</li>
-      <li>path (string): Custom icon directory name or location</li>      
-      <li>url (string): Source for image icon</li>
-      <li>size (normal | small | medium | big | large): Sizing of the icon</li>      
-      <li>variant (normal | disabled | error | inverted | link | subtle | success | warning): Changes color of icon for desired usage</li>
-    </ul>
-
-    <h4>Events</h4>
-
-    <p>None</p>
-
-    <h4>Methods</h4>
-
-    <p>None</p>
-
-    <h4>Parts</h4>
-
-    <ul>
-      <li>icon: Image element used to display content</li>
-    </ul>
-
-    <h4>Dependencies</h4>
-
-    <p>None</p>
 
     <script src="../controls/icon.js" type="module"></script>
 

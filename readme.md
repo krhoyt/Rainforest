@@ -37,7 +37,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 - Badge
 - [Box](./docs/box.md)
 - [Button](./docs/button.md)
-- Icon
+- [Icon](./docs/icon.md)
 - Link
 
 ## Some Differences to Consider
