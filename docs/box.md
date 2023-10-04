@@ -6,7 +6,7 @@ Display and style text content in compliance with the Cloudscape typography and 
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/label.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/box.js" type="module"></script>
 ```
 
 ``` html
