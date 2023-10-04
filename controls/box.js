@@ -21,7 +21,7 @@ export default class RainforestBox extends HTMLElement {
 
         p {
           box-sizing: border-box;
-          color: var( --box-color );
+          color: var( --box-color, #000716 );
           cursor: var( --box-cursor, default );
           font-family: 'Amazon Ember', sans-serif;
           font-size: var( --box-font-size, 14px );
@@ -36,27 +36,22 @@ export default class RainforestBox extends HTMLElement {
         }
 
         :host( [color=text-body-secondary] ) p {
-          color: var( --box-color-secondary );
+          color: var( --box-color-secondary, #414d5c );
         }
-
         :host( [color=text-status-error] ) p {
-          color: var( --box-color-error );
+          color: var( --box-color-error, #d91515 );
         }        
-
         :host( [color=text-status-success] ) p {
-          color: var( --box-color-success );
+          color: var( --box-color-success, #037f0c );
         }                
-
         :host( [color=text-status-info] ) p {
-          color: var( --box-color-info );
+          color: var( --box-color-info, #0972d3 );
         }                        
-
         :host( [color=text-status-inactive] ) p {
-          color: var( --box-color-inactive );
+          color: var( --box-color-inactive, #5f6b7a );
         }                                
-
         :host( [color=text-status-warning] ) p {
-          color: var( --box-color-warning );
+          color: var( --box-color-warning, #8d6605 );
         }                                        
 
         :host( [truncate] ) p {
@@ -130,87 +125,38 @@ export default class RainforestBox extends HTMLElement {
           line-height: 48px;
         }                                                           
 
-        :host( [font-size=body-s] ) p {
-          font-size: 12px;
-        }
-
+        :host( [font-size=body-s] ) p { font-size: 12px; }
         :host( [font-size=heading-xs] ) p,
         :host( [font-size=body-m] ) p {
           font-size: 14px;
         }        
-
-        :host( [font-size=body-s] ) p {
-          font-size: 12px;
-        }
-
-        :host( [font-size=heading-s] ) p {
-          font-size: 16px;
-        }        
-
-        :host( [font-size=heading-m] ) p {
-          font-size: 18px;
-        }                
-
-        :host( [font-size=heading-l] ) p {
-          font-size: 20px;
-        }                        
-
-        :host( [font-size=heading-xl] ) p {
-          font-size: 24px;
-        }                                
-
-        :host( [font-size=display-l] ) p {
-          font-size: 42px;
-        }                                
-
-        :host( [font-weight=light] ) p {
-          font-weight: 300;
-        }                                
-
+        :host( [font-size=body-s] ) p { font-size: 12px; }
+        :host( [font-size=heading-s] ) p { font-size: 16px; }        
+        :host( [font-size=heading-m] ) p { font-size: 18px; }                
+        :host( [font-size=heading-l] ) p { font-size: 20px; }                        
+        :host( [font-size=heading-xl] ) p { font-size: 24px; }                                
+        :host( [font-size=display-l] ) p { font-size: 42px; }                                
+        :host( [font-weight=light] ) p { font-weight: 300; }                                
         :host( [font-weight=heavy] ) p,
         :host( [font-weight=bold] ) p {
           font-weight: 700;
         }                                        
 
-        :host( [text-align=center] ) p {
-          text-align: center;
-        }
-
-        :host( [text-align=left] ) p {
-          text-align: left;
-        }
-
-        :host( [text-align=right] ) p {
-          text-align: right;
-        }
-
-        :host( [float=left] ) {
-          float: left;
-        }
-
-        :host( [float=right] ) {
-          float: right;
-        }
+        :host( [text-align=center] ) p { text-align: center; }
+        :host( [text-align=left] ) p { text-align: left; }
+        :host( [text-align=right] ) p { text-align: right; }
+        
+        :host( [float=left] ) { float: left; }
+        :host( [float=right] ) { float: right; }
 
         :host( [disabled] ) p {
           color: var( --box-disabled-color, #9ba7b6 );
         }                
 
-        :host( [display=block] ) {
-          display: block;
-        }
-
-        :host( [display=inline] ) {
-          display: inline;
-        }
-
-        :host( [display=inline-block] ) {
-          display: inline-block;
-        }        
-
-        :host( [display=none] ) {
-          display: none;
-        }        
+        :host( [display=block] ) { display: block; }
+        :host( [display=inline] ) { display: inline; }
+        :host( [display=inline-block] ) { display: inline-block; }        
+        :host( [display=none] ) { display: none; }        
       </style>
       <p part="box">
         <span></span>

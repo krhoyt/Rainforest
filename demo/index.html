@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Rainforest Components</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <select>
+      <option value="box.html">Box</option>
+      <option value="button.html">Button</option>      
+      <option value="icon.html">Icon</option>
+      <option value="link.html">Icon</option>
+      <option value="space-between.html">Space Between</option>      
+    </select>
+
+    <iframe src="box.html"></iframe>
+    
+    <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.js" type="module"></script>
+
+    <script>
+      const frame = document.querySelector( 'iframe' );
+      const select = document.querySelector( 'select' );
+      select.addEventListener( 'change', () => {
+        frame.src = select.value;
+      } );
+    </script>
+
+  </body>
+</html>

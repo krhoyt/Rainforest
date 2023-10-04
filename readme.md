@@ -16,7 +16,7 @@ Okay, so the answer was a clear "No". Well, I guess I will just have to do it my
 
 I have used the Rainforest components to build AWS-internal applications. They work well in the "real world". Where feasible the project aims for feature/API parity (with a few exceptions).
 
-## Why Redux
+## Wait. Why?
 
 - Web standards
 - No framework required
@@ -26,11 +26,11 @@ I have used the Rainforest components to build AWS-internal applications. They w
 - Easy to get started
 - Easy to use
 
-> This is a personal passion project. It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components.
+> This is a personal passion project. It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for his internal projects.
 
 ## Containers
 
-- None
+- [Space Between](./docs/space-between.md)
 
 ## Controls
 
@@ -42,7 +42,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 
 ## Some Differences to Consider
 
-Cloudscape uses the React framework. There are ideomatic ways in which React is used. Some of these constructs do not suit web standards well. Where those differences are significant are discussed in the following sections. Otherwise Rainforest tries to be feature/API complete.
+Cloudscape uses the React framework. There are ideomatic ways in which React is used. Some of these constructs do not suit web standards well. Where those differences are significant is discussed in the following sections. Otherwise Rainforest tries for feature/API parity.
 
 ### A Dash of Prefix
 
