@@ -38,7 +38,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 - [Box](./docs/box.md)
 - [Button](./docs/button.md)
 - [Icon](./docs/icon.md)
-- Link
+- [Link](./docs/link.md)
 
 ## Some Differences to Consider
 

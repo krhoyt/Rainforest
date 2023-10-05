@@ -38,7 +38,7 @@ export default class RainforestLink extends HTMLElement {
         button span {
           color: #0972d3;          
           font-family: 'Amazon Ember';
-          font-size: var( --font-size-body-medium );
+          font-size: var( --font-size-body-medium, 14px );
           font-weight: 400;          
           line-height: 20px;          
           text-rendering: optimizeLegibility;

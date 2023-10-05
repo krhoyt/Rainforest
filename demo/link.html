@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
 
-    <title>Link</title>
+    <title>Rainforest - Link</title>
 
     <link href="../rainforest.css" rel="stylesheet">
 
   </head>
   <body>
-
-    <h2>Link</h2>
 
     <rf-link>Secondary link</rf-link><br>
     <rf-link variant="primary">Primary link</rf-link><br>
@@ -26,71 +24,6 @@
 &lt;rf-link external&gt;Learn more&lt;/rf-link&gt;
 &lt;rf-link variant="info"&gt;Info&lt;/rf-link&gt;
     </pre>
-
-    <h4>Styles</h4>
-
-    <ul>
-      <li>--font-size-body-small: 12px;</li>
-      <li>--font-size-body-medium: 14px;</li>
-      <li>--font-size-heading-extra-small: 14px;</li>
-      <li>--font-size-headin-small: 16px;</li>
-      <li>--font-size-heading-medium: 18px;</li>
-      <li>--font-size-heading-large: 20px;</li>
-      <li>--font-size-heading-extra-large: 24px;</li>
-      <li>--font-size-display-large: 42px;</li>
-    </ul>
-
-    <h4>Slots</h4>
-
-    <ul>
-      <li>default: Link content</li>
-    </ul>
-
-    <h4>Properties</h4>
-
-    <ul>
-      <li>data (object): Arbitrary data storage</li>
-    </ul>
-
-    <h4>Attributes</h4>
-
-    <ul>
-      <li>color (normal | inverted): Color of the text in the paragraph element</li>      
-      <li>concealed (boolean): Do not show, but leave in DOM flow</li>      
-      <li>external (boolean): Show icon for external link</li>            
-      <li>font-size (body-s | body-m | heading-xs | heading-s | heading-m | heading-l | heading-xl | display-l): Font size of the span element</li>      
-      <li>hidden (boolean): Do not show in DOM</li>      
-      <li>href (string): Link destination</li>      
-      <li>rel (string): Relation to link</li>
-      <li>target (string): Destination to display linked content</li>
-      <li>variant (primary | secondary | info | awsui-value-large): Applies combination of font size and weight to span element</li>      
-    </ul>
-
-    <h4>Events</h4>
-
-    <ul>
-      <li>rf-follow</li>
-    </ul>
-
-    <h4>Methods</h4>
-
-    <ul>
-      <li>focus(): Place focus on button element</li>
-    </ul>
-
-    <h4>Parts</h4>
-
-    <ul>
-      <li>button: Inner button element</li>
-      <li>icon: Inner RainforestIcon (rf-icon) element</li>      
-      <li>span: Inner button label</li>            
-    </ul>
-
-    <h4>Dependencies</h4>
-
-    <ul>
-      <li>RainforestIcon (rf-icon)</li>
-    </ul>
 
     <script src="../controls/link.js" type="module"></script>
 
