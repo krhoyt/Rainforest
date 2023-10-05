@@ -40,13 +40,14 @@ None
 | `disabled` | `boolean` | Disable the input field |
 | `disable-browser-autocorrect` | `boolean` | Disable input autocorrect; will disable other features |
 | `hidden` | `boolean` | Do not show in DOM |      
+| `input-mode` | `none` \| `text` \| `decimal` \|   `numeric` \| `tell` \| `search` \| `email` \| `url` | Suggest keyboard mode for relevant devices |     
 | `invalid` | `boolean` | Colored border to show error |      
 | `name` | `string` | Name of icon to use |
 | `placeholder` | `string` | Content of the field before value set |
 | `read-only` | `boolean` | Prevent input, but still show content clearly |      
 | `spellcheck` | `boolean` | Enable input/OS-level spellcheck |     
 | `step` | `string` | Invrement value when input is range |     
-| `size` | `small` \|  `medium` \| `normal` \| `big` \| `large` | Predefined sizes consistent with design system |      
+| `type` | `text` \|  `password` \| `search` \| `number` \| `email` \| `url` | Type of input to be captured |      
 | `value` | `string` | The contents of the input field |      
 
 ## Events
@@ -57,7 +58,7 @@ None
 
 ## Methods
 
-None| Name | Description |
+| Name | Description |
 | --- | --- |
 | `focus()` | Focus on inner `input` element |
 | `select()` | Select all the text in the inner `input` element |
@@ -66,7 +67,7 @@ None| Name | Description |
 
 | Name | Description |
 | --- | --- |
-| `input` | Inner `input`` element |
+| `input` | Inner `input` element |
 
 ## Dependencies
 
