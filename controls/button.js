@@ -204,8 +204,34 @@ export default class RainforestButton extends HTMLElement {
         :host( :not( [icon-name] ) ) rf-icon {
           display: none;
         }
+
+        @keyframes spin {
+          from {
+            transform: rotate( 0 );
+          }
+
+          to {
+            transform: rotate( 360deg );
+          }
+        }
+
+        :host( :not( [loading] ) ) rf-icon[part=loading] {        
+          display: none;
+        }
+
+        :host( [loading] ) rf-icon[part=loading] {
+          animation: 1.50s infinite spin;
+          animation-timing-function: linear;
+          display: inline-block;
+        }
+
+        :host( [loading] ) rf-icon[part=loading]::part( icon ) {
+          height: 12px;
+          width: 12px;
+        }
       </style>
       <button part="button" type="button">
+        <rf-icon part="loading" url="../img/loading.svg"></rf-icon>      
         <rf-icon part="icon"></rf-icon>
         <span>
           <slot></slot>
@@ -252,7 +278,7 @@ export default class RainforestButton extends HTMLElement {
         }
       } ) );
     } );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );    
+    this.$icon = this.shadowRoot.querySelector( 'rf-icon[part=icon]' );    
   }
 
   // Force focus

@@ -76,6 +76,7 @@ None
 | --- | --- |
 | `button` | Inner `button` element |
 | `icon` | Inner RainforestIcon (`rf-icon`) element |
+| `loading` | Loading RainforestIcon (`rf-icon`) element |
 
 ## Dependencies
 
