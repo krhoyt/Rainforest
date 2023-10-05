@@ -10,19 +10,10 @@ Represents an anchor tag that defines a hyperlink, which a user can interact wit
 ```
 
 ``` html
-<rf-button variant="primary">Button</rf-button><br>        
-<rf-button>Button</rf-button><br> 
-<rf-button variant="link">Button</rf-button><br>
-<rf-button variant="inline-link">Download</rf-button><br>  
-<rf-button icon-name="settings" variant="icon"></rf-button><br>  
-<rf-button icon-name="copy" variant="inline-icon"></rf-button><br>  
-<rf-button 
-  href="https://example.com" 
-  icon-align="right" 
-  icon-name="external" 
-  target="_blank">
-  Report a bug
-</rf-button>
+<rf-link>Secondary link</rf-link>
+<rf-link variant="primary">Primary link</rf-link>
+<rf-link external>Learn more</rf-link>
+<rf-link variant="info">Info</rf-link>    
 ```
 
 ## Styles
