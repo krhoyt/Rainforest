@@ -28,6 +28,32 @@ I have used the Rainforest components to build AWS-internal applications. They w
 
 > This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for his internal projects.
 
+## Getting Started
+
+You need two parts. First is a CSS file for fonts (Amazon Ember) and a few styles that are used across multiple compoonents. Second is the components themselves. You can load the components in two ways: all at once or a la carte.
+
+### CSS
+
+``` html
+<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
+```
+
+### All At Once
+
+``` html
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.js" type="module"></script>
+```
+
+### A La Carte
+
+When loading a la carte, component dependencies are loaded by the components themselves.
+
+``` html
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/button.js" type="module"></script>
+```
+
+That is it! Nope, there is no builder required. Nope, you do not install NPM anything. No cloning any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
+
 ## Containers
 
 - [Space Between](./docs/space-between.md)
