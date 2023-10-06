@@ -40,6 +40,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 - [Icon](./docs/icon.md)
 - [Input](./docs/input.md)
 - [Link](./docs/link.md)
+- [Spinner](./docs/spinner.md)
 
 ## Some Differences to Consider
 
