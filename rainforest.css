@@ -25,84 +25,134 @@
 :root {
   --font-size-body-small: 12px;
   --font-size-body-medium: 14px;
+  --font-size-display-large: 42px;  
   --font-size-heading-extra-small: 14px;
-  --font-size-headin-small: 16px;
+  --font-size-heading-small: 16px;
   --font-size-heading-medium: 18px;  
   --font-size-heading-large: 20px;    
   --font-size-heading-extra-large: 24px;
-  --font-size-display-large: 42px;
 
-  --box-color: #000716;
-  --box-color-error: #d91515;
-  --box-color-inactive: #5f6b7a;
-  --box-color-info: #0972d3;  
-  --box-color-secondary: #414d5c;
-  --box-color-success: #037f0c;
-  --box-color-warning: #8d6605;
+  --color-primary: #000716;
+  --color-primary-disabled: #e9ebed;
+  --color-primary-hover: #033160;
+  --color-error: #d91515;
+  --color-inactive: #5f6b7a;
+  --color-link: #0972d3;  
+  --color-inverted: #ffffff;    
+  --color-secondary: #414d5c;
+  --color-secondary-disabled: #9ba7b6;  
+  --color-secondary-hover: #f2f8fd;  
+  --color-success: #037f0c;
+  --color-warning: #8d6605;
 
   /* Convert black to color via filter */
   /* https://codepen.io/sosuke/pen/Pjoqqp */  
-  --icon-color:
+  --filter-color-primary:
     brightness( 0 ) 
     saturate( 100% )          
-    invert( 3% ) 
-    sepia( 65% ) 
-    saturate( 3282% ) 
-    hue-rotate( 193deg ) 
-    brightness( 91% ) 
-    contrast( 106% );
-  --icon-color-disabled: 
-    brightness( 0 ) 
-    saturate( 100% )
-    invert( 80% ) 
-    sepia( 13% ) 
-    saturate( 341% ) 
-    hue-rotate( 173deg ) 
-    brightness( 82% ) 
-    contrast( 87% );
-  --icon-color-error:
+    invert( 4% ) 
+    sepia( 24% ) 
+    saturate( 4129% ) 
+    hue-rotate( 186deg ) 
+    brightness( 102% ) 
+    contrast( 107% );
+  --filter-color-primary-disabled:
     brightness( 0 ) 
     saturate( 100% )          
-    invert( 25% ) 
-    sepia( 98% ) 
-    saturate( 1439% ) 
-    hue-rotate( 350deg ) 
+    invert( 100% ) 
+    sepia( 1% ) 
+    saturate( 3425% ) 
+    hue-rotate( 176deg ) 
     brightness( 99% ) 
+    contrast( 87% );
+  --filter-color-primary-hover:
+    brightness( 0 ) 
+    saturate( 100% )          
+    invert( 17% ) 
+    sepia( 57% ) 
+    saturate( 1418% ) 
+    hue-rotate( 183deg ) 
+    brightness( 90% ) 
+    contrast( 107% );
+  --filter-color-error:
+    brightness( 0 ) 
+    saturate( 100% )            
+    invert( 14% ) 
+    sepia( 98% ) 
+    saturate( 3166% ) 
+    hue-rotate( 350deg ) 
+    brightness( 107% ) 
+    contrast( 105% );
+  --filter-color-inactive:
+    brightness( 0 ) 
+    saturate( 100% )              
+    invert( 46% ) 
+    sepia( 2% ) 
+    saturate( 3672% ) 
+    hue-rotate( 174deg ) 
+    brightness( 87% ) 
+    contrast( 91% );
+  --filter-color-link:
+    brightness( 0 ) 
+    saturate( 100% )                
+    invert( 26% ) 
+    sepia( 98% ) 
+    saturate( 3640% ) 
+    hue-rotate( 196deg ) 
+    brightness( 97% ) 
+    contrast( 93% );  
+  --filter-color-inverted:
+    brightness( 0 ) 
+    saturate( 100% )                  
+    invert( 100% ) 
+    sepia( 2% ) 
+    saturate( 0% ) 
+    hue-rotate( 173deg ) 
+    brightness( 103% ) 
     contrast( 101% );
-  --icon-color-info:
+  --filter-color-secondary:
     brightness( 0 ) 
     saturate( 100% )                    
-    invert( 20% ) 
-    sepia( 95% ) 
-    saturate( 3527% ) 
-    hue-rotate( 189deg ) 
-    brightness( 96% ) 
-    contrast( 102% ); 
-  --icon-color-inverted:
-    brightness( 0 ) 
-    saturate( 100% )                             
-    invert( 100% ) 
-    sepia( 100% ) 
-    saturate( 2% ) 
-    hue-rotate( 278deg ) 
-    brightness( 105% ) 
-    contrast( 101% );
-  --icon-color-subtle:
-    brightness( 0 ) 
-    saturate( 100% )  
-    invert( 45% ) 
-    sepia( 8% ) 
-    saturate( 894% ) 
+    invert( 25% ) 
+    sepia( 43% ) 
+    saturate( 260% ) 
     hue-rotate( 173deg ) 
-    brightness( 88% ) 
-    contrast( 85% );          
-  --icon-color-success:
+    brightness( 98% ) 
+    contrast( 89% );
+  --filter-color-secondary-disabled:
     brightness( 0 ) 
-    saturate( 100% )                              
-    invert( 32% ) 
-    sepia( 97% ) 
-    saturate( 1126% ) 
-    hue-rotate( 76deg ) 
-    brightness( 87% ) 
-    contrast( 98% );  
+    saturate( 100% )                      
+    invert( 74% ) 
+    sepia( 4% ) 
+    saturate( 1016% ) 
+    hue-rotate( 173deg ) 
+    brightness( 90% ) 
+    contrast( 85% );
+  --filter-color-secondary-hover:
+    brightness( 0 ) 
+    saturate( 100% )                        
+    invert( 88% ) 
+    sepia( 40% ) 
+    saturate( 36% ) 
+    hue-rotate( 181deg ) 
+    brightness( 103% ) 
+    contrast( 99% );
+  --filter-color-success:
+    brightness( 0 ) 
+    saturate( 100% )                          
+    invert( 29% ) 
+    sepia( 72% ) 
+    saturate( 1725% ) 
+    hue-rotate( 103deg ) 
+    brightness( 91% ) 
+    contrast( 98% );
+  --filter-color-warning:
+    brightness( 0 ) 
+    saturate( 100% )                            
+    invert( 34% ) 
+    sepia( 88% ) 
+    saturate( 1021% ) 
+    hue-rotate( 23deg ) 
+    brightness( 90% ) 
+    contrast( 96% );
 }

@@ -21,7 +21,7 @@ export default class RainforestBox extends HTMLElement {
 
         p {
           box-sizing: border-box;
-          color: var( --box-color, #000716 );
+          color: var( --color-primary );
           cursor: var( --box-cursor, default );
           font-family: 'Amazon Ember', sans-serif;
           font-size: var( --box-font-size, 14px );
@@ -36,22 +36,22 @@ export default class RainforestBox extends HTMLElement {
         }
 
         :host( [color=text-body-secondary] ) p {
-          color: var( --box-color-secondary, #414d5c );
+          color: var( --color-secondary );
         }
         :host( [color=text-status-error] ) p {
-          color: var( --box-color-error, #d91515 );
+          color: var( --color-error );
         }        
         :host( [color=text-status-success] ) p {
-          color: var( --box-color-success, #037f0c );
+          color: var( --color-success );
         }                
         :host( [color=text-status-info] ) p {
-          color: var( --box-color-info, #0972d3 );
+          color: var( --color-link );
         }                        
         :host( [color=text-status-inactive] ) p {
-          color: var( --box-color-inactive, #5f6b7a );
+          color: var( --color-inactive );
         }                                
         :host( [color=text-status-warning] ) p {
-          color: var( --box-color-warning, #8d6605 );
+          color: var( --color-warning );
         }                                        
 
         :host( [truncate] ) p {
@@ -125,32 +125,32 @@ export default class RainforestBox extends HTMLElement {
           line-height: 48px;
         }                                                           
 
-        :host( [font-size=body-s] ) p { font-size: 12px; }
-        :host( [font-size=heading-xs] ) p,
-        :host( [font-size=body-m] ) p {
+        :host( [fontsize=body-s] ) p { font-size: 12px; }
+        :host( [fontsize=heading-xs] ) p,
+        :host( [fontsize=body-m] ) p {
           font-size: 14px;
         }        
-        :host( [font-size=body-s] ) p { font-size: 12px; }
-        :host( [font-size=heading-s] ) p { font-size: 16px; }        
-        :host( [font-size=heading-m] ) p { font-size: 18px; }                
-        :host( [font-size=heading-l] ) p { font-size: 20px; }                        
-        :host( [font-size=heading-xl] ) p { font-size: 24px; }                                
-        :host( [font-size=display-l] ) p { font-size: 42px; }                                
-        :host( [font-weight=light] ) p { font-weight: 300; }                                
-        :host( [font-weight=heavy] ) p,
-        :host( [font-weight=bold] ) p {
+        :host( [fontsize=body-s] ) p { font-size: 12px; }
+        :host( [fontsize=heading-s] ) p { font-size: 16px; }        
+        :host( [fontsize=heading-m] ) p { font-size: 18px; }                
+        :host( [fontsize=heading-l] ) p { font-size: 20px; }                        
+        :host( [fontsize=heading-xl] ) p { font-size: 24px; }                                
+        :host( [fontsize=display-l] ) p { font-size: 42px; }                                
+        :host( [fontweight=light] ) p { font-weight: 300; }                                
+        :host( [fontweight=heavy] ) p,
+        :host( [fontweight=bold] ) p {
           font-weight: 700;
         }                                        
 
-        :host( [text-align=center] ) p { text-align: center; }
-        :host( [text-align=left] ) p { text-align: left; }
-        :host( [text-align=right] ) p { text-align: right; }
+        :host( [textalign=center] ) p { text-align: center; }
+        :host( [textalign=left] ) p { text-align: left; }
+        :host( [textalign=right] ) p { text-align: right; }
         
         :host( [float=left] ) { float: left; }
         :host( [float=right] ) { float: right; }
 
         :host( [disabled] ) p {
-          color: var( --box-disabled-color, #9ba7b6 );
+          color: var( --color-secondary-disabled );
         }                
 
         :host( [display=block] ) { display: block; }
@@ -216,11 +216,11 @@ export default class RainforestBox extends HTMLElement {
       'disabled',
       'display',
       'float',
-      'font-size',
-      'font-weight',
+      'fontsize',
+      'fontweight',
       'hidden',
       'text',
-      'text-align',
+      'textalign',
       'truncate',
       'variant'
     ];
@@ -319,8 +319,8 @@ export default class RainforestBox extends HTMLElement {
   }
 
   get fontSize() {
-    if( this.hasAttribute( 'font-size' ) ) {
-      return this.getAttribute( 'font-size' );
+    if( this.hasAttribute( 'fontsize' ) ) {
+      return this.getAttribute( 'fontsize' );
     }
 
     return null;
@@ -328,15 +328,15 @@ export default class RainforestBox extends HTMLElement {
 
   set fontSize( value ) {
     if( value !== null ) {
-      this.setAttribute( 'font-size', value );
+      this.setAttribute( 'fontsize', value );
     } else {
-      this.removeAttribute( 'font-size' );
+      this.removeAttribute( 'fontsize' );
     }
   }
 
   get fontWeight() {
-    if( this.hasAttribute( 'font-weight' ) ) {
-      return this.getAttribute( 'font-weight' );
+    if( this.hasAttribute( 'fontweight' ) ) {
+      return this.getAttribute( 'fontweight' );
     }
 
     return null;
@@ -344,9 +344,9 @@ export default class RainforestBox extends HTMLElement {
 
   set fontWeight( value ) {
     if( value !== null ) {
-      this.setAttribute( 'font-weight', value );
+      this.setAttribute( 'fontweight', value );
     } else {
-      this.removeAttribute( 'font-weight' );
+      this.removeAttribute( 'fontweight' );
     }
   }  
 
@@ -387,8 +387,8 @@ export default class RainforestBox extends HTMLElement {
   }     
 
   get textAlign() {
-    if( this.hasAttribute( 'text-align' ) ) {
-      return this.getAttribute( 'text-align' );
+    if( this.hasAttribute( 'textalign' ) ) {
+      return this.getAttribute( 'textalign' );
     }
 
     return null;
@@ -396,9 +396,9 @@ export default class RainforestBox extends HTMLElement {
 
   set textAlign( value ) {
     if( value !== null ) {
-      this.setAttribute( 'text-align', value );
+      this.setAttribute( 'textalign', value );
     } else {
-      this.removeAttribute( 'text-align' );
+      this.removeAttribute( 'textalign' );
     }
   }       
   

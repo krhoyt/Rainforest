@@ -1,12 +1,12 @@
 # Button
 
-Initiate actions in the user interface.
+Allows users to initiate actions in the user interface.
 
 ## Usage
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/button.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
 ```
 
 ``` html
@@ -24,10 +24,6 @@ Initiate actions in the user interface.
   Report a bug
 </rf-button>
 ```
-
-## Styles
-
-None
 
 ## Slots
 
@@ -81,3 +77,4 @@ None
 ## Dependencies
 
 - `rf-icon`
+- `rf-spinner`

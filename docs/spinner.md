@@ -6,7 +6,7 @@ A compact, looped animation giving the user feedback that a process is currently
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/spinner.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/spinner.js" type="module"></script>
 ```
 
 ``` html
@@ -14,12 +14,6 @@ A compact, looped animation giving the user feedback that a process is currently
 <rf-spinner size="large"></rf-spinner>
 <rf-spinner variant="disabled"></rf-spinner>        
 ```
-
-## Styles
-
-| Name | Value |
-| --- | --- |
-| `--spinner-color` | `#000716` |
 
 ## Slots
 

@@ -1,12 +1,12 @@
 # Icon
 
-Display basic icons that match Cloudscape sizes, colors, and typography.
+With an icon, you can display basic icons that match Cloudscape sizes, colors, and typography.
 
 ## Usage
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/icon.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/icon.js" type="module"></script>
 ```
 
 ``` html
@@ -17,22 +17,6 @@ Display basic icons that match Cloudscape sizes, colors, and typography.
 <rf-icon name="status-negative" size="large" variant="error"></rf-icon>
 <rf-icon size="large" url="../img/writer.svg"></rf-icon>
 ```
-
-## Styles
-
-| Name | Value |
-| --- | --- |
-| `--icon-color` | `#000716` |
-| `--icon-cursor` | `default` |
-| `--icon-height` | `16px` |
-| `--icon-object-fit` | `contain` |
-| `--icon-width` | `16px` |
-| `--icon-color-disabled` | `#9ba7b6` |
-| `--icon-color-subtle` | `#5f6b7a` |
-| `--icon-color-error` | `#d91515` |
-| `--icon-color-info` | `#0972d3` |
-| `--icon-color-inverted` | `#ffffff` |
-| `--icon-color-success` | `#037f0c` |
 
 > Icon color is accomplished using CSS Filters. The `filter` first gets `brightness( 0 )` and `saturate( 100% )` to ensure the icon is flat black (`#000000`). Then additional `filter` values are added to shift to desired color. This will work with SVG and GIF icons with transparent backgrounds.
 

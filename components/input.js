@@ -149,13 +149,13 @@ export default class RainforestInput extends HTMLElement {
       'auto-complete',
       'auto-focus',
       'concealed',
-      'disable-browser-autocorrect',
+      'disablebrowserautocorrect',
       'hidden',
-      'input-mode',      
+      'inputmode',      
       'invalid',
       'name',
       'placeholder',
-      'read-only',
+      'readonly',
       'spellcheck',
       'step',
       'type',
@@ -260,7 +260,7 @@ export default class RainforestInput extends HTMLElement {
   }  
 
   get disableBrowserAutocorrect() {
-    return this.hasAttribute( 'disable-browser-autocorrect' );
+    return this.hasAttribute( 'disablebrowserautocorrect' );
   }
 
   set disableBrowserAutocorrect( value ) {
@@ -270,12 +270,12 @@ export default class RainforestInput extends HTMLElement {
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'disable-browser-autocorrect' );
+        this.removeAttribute( 'disablebrowserautocorrect' );
       } else {
-        this.setAttribute( 'disable-browser-autocorrect', '' );
+        this.setAttribute( 'disablebrowserautocorrect', '' );
       }
     } else {
-      this.removeAttribute( 'disable-browser-autocorrect' );
+      this.removeAttribute( 'disablebrowserautocorrect' );
     }
   }  
 
@@ -300,8 +300,8 @@ export default class RainforestInput extends HTMLElement {
   }
 
   get inputMode() {
-    if( this.hasAttribute( 'input-mode' ) ) {
-      return this.getAttribute( 'input-mode' );
+    if( this.hasAttribute( 'inputmode' ) ) {
+      return this.getAttribute( 'inputmode' );
     }
 
     return null;
@@ -309,9 +309,9 @@ export default class RainforestInput extends HTMLElement {
 
   set inputMode( value ) {
     if( value !== null ) {
-      this.setAttribute( 'input-mode', value );
+      this.setAttribute( 'inputmode', value );
     } else {
-      this.removeAttribute( 'input-mode' );
+      this.removeAttribute( 'inputmode' );
     }
   }      
 
@@ -352,7 +352,7 @@ export default class RainforestInput extends HTMLElement {
   } 
 
   get readOnly() {
-    return this.hasAttribute( 'read-only' );
+    return this.hasAttribute( 'readonly' );
   }
 
   set readOnly( value ) {
@@ -362,12 +362,12 @@ export default class RainforestInput extends HTMLElement {
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'read-only' );
+        this.removeAttribute( 'readonly' );
       } else {
-        this.setAttribute( 'read-only', '' );
+        this.setAttribute( 'readonly', '' );
       }
     } else {
-      this.removeAttribute( 'read-only' );
+      this.removeAttribute( 'readonly' );
     }
   }  
 

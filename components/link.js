@@ -50,7 +50,7 @@ export default class RainforestLink extends HTMLElement {
         }
 
         button:hover rf-icon::part( icon ) {
-          filter: var( --icon-color );
+          filter: var( --filter-color-primary );
         }
         
         rf-icon {
@@ -59,7 +59,7 @@ export default class RainforestLink extends HTMLElement {
         }
 
         rf-icon::part( icon ) {
-          filter: var( --icon-color-info );
+          filter: var( --filter-color-link );
         }
 
         :host( [color=inverted] ) span {
@@ -67,7 +67,7 @@ export default class RainforestLink extends HTMLElement {
         }
 
         :host( [color=inverted] ) rf-icon::part( icon ) {
-          filter: var( --icon-color-inverted );
+          filter: var( --filter-color-inverted );
         }        
 
         :host( [variant=awsui-value-large] ) button span {
@@ -81,14 +81,14 @@ export default class RainforestLink extends HTMLElement {
           font-weight: 700;
         }
 
-        :host( [font-size=body-s] ) span { font-size: var( --font-size-body-small ); }
-        :host( [font-size=body-m] ) span { font-size: var( --font-size-body-medium ); }        
-        :host( [font-size=heading-xs] ) span { font-size: var( --font-size-heading-extra-small ); }        
-        :host( [font-size=heading-s] ) span { font-size: var( --font-size-heading-small ); }                
-        :host( [font-size=heading-m] ) span { font-size: var( --font-size-heading-medium ); }                        
-        :host( [font-size=heading-l] ) span { font-size: var( --font-size-heading-large ); }                                
-        :host( [font-size=heading-xl] ) span { font-size: var( --font-size-heading-extra-large ); }                                
-        :host( [font-size=display-l] ) span { font-size: var( --font-size-display-large ); }                                
+        :host( [fontsize=body-s] ) span { font-size: var( --font-size-body-small ); }
+        :host( [fontsize=body-m] ) span { font-size: var( --font-size-body-medium ); }        
+        :host( [fontsize=heading-xs] ) span { font-size: var( --font-size-heading-extra-small ); }        
+        :host( [fontsize=heading-s] ) span { font-size: var( --font-size-heading-small ); }                
+        :host( [fontsize=heading-m] ) span { font-size: var( --font-size-heading-medium ); }                        
+        :host( [fontsize=heading-l] ) span { font-size: var( --font-size-heading-large ); }                                
+        :host( [fontsize=heading-xl] ) span { font-size: var( --font-size-heading-extra-large ); }                                
+        :host( [fontsize=display-l] ) span { font-size: var( --font-size-display-large ); }                                
 
         :host( [variant=primary] ) button span {
           text-decoration: underline;
@@ -176,7 +176,7 @@ export default class RainforestLink extends HTMLElement {
       'color',
       'concealed',
       'external',
-      'font-size',
+      'fontsize',
       'hidden',
       'href',
       'rel',
@@ -262,8 +262,8 @@ export default class RainforestLink extends HTMLElement {
   }  
 
   get fontSize() {
-    if( this.hasAttribute( 'font-size' ) ) {
-      return this.getAttribute( 'font-size' );
+    if( this.hasAttribute( 'fontsize' ) ) {
+      return this.getAttribute( 'fontsize' );
     }
 
     return null;
@@ -271,9 +271,9 @@ export default class RainforestLink extends HTMLElement {
 
   set fontSize( value ) {
     if( value !== null ) {
-      this.setAttribute( 'font-size', value );
+      this.setAttribute( 'fontsize', value );
     } else {
-      this.removeAttribute( 'font-size' );
+      this.removeAttribute( 'fontsize' );
     }
   }  
 

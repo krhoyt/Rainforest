@@ -1,12 +1,12 @@
 # Input
 
-Allow input of a single line of text.
+With the input control, users can input a single line of text.
 
 ## Usage
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/input.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/input.js" type="module"></script>
 ```
 
 ``` html
@@ -15,10 +15,6 @@ Allow input of a single line of text.
 <rf-input type="password" value="pswerd1234"></rf-input><br>
 <rf-input disabled placeholder="Search" type="search"></rf-input>    
 ```
-
-## Styles
-
-None
 
 ## Slots
 

@@ -1,12 +1,12 @@
 # Space Between
 
-Container that helps add consistent spacing between elements. Effectively a CSS Flex Box with direction and gap baked in as attributes.
+A helper component that helps you add consistent spacing between elements on your page.
 
 ## Usage
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/containers/space-between.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/space-between.js" type="module"></script>
 ```
 
 ``` html

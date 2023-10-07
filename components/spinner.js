@@ -1,4 +1,4 @@
-export default class RainforestIcon extends HTMLElement {
+export default class RainforestSpinner extends HTMLElement {
   constructor() {
     super();
 
@@ -19,58 +19,66 @@ export default class RainforestIcon extends HTMLElement {
           display: none;
         }        
 
-        img {
-          box-sizing: border-box;
-          display: block;
-          cursor: var( --icon-cursor, default );
-          filter: var( --icon-color );          
-          height: var( --icon-height, 16px );
-          object-fit: var( --icon-object-fit, contain );
-          width: var( --icon-width, 16px );
+        @keyframes spin {
+          from {
+            transform: rotate( 0 );
+          }
+          
+          to {
+            transform: rotate( 360deg );
+          }
         }        
 
-        :host( [size=big] ) img {
-          height: 32px;
-          width: 32px;
+        svg {
+          animation: 1.50s infinite spin;
+          animation-timing-function: linear;
+          height: 12px;
+          width: 12px;
         }
 
-        :host( [size=large] ) img {
-          height: 48px;
-          width: 48px;
-        }        
-
-        :host( [size=medium] ) img {
-          height: 20px;
-          width: 20px;
+        svg circle {
+          fill: none;
+          r: 5px;
+          stroke: var( --color-primary );
+          stroke-dasharray: 20px;          
+          stroke-width: 2px;
         }
 
-        :host( [variant=disabled] ) img {
-          filter: var( --icon-color-disabled );          
+        :host( [size=big] ) svg {
+          height: 24px;
+          width: 24px;
         }
 
-        :host( [variant=subtle] ) img {
-          filter: var( --icon-color-subtle );
-        }        
+        :host( [size=big] ) svg circle {
+          r: 11px;
+          stroke-dasharray: 40px;
+        }                       
 
-        :host( [variant=error] ) img,
-        :host( [variant=warning] ) img {
-          filter: var( --icon-color-error );
-        }        
+        :host( [size=large] ) svg {
+          height: 36px;
+          width: 36px;
+        }       
+        
+        :host( [size=large] ) svg circle {
+          r: 17px;
+          stroke-dasharray: 60px;
+        }               
 
-        :host( [variant=info] ) img,
-        :host( [variant=link] ) img {
-          filter: var( --icon-color-info );
-        }                
-
-        :host( [variant=inverted] ) img {
-          filter: var( --icon-color-inverted );
+        :host( [variant=disabled] ) svg circle {
+          stroke: var( --color-secondary-disabled );
         }
 
-        :host( [variant=success] ) img {
-          filter: var( --icon-color-success );
-        }        
+        :host( [variant=inverted] ) svg circle {
+          stroke: var( --color-inverted );
+        }
       </style>
-      <img part="icon" />
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        part="vector"
+        preserveAspectRatio="xMidYMid">
+        <circle cx="50%" cy="50%" part="circle"></circle>
+      </svg>
     `;
 
     // Properties
@@ -79,26 +87,10 @@ export default class RainforestIcon extends HTMLElement {
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
-
-    // Elements
-    this.$image = this.shadowRoot.querySelector( 'img' );
   }
 
   // When things change
-  _render() {
-    let src = null;
-    
-    if( this.url === null ) {
-      let name = this.name === null ? '' : this.name + '.svg';
-      let path = this.path === null ? '../icons/' : this.path;      
-      path = this.name === null ? '' : path;
-      src = path + name;      
-    } else {
-      src = this.url;
-    }
-
-    this.$image.src = src;    
-  }
+  _render() {;}
 
   // Promote properties
   // Values may be set before module load
@@ -115,10 +107,7 @@ export default class RainforestIcon extends HTMLElement {
     this._upgrade( 'concealed' );    
     this._upgrade( 'data' );            
     this._upgrade( 'hidden' );    
-    this._upgrade( 'name' );        
-    this._upgrade( 'path' );                
     this._upgrade( 'size' );                
-    this._upgrade( 'url' );                        
     this._upgrade( 'variant' );            
     this._render();
   }
@@ -128,10 +117,7 @@ export default class RainforestIcon extends HTMLElement {
     return [
       'concealed',
       'hidden',
-      'name',
-      'path',
       'size',
-      'url',
       'variant'
     ];
   }
@@ -195,38 +181,6 @@ export default class RainforestIcon extends HTMLElement {
       this.removeAttribute( 'hidden' );
     }
   }
-
-  get name() {
-    if( this.hasAttribute( 'name' ) ) {
-      return this.getAttribute( 'name' );
-    }
-
-    return null;
-  }
-
-  set name( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'name', value );
-    } else {
-      this.removeAttribute( 'name' );
-    }
-  }
-
-  get path() {
-    if( this.hasAttribute( 'path' ) ) {
-      return this.getAttribute( 'path' );
-    }
-
-    return null;
-  }
-
-  set path( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'path', value );
-    } else {
-      this.removeAttribute( 'path' );
-    }
-  }  
   
   get size() {
     if( this.hasAttribute( 'size' ) ) {
@@ -241,22 +195,6 @@ export default class RainforestIcon extends HTMLElement {
       this.setAttribute( 'size', value );
     } else {
       this.removeAttribute( 'size' );
-    }
-  }
-
-  get url() {
-    if( this.hasAttribute( 'url' ) ) {
-      return this.getAttribute( 'url' );
-    }
-
-    return null;
-  }
-
-  set url( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'url', value );
-    } else {
-      this.removeAttribute( 'url' );
     }
   }
 
@@ -277,4 +215,4 @@ export default class RainforestIcon extends HTMLElement {
   }  
 }
 
-window.customElements.define( 'rf-icon', RainforestIcon );
+window.customElements.define( 'rf-spinner', RainforestSpinner );

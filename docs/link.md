@@ -1,12 +1,12 @@
 # Link
 
-Represents an anchor tag that defines a hyperlink, which a user can interact with to find out more information about a concept, task, or field.
+A link component is an anchor tag that defines a hyperlink, which a user can interact with to find out more information about a concept, task, or field.
 
 ## Usage
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/link.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/link.js" type="module"></script>
 ```
 
 ``` html
@@ -15,10 +15,6 @@ Represents an anchor tag that defines a hyperlink, which a user can interact wit
 <rf-link external>Learn more</rf-link>
 <rf-link variant="info">Info</rf-link>    
 ```
-
-## Styles
-
---font-size-body-medium, 14px
 
 ## Slots
 

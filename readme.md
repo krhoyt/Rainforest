@@ -54,11 +54,7 @@ When loading a la carte, component dependencies are loaded by the components the
 
 That is it! Nope, there is no builder required. Nope, you do not install NPM anything. No cloning any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
 
-## Containers
-
-- [Space Between](./docs/space-between.md)
-
-## Controls
+## Components
 
 - Badge
 - [Box](./docs/box.md)
@@ -66,6 +62,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 - [Icon](./docs/icon.md)
 - [Input](./docs/input.md)
 - [Link](./docs/link.md)
+- [Space Between](./docs/space-between.md)
 - [Spinner](./docs/spinner.md)
 
 ## Some Differences to Consider
@@ -82,9 +79,3 @@ The prefix for Rainforest is `rf-`. Open and close tags are required for web com
 <rf-button>Button</rf-button> <!-- HTML -->
 <Button>Button</Button> <!-- Cloudscape/React -->
 ```
-
-### Controls vs Containers vs Components  
-
-Composition is an important concept for web components. The ability of one component to hold other components, and potentially change how they are rendered. This concept surfaces in React and thus in Cloudscape as well. Within Rainforest, there are two groupings of **components**; there are **controls** and there are **containers**. Controls are elements the user interacts with directly, while containers are responsible for layout.
-
-When a components are not differentiated, there is often a "comp" or "components" directory with the project structure. Web components are often used as building blocks in components for custom applications. Those application components oten need a directory structure all their own. Differentiating between "control" and "container" frees up the "components" directory to contain pieces pertinent to that application implmentation.
