@@ -14,12 +14,12 @@ Allows users to initiate actions in the user interface.
 <rf-button>Button</rf-button><br> 
 <rf-button variant="link">Button</rf-button><br>
 <rf-button variant="inline-link">Download</rf-button><br>  
-<rf-button icon-name="settings" variant="icon"></rf-button><br>  
-<rf-button icon-name="copy" variant="inline-icon"></rf-button><br>  
+<rf-button iconname="settings" variant="icon"></rf-button><br>  
+<rf-button iconname="copy" variant="inline-icon"></rf-button><br>  
 <rf-button 
   href="https://example.com" 
-  icon-align="right" 
-  icon-name="external" 
+  iconalign="right" 
+  iconname="external" 
   target="_blank">
   Report a bug
 </rf-button>
