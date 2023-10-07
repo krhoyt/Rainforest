@@ -79,3 +79,56 @@ The prefix for Rainforest is `rf-`. Open and close tags are required for web com
 <rf-button>Button</rf-button> <!-- HTML -->
 <Button>Button</Button> <!-- Cloudscape/React -->
 ```
+
+### Attributes vs Properties
+
+Attributes are the name/value pairs used in HTML (i.e. `<img src="">`). When an HTML element is accessed from JavaScript however, attributes are properties on that object instance (i.e. `image.src = ""`). HTML attributes have a limited set of data types that are supported. These are `string`, `float`, `integer`, `boolean` and `null`. JavaScript properties by comparison can be whatever data type you need; an `array` of `objects` is a common pattern.
+
+With web components, for values within the finite set of data types, attributes are "reflected" as properties. Properties exist on the object instances for values where the data type is not appropriate for an attribute (i.e. `array`). These properties are not exposed as attributes.
+
+### Slots
+
+Cloudscape/React exposes slots as properties on any given component. With web components, you label composed elements with the `slot` attribute to specify where the content belongs.
+
+#### Cloudscape/React
+
+``` JavaScript
+export default () => {
+  return (
+    <Header
+      variant="h1"
+      actions={
+        <SpaceBetween 
+          direction="horizontal" 
+          size="xs">
+          <Button>Secondary button</Button>
+          <Button variant="primary">
+            Primary button
+          </Button>
+        </SpaceBetween>
+      }
+    >
+      Page title
+    </Header>
+  );
+}
+```
+
+#### Web Components
+
+``` html
+<rf-header 
+  variant="h1">
+  <!-- Note the slot name (actions) attribute -->
+  <rf-space-between 
+    direction="horizontal" 
+    size="xs"
+    slot="actions">
+    <rf-button>Secondary button</rf-button>
+    <rf-button variant="primary">
+      Primary button
+    </rf-button>
+  </rf-space-between>
+  Page title
+<rf-header>
+```
