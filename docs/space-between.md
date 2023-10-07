@@ -34,19 +34,6 @@ A helper component that helps you add consistent spacing between elements on you
 </rf-space-between>
 ```
 
-## Styles
-
-| Name | Value |
-| --- | --- |
-| `--space-between-size-xxs` | `2px` |
-| `--space-between-size-xxs` | `4px` |
-| `--space-between-size-xs` | `8px` |
-| `--space-between-size-s` | `12px` |
-| `--space-between-size-m` | `16px` |
-| `--space-between-size-l` | `20px` |
-| `--space-between-size-xl` | `24px` |
-| `--space-between-size-xxl` | `32px` |
-
 ## Slots
 
 | Name | Description |
@@ -63,7 +50,7 @@ A helper component that helps you add consistent spacing between elements on you
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `align-items` | `start` \| `center` \| `end` | Controls the `align-items` CSS Flex Box property |
+| `alignitems` | `start` \| `center` \| `end` | Controls the `align-items` CSS Flex Box property |
 | `concealed` | `boolean` | Do not show, but leave in DOM flow |       
 | `direction` | `horizontal` \| `vertical` | Controls the `flex-direction` CSS Flex Box property |
 | `hidden` | `boolean` | Do not show in DOM |      
