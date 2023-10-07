@@ -49,7 +49,7 @@ You need two parts. First is a CSS file for fonts (Amazon Ember) and a few style
 When loading a la carte, component dependencies are loaded by the components themselves.
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/controls/button.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
 ```
 
 That is it! Nope, there is no builder required. Nope, you do not install NPM anything. No cloning any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
