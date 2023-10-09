@@ -26,7 +26,7 @@ export default class RainforestBox extends HTMLElement {
           font-family: 'Amazon Ember', sans-serif;
           font-size: var( --box-font-size, 14px );
           font-weight: var( --box-font-weight, 400 );
-          line-height: var ( --box-line-height, 20px );
+          line-height: 20px;
           margin: var( --box-margin, 0 );
           padding: var( --box-padding, 0 );
           text-align: var( --box-text-align, left );
@@ -419,6 +419,22 @@ export default class RainforestBox extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'truncate' );
+    }
+  }  
+
+  get variant() {
+    if( this.hasAttribute( 'variant' ) ) {
+      return this.getAttribute( 'variant' );
+    }
+
+    return null;
+  }
+
+  set variant( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'variant', value );
+    } else {
+      this.removeAttribute( 'variant' );
     }
   }  
 }
