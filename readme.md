@@ -64,6 +64,8 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 - [Link](./docs/link.md)
 - [Space Between](./docs/space-between.md)
 - [Spinner](./docs/spinner.md)
+- [Status Indicator](./docs/status-indicator.md)
+- [Text Content](./docs/text-content.md)
 
 ## Some Differences to Consider
 
@@ -132,3 +134,9 @@ export default () => {
   Page title
 <rf-header>
 ```
+
+### LOL, Text Content
+
+In a React world, where JSX is rendered into the DOM, I suppose having a component such as Text Content is necessary. If you are writing HTML however, and you want to have a chunk of HTML that gets styled appropriately, you write the HTML and let CSS do its thing. Text Content has been included for compatibility, but other than providing a block for content (like `div`, `article`, etc.), there is no functionality provided by the component itself. 
+
+> Box is included for similar reasons. If you want a paragraph element (`p`), then consider using the element directly unless there is other need to wrap it in Box or Text Content.

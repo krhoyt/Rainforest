@@ -6,8 +6,9 @@ export default class RainforestSpinner extends HTMLElement {
     template.innerHTML = /* template */ `
       <style>
         :host {
+          align-items: center;
           box-sizing: border-box;
-          display: inline-block;
+          display: inline-flex;
           position: relative;
         }
 
