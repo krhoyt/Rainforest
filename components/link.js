@@ -79,6 +79,7 @@ export default class RainforestLink extends HTMLElement {
         :host( [variant=info] ) button span {
           font-size: var( --font-size-awsui-body-small );
           font-weight: 700;
+          text-decoration: none;
         }
 
         :host( [fontsize=body-s] ) span { font-size: var( --font-size-body-small ); }
