@@ -83,12 +83,18 @@ export default class RainforestButton extends HTMLElement {
           filter: var( --filter-color-link );
         }
 
+        rf-spinner {
+          cursor: pointer;
+          margin: 0 8px 0 -4px;
+        }
+
         button:not( [disabled] ):hover rf-icon::part( icon ) {        
           filter: var( --filter-color-primary );
         }
 
+        button[disabled] rf-spinner,
         button[disabled] rf-icon {        
-          --icon-cursor: not-allowed;
+          cursor: not-allowed;
         }
 
         button[disabled] rf-icon::part( icon ) {        
@@ -101,7 +107,15 @@ export default class RainforestButton extends HTMLElement {
 
         :host( [iconalign=right] ) rf-icon {
           margin: 0 -4px 0 8px;
-        }        
+        }       
+        
+        :host( [loading][iconalign=right] ) rf-spinner {
+          order: 3;
+        }               
+
+        :host( [loading][iconname] ) button rf-icon {
+          display: none;
+        }                       
 
         :host( [variant=icon] ) button {
           background-color: transparent;
@@ -111,6 +125,11 @@ export default class RainforestButton extends HTMLElement {
           justify-content: center;
           padding: 0;
           width: 32px;
+        }
+
+        :host( [loading][variant=inline-icon] ) button rf-icon,
+        :host( [loading][variant=icon] ) button rf-icon {
+          display: none;
         }
 
         :host( [variant=icon] ) button rf-icon::part( icon ) {
@@ -138,6 +157,7 @@ export default class RainforestButton extends HTMLElement {
           width: 20px;          
         }
 
+        :host( [variant=inline-icon] ) button rf-spinner,
         :host( [variant=inline-icon] ) button rf-icon {        
           margin: 0;
           padding: 0;
@@ -157,11 +177,15 @@ export default class RainforestButton extends HTMLElement {
           background-color: var( --color-secondary-hover );
           border-color: var( --color-secondary-hover );
           color: var( --color-primary-hover );
-        }                
+        }
 
         :host( [variant=inline-link] ) button[disabled],
         :host( [variant=link] ) button[disabled] {
+          background: transparent;
+          border-color: transparent;
+          border-radius: 0;
           color: var( --color-secondary-disabled );
+          cursor: not-allowed;
         }                        
 
         :host( [variant=inline-link] ) button {
@@ -174,6 +198,10 @@ export default class RainforestButton extends HTMLElement {
 
         :host( [variant=inline-link] ) button rf-icon {
           margin: 0 8px 0 0;
+        }
+
+        :host( [variant=inline-link] ) button rf-spinner {
+          margin: 0 8px 0 0;          
         }
 
         :host( [variant=inline-link][icon-align=right] ) rf-icon {
@@ -210,33 +238,12 @@ export default class RainforestButton extends HTMLElement {
           display: none;
         }
 
-        @keyframes spin {
-          from {
-            transform: rotate( 0 );
-          }
-
-          to {
-            transform: rotate( 360deg );
-          }
-        }
-
-        :host( :not( [loading] ) ) rf-icon[part=loading] {        
+        :host( :not( [loading] ) ) rf-spinner {        
           display: none;
-        }
-
-        :host( [loading] ) rf-icon[part=loading] {
-          animation: 1.50s infinite spin;
-          animation-timing-function: linear;
-          display: inline-block;
-        }
-
-        :host( [loading] ) rf-icon[part=loading]::part( icon ) {
-          height: 12px;
-          width: 12px;
         }
       </style>
       <button part="button" type="button">
-        <rf-icon part="loading" url="../img/loading.svg"></rf-icon>      
+        <rf-spinner part="spinner" variant="disabled"></rf-spinner>
         <rf-icon part="icon"></rf-icon>
         <span>
           <slot></slot>
@@ -293,6 +300,10 @@ export default class RainforestButton extends HTMLElement {
 
   // When things change
   _render() {
+    if( this.disabled === false ) {
+      this.disabled = this.loading;
+    }
+
     this.$button.disabled = this.disabled;
     this.$icon.name = this.iconName;
   }
