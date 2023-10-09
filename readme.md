@@ -59,6 +59,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 - Badge
 - [Box](./docs/box.md)
 - [Button](./docs/button.md)
+- [Header](./docs/header.md)
 - [Icon](./docs/icon.md)
 - [Input](./docs/input.md)
 - [Link](./docs/link.md)
