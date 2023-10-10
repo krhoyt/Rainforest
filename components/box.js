@@ -23,10 +23,10 @@ export default class RainforestBox extends HTMLElement {
           box-sizing: border-box;
           color: var( --color-primary );
           cursor: var( --box-cursor, default );
-          font-family: 'Amazon Ember', sans-serif;
-          font-size: var( --box-font-size, 14px );
-          font-weight: var( --box-font-weight, 400 );
-          line-height: 20px;
+          font-family: var( --font-family-base );
+          font-size: var( --font-family-body-m, 14px );
+          font-weight: 400;
+          line-height: var( --line-height-body-m );
           margin: var( --box-margin, 0 );
           padding: var( --box-padding, 0 );
           text-align: var( --box-text-align, left );
@@ -62,85 +62,80 @@ export default class RainforestBox extends HTMLElement {
         }
 
         :host( [variant=h1] ) p {
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 30px;
+          font-size: var( --font-size-heading-xl );
+          font-weight: var( --font-weight-heading-xl );
+          line-height: var( --line-height-heading-xl );
         }
 
         :host( [variant=h2] ) p {
-          font-size: 20px;
-          font-weight: 700;
-          line-height: 24px;
+          font-size: var( --font-size-heading-l );
+          font-weight: var( --font-weight-heading-l );
+          line-height: var( --line-height-heading-l );
         }        
 
         :host( [variant=h3] ) p {
-          font-size: 18px;
-          font-weight: 700;
-          line-height: 22px;
+          font-size: var( --font-size-heading-m );
+          font-weight: var( --font-weight-heading-m );
+          line-height: var( --line-height-heading-m );
         }                
 
         :host( [variant=h4] ) p {
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 20px;
+          font-size: var( --font-size-heading-s );
+          font-weight: var( --font-weight-heading-s );
+          line-height: var( --line-height-heading-s );
         }                        
 
         :host( [variant=h5] ) p {
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 18px;
+          font-size: var( --font-size-heading-xs );
+          font-weight: var( --font-weight-heading-xs );
+          line-height: var( --line-height-heading-xs );
         }                   
 
         :host( [variant=awsui-key-label] ) p,
         :host( [variant=strong] ) p {
-          font-size: 14px;
+          font-size: var( --font-size-body-m );
           font-weight: 700;
-          line-height: 20px;
+          line-height: var( --line-height-body-m );
         }                           
 
         :host( [variant=small] ) p {
-          font-size: 12px;
+          font-size: var( --font-size-body-s );
           font-weight: 400;
-          line-height: 16px;
+          line-height: var( --line-height-body-s );
         }                                   
 
         :host( [variant=code] ) p {
-          font-family: monospace;
-          font-size: 12px;
+          font-family: var( --font-family-monospace );
+          font-size: var( --font-size-body-s );
           font-weight: 400;
-          line-height: 16px;
+          line-height: var( --line-height-body-s );
         }                                           
 
         :host( [variant=samp] ) p,
         :host( [variant=pre] ) p {
-          font-family: monospace;
-          font-size: 14px;
+          font-family: var( --font-family-monospace );
+          font-size: var( --font-size-body-m );
           font-weight: 400;
-          line-height: 20px;
+          line-height: var( --line-height-body-m );
         }                                                   
 
         :host( [variant=large] ) p {
-          font-size: 42px;
+          font-size: var( --font-size-display-l );
           font-weight: 400;
-          line-height: 48px;
+          line-height: var( --line-height-display-l );
         }                                                           
 
-        :host( [fontsize=body-s] ) p { font-size: 12px; }
-        :host( [fontsize=heading-xs] ) p,
-        :host( [fontsize=body-m] ) p {
-          font-size: 14px;
-        }        
-        :host( [fontsize=body-s] ) p { font-size: 12px; }
-        :host( [fontsize=heading-s] ) p { font-size: 16px; }        
-        :host( [fontsize=heading-m] ) p { font-size: 18px; }                
-        :host( [fontsize=heading-l] ) p { font-size: 20px; }                        
-        :host( [fontsize=heading-xl] ) p { font-size: 24px; }                                
-        :host( [fontsize=display-l] ) p { font-size: 42px; }                                
+        :host( [fontsize=body-s] ) p { font-size: var( --font-size-body-s ) }
+        :host( [fontsize=heading-xs] ) p { font-size: var( --font-size-heading-xs ) }
+        :host( [fontsize=body-m] ) p { font-size: var( --font-size-body-m ) }        
+        :host( [fontsize=heading-s] ) p { font-size: var( --font-size-heading-s ); }        
+        :host( [fontsize=heading-m] ) p { font-size: var( --font-size-heading-m ); }        
+        :host( [fontsize=heading-l] ) p { font-size: var( --font-size-heading-l ); }        
+        :host( [fontsize=heading-xl] ) p { font-size: var( --font-size-heading-xl ); }        
+        :host( [fontsize=display-l] ) p { font-size: var( --font-size-display-l ); }                                
         :host( [fontweight=light] ) p { font-weight: 300; }                                
-        :host( [fontweight=heavy] ) p,
-        :host( [fontweight=bold] ) p {
-          font-weight: 700;
-        }                                        
+        :host( [fontweight=heavy] ) p { font-weight: 700; }                                                
+        :host( [fontweight=bold] ) p { font-weight: 700; }                                        
 
         :host( [textalign=center] ) p { text-align: center; }
         :host( [textalign=left] ) p { text-align: left; }
@@ -149,9 +144,7 @@ export default class RainforestBox extends HTMLElement {
         :host( [float=left] ) { float: left; }
         :host( [float=right] ) { float: right; }
 
-        :host( [disabled] ) p {
-          color: var( --color-secondary-disabled );
-        }                
+        :host( [disabled] ) p { color: var( --color-secondary-disabled ); }                
 
         :host( [display=block] ) { display: block; }
         :host( [display=inline] ) { display: inline; }

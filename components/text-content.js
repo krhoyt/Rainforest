@@ -17,6 +17,101 @@ export default class RainforestTextContent extends HTMLElement {
 
         :host( [hidden] ) {
           display: none;
+        }       
+        
+        ::slotted( h1 ) {
+          font-size: var( --font-size-heading-xl );
+          font-weight: var( --font-weight-heading-xl );
+          line-height: var( --line-height-heading-xl );          
+        }
+
+        ::slotted( h2 ) {
+          font-size: var( --font-size-heading-l );
+          font-weight: var( --font-weight-heading-l );
+          line-height: var( --line-height-heading-l );
+        }
+
+        ::slotted( h3 ) {
+          font-size: var( --font-size-heading-m );
+          font-weight: var( --font-weight-heading-m );
+          line-height: var( --line-height-heading-m );
+        }
+
+        ::slotted( h4 ) {
+          font-size: var( --font-size-heading-s );
+          font-weight: var( --font-weight-heading-s );
+          line-height: var( --line-height-heading-s );
+          margin: 4px 0 0 0;
+        }
+
+        ::slotted( h5 ) {
+          font-size: var( --font-size-heading-xs );
+          font-weight: var( --font-weight-heading-xs );
+          line-height: var( --line-height-heading-xs );
+        }        
+
+        ::slotted( p ) {
+          font-size: var( --font-size-body-m );
+          font-weight: 400;
+          line-height: var( --line-height-body-m );    
+        }  
+        
+        ::slotted( code ) {
+          color: var( --color-primary );
+          font-family: var( --font-family-monospace );
+          font-size: var( --font-size-body-s );
+          line-height: var( --line-height-body-s );
+        }
+
+        ::slotted( small ) {
+          color: var( --color-inactive );
+          font-size: var( --font-size-body-s );
+          line-height: var( --line-height-body-s );
+          padding: 0;
+        }
+
+        ::slotted( strong ) {
+          font-weight: var( --font-weight-heading-m );
+        }     
+        
+        ::slotted( ol ) {
+          margin: 8px 0 8px 0;
+          padding: 0 0 0 20px;
+        }
+
+        :slotted( ol li ) {
+          color: var( --color-primary );
+          font-family: var( --font-family-base );
+          font-size: var( --font-size-body-m );
+          font-weight: 400;
+          line-height: var( --line-height-body-m );
+          margin: 0;
+          padding: 4px 0 0 0;
+          text-rendering: optimizeLegibility;          
+        }
+
+        :slotted( ol li:first-of-type ) {
+          padding: 0;
+        }                
+
+        ::slotted( ul ) {
+          margin: 8px 0 8px 0;
+          padding: 0 0 0 20px;
+        }
+
+        :slotted( ul li ) {
+          color: var( --color-primary );
+          font-family: var( --font-family-base );
+          font-size: var( --font-size-body-m );
+          font-weight: 400;
+          line-height: var( --line-height-body-m );
+          margin: 0;
+          padding: 4px 0 0 0;
+          text-rendering: optimizeLegibility;          
+        }        
+
+        :slotted( ul li:first-of-type ) {
+          padding: 0;
         }        
       </style>
       <slot></slot>

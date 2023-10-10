@@ -37,8 +37,8 @@ export default class RainforestLink extends HTMLElement {
 
         button span {
           color: #0972d3;          
-          font-family: 'Amazon Ember';
-          font-size: var( --font-size-body-medium, 14px );
+          font-family: var( --font-family-base );
+          font-size: var( --font-size-body-m );
           font-weight: 400;          
           line-height: 20px;          
           text-rendering: optimizeLegibility;
@@ -71,25 +71,25 @@ export default class RainforestLink extends HTMLElement {
         }        
 
         :host( [variant=awsui-value-large] ) button span {
-          font-size: var( --font-size-awsui-display-large );
+          font-size: var( --font-size-display-l );
           font-weight: 700;
           text-decoration: underline;
         }
 
         :host( [variant=info] ) button span {
-          font-size: var( --font-size-awsui-body-small );
+          font-size: var( --font-size-body-s );
           font-weight: 700;
           text-decoration: none;
         }
 
-        :host( [fontsize=body-s] ) span { font-size: var( --font-size-body-small ); }
-        :host( [fontsize=body-m] ) span { font-size: var( --font-size-body-medium ); }        
-        :host( [fontsize=heading-xs] ) span { font-size: var( --font-size-heading-extra-small ); }        
-        :host( [fontsize=heading-s] ) span { font-size: var( --font-size-heading-small ); }                
-        :host( [fontsize=heading-m] ) span { font-size: var( --font-size-heading-medium ); }                        
-        :host( [fontsize=heading-l] ) span { font-size: var( --font-size-heading-large ); }                                
-        :host( [fontsize=heading-xl] ) span { font-size: var( --font-size-heading-extra-large ); }                                
-        :host( [fontsize=display-l] ) span { font-size: var( --font-size-display-large ); }                                
+        :host( [fontsize=body-s] ) span { font-size: var( --font-size-body-s ); }
+        :host( [fontsize=body-m] ) span { font-size: var( --font-size-body-m ); }        
+        :host( [fontsize=heading-xs] ) span { font-size: var( --font-size-heading-xs ); }        
+        :host( [fontsize=heading-s] ) span { font-size: var( --font-size-heading-s ); }                
+        :host( [fontsize=heading-m] ) span { font-size: var( --font-size-heading-m ); }                        
+        :host( [fontsize=heading-l] ) span { font-size: var( --font-size-heading-l ); }                                
+        :host( [fontsize=heading-xl] ) span { font-size: var( --font-size-heading-xl ); }                                
+        :host( [fontsize=display-l] ) span { font-size: var( --font-size-display-l ); }                                
 
         :host( [variant=primary] ) button span {
           text-decoration: underline;

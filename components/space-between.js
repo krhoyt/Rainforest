@@ -41,35 +41,35 @@ export default class RainforestSpaceBetween extends HTMLElement {
         }         
 
         :host( [size=xxxs] ) {
-          gap: var( --space-between-size-xxs, 2px );
+          gap: var( --space-static-xxs );
         }
 
         :host( [size=xxs] ) {
-          gap: var( --space-between-size-xxs, 4px );
+          gap: var( --space-static-xxs );
         }
 
         :host( [size=xs] ) {
-          gap: var( --space-between-size-xs, 8px );
+          gap: var( --space-static-xs );
         }
 
         :host( [size=s] ) {
-          gap: var( --space-between-size-s, 12px );
+          gap: var( --space-static-s );
         }        
 
         :host( [size=m] ) {
-          gap: var( --space-between-size-m, 16px );
+          gap: var( --space-static-m );
         }                
 
         :host( [size=l] ) {
-          gap: var( --space-between-size-l, 20px );
+          gap: var( --space-static-l );
         }                        
 
         :host( [size=xl] ) {
-          gap: var( --space-between-size-xl, 24px );
+          gap: var( --space-static-xl );
         }                                
 
         :host( [size=xxl] ) {
-          gap: var( --space-between-size-xxl, 32px );
+          gap: var( --space-static-xxl );
         }                                        
 
         :host( [hidden] ) {

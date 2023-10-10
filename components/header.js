@@ -38,60 +38,60 @@ export default class RainforestHeader extends HTMLElement {
         }
 
         rf-box::part( box ) {
-          font-size: 20px;
-          line-height: 24px;
+          font-size: var( --font-size-heading-l );
+          line-height: var( --line-height-heading-l );
         }
 
         rf-box span {
           color: var( --color-inactive );
-          font-size: 20px;
+          font-size: var( --font-size-heading-l );
           font-weight: 400;
-          line-height: 24px;
+          line-height: var( --line-height-heading-l );
         }
 
         :host( [variant=h1] ) rf-box::part( box ) {
-          font-size: 24px;
-          line-height: 30px;
+          font-size: var( --font-size-heading-xl );
+          line-height: var( --line-height-heading-xl );
         }
 
         :host( [variant=h2] ) rf-box::part( box ) {
-          font-size: 20px;
-          line-height: 24px;
+          font-size: var( --font-size-heading-l );
+          line-height: var( --line-height-heading-l );
         }
 
         :host( [variant=h3] ) rf-box::part( box ) {
-          font-size: 18px;
-          line-height: 22px;
+          font-size: var( --font-size-heading-m );
+          line-height: var( --line-height-heading-m );
         }
 
         :host( [variant=awsui-h1-sticky] ) rf-box::part( box ) {
-          font-size: 24px;
-          line-height: 30px;
+          font-size: var( --font-size-heading-xl );
+          line-height: var( --line-height-heading-xl );
         }
 
         :host( [headingtagoverride=h1] ) rf-box::part( box ) {
-          font-size: 24px;
-          line-height: 30px;
+          font-size: var( --font-size-heading-xl );
+          line-height: var( --line-height-heading-xl );
         }
 
         :host( [headingtagoverride=h2] ) rf-box::part( box ) {
-          font-size: 20px;
-          line-height: 24px;
+          font-size: var( --font-size-heading-l );
+          line-height: var( --line-height-heading-l );
         }
 
         :host( [headingtagoverride=h3] ) rf-box::part( box ) {
-          font-size: 18px;
-          line-height: 22px;
+          font-size: var( --font-size-heading-m );
+          line-height: var( --line-height-heading-m );
         }
 
         :host( [headingtagoverride=h4] ) rf-box::part( box ) {
-          font-size: 16px;
-          line-height: 20px;
+          font-size: var( --font-size-heading-s );
+          line-height: var( --line-height-heading-s );
         }        
 
         :host( [headingtagoverride=h5] ) rf-box::part( box ) {
-          font-size: 14px;
-          line-height: 18px;
+          font-size: var( --font-size-heading-xs );
+          line-height: var( --line-height-heading-xs );
         }        
 
         :host( :not( [counter] ) ) span {
