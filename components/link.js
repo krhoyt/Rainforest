@@ -35,7 +35,7 @@ export default class RainforestLink extends HTMLElement {
           -webkit-tap-highlight-color: transparent;
         }
 
-        button span {
+        button {
           color: #0972d3;          
           font-family: var( --font-family-base );
           font-size: var( --font-size-body-m );
@@ -44,7 +44,7 @@ export default class RainforestLink extends HTMLElement {
           text-rendering: optimizeLegibility;
         }
 
-        button:hover span {
+        button:hover {
           color: #033160;
           text-decoration: underline;
         }
@@ -62,7 +62,7 @@ export default class RainforestLink extends HTMLElement {
           filter: var( --filter-color-link );
         }
 
-        :host( [color=inverted] ) span {
+        :host( [color=inverted] ) {
           color: #ffffff;
         }
 
@@ -70,13 +70,13 @@ export default class RainforestLink extends HTMLElement {
           filter: var( --filter-color-inverted );
         }        
 
-        :host( [variant=awsui-value-large] ) button span {
+        :host( [variant=awsui-value-large] ) button {
           font-size: var( --font-size-display-l );
           font-weight: 700;
           text-decoration: underline;
         }
 
-        :host( [variant=info] ) button span {
+        :host( [variant=info] ) button {
           font-size: var( --font-size-body-s );
           font-weight: 700;
           text-decoration: none;
@@ -91,18 +91,21 @@ export default class RainforestLink extends HTMLElement {
         :host( [fontsize=heading-xl] ) span { font-size: var( --font-size-heading-xl ); }                                
         :host( [fontsize=display-l] ) span { font-size: var( --font-size-display-l ); }                                
 
-        :host( [variant=primary] ) button span {
+        :host( [variant=primary] ) button {
           text-decoration: underline;
         }
 
         :host( :not( [external] ) ) rf-icon {
           display: none;
         }
+
+        :host( :not( [content] ) ) span {
+          display: none;
+        }
       </style>
       <button part="button" type="button">
-        <span part="span">
-          <slot></slot>
-        </span>
+        <span part="span"></span>
+        <slot></slot>
         <rf-icon name="external" part="icon"></rf-icon>              
       </button>
     `;
@@ -137,6 +140,7 @@ export default class RainforestLink extends HTMLElement {
         } ) );        
       }
     } );
+    this.$label = this.shadowRoot.querySelector( 'span' );
   }
 
   focus() {
@@ -144,7 +148,9 @@ export default class RainforestLink extends HTMLElement {
   }
 
   // When things change
-  _render() {;}
+  _render() {
+    this.$label.innerText = this.content === null ? '' : this.content;
+  }
 
   // Promote properties
   // Values may be set before module load
@@ -160,6 +166,7 @@ export default class RainforestLink extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'color' );    
     this._upgrade( 'concealed' );    
+    this._upgrade( 'content' );        
     this._upgrade( 'data' );            
     this._upgrade( 'external' );    
     this._upgrade( 'fontSize' );                    
@@ -176,6 +183,7 @@ export default class RainforestLink extends HTMLElement {
     return [
       'color',
       'concealed',
+      'content',
       'external',
       'fontsize',
       'hidden',
@@ -241,6 +249,22 @@ export default class RainforestLink extends HTMLElement {
       this.removeAttribute( 'concealed' );
     }
   }
+
+  get content() {
+    if( this.hasAttribute( 'content' ) ) {
+      return this.getAttribute( 'content' );
+    }
+
+    return null;
+  }
+
+  set content( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'content', value );
+    } else {
+      this.removeAttribute( 'content' );
+    }
+  }  
 
   get external() {
     return this.hasAttribute( 'external' );

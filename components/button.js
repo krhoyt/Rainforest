@@ -241,13 +241,16 @@ export default class RainforestButton extends HTMLElement {
         :host( :not( [loading] ) ) rf-spinner {        
           display: none;
         }
+
+        :host( :not( [text] ) ) span {
+          display: none;
+        }
       </style>
       <button part="button" type="button">
         <rf-spinner part="spinner" variant="disabled"></rf-spinner>
         <rf-icon part="icon"></rf-icon>
-        <span>
-          <slot></slot>
-        </span>
+        <span></span>
+        <slot></slot>
       </button>
     `;
 
@@ -290,7 +293,8 @@ export default class RainforestButton extends HTMLElement {
         }
       } ) );
     } );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon[part=icon]' );    
+    this.$icon = this.shadowRoot.querySelector( 'rf-icon[part=icon]' );  
+    this.$label = this.shadowRoot.querySelector( 'span' );  
   }
 
   // Force focus
@@ -306,6 +310,7 @@ export default class RainforestButton extends HTMLElement {
 
     this.$button.disabled = this.disabled;
     this.$icon.name = this.iconName;
+    this.$label.innerText = this.text === null ? '' : this.text;
   }
 
   // Promote properties
@@ -331,6 +336,7 @@ export default class RainforestButton extends HTMLElement {
     this._upgrade( 'loading' );
     this._upgrade( 'rel' );    
     this._upgrade( 'target' );
+    this._upgrade( 'text' );
     this._upgrade( 'variant' );
     this._render();
   }
@@ -348,6 +354,7 @@ export default class RainforestButton extends HTMLElement {
       'loading',
       'rel',      
       'target',
+      'text',
       'variant'
     ];
   }
@@ -549,6 +556,22 @@ export default class RainforestButton extends HTMLElement {
       this.setAttribute( 'target', value );
     } else {
       this.removeAttribute( 'target' );
+    }
+  }  
+
+  get text() {
+    if( this.hasAttribute( 'text' ) ) {
+      return this.getAttribute( 'text' );
+    }
+
+    return null;
+  }
+
+  set text( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'text', value );
+    } else {
+      this.removeAttribute( 'text' );
     }
   }  
 

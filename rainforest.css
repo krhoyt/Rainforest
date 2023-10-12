@@ -28,6 +28,9 @@
 }
 
 :root {
+  --shadow-container:     
+    0 0 1px 1px #e9ebed,
+    0 1px 8px 2px #0007161f;  
   --shadow-container-active: 
     0px 1px 1px 1px #e9ebed, 
     0px 6px 36px #0007161a;

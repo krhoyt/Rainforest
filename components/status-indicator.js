@@ -25,6 +25,10 @@ export default class RainforestStatusIndicator extends HTMLElement {
           display: none;
         }        
 
+        rf-box::part( box ) {
+          padding: 0;
+        }
+
         rf-icon {
           margin: 0 4px 0 0;
         }
@@ -118,6 +122,7 @@ export default class RainforestStatusIndicator extends HTMLElement {
       <rf-spinner part="spinner"></rf-spinner>
       <rf-icon part="icon"></rf-icon>
       <rf-box part="box">
+        <span></span>
         <slot></slot>
       </rf-box>
     `;
@@ -131,11 +136,14 @@ export default class RainforestStatusIndicator extends HTMLElement {
 
     // Elements
     this.$box = this.shadowRoot.querySelector( 'rf-box' );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );    
+    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );  
+    this.$label = this.shadowRoot.querySelector( 'span' );  
   }
 
   // When things change
   _render() {
+    this.$label.innerText = this.content === null ? '' : this.content;
+    
     switch( this.type ) {
       case 'error':
         this.$icon.name = 'status-negative';
@@ -184,6 +192,7 @@ export default class RainforestStatusIndicator extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'colorOverride' )
     this._upgrade( 'concealed' );    
+    this._upgrade( 'content' );        
     this._upgrade( 'data' );            
     this._upgrade( 'hidden' );    
     this._upgrade( 'type' );      
@@ -196,6 +205,7 @@ export default class RainforestStatusIndicator extends HTMLElement {
     return [
       'coloroverride',
       'concealed',
+      'content',
       'hidden',
       'type',
       'wraptext'      
@@ -257,6 +267,22 @@ export default class RainforestStatusIndicator extends HTMLElement {
       this.removeAttribute( 'concealed' );
     }
   }
+
+  get content() {
+    if( this.hasAttribute( 'content' ) ) {
+      return this.getAttribute( 'content' );
+    }
+
+    return null;
+  }
+
+  set content( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'content', value );
+    } else {
+      this.removeAttribute( 'content' );
+    }
+  }  
 
   get hidden() {
     return this.hasAttribute( 'hidden' );

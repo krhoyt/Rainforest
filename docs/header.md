@@ -35,7 +35,7 @@ Summarizes the content that's displayed under it and provides a space for option
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used for title content |
+| (`title`) | Used for title content |
 | `actions` | Placement of buttons |
 | `info` | Content that follows title content |
 | `description` | Second line adding contextual content |
@@ -52,8 +52,11 @@ Summarizes the content that's displayed under it and provides a space for option
 | --- | --- | --- |
 | `concealed` | `boolean` | Do not show, but leave in DOM flow |      
 | `counter` | `string` | Content typically used to show total units |      
+| `description` | `string` | Alternative path to description content |      
 | `headertagoverride` | `h1` \| `h2` \| `h3` \| `h4` \| `h5` | Force specific sizing of title content |      
 | `hidden` | `boolean` | Do not show in DOM |      
+| `info` | `string` | Alternative path to info content |      
+| `title` | `string` | Alternative path to title content |      
 | `variant`  | `h1` \| `h2` \| `h3` \| `awsui-h1-sticky` | Applies combination of font size and weight to title content |
 
 ## Events

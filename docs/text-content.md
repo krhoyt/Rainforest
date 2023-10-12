@@ -36,7 +36,7 @@ Use to style chunks of HTML by applying default typographical styles to the cont
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used for text content |
+| (`content`) | Used for text content |
 
 ## Properties
 

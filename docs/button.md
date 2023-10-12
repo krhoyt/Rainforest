@@ -29,7 +29,7 @@ Allows users to initiate actions in the user interface.
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used for text content |
+| (`text`) | Used for text content |
 
 ## Properties
 
@@ -51,6 +51,7 @@ Allows users to initiate actions in the user interface.
 | `loading` | `boolean` | Display a spinning loading icon |
 | `rel` | `string` | Link relation |
 | `target` | `string` | Browser window or tab for content |
+| `text` | `string` | Alternative path to label content |
 | `variant` | `normal` \| `primary` \| `link` \| `icon` \| `inline-icon` \| `inline-link` | Type of styling to use |
 
 ## Events

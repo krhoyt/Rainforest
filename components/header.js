@@ -27,19 +27,21 @@ export default class RainforestHeader extends HTMLElement {
           flex-direction: row;
         }
 
-        header {
-          display: flex;
-          flex-direction: column;
-        }
-
-        rf-box {
+        div rf-box {
           flex-basis: 0;
           flex-grow: 1;
         }
 
-        rf-box::part( box ) {
+        div rf-box::part( box ) {
+          color: var( --color-text-heading-default );
           font-size: var( --font-size-heading-l );
           line-height: var( --line-height-heading-l );
+        }
+
+        header {
+          display: flex;
+          flex-direction: column;
+          gap: var( --space-scaled-xxxs );
         }
 
         rf-box span {
@@ -49,47 +51,42 @@ export default class RainforestHeader extends HTMLElement {
           line-height: var( --line-height-heading-l );
         }
 
-        :host( [variant=h1] ) rf-box::part( box ) {
+        :host( [variant=h1] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-xl );
           line-height: var( --line-height-heading-xl );
         }
-
-        :host( [variant=h2] ) rf-box::part( box ) {
+        :host( [variant=h2] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-l );
           line-height: var( --line-height-heading-l );
+          margin: 4px 0 0 0;
         }
-
-        :host( [variant=h3] ) rf-box::part( box ) {
+        :host( [variant=h3] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-m );
           line-height: var( --line-height-heading-m );
         }
-
-        :host( [variant=awsui-h1-sticky] ) rf-box::part( box ) {
+        :host( [variant=awsui-h1-sticky] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-xl );
           line-height: var( --line-height-heading-xl );
         }
 
-        :host( [headingtagoverride=h1] ) rf-box::part( box ) {
+        :host( [headingtagoverride=h1] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-xl );
           line-height: var( --line-height-heading-xl );
         }
-
-        :host( [headingtagoverride=h2] ) rf-box::part( box ) {
+        :host( [headingtagoverride=h2] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-l );
           line-height: var( --line-height-heading-l );
+          margin: 4px 0 0 0;
         }
-
-        :host( [headingtagoverride=h3] ) rf-box::part( box ) {
+        :host( [headingtagoverride=h3] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-m );
           line-height: var( --line-height-heading-m );
         }
-
-        :host( [headingtagoverride=h4] ) rf-box::part( box ) {
+        :host( [headingtagoverride=h4] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-s );
           line-height: var( --line-height-heading-s );
         }        
-
-        :host( [headingtagoverride=h5] ) rf-box::part( box ) {
+        :host( [headingtagoverride=h5] ) div rf-box::part( box ) {
           font-size: var( --font-size-heading-xs );
           line-height: var( --line-height-heading-xs );
         }        
@@ -97,16 +94,30 @@ export default class RainforestHeader extends HTMLElement {
         :host( :not( [counter] ) ) span {
           display: none;
         }
+
+        :host( :not( [description] ) ) rf-box[part=description] {
+          display: none;
+        }
+
+        :host( :not( [link] ) ) rf-link {
+          display: none;
+        }        
+
+        .actions {
+          gap: var( --space-scaled-xxs );
+        }
       </style>
       <header part="header">
         <div>
           <rf-box part="title" variant="h2">
             <slot></slot>
             <span part="counter"></span>
+            <rf-link part="link" variant="info"></rf-link>            
             <slot name="info"></slot>
           </rf-box>
           <slot name="actions"></slot>
         </div>
+        <rf-box color="text-body-secondary" part="description"></rf-box>
         <slot name="description"></slot>
       </header>
     `;
@@ -119,12 +130,29 @@ export default class RainforestHeader extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
+    this.$actions = this.shadowRoot.querySelector( 'slot[name=actions]' );
+    this.$actions.addEventListener( 'slotchange', () => {
+      const buttons = this.querySelectorAll( 'rf-button' );
+      if( buttons.length === 0 ) {
+        this.$header.classList.remove( 'actions' );
+      } else {
+        this.$header.classList.add( 'actions' );
+      }
+    } );
     this.$counter = this.shadowRoot.querySelector( 'span' );
+    this.$description = this.shadowRoot.querySelector( 'rf-box[part=description]' );
+    this.$header = this.shadowRoot.querySelector( 'header' );
+    this.$link = this.shadowRoot.querySelector( 'rf-link' );
+    this.$title = this.shadowRoot.querySelector( 'rf-box[part=title]' );
   }
 
    // When attributes change
   _render() {
+    this.$title.content = this.title;    
     this.$counter.innerText = this.counter === null ? '' : this.counter;
+    this.$link.content = this.link;
+    this.$link.href = this.href;
+    this.$description.content = this.description === null ? '' : this.description;
   }
 
   // Promote properties
@@ -142,8 +170,12 @@ export default class RainforestHeader extends HTMLElement {
     this._upgrade( 'concealed' );        
     this._upgrade( 'counter' );           
     this._upgrade( 'data' );    
+    this._upgrade( 'description' );               
     this._upgrade( 'headingTagOverride' );       
-    this._upgrade( 'hidden' );    
+    this._upgrade( 'hidden' );  
+    this._upgrade( 'href' );           
+    this._upgrade( 'info' );    
+    this._upgrade( 'title' );     
     this._upgrade( 'variant' );        
     this._render();
   }
@@ -153,8 +185,12 @@ export default class RainforestHeader extends HTMLElement {
     return [
       'concealed',
       'counter',
+      'description',
       'headingtagoverride',
       'hidden',
+      'href',
+      'info',
+      'title',
       'variant'
     ];
   }
@@ -215,6 +251,22 @@ export default class RainforestHeader extends HTMLElement {
     }
   }    
 
+  get description() {
+    if( this.hasAttribute( 'description' ) ) {
+      return this.getAttribute( 'description' );
+    }
+
+    return null;
+  }
+
+  set description( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'description', value );
+    } else {
+      this.removeAttribute( 'description' );
+    }
+  }    
+
   get headingTagOverride() {
     if( this.hasAttribute( 'headingtagoverride' ) ) {
       return this.getAttribute( 'headingtagoverride' );
@@ -250,6 +302,54 @@ export default class RainforestHeader extends HTMLElement {
       this.removeAttribute( 'hidden' );
     }
   }   
+
+  get href() {
+    if( this.hasAttribute( 'href' ) ) {
+      return this.getAttribute( 'href' );
+    }
+
+    return null;
+  }
+
+  set href( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'href', value );
+    } else {
+      this.removeAttribute( 'href' );
+    }
+  }
+
+  get info() {
+    if( this.hasAttribute( 'info' ) ) {
+      return this.getAttribute( 'info' );
+    }
+
+    return null;
+  }
+
+  set info( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'info', value );
+    } else {
+      this.removeAttribute( 'info' );
+    }
+  }     
+
+  get title() {
+    if( this.hasAttribute( 'title' ) ) {
+      return this.getAttribute( 'title' );
+    }
+
+    return null;
+  }
+
+  set title( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'title', value );
+    } else {
+      this.removeAttribute( 'title' );
+    }
+  }     
 
   get variant() {
     if( this.hasAttribute( 'variant' ) ) {

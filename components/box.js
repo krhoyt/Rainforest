@@ -21,37 +21,38 @@ export default class RainforestBox extends HTMLElement {
 
         p {
           box-sizing: border-box;
-          color: var( --color-primary );
+          color: var( --color-text-body-default );
           cursor: var( --box-cursor, default );
           font-family: var( --font-family-base );
-          font-size: var( --font-family-body-m, 14px );
+          font-size: var( --font-size-body-m );
           font-weight: 400;
           line-height: var( --line-height-body-m );
-          margin: var( --box-margin, 0 );
-          padding: var( --box-padding, 0 );
-          text-align: var( --box-text-align, left );
-          text-decoration: var( --box-text-decoration, none );
+          margin: 0;
+          padding: 4px 0 4px 0;
+          text-align: left;
+          text-decoration: none;
           text-rendering: optimizeLegibility;
           width: 100%;
         }
 
         :host( [color=text-body-secondary] ) p {
-          color: var( --color-secondary );
+          color: var( --color-text-body-secondary );
+          padding: 0;
         }
         :host( [color=text-status-error] ) p {
-          color: var( --color-error );
+          color: var( --color-text-status-error );
         }        
         :host( [color=text-status-success] ) p {
-          color: var( --color-success );
+          color: var( --color-text-status-success );
         }                
         :host( [color=text-status-info] ) p {
-          color: var( --color-link );
+          color: var( --color-text-status-info );
         }                        
         :host( [color=text-status-inactive] ) p {
-          color: var( --color-inactive );
+          color: var( --color-text-status-inactive );
         }                                
         :host( [color=text-status-warning] ) p {
-          color: var( --color-warning );
+          color: var( --color-text-status-warning );
         }                                        
 
         :host( [truncate] ) p {
@@ -91,11 +92,18 @@ export default class RainforestBox extends HTMLElement {
           line-height: var( --line-height-heading-xs );
         }                   
 
-        :host( [variant=awsui-key-label] ) p,
+        :host( [variant=awsui-key-label] ) p {
+          font-size: var( --font-size-body-m );
+          font-weight: 700;
+          line-height: var( --line-height-body-m );
+          padding: 0;
+        }
+
         :host( [variant=strong] ) p {
           font-size: var( --font-size-body-m );
           font-weight: 700;
           line-height: var( --line-height-body-m );
+          padding: 0;
         }                           
 
         :host( [variant=small] ) p {
@@ -109,6 +117,7 @@ export default class RainforestBox extends HTMLElement {
           font-size: var( --font-size-body-s );
           font-weight: 400;
           line-height: var( --line-height-body-s );
+          padding: 0;
         }                                           
 
         :host( [variant=samp] ) p,
@@ -125,14 +134,40 @@ export default class RainforestBox extends HTMLElement {
           line-height: var( --line-height-display-l );
         }                                                           
 
-        :host( [fontsize=body-s] ) p { font-size: var( --font-size-body-s ) }
-        :host( [fontsize=heading-xs] ) p { font-size: var( --font-size-heading-xs ) }
-        :host( [fontsize=body-m] ) p { font-size: var( --font-size-body-m ) }        
-        :host( [fontsize=heading-s] ) p { font-size: var( --font-size-heading-s ); }        
-        :host( [fontsize=heading-m] ) p { font-size: var( --font-size-heading-m ); }        
-        :host( [fontsize=heading-l] ) p { font-size: var( --font-size-heading-l ); }        
-        :host( [fontsize=heading-xl] ) p { font-size: var( --font-size-heading-xl ); }        
-        :host( [fontsize=display-l] ) p { font-size: var( --font-size-display-l ); }                                
+        :host( [fontsize=body-s] ) p { 
+          font-size: var( --font-size-body-s );
+          line-height: var( --line-height-body-s );
+        }
+        :host( [fontsize=heading-xs] ) p { 
+          font-size: var( --font-size-heading-xs );
+          line-height: var( --line-height-heading-xs );
+        }
+        :host( [fontsize=body-m] ) p { 
+          font-size: var( --font-size-body-m );
+          line-height: var( --line-height-body-m );
+        }        
+        :host( [fontsize=heading-s] ) p { 
+          font-size: var( --font-size-heading-s ); 
+          line-height: var( --line-height-heading-s );
+        }        
+        :host( [fontsize=heading-m] ) p { 
+          font-size: var( --font-size-heading-m ); 
+          line-height: var( --line-height-heading-m );
+        }        
+        :host( [fontsize=heading-l] ) p { 
+          font-size: var( --font-size-heading-l ); 
+          line-height: var( --line-height-heading-l );
+        }        
+        :host( [fontsize=heading-xl] ) p { 
+          font-size: var( --font-size-heading-xl ); 
+          line-height: var( --line-height-heading-xl );
+        }        
+        :host( [fontsize=display-l] ) p { 
+          font-size: var( --font-size-display-l ); 
+          line-height: var( --line-height-display-l );
+          padding: 0;
+        }                                
+
         :host( [fontweight=light] ) p { font-weight: 300; }                                
         :host( [fontweight=heavy] ) p { font-weight: 700; }                                                
         :host( [fontweight=bold] ) p { font-weight: 700; }                                        
@@ -165,12 +200,12 @@ export default class RainforestBox extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$label = this.shadowRoot.querySelector( 'span' );
+    this.$content = this.shadowRoot.querySelector( 'span' );
   }
 
    // When attributes change
   _render() {
-    this.$label.innerText = this.text === null ? '' : this.text;
+    this.$content.innerText = this.content === null ? '' : this.content;
   }
 
   // Promote properties
@@ -187,6 +222,7 @@ export default class RainforestBox extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'color' );            
     this._upgrade( 'concealed' );        
+    this._upgrade( 'content' );        
     this._upgrade( 'data' );       
     this._upgrade( 'disabled' );          
     this._upgrade( 'display' );      
@@ -194,7 +230,6 @@ export default class RainforestBox extends HTMLElement {
     this._upgrade( 'fontSize' );                        
     this._upgrade( 'fontWeight' );                            
     this._upgrade( 'hidden' );    
-    this._upgrade( 'text' );    
     this._upgrade( 'textAlign' );        
     this._upgrade( 'truncate' );    
     this._upgrade( 'variant' );        
@@ -206,13 +241,13 @@ export default class RainforestBox extends HTMLElement {
     return [
       'color',
       'concealed',
+      'content',      
       'disabled',
       'display',
       'float',
       'fontsize',
       'fontweight',
       'hidden',
-      'text',
       'textalign',
       'truncate',
       'variant'
@@ -274,6 +309,22 @@ export default class RainforestBox extends HTMLElement {
       this.removeAttribute( 'concealed' );
     }
   }
+
+  get content() {
+    if( this.hasAttribute( 'content' ) ) {
+      return this.getAttribute( 'content' );
+    }
+
+    return null;
+  }
+
+  set content( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'content', value );
+    } else {
+      this.removeAttribute( 'content' );
+    }
+  }  
 
   get disabled() {
     return this.hasAttribute( 'disabled' );
@@ -362,22 +413,6 @@ export default class RainforestBox extends HTMLElement {
       this.removeAttribute( 'hidden' );
     }
   }   
-
-  get text() {
-    if( this.hasAttribute( 'text' ) ) {
-      return this.getAttribute( 'text' );
-    }
-
-    return null;
-  }
-
-  set text( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'text', value );
-    } else {
-      this.removeAttribute( 'text' );
-    }
-  }     
 
   get textAlign() {
     if( this.hasAttribute( 'textalign' ) ) {

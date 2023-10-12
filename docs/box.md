@@ -22,7 +22,7 @@ Display and style text content in compliance with the Cloudscape typography and 
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used for box content |
+| (`content`) | Used for box content |
 
 ## Properties
 
@@ -35,13 +35,13 @@ Display and style text content in compliance with the Cloudscape typography and 
 | Name | Type | Description |
 | --- | --- | --- |
 | `color` | `text-label` \| `text-body-secondary` \| `text-status-error` \| `text-status-success` \| `text-status-info` \| `text-status-inactive` \| `text-status-warning` | Color of the text in the paragraph element |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow|      
+| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
+| `content` | `string` | Alternative path to label content |
 | `disabled` | `boolean` | Show as disabled by altering the color |
 | `float` | `left` \| `right` | Float the container accordingly (not the inner paragraph element) |      
 | `fontsize` | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | Font size of the paragraph element |
 | `fontweight` | `light` \| `normal` \| `bold` \| `heavy` | Font weight of the paragraph element |
 | `hidden` | `boolean` | Do not show in DOM |      
-| `text` | `string` | Can be used for label content |
 | `textalign` | `left` \| `center` \| `right` | Alignment of text in the paragraph element |
 | `truncate` | `boolean` | Add styling to allow paragraph element to trim content |      
 | `variant`  | `div` \| `span` \| `h1` \| `h2` \| `h3` \| `h4` \| `h5` \| `p` \| `strong` \| `small` \| `code` \| `pre` \| `samp` \| `awsui-key-label` \| `awsui-value-large` | Applies combination of font size and weight to paragraph element |

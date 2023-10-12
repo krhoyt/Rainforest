@@ -19,7 +19,7 @@ A status indicator communicates the state of a resource — either in its entire
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used for text content |
+| (`content`) | Used for text content |
 
 ## Properties
 
@@ -32,7 +32,8 @@ A status indicator communicates the state of a resource — either in its entire
 | Name | Type | Description |
 | --- | --- | --- |
 | `coloroverride` | `blue` \| `grey` \| `green` \| `red` | Force content color despite type |      
-| `concealed` | `boolean` | Do not show, but leave in DOM flow|      
+| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
+| `content` | `string` | Alternative path to the label |      
 | `hidden` | `boolean` | Do not show in DOM |      
 | `type`  | `error` \| `warning` \| `success` \| `info` \| `stopped` \| `pending` \| `in-progress` \| `loading` | Icon and color styling to use |
 | `wraptext` | `boolean` | Multiline support |      

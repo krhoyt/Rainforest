@@ -20,7 +20,7 @@ A link component is an anchor tag that defines a hyperlink, which a user can int
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Link content |
+| (`content`) | Link content |
 
 ## Properties
 
@@ -34,6 +34,7 @@ A link component is an anchor tag that defines a hyperlink, which a user can int
 | --- | --- | --- |
 | `color` | `normal` \| `inverted` | Color of the text in the paragraph element |
 | `concealed` | `boolean` | Do not show, but leave in DOM flow |      
+| `content` | `string` | Alternative path to label |
 | `external` | `boolean` | Show icon for external link |
 | `font-size` | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | Font size of the span element |
 | `hidden` | `boolean` | Do not show in DOM |      

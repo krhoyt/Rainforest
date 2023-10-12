@@ -38,7 +38,7 @@ A helper component that helps you add consistent spacing between elements on you
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Used to hold other elements. Can be nested. |
+| (`content`) | Used to hold other elements. Can be nested. |
 
 ## Properties
 

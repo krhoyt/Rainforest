@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Rainforest - Container</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+  </head>
+  <body>
+
+    <rf-container>
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+        Container title
+      </rf-header>
+      <rf-box>Container content</rf-box>
+    </rf-container>
+    <br>
+    <rf-container footer="Container footer">
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+          Container title
+      </rf-header>
+      <rf-box>Container content</rf-box>
+    </rf-container>    
+    <br>
+    <rf-container>
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+        <rf-space-between
+          direction="horizontal"
+          size="xs"
+          slot="actions">
+            <rf-button>Action</rf-button>
+            <rf-button>Another action</rf-button>
+          </rf-space-between>
+          Container title
+      </rf-header>
+      <rf-box>Container content</rf-box>
+    </rf-container>     
+    <br>
+    <rf-container>
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+          Container title
+      </rf-header>
+      <rf-box>Container content</rf-box>
+    </rf-container>           
+
+    <pre>
+&lt;rf-box variant="p"&gt;Paragraph text&lt;/rf-box&gt;
+&lt;rf-box color="text-body-secondary"&gt;Secondary text&lt;/rf-box&gt;
+&lt;rf-box variant="h1"&gt;H1 text&lt;/rf-box&gt;
+&lt;rf-box variant="code"&gt;Code&lt;/rf-box&gt;
+&lt;rf-box fontsize="display-l" fontweight="bold"&gt;Large bold text&lt;/rf-box&gt;
+&lt;rf-box variant="awsui-key-label"&gt;Key label text&lt;/rf-box&gt;
+&lt;rf-box textalign="center"&gt;Centered text&lt;/rf-box&gt;
+&lt;rf-box float="right"&gt;Float right&lt;/rf-box&gt;
+    </pre>
+
+    <script src="../components/box.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/container.js" type="module"></script>
+    <script src="../components/header.js" type="module"></script>
+    <script src="../components/space-between.js" type="module"></script>
+
+  </body>
+</html>
