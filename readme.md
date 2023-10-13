@@ -58,6 +58,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 
 - Badge
 - [Box](./docs/box.md)
+- [Breadcrumb Group](./docs/breadcrumb-group.md)
 - [Button](./docs/button.md)
 - [Container](./docs/container.md)
 - [Expandable Section](./docs/expandable-section.md)
