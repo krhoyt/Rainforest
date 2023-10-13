@@ -31,7 +31,7 @@ None
 | Name | Type | Description |
 | --- | --- | --- |
 | `data` | `Object` | Arbitrary data storage |
-| `items` | `Array` | Collection of items representing breadcrumbs |
+| `items` | `Array<{text: String, href: String}>` | Collection of items representing breadcrumbs |
 
 ## Attributes
 
