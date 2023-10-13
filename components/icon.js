@@ -99,11 +99,13 @@ export default class RainforestIcon extends HTMLElement {
 
     this.$image.src = src;    
 
+    /*
     if( this.color !== null ) {
       this.$image.style.filter = `brightness( 0 ) saturate( 100% )`;
     } else {
       this.$image.style.filter = '';
     }
+    */
   }
 
   // Promote properties

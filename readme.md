@@ -148,3 +148,5 @@ Cloudscape has many icons available to it. These icons are in SVG format. When t
 Rainforest takes a different approach by using CSS Filters to change the color of an icon. When the `icon-name` attribute is set on the `RainforestIcon` component, that SVG file is assigned to the `src` attribute of an `Image` element. The image element loads and sizes the file as it would any other SVG file. When the `variant` property is set, a filter is added via CSS to match the color specified in the design system.
 
 This means that Rainforest can support and color **any single color SVG file from any source**. This technique also works on image file format that support a transparent background. The Cloudscape `Icon.svg` slot, and other SVG-related slots, are not necessary with this approach, and not support in Rainforest.
+
+> This approach generally yields an output color *very close* to the original, but not necessarily an exact match. Close enough to where the human eye will not likely notice the difference in practice. A [color utility](./demo/color.html) is included for testing.
