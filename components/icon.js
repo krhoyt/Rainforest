@@ -98,6 +98,12 @@ export default class RainforestIcon extends HTMLElement {
     }
 
     this.$image.src = src;    
+
+    if( this.color !== null ) {
+      this.$image.style.filter = `brightness( 0 ) saturate( 100% )`;
+    } else {
+      this.$image.style.filter = '';
+    }
   }
 
   // Promote properties
@@ -112,6 +118,7 @@ export default class RainforestIcon extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'color' );    
     this._upgrade( 'concealed' );    
     this._upgrade( 'data' );            
     this._upgrade( 'hidden' );    
@@ -126,6 +133,7 @@ export default class RainforestIcon extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
+      'color',
       'concealed',
       'hidden',
       'name',
@@ -156,6 +164,22 @@ export default class RainforestIcon extends HTMLElement {
   // Attributes
   // Reflected
   // Boolean, Number, String, null
+  get color() {
+    if( this.hasAttribute( 'color' ) ) {
+      return this.getAttribute( 'color' );
+    }
+
+    return null;
+  }
+
+  set color( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'color', value );
+    } else {
+      this.removeAttribute( 'color' );
+    }
+  }
+
   get concealed() {
     return this.hasAttribute( 'concealed' );
   }

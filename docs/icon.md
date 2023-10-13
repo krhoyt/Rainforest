@@ -34,7 +34,8 @@ None
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow|      
+| `color` | `string` | Hexidecimal color override |      
+| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
 | `hidden` | `boolean` | Do not show in DOM |      
 | `name` | `string` | Name of icon to use |
 | `path` | `string` | Any need arbitrary path |
