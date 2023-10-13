@@ -34,7 +34,7 @@ None
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `color` | `string` | Hexidecimal color override |      
+| `color` | `string` | Hexidecimal color override (WIP) |      
 | `concealed` | `boolean` | Do not show, but leave in DOM flow |      
 | `hidden` | `boolean` | Do not show in DOM |      
 | `name` | `string` | Name of icon to use |
