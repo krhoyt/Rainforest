@@ -1,3 +1,4 @@
+import RainforestAlert from "./components/alert.js";
 import RainforestBox from "./components/box.js";
 import RainforestBreadcrumbGroup from "./components/breadcrumb-group.js";
 import RainforestButton from "./components/button.js";

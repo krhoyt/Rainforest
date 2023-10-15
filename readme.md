@@ -57,6 +57,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 ## Components
 
 - Badge
+- [Alert](./docs/alert.md)
 - [Box](./docs/box.md)
 - [Breadcrumb Group](./docs/breadcrumb-group.md)
 - [Button](./docs/button.md)
