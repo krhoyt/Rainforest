@@ -36,6 +36,7 @@ A brief message that provides information or instructs users to take a specific 
 | --- | --- |
 | (`content`) | Used for message content |
 | `action` | Holds components associated with alert |
+| `header` |  |
 
 ## Properties
 

@@ -120,6 +120,7 @@ export default class RainforestAlert extends HTMLElement {
         <div>
           <div part="message">
             <rf-box part="header" variant="strong"></rf-box>
+            <slot name="header"></slot>
             <rf-box part="content">
               <slot></slot>
             </rf-box>        
