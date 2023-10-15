@@ -51,6 +51,18 @@ export default class RainforestAlert extends HTMLElement {
           align-self: flex-start;
         }
 
+        rf-button[part=close] {
+          margin: 0 -4px 0 12px;
+        }
+
+        rf-button[part=close]::part( button ) {
+          width: 28px;
+        }
+
+        rf-button[part=close]::part( icon ) {
+          margin: 0;
+        }
+
         rf-icon {
           margin: 4px 4px 4px 0;
           padding: 4px 0 4px 0;
@@ -141,6 +153,13 @@ export default class RainforestAlert extends HTMLElement {
 
     // Elements
     this.$button = this.shadowRoot.querySelector( 'rf-button[part=button]' );    
+    this.$button.addEventListener( 'click', () => {
+      this.dispatchEvent( new CustomEvent( 'rf-action' ) );
+    } );
+    this.$close = this.shadowRoot.querySelector( 'rf-button[part=close]' );
+    this.$close.addEventListener( 'rf-click', () => {
+      this.dispatchEvent( new CustomEvent( 'rf-dismiss' ) );
+    } );
     this.$header = this.shadowRoot.querySelector( 'rf-box[part=header]' );
     this.$icon = this.shadowRoot.querySelector( 'rf-icon' );
     this.$content = this.shadowRoot.querySelector( 'rf-box[part=content]' );
