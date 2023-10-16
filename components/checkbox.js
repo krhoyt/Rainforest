@@ -9,6 +9,7 @@ export default class RainforestCheckbox extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
+          cursor: pointer;
           display: inline-flex;
           position: relative;
         }
@@ -25,6 +26,20 @@ export default class RainforestCheckbox extends HTMLElement {
           display: flex;
           flex-direction: column;
           padding: 0 0 0 8px;
+        }
+
+        input {
+          box-sizing: border-box;
+          cursor: pointer;
+          height: 100%;
+          left: 0;
+          margin: 0;
+          opacity: 0;
+          padding: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 1;
         }
 
         svg {
@@ -44,6 +59,7 @@ export default class RainforestCheckbox extends HTMLElement {
         }        
 
         rf-box::part( box ) {
+          cursor: pointer;
           padding: 0;
         }
 
@@ -89,6 +105,10 @@ export default class RainforestCheckbox extends HTMLElement {
           display: inline;
         }        
 
+        :host( [disabled] ) {
+          cursor: not-allowed;
+        }
+
         :host( [disabled] ) rect {
           fill: var( --color-background-control-disabled );
           stroke: var( --color-border-control-disabled );
@@ -96,6 +116,7 @@ export default class RainforestCheckbox extends HTMLElement {
 
         :host( [disabled] ) rf-box::part( box ) {
           color: #9ba7b6;
+          cursor: not-allowed;
         }
 
         ::slotted( rf-box[slot=description] ) {
@@ -107,6 +128,7 @@ export default class RainforestCheckbox extends HTMLElement {
         <polyline part="check" points="3.5,8 7,11 12,4"></polyline>
         <polyline part="indeterminate" points="3.5,8 12.5,8"></polyline>        
       </svg>
+      <input type="checkbox">
       <div>
         <rf-box part="label">
           <slot></slot>
@@ -125,11 +147,30 @@ export default class RainforestCheckbox extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
+    this.$input = this.shadowRoot.querySelector( 'input' );
+    this.$input.addEventListener( 'blur', () => this.dispatchEvent( new CustomEvent( 'rf-blur' ) ) );
+    this.$input.addEventListener( 'focus', () => this.dispatchEvent( new CustomEvent( 'rf-focus' ) ) );
+    this.$input.addEventListener( 'click', () => {
+      this.checked = !this.checked;
+      this.value = this.checked;
+      this.dispatchEvent( new CustomEvent( 'rf-change', {
+        detail: {
+          checked: this.checked,
+          indeterminate: this.indeterminate
+        }
+      } ) );
+    } );
     this.$description = this.shadowRoot.querySelector( 'rf-box[part=description]' );
+  }
+
+  focus() {
+    this.$input.focus();
   }
 
   // When things change
   _render() {
+    this.$input.checked = this.checked;
+    this.$input.disabled = this.disabled;
     this.$description.content = this.description;
   }
 
@@ -154,6 +195,7 @@ export default class RainforestCheckbox extends HTMLElement {
     this._upgrade( 'indeterminate' );             
     this._upgrade( 'label' );        
     this._upgrade( 'name' );        
+    this._upgrade( 'value' );        
     this._render();
   }
 
@@ -167,7 +209,8 @@ export default class RainforestCheckbox extends HTMLElement {
       'hidden',
       'indeterminate',
       'label',
-      'name'
+      'name',
+      'value'
     ];
   }
 
@@ -336,6 +379,26 @@ export default class RainforestCheckbox extends HTMLElement {
       this.setAttribute( 'name', value );
     } else {
       this.removeAttribute( 'name' );
+    }
+  }  
+
+  get value() {
+    return this.hasAttribute( 'value' );
+  }
+
+  set value( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'value' );
+      } else {
+        this.setAttribute( 'value', '' );
+      }
+    } else {
+      this.removeAttribute( 'value' );
     }
   }  
 }
