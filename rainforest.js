@@ -2,6 +2,7 @@ import RainforestAlert from "./components/alert.js";
 import RainforestBox from "./components/box.js";
 import RainforestBreadcrumbGroup from "./components/breadcrumb-group.js";
 import RainforestButton from "./components/button.js";
+import RainforestCheckbox from "./components/checkbox.js";
 import RainforestContainer from "./components/container.js";
 import RainforestHeader from "./components/header.js";
 import RainforestIcon from "./components/icon.js";
