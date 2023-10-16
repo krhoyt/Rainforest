@@ -63,35 +63,35 @@ export default class RainforestStatusIndicator extends HTMLElement {
           filter: var( --filter-color-warning );
         }        
 
-        :host( [color-override=blue] ) rf-box::part( box ) { 
+        :host( [coloroverride=blue] ) rf-box::part( box ) { 
           color: var( --color-link );
         }        
 
-        :host( [color-override=blue] ) rf-icon::part( icon ) {
+        :host( [coloroverride=blue] ) rf-icon::part( icon ) {
           filter: var( --filter-color-link );
         }
 
-        :host( [color-override=grey] ) rf-box::part( box ) { 
+        :host( [coloroverride=grey] ) rf-box::part( box ) { 
           color: var( --color-inactive );
         }        
 
-        :host( [color-override=grey] ) rf-icon::part( icon ) {
+        :host( [coloroverride=grey] ) rf-icon::part( icon ) {
           filter: var( --filter-color-inactive );
         }        
 
-        :host( [color-override=green] ) rf-box::part( box ) { 
+        :host( [coloroverride=green] ) rf-box::part( box ) { 
           color: var( --color-success );
         }        
 
-        :host( [color-override=green] ) rf-icon::part( icon ) {
+        :host( [coloroverride=green] ) rf-icon::part( icon ) {
           filter: var( --filter-color-success );
         }        
 
-        :host( [color-override=red] ) rf-box::part( box ) { 
+        :host( [coloroverride=red] ) rf-box::part( box ) { 
           color: var( --color-error );
         }
 
-        :host( [color-override=red] ) rf-icon::part( icon ) {
+        :host( [coloroverride=red] ) rf-icon::part( icon ) {
           filter: var( --filter-color-error );
         }                
 
@@ -103,25 +103,25 @@ export default class RainforestStatusIndicator extends HTMLElement {
           display: none;
         }
 
-        :host( [color-override=blue] ) rf-spinner::part( circle ) {
+        :host( [coloroverride=blue] ) rf-spinner::part( circle ) {
           stroke: var( --color-link );
         }       
 
-        :host( [color-override=green] ) rf-spinner::part( circle ) {
+        :host( [coloroverride=green] ) rf-spinner::part( circle ) {
           stroke: var( --color-success );
         }               
 
-        :host( [color-override=grey] ) rf-spinner::part( circle ) {
+        :host( [coloroverride=grey] ) rf-spinner::part( circle ) {
           stroke: var( --color-inactive );
         }                       
 
-        :host( [color-override=red] ) rf-spinner::part( circle ) {
+        :host( [coloroverride=red] ) rf-spinner::part( circle ) {
           stroke: var( --color-error );
         }        
       </style>
       <rf-spinner part="spinner"></rf-spinner>
       <rf-icon part="icon"></rf-icon>
-      <rf-box part="box">
+      <rf-box exportparts="box: b" part="box">
         <span></span>
         <slot></slot>
       </rf-box>

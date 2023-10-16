@@ -10,9 +10,14 @@ A status indicator communicates the state of a resource — either in its entire
 ```
 
 ``` html
-<rf-spinner></rf-spinner>
-<rf-spinner size="large"></rf-spinner>
-<rf-spinner variant="disabled"></rf-spinner>        
+<rf-status-indicator type="error">Error</rf-status-indicator>
+<rf-status-indicator type="warning">Warning</rf-status-indicator>
+<rf-status-indicator>Success</rf-status-indicator>    
+<rf-status-indicator type="info">Info</rf-status-indicator>    
+<rf-status-indicator type="stopped">Stopped</rf-status-indicator>        
+<rf-status-indicator type="pending">Pending</rf-status-indicator>            
+<rf-status-indicator type="in-progress">In progress</rf-status-indicator>                
+<rf-status-indicator type="loading">Loading</rf-status-indicator>              
 ```
 
 ## Slots
@@ -50,6 +55,7 @@ None
 
 | Name | Description |
 | --- | --- |
+| `b` | Paragraph element inside `rf-box` element |
 | `box` | Inner `rf-box` element |
 | `icon` | Inner `rf-icon` element |
 | `spinner` | Inner `rf-spinner` element |
