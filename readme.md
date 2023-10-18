@@ -152,3 +152,13 @@ Rainforest takes a different approach by using CSS Filters to change the color o
 This means that Rainforest can support and color **any single color SVG file from any source**. This technique also works on image file format that support a transparent background. The Cloudscape `Icon.svg` slot, and other SVG-related slots, are not necessary with this approach, and not support in Rainforest.
 
 > This approach generally yields an output color *very close* to the original, but not necessarily an exact match. Close enough to where the human eye will not likely notice the difference in practice. A [color utility](./demo/color.html) is included for testing.
+
+### Item Renderers
+
+There are places in Cloudscape where the API prefers setting an `items` array over composition. This pattern is common in enterprise components. In some of those instances, for example with `Breadcrumb Group` that the `items` can be an array of any object type. This is useful when an API result needs to populate a component and there may be more properties in the response than are needed to populate the component.
+
+There are other areas in the Cloudscape API however, where there is preference given to a specific data type. An example here is `Radio Group` where the `items` property expects an array of `RadioButtonDefinition` which has specific properties needed to build the radio buttons that populate the group. In these instances, Rainforest uses item renderers. The data passed to `items` is still an array of whatever data type is prescribed by the Cloudscape API (not that JavaScript cares), and populating the group still works the same, with the difference being that the renderer is exposed to the developer for further customization if needed.
+
+An item renderer in Rainforest takes a data property, which is of type `Object`. The implementation of that renderer then can in turn place the pieces of data on that `Object` wherever it is needed. There are default item renderers provided by Rainforest which mirror the Cloudscape design patterns. There is also an `itemrenderer` property on these components where you can specify your own implementation.
+
+> Think of the pain scale you may have seen in medical settings. There is an emoji face next to each value. The higher up on the pain scale you go, the more anguished the face appears. You could write a custom item renderer to show a similar graphical representation, and use it in the `RadioGroup` component.

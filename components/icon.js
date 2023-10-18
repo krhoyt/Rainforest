@@ -11,23 +11,24 @@ export default class RainforestIcon extends HTMLElement {
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
-
-        :host( [hidden] ) {
-          display: none;
-        }        
-
         img {
           box-sizing: border-box;
           display: block;
           cursor: var( --icon-cursor, default );
-          filter: var( --filter-color-primary );          
+          filter: var( --icon-filter,
+            brightness( 0 )
+            saturate( 100% )
+            invert( 4% )
+            sepia( 24% )
+            saturate( 4129% )
+            hue-rotate( 186deg )
+            brightness( 102% )
+            contrast( 107% )
+          );
           height: var( --icon-height, 16px );
           object-fit: var( --icon-object-fit, contain );
           width: var( --icon-width, 16px );
-        }        
+        }
 
         :host( [size=big] ) img {
           height: 32px;
@@ -37,7 +38,7 @@ export default class RainforestIcon extends HTMLElement {
         :host( [size=large] ) img {
           height: 48px;
           width: 48px;
-        }        
+        }
 
         :host( [size=medium] ) img {
           height: 20px;
@@ -45,36 +46,81 @@ export default class RainforestIcon extends HTMLElement {
         }
 
         :host( [variant=disabled] ) img {
-          filter: var( --filter-color-disabled );          
+          filter: 
+            brightness( 0 )
+            saturate( 100% )
+            invert( 69% )
+            sepia( 11% )
+            saturate( 375% )
+            hue-rotate( 173deg )
+            brightness( 93% )
+            contrast( 93% );
         }
 
         :host( [variant=subtle] ) img {
-          filter: var( --filter-color-subtle );
-        }        
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 43% )
+            sepia( 2% )
+            saturate( 3565% )
+            hue-rotate( 174deg )
+            brightness( 89% )
+            contrast( 74% );
+        }
 
         :host( [variant=error] ) img,
         :host( [variant=warning] ) img {
-          filter: var( --filter-color-error );
-        }        
+          filter: 
+            brightness( 0 )
+            saturate( 100% )
+            invert( 16% )
+            sepia( 89% )
+            saturate( 6443% )
+            hue-rotate( 357deg )
+            brightness( 89% )
+            contrast( 90% );
+        }
 
         :host( [variant=info] ) img,
         :host( [variant=link] ) img {
-          filter: var( --filter-color-link );
-        }                
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 35% )
+            sepia( 30% )
+            saturate( 4678% )
+            hue-rotate( 193deg )
+            brightness( 86% )
+            contrast( 93% );
+        }
 
         :host( [variant=inverted] ) img {
-          filter: var( --filter-color-inverted );
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 99% )
+            sepia( 78% )
+            saturate( 164% )
+            hue-rotate( 67deg )
+            brightness( 119% )
+            contrast( 100% );
         }
 
         :host( [variant=success] ) img {
-          filter: var( --filter-color-success );
-        }        
+          filter: 
+            brightness( 0 )
+            saturate( 100% )
+            invert( 26% )
+            sepia( 35% )
+            saturate( 4393% )
+            hue-rotate( 114deg )
+            brightness( 94% )
+            contrast( 98% );
+        }
       </style>
       <img part="icon" />
     `;
-
-    // Properties
-    this._data = null;
 
     // Root
     this.attachShadow( {mode: 'open'} );
@@ -87,25 +133,17 @@ export default class RainforestIcon extends HTMLElement {
   // When things change
   _render() {
     let src = null;
-    
+
     if( this.url === null ) {
       let name = this.name === null ? '' : this.name + '.svg';
-      let path = this.path === null ? '../icons/' : this.path;      
+      let path = this.path === null ? '../icons/' : this.path;
       path = this.name === null ? '' : path;
-      src = path + name;      
+      src = path + name;
     } else {
       src = this.url;
     }
 
-    this.$image.src = src;    
-
-    /*
-    if( this.color !== null ) {
-      this.$image.style.filter = `brightness( 0 ) saturate( 100% )`;
-    } else {
-      this.$image.style.filter = '';
-    }
-    */
+    this.$image.src = src;
   }
 
   // Promote properties
@@ -115,29 +153,22 @@ export default class RainforestIcon extends HTMLElement {
       const value = this[property];
       delete this[property];
       this[property] = value;
-    }    
-  }    
+    }
+  }
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'color' );    
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'data' );            
-    this._upgrade( 'hidden' );    
-    this._upgrade( 'name' );        
-    this._upgrade( 'path' );                
-    this._upgrade( 'size' );                
-    this._upgrade( 'url' );                        
-    this._upgrade( 'variant' );            
+    this._upgrade( 'name' );
+    this._upgrade( 'path' );
+    this._upgrade( 'size' );
+    this._upgrade( 'url' );
+    this._upgrade( 'variant' );
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'color',
-      'concealed',
-      'hidden',
       'name',
       'path',
       'size',
@@ -152,76 +183,9 @@ export default class RainforestIcon extends HTMLElement {
     this._render();
   }
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get color() {
-    if( this.hasAttribute( 'color' ) ) {
-      return this.getAttribute( 'color' );
-    }
-
-    return null;
-  }
-
-  set color( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'color', value );
-    } else {
-      this.removeAttribute( 'color' );
-    }
-  }
-
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }
-
   get name() {
     if( this.hasAttribute( 'name' ) ) {
       return this.getAttribute( 'name' );
@@ -252,8 +216,8 @@ export default class RainforestIcon extends HTMLElement {
     } else {
       this.removeAttribute( 'path' );
     }
-  }  
-  
+  }
+
   get size() {
     if( this.hasAttribute( 'size' ) ) {
       return this.getAttribute( 'size' );
@@ -300,7 +264,7 @@ export default class RainforestIcon extends HTMLElement {
     } else {
       this.removeAttribute( 'variant' );
     }
-  }  
+  }
 }
 
 window.customElements.define( 'rf-icon', RainforestIcon );

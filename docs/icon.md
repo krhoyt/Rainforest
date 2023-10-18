@@ -5,7 +5,6 @@ With an icon, you can display basic icons that match Cloudscape sizes, colors, a
 ## Usage
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/icon.js" type="module"></script>
 ```
 
@@ -18,7 +17,7 @@ With an icon, you can display basic icons that match Cloudscape sizes, colors, a
 <rf-icon size="large" url="../img/writer.svg"></rf-icon>
 ```
 
-> Icon color is accomplished using CSS Filters. The `filter` first gets `brightness( 0 )` and `saturate( 100% )` to ensure the icon is flat black (`#000000`). Then additional `filter` values are added to shift to desired color. This will work with SVG and GIF icons with transparent backgrounds.
+> Icon color is accomplished using CSS Filters. The `filter` first gets `brightness( 0 )` and `saturate( 100% )` to ensure the icon is flat black (`#000000`). Then additional `filter` values are added to shift to desired color. This will work with SVG and raster icons with transparent backgrounds.
 
 ## Slots
 
@@ -26,22 +25,17 @@ None
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
+None
 
 ## Attributes
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `color` | `string` | Hexidecimal color override (WIP) |      
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `hidden` | `boolean` | Do not show in DOM |      
-| `name` | `string` | Name of icon to use |
-| `path` | `string` | Any need arbitrary path |
-| `size` | `small` \|  `medium` \| `normal` \| `big` \| `large` | Predefined sizes consistent with design system |      
-| `url` | `string` | URL to custom icon image to be used |      
-| `variant`  | `normal` \| `disabled` \| `error` \| `inverted` \| `link` \| `subtle` \| `success` \| `warning` | Changes icon color to match desing system |
+| Name | Type | Description | Values | Default | Required |
+| --- | --- | --- | --- | --- | --- |
+| `name` | `string` | Specifies the icon to be displayed. | Icon names. | `null` | `false` |
+| `path` | `string` | Any need arbitrary path. | - | `null` | `false` |
+| `size` | `string` | Specifies the size of the icon. | `small` \|  `medium` \| `normal` \| `big` \| `large` | `normal` | `false` |
+| `url` | `string` | Specifies the URL of a custom icon. | - | `null` | `false` |
+| `variant` | `string` | Specifies the color variant of the icon. | `normal` \| `disabled` \| `error` \| `inverted` \| `link` \| `subtle` \| `success` \| `warning` | `normal` | `false` |
 
 ## Events
 
@@ -55,7 +49,7 @@ None
 
 | Name | Description |
 | --- | --- |
-| `icon` | Inner image (`img`) element |
+| `icon` | Inner `img` element. |
 
 ## Dependencies
 
