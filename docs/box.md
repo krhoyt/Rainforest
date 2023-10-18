@@ -1,6 +1,6 @@
 # Box
 
-Display and style text content in compliance with the Cloudscape typography and spacing strategy.
+With the box component, you can display and style basic elements and containers in compliance with Cloudscape's typography and spacing strategy.
 
 ## Usage
 
