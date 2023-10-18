@@ -1,5 +1,3 @@
-import RainforestBox from "./box.js";
-import RainforestIcon from "./icon.js";
 import RainforestSpinner from "./spinner.js";
 
 export default class RainforestStatusIndicator extends HTMLElement {
@@ -17,105 +15,154 @@ export default class RainforestStatusIndicator extends HTMLElement {
           position: relative;
         }
 
-        rf-box::part( box ) {
-          padding: 0;
+        div {
+          box-sizing: border-box;
+          color: #037f0c;
+          display: inline-block;
+          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          text-rendering: optimizeLegibility;
         }
 
-        rf-icon {
-          margin: 0 4px 0 0;
+        img {
+          box-sizing: border-box;
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 26% )
+            sepia( 35% )
+            saturate( 4393% )
+            hue-rotate( 114deg )
+            brightness( 94% )
+            contrast( 98% );
+          height: 16px;
+          padding: 0 4px 0 0;
+          width: 16px;
         }
 
-        rf-icon::part( icon ) {
-          filter: var( --filter-color-success );
-        }
+        rf-spinner { padding: 0 4px 0 0; }
+        rf-spinner::part( circle ) { stroke: #5f6b7a; }
 
-        rf-spinner {
-          margin: 0 6px 0 2px;
+        :host( [type=error] ) div { color: #d91515; }
+        :host( [type=error] ) img {
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 16% )
+            sepia( 89% )
+            saturate( 6443% )
+            hue-rotate( 357deg )
+            brightness( 89% )
+            contrast( 90% );          
         }
-
-        rf-spinner::part( circle ) {
-          stroke: var( --color-inactive );
-        }
-
-        :host( [type=error] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-error );
-        }
-
-        :host( [type=info] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-link );
+        :host( [type=warning] ) div { color: #8d6605; }   
+        :host( [type=warning] ) img {
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 39% )
+            sepia( 8% )
+            saturate( 7402% )
+            hue-rotate( 17deg )
+            brightness( 95% )
+            contrast( 96% );
+        }             
+        :host( [type=info] ) div { color: #0972d3; }                
+        :host( [type=info] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 35% )
+            sepia( 30% )
+            saturate( 4678% )
+            hue-rotate( 193deg )
+            brightness( 86% )
+            contrast( 93% );
+        }                        
+        :host( [type=stopped] ) div,
+        :host( [type=pending] ) div,
+        :host( [type=in-progress] ) div,        
+        :host( [type=loading] ) div { color: #5f6b7a; }
+        :host( [type=stopped] ) img,
+        :host( [type=pending] ) img,
+        :host( [type=in-progress] ) img,        
+        :host( [type=loading] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 43% )
+            sepia( 3% )
+            saturate( 2471% )
+            hue-rotate( 174deg )
+            brightness( 92% )
+            contrast( 87% );
         }        
 
-        :host( [type=in-progress] ) rf-icon::part( icon ),
-        :host( [type=pending] ) rf-icon::part( icon ),
-        :host( [type=stopped] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-inactive );
-        }                
+        :host( [color-override=blue] ) div { color: #0972d3; }
+        :host( [color-override=blue] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 35% )
+            sepia( 30% )
+            saturate( 4678% )
+            hue-rotate( 193deg )
+            brightness( 86% )
+            contrast( 93% );
+        }                     
+        :host( [color-override=blue] ) rf-spinner::part( circle ) { stroke: #0972d3; }
+        :host( [color-override=grey] ) div { color: #5f6b7a; }
+        :host( [color-override=grey] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 43% )
+            sepia( 3% )
+            saturate( 2471% )
+            hue-rotate( 174deg )
+            brightness( 92% )
+            contrast( 87% );
+        }                                       
+        :host( [color-override=grey] ) rf-spinner::part( circle ) { stroke: #5f6b7a; }         
+        :host( [color-override=green] ) div { color: #037f0c; }
+        :host( [color-override=green] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 26% )
+            sepia( 35% )
+            saturate( 4393% )
+            hue-rotate( 114deg )
+            brightness( 94% )
+            contrast( 98% );
+        }                                      
+        :host( [color-override=green] ) rf-spinner::part( circle ) { stroke: #037f0c; }                           
+        :host( [color-override=red] ) div { color: #d91515; }
+        :host( [color-override=red] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 16% )
+            sepia( 89% )
+            saturate( 6443% )
+            hue-rotate( 357deg )
+            brightness( 89% )
+            contrast( 90% );          
+        }                               
+        :host( [color-override=red] ) rf-spinner::part( circle ) { stroke: #d91515; }                                                            
 
-        :host( [type=warning] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-warning );
-        }        
-
-        :host( [coloroverride=blue] ) rf-box::part( box ) { 
-          color: var( --color-link );
-        }        
-
-        :host( [coloroverride=blue] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-link );
-        }
-
-        :host( [coloroverride=grey] ) rf-box::part( box ) { 
-          color: var( --color-inactive );
-        }        
-
-        :host( [coloroverride=grey] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-inactive );
-        }        
-
-        :host( [coloroverride=green] ) rf-box::part( box ) { 
-          color: var( --color-success );
-        }        
-
-        :host( [coloroverride=green] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-success );
-        }        
-
-        :host( [coloroverride=red] ) rf-box::part( box ) { 
-          color: var( --color-error );
-        }
-
-        :host( [coloroverride=red] ) rf-icon::part( icon ) {
-          filter: var( --filter-color-error );
-        }                
-
+        :host( [type=loading] ) img { display: none; }
         :host( :not( [type=loading] ) ) rf-spinner {
           display: none;
         }
-
-        :host( [type=loading] ) rf-icon {
-          display: none;
-        }
-
-        :host( [coloroverride=blue] ) rf-spinner::part( circle ) {
-          stroke: var( --color-link );
-        }       
-
-        :host( [coloroverride=green] ) rf-spinner::part( circle ) {
-          stroke: var( --color-success );
-        }               
-
-        :host( [coloroverride=grey] ) rf-spinner::part( circle ) {
-          stroke: var( --color-inactive );
-        }                       
-
-        :host( [coloroverride=red] ) rf-spinner::part( circle ) {
-          stroke: var( --color-error );
-        }        
       </style>
       <rf-spinner exportparts="circle: c, vector: v" part="spinner"></rf-spinner>
-      <rf-icon exportpart="icon: i, vector: v" part="icon"></rf-icon>
-      <rf-box exportparts="box: b" part="box">
+      <img part="icon" src="../icons/status-positive.svg" />
+      <div part="content">
         <slot></slot>
-      </rf-box>
+      </div>
     `;
 
     // Root
@@ -123,44 +170,27 @@ export default class RainforestStatusIndicator extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$box = this.shadowRoot.querySelector( 'rf-box' );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );  
-    this.$label = this.shadowRoot.querySelector( 'span' );  
+    this.$icon = this.shadowRoot.querySelector( 'img' );  
   }
 
   // When things change
   _render() {
-    switch( this.type ) {
-      case 'error':
-        this.$icon.name = 'status-negative';
-        this.$box.color = 'text-status-error';        
-        break;
-      case 'info':
-        this.$icon.name = 'status-info';
-        this.$box.color = 'text-status-info';        
-        break;        
-      case 'loading':
-        this.$box.color = 'text-status-inactive';        
-        break;                        
-      case 'in-progress':
-        this.$icon.name = 'status-in-progress';
-        this.$box.color = 'text-status-inactive';        
-        break;                
-      case 'pending':
-        this.$icon.name = 'status-pending';
-        this.$box.color = 'text-status-inactive';        
-        break;                
-      case 'stopped':
-        this.$icon.name = 'status-stopped';
-        this.$box.color = 'text-status-inactive';        
-        break;                
-      case 'warning':
-        this.$icon.name = 'status-warning';
-        this.$box.color = 'text-status-warning';        
-        break;        
-      default:
-        this.$icon.name = 'status-positive';
-        this.$box.color = 'text-status-success';
+    let icon = null;
+
+    if( this.type === null ) {
+      icon = 'status-positive';
+    } else {
+      if( this.type === 'error' ) {
+        icon = 'status-negative';
+      } else {
+        if( this.type !== 'loading' ) {
+          icon = 'status-' + this.type;
+        }
+      }
+    }
+
+    if( icon !== null ) {
+      this.$icon.src = `../icons/${icon}.svg`;
     }
   }
 

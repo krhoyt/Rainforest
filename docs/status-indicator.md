@@ -2,12 +2,14 @@
 
 A status indicator communicates the state of a resource — either in its entirety or a particular facet of a resource — in a compact form that is easily embedded in a card, table, list, or header view.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/status-indicator.js" type="module"></script>
 ```
+
+## Usage
 
 ``` html
 <rf-status-indicator type="error">Error</rf-status-indicator>
@@ -24,24 +26,15 @@ A status indicator communicates the state of a resource — either in its entire
 
 | Name | Description |
 | --- | --- |
-| (`content`) | Used for text content |
+| (`default`) | A text fragment that communicates the status. |
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `coloroverride` | `blue` \| `grey` \| `green` \| `red` | Force content color despite type |      
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `content` | `string` | Alternative path to the label |      
-| `hidden` | `boolean` | Do not show in DOM |      
-| `type`  | `error` \| `warning` \| `success` \| `info` \| `stopped` \| `pending` \| `in-progress` \| `loading` | Icon and color styling to use |
-| `wraptext` | `boolean` | Multiline support |      
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `color-override` | `string` | Specifies an override for the status indicator color. | `blue` \| `grey` \| `green` \| `red` | `null` | X |
+| `type`  | `string` | Specifies the status type. | `error` \| `warning` \| `success` \| `info` \| `stopped` \| `pending` \| `in-progress` \| `loading` | `success` | X |
+| `wrap-text` | `boolean` | Specifies if the text content should wrap. | - | `true` | X |      
 
 ## Events
 
@@ -55,13 +48,12 @@ None
 
 | Name | Description |
 | --- | --- |
-| `b` | Paragraph element inside `rf-box` element |
-| `box` | Inner `rf-box` element |
-| `icon` | Inner `rf-icon` element |
+| `c` | SVG `circle` element inside the `rf-spinner` |
+| `content` | Wrapper element for `div` slot |
+| `icon` | Inner `img` element |
 | `spinner` | Inner `rf-spinner` element |
+| `v` | `svg` element inside the `rf-spinner` |
 
 ## Dependencies
 
-- `rf-box`
-- `rf-icon`
 - `rf-spinner`
