@@ -12,14 +12,6 @@ export default class RainforestSpinner extends HTMLElement {
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
-
-        :host( [hidden] ) {
-          display: none;
-        }        
-
         @keyframes spin {
           from {
             transform: rotate( 0 );
@@ -33,16 +25,16 @@ export default class RainforestSpinner extends HTMLElement {
         svg {
           animation: 1.50s infinite spin;
           animation-timing-function: linear;
-          height: 12px;
-          width: 12px;
+          height: var( --spinner-height, 12px );
+          width: var( --spinner-width, 12px );
         }
 
         svg circle {
-          fill: none;
-          r: 5px;
-          stroke: var( --color-primary );
-          stroke-dasharray: 20px;          
-          stroke-width: 2px;
+          fill: var( --spinner-fill, none );
+          r: var( --spinner-radius, 5px );
+          stroke: var( --spinner-stroke, #000716 );
+          stroke-dasharray: var( --spinner-stroke-dasharray, 20px );          
+          stroke-width: var( --spinner-stroke-width, 2px );
         }
 
         :host( [size=big] ) svg {
@@ -66,11 +58,11 @@ export default class RainforestSpinner extends HTMLElement {
         }               
 
         :host( [variant=disabled] ) svg circle {
-          stroke: var( --color-secondary-disabled );
+          stroke: #9ba7b6;
         }
 
         :host( [variant=inverted] ) svg circle {
-          stroke: var( --color-inverted );
+          stroke: #ffffff;
         }
       </style>
       <svg 
@@ -81,9 +73,6 @@ export default class RainforestSpinner extends HTMLElement {
         <circle cx="50%" cy="50%" part="circle"></circle>
       </svg>
     `;
-
-    // Properties
-    this._data = null;
 
     // Root
     this.attachShadow( {mode: 'open'} );
@@ -105,9 +94,6 @@ export default class RainforestSpinner extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'data' );            
-    this._upgrade( 'hidden' );    
     this._upgrade( 'size' );                
     this._upgrade( 'variant' );            
     this._render();
@@ -116,8 +102,6 @@ export default class RainforestSpinner extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
-      'concealed',
-      'hidden',
       'size',
       'variant'
     ];
@@ -129,60 +113,9 @@ export default class RainforestSpinner extends HTMLElement {
     this._render();
   }
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }
-  
   get size() {
     if( this.hasAttribute( 'size' ) ) {
       return this.getAttribute( 'size' );

@@ -247,8 +247,8 @@ export default class RainforestButton extends HTMLElement {
         }
       </style>
       <button part="button" type="button">
-        <rf-spinner part="spinner" variant="disabled"></rf-spinner>
-        <rf-icon part="icon"></rf-icon>
+        <rf-spinner exportparts="vector: v" part="spinner" variant="disabled"></rf-spinner>
+        <rf-icon exportparts="icon: i, vector: v" part="icon"></rf-icon>
         <span></span>
         <slot></slot>
       </button>

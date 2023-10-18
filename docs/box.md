@@ -2,12 +2,14 @@
 
 With the box component, you can display and style basic elements and containers in compliance with Cloudscape's typography and spacing strategy.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/box.js" type="module"></script>
 ```
+
+## Examples
 
 ``` html
 <rf-box variant="p">
@@ -36,21 +38,17 @@ With the box component, you can display and style basic elements and containers 
 | --- | --- |
 | (`default`) | Content of the box. |
 
-## Properties
-
-None
-
 ## Attributes
 
-| Name | Type | Description | Values | Default | Required |
+| Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `color` | `string` | Overrides the text color. | `text-label` \| `text-body-secondary` \| `text-status-error` \| `text-status-success` \| `text-status-info` \| `text-status-inactive` \| `text-status-warning` | `null` | `false` |
-| `display` | `string` | Overrides the display of the element. | `block` \| `inline` \| `inline-block` \| `none` | `null` | `false` |
-| `float` | `string` | Defines the floating behavior. | `left` \| `right` | `null` | `false` |
-| `font-size` | `string` | Overrides the font size and line height. | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | `null` | `false` |
-| `font-weight` | `string` | Overrides the font weight. | `light` \| `normal` \| `bold` \| `heavy` | `null` | `false` |
-| `text-align` | `string` | Defines the text alignment within the element. | `left` \| `center` \| `right` | `null` | `false` |
-| `variant`  | `string` | Defines the style of element to display. | `div` \| `span` \| `h1` \| `h2` \| `h3` \| `h4` \| `h5` \| `p` \| `strong` \| `small` \| `code` \| `pre` \| `samp` \| `awsui-key-label` \| `awsui-value-large` | `div` | `false` |
+| `color` | `string` | Overrides the text color. | `text-label` \| `text-body-secondary` \| `text-status-error` \| `text-status-success` \| `text-status-info` \| `text-status-inactive` \| `text-status-warning` | `null` | ✅ |
+| `display` | `string` | Overrides the display of the element. | `block` \| `inline` \| `inline-block` \| `none` | `null` | ✅ |
+| `float` | `string` | Defines the floating behavior. | `left` \| `right` | `null` | ✅ |
+| `font-size` | `string` | Overrides the font size and line height. | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | `null` | ✅ |
+| `font-weight` | `string` | Overrides the font weight. | `light` \| `normal` \| `bold` \| `heavy` | `null` | ✅ |
+| `text-align` | `string` | Defines the text alignment within the element. | `left` \| `center` \| `right` | `null` | ✅ |
+| `variant`  | `string` | Defines the style of element to display. | `div` \| `span` \| `h1` \| `h2` \| `h3` \| `h4` \| `h5` \| `p` \| `strong` \| `small` \| `code` \| `pre` \| `samp` \| `awsui-key-label` \| `awsui-value-large` | `div` | ✅ |
 
 ## Events
 

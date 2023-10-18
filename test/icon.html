@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
 
-    <title>Rainforest - Icon</title>
+    <title>Icon - Rainforest</title>
 
     <link href="../rainforest.css" rel="stylesheet">    
 
@@ -18,7 +18,16 @@
     <rf-icon name="external" variant="link"></rf-icon><br>
     <rf-icon name="lock-private" size="big" variant="disabled"></rf-icon><br>
     <rf-icon name="status-negative" size="large" variant="error"></rf-icon><br>    
-    <rf-icon size="large" url="../img/writer.svg"></rf-icon>
+    <rf-icon>
+      <svg height="16" slot="svg" stroke-width="2" width="16">
+        <g>
+          <line x1="5.5" y1="12" x2="5.5" y2="15" />
+          <line x1="0.5" y1="15" x2="10.5" y2="15" />
+          <rect x="1" y="5" width="9" height="7" />
+          <polyline points="5 4 5 1 14 1 14 8 10 8" />
+        </g>
+      </svg>      
+    </rf-icon>
     <br>
     <pre>
 &lt;rf-icon name="settings"&gt;&lt;/rf-icon&gt;
@@ -26,7 +35,16 @@
 &lt;rf-icon name="external" variant="link"&gt;&lt;/rf-icon&gt;
 &lt;rf-icon name="lock-private" size="big" variant="disabled"&gt;&lt;/rf-icon&gt;
 &lt;rf-icon name="status-negative" size="large" variant="error"&gt;&lt;/rf-icon&gt;
-&lt;rf-icon size="large" url="../img/writer.svg"&gt;&lt;/rf-icon&gt;
+&lt;rf-icon&gt;
+  &lt;svg height=&quot;16&quot; slot=&quot;svg&quot; stroke-width=&quot;2&quot; width=&quot;16&quot;&gt;
+    &lt;g&gt;
+      &lt;line x1=&quot;5.5&quot; y1=&quot;12&quot; x2=&quot;5.5&quot; y2=&quot;15&quot; /&gt;
+      &lt;line x1=&quot;0.5&quot; y1=&quot;15&quot; x2=&quot;10.5&quot; y2=&quot;15&quot; /&gt;
+      &lt;rect x=&quot;1&quot; y=&quot;5&quot; width=&quot;9&quot; height=&quot;7&quot; /&gt;
+      &lt;polyline points=&quot;5 4 5 1 14 1 14 8 10 8&quot; /&gt;
+    &lt;/g&gt;
+  &lt;/svg&gt;      
+&lt;/rf-icon&gt;
     </pre>
 
     <script src="../components/icon.js" type="module"></script>

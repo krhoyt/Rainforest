@@ -17,14 +17,6 @@ export default class RainforestStatusIndicator extends HTMLElement {
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
-
-        :host( [hidden] ) {
-          display: none;
-        }        
-
         rf-box::part( box ) {
           padding: 0;
         }
@@ -119,16 +111,12 @@ export default class RainforestStatusIndicator extends HTMLElement {
           stroke: var( --color-error );
         }        
       </style>
-      <rf-spinner part="spinner"></rf-spinner>
-      <rf-icon part="icon"></rf-icon>
+      <rf-spinner exportparts="circle: c, vector: v" part="spinner"></rf-spinner>
+      <rf-icon exportpart="icon: i, vector: v" part="icon"></rf-icon>
       <rf-box exportparts="box: b" part="box">
-        <span></span>
         <slot></slot>
       </rf-box>
     `;
-
-    // Properties
-    this._data = null;
 
     // Root
     this.attachShadow( {mode: 'open'} );
@@ -142,8 +130,6 @@ export default class RainforestStatusIndicator extends HTMLElement {
 
   // When things change
   _render() {
-    this.$label.innerText = this.content === null ? '' : this.content;
-    
     switch( this.type ) {
       case 'error':
         this.$icon.name = 'status-negative';
@@ -191,10 +177,6 @@ export default class RainforestStatusIndicator extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'colorOverride' )
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'content' );        
-    this._upgrade( 'data' );            
-    this._upgrade( 'hidden' );    
     this._upgrade( 'type' );      
     this._upgrade( 'wrapText' );                   
     this._render();
@@ -203,12 +185,9 @@ export default class RainforestStatusIndicator extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
-      'coloroverride',
-      'concealed',
-      'content',
-      'hidden',
+      'color-override',
       'type',
-      'wraptext'      
+      'wrap-text'      
     ];
   }
 
@@ -218,23 +197,12 @@ export default class RainforestStatusIndicator extends HTMLElement {
     this._render();
   }
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
   get colorOverride() {
-    if( this.hasAttribute( 'coloroverride' ) ) {
-      return this.getAttribute( 'coloroverride' );
+    if( this.hasAttribute( 'color-override' ) ) {
+      return this.getAttribute( 'color-override' );
     }
 
     return null;
@@ -242,70 +210,14 @@ export default class RainforestStatusIndicator extends HTMLElement {
 
   set colorOverride( value ) {
     if( value !== null ) {
-      this.setAttribute( 'coloroverride', value );
+      this.setAttribute( 'color-override', value );
     } else {
-      this.removeAttribute( 'coloroverride' );
-    }
-  }
-
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
-  get content() {
-    if( this.hasAttribute( 'content' ) ) {
-      return this.getAttribute( 'content' );
-    }
-
-    return null;
-  }
-
-  set content( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'content', value );
-    } else {
-      this.removeAttribute( 'content' );
-    }
-  }  
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
+      this.removeAttribute( 'color-override' );
     }
   }
 
   get wrapText() {
-    return this.hasAttribute( 'wraptext' );
+    return this.hasAttribute( 'wrap-text' );
   }
 
   set wrapText( value ) {
@@ -315,12 +227,12 @@ export default class RainforestStatusIndicator extends HTMLElement {
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'wraptext' );
+        this.removeAttribute( 'wrap-text' );
       } else {
-        this.setAttribute( 'wraptext', '' );
+        this.setAttribute( 'wrap-text', '' );
       }
     } else {
-      this.removeAttribute( 'wraptext' );
+      this.removeAttribute( 'wrap-text' );
     }
   }
 

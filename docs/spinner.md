@@ -2,12 +2,13 @@
 
 A compact, looped animation giving the user feedback that a process is currently running.
 
-## Usage
+## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/spinner.js" type="module"></script>
 ```
+
+## Examples
 
 ``` html
 <rf-spinner></rf-spinner>
@@ -21,18 +22,10 @@ None
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow|      
-| `hidden` | `boolean` | Do not show in DOM |      
-| `size` | `normal` \| `big` \| `large` | Predefined sizes consistent with design system |      
-| `variant`  | `normal` \| `disabled` \| `inverted` | Changes color of graphic |
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `size` | `string` | Specifies the size of the spinner. | `normal` \| `big` \| `large` | `normal` | ✅ |
+| `variant`  | `string` | Specifies the color variant of the spinner. | `normal` \| `disabled` \| `inverted` | `normal` | ✅ |
 
 ## Events
 
@@ -46,8 +39,8 @@ None
 
 | Name | Description |
 | --- | --- |
-| `circle` | Inner `circle` element |
-| `vector` | Inner `svg` element |
+| `circle` | Inner `circle` element. |
+| `vector` | Inner `svg` element. |
 
 ## Dependencies
 

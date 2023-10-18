@@ -2,12 +2,13 @@
 
 A helper component that helps you add consistent spacing between elements on your page.
 
-## Usage
+## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/space-between.js" type="module"></script>
 ```
+
+## Examples
 
 ``` html
 <rf-space-between direction="horizontal" size="xs">
@@ -42,15 +43,11 @@ A helper component that helps you add consistent spacing between elements on you
 
 ## Properties
 
-None
-
-## Attributes
-
-| Name | Type | Description | Values | Default | Required |
+| Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `align-items` | `string` | Determines how the child elements will be aligned based on the [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)  property of the CSS Flexbox. | `start` \| `center` \| `end` | `null` | `false` |
-| `direction` | `string` | Defines the direction in which the content is laid out. | `horizontal` \| `horizontal-reverse` \| `row` \| `row-reverse` \| `vertical` \| `vertical-reverse` \| `column` \| `column-reverse` | `vertical` | `false` |
-| `size` | `string` | Defines the spacing between the individual items of the content. | `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl` | `null` | `true` |
+| `align-items` | `string` | Determines how the child elements will be aligned based on the [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)  property of the CSS Flexbox. | `start` \| `center` \| `end` | `null` | ✅ |
+| `direction` | `string` | Defines the direction in which the content is laid out. | `horizontal` \| `horizontal-reverse` \| `row` \| `row-reverse` \| `vertical` \| `vertical-reverse` \| `column` \| `column-reverse` | `vertical` | ✅ |
+| `size` | `string` | Defines the spacing between the individual items of the content. | `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl` | `null` | ✅ |
 
 ## Events
 

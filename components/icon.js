@@ -11,6 +11,12 @@ export default class RainforestIcon extends HTMLElement {
           position: relative;
         }
 
+        div {
+          display: block;
+          height: var( --icon-height, 16px );
+          width: var( --icon-width, 16px );
+        }
+
         img {
           box-sizing: border-box;
           display: block;
@@ -30,16 +36,19 @@ export default class RainforestIcon extends HTMLElement {
           width: var( --icon-width, 16px );
         }
 
+        :host( [size=big] ) div,
         :host( [size=big] ) img {
           height: 32px;
           width: 32px;
         }
 
+        :host( [size=large] ) div,
         :host( [size=large] ) img {
           height: 48px;
           width: 48px;
         }
 
+        :host( [size=medium] ) div,        
         :host( [size=medium] ) img {
           height: 20px;
           width: 20px;
@@ -118,8 +127,23 @@ export default class RainforestIcon extends HTMLElement {
             brightness( 94% )
             contrast( 98% );
         }
+
+        :host( :not( [url] ):not( [name] ) ) img { display: none; }
+        :host( [url] ) div,
+        :host( [name] ) div {
+          display: none;
+        }
+
+        ::slotted( svg ) {
+          fill: none;
+          stroke: #000716;
+          vertical-align: top;
+        }
       </style>
       <img part="icon" />
+      <div part="vector">
+        <slot name="svg"></slot>
+      </div>
     `;
 
     // Root
