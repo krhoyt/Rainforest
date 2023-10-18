@@ -49,7 +49,7 @@ None
 | Name | Description |
 | --- | --- |
 | `c` | SVG `circle` element inside the `rf-spinner` |
-| `content` | Wrapper element for `div` slot |
+| `content` | Wrapper `div` element for default slot |
 | `icon` | Inner `img` element |
 | `spinner` | Inner `rf-spinner` element |
 | `v` | `svg` element inside the `rf-spinner` |
