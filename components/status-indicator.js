@@ -157,6 +157,13 @@ export default class RainforestStatusIndicator extends HTMLElement {
         :host( :not( [type=loading] ) ) rf-spinner {
           display: none;
         }
+
+        :host( [wrap-text=false] ) div {
+          min-width: 0;
+          overflow: hidden;          
+          text-overflow: ellipsis;    
+          white-space: nowrap;
+        }
       </style>
       <rf-spinner exportparts="circle: c, vector: v" part="spinner"></rf-spinner>
       <img part="icon" src="../icons/status-positive.svg" />
