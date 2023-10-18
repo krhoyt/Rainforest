@@ -38,23 +38,19 @@ A helper component that helps you add consistent spacing between elements on you
 
 | Name | Description |
 | --- | --- |
-| (`content`) | Used to hold other elements. Can be nested. |
+| (`default`) | Content of this component. |
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
+None
 
 ## Attributes
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `alignitems` | `start` \| `center` \| `end` | Controls the `align-items` CSS Flex Box property |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |       
-| `direction` | `horizontal` \| `vertical` | Controls the `flex-direction` CSS Flex Box property |
-| `hidden` | `boolean` | Do not show in DOM |      
-| `size` | `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` | Size of the `gap` inline with design system values |      
+| Name | Type | Description | Values | Default | Required |
+| --- | --- | --- | --- | --- | --- |
+| `align-items` | `string` | Determines how the child elements will be aligned based on the [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)  property of the CSS Flexbox. | `start` \| `center` \| `end` | `null` | `false` |
+| `direction` | `string` | Defines the direction in which the content is laid out. | `horizontal` \| `horizontal-reverse` \| `row` \| `row-reverse` \| `vertical` \| `vertical-reverse` \| `column` \| `column-reverse` | `vertical` | `false` |
+| `size` | `string` | Defines the spacing between the individual items of the content. | `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl` | `null` | `true` |
 
 ## Events
 
