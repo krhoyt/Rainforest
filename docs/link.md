@@ -2,17 +2,20 @@
 
 A link component is an anchor tag that defines a hyperlink, which a user can interact with to find out more information about a concept, task, or field.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/link.js" type="module"></script>
 ```
 
+## Examples
+
 ``` html
-<rf-link>Secondary link</rf-link>
-<rf-link variant="primary">Primary link</rf-link>
-<rf-link external>Learn more</rf-link>
+<rf-link href="#">Secondary link</rf-link>
+<rf-link href="#" variant="primary">Primary link</rf-link>
+<rf-link external href="https://example.com/">Learn more</rf-link>
+<rf-link>Perform action</rf-link>
 <rf-link variant="info">Info</rf-link>    
 ```
 
@@ -20,49 +23,39 @@ A link component is an anchor tag that defines a hyperlink, which a user can int
 
 | Name | Description |
 | --- | --- |
-| (`content`) | Link content |
+| (`default`) | The text to render inside the link. |
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `color` | `normal` \| `inverted` | Color of the text in the paragraph element |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `content` | `string` | Alternative path to label |
-| `external` | `boolean` | Show icon for external link |
-| `font-size` | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | Font size of the span element |
-| `hidden` | `boolean` | Do not show in DOM |      
-| `href` | `string` | Link destination URL |      
-| `rel` | `string` | Link relation |
-| `target` | `string` | Browser window or tab for content |
-| `variant` | `primary` \| `secondary` \| `info` \| `awsui-value-large` | Applies combination of font size and weight to span element |
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `color` | `string` | Determines the text color of the link and its icon. | `normal` \| `inverted` | `normal` | ✅ |
+| `external` | `boolean` | Marks the link as external by adding an icon after the text. | - | `false` | ✅ |
+| `font-size` | `string` | Determines the font size and line height. | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | `body-m` | ✅ |
+| `href` | `string` | The URL that the link points to. | - | `null` | ✅ |
+| `rel` | `string` | Adds a `rel` attribute to the link. | - | `null` | ✅ |
+| `target` | `string` | Specifies where to open the linked URL. | - | `null` | ✅ |
+| `variant` | `string` | Determines the visual style of the link. | `primary` \| `secondary` \| `info` \| `awsui-value-large` | `secondary` | ✅ |
 
 ## Events
 
-| Name | Description |
-| --- | --- |
-| `rf-follow` | Click on `button` element designated as a link |
+| Name | Description | Detail |
+| --- | --- | --- |
+| `rf-follow` | Called when a link is clicked without any modifier keys. | `{external: boolean, href: string, target: string}` |
 
 ## Methods
 
-| Name | Description |
-| --- | --- |
-| `focus()` | Focus on inner `button` element |
+| Name | Description | Arguments |
+| --- | --- | --- |
+| `focus()` | Sets the browser focus on the anchor element. | - |
 
 ## Parts
 
 | Name | Description |
 | --- | --- |
-| `button` | Inner `button` element |
-| `icon` | Inner RainforestIcon (`rf-icon`) element |
-| `span` | Inner button label |
+| `icon` | Inner `img` element |
+| `link` | Inner anchor element |
 
 ## Dependencies
 
-- `rf-icon`
+None
