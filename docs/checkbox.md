@@ -40,7 +40,7 @@ Checkboxes enable users to turn an option on or off.
 | --- | --- | --- |
 | `rf-blur` | Called when input focus is removed from the UI control. | - |
 | `rf-change` | Called when the user changes the component state. | `{checked: boolean, indeterminate: false}` |
-| `rf-focus` | Called when input focus is moved to the UI control. |
+| `rf-focus` | Called when input focus is moved to the UI control. | - |
 
 ## Methods
 
