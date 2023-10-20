@@ -2,12 +2,14 @@
 
 Checkboxes enable users to turn an option on or off.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/checkbox.js" type="module"></script>
 ```
+
+## Examples
 
 ``` html
 <rf-checkbox>Expire</rf-checkbox>
@@ -20,41 +22,31 @@ Checkboxes enable users to turn an option on or off.
 
 | Name | Description |
 | --- | --- |
-| (`label`) | Used for custom label content |
-| `description` | Used for custom description content |
+| (`default`) | The control's label that's displayed next to the checkbox. |
+| `description` | Description that appears below the label. |
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `checked` | `boolean` | Toggle the selected state |      
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `description` | `string` | Alternative path to description content |
-| `disabled` | `boolean` | Not available for input |      
-| `hidden` | `boolean` | Do not show in DOM |      
-| `indeterminate` | `boolean` | Unclear as to the state |      
-| `label` | `string` | Alternative path to label content |
-| `name` | `string` | For use in form submission |
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `checked` | `boolean` | Specifies if the component is selected. | - | `false` | ✅ |
+| `disabled` | `boolean` | Specifies if the control is disabled, which prevents the user from modifying the value and prevents the value from being included in a form submission. | - | `false` | ✅ |
+| `indeterminate` | `boolean` | Specifies that the component is in an indeterminate state. | - | `false` | ✅ |
+| `name` | `string` | Specifies the name of the control used in HTML forms. | - | `null` | ✅ |
 
 ## Events
 
-| Name | Description |
-| --- | --- |
-| `rf-blur` | Focus removed from content |
-| `rf-change` | When user changes state |
-| `rf-focus` | Content has focus |
+| Name | Description | Detail |
+| --- | --- | --- |
+| `rf-blur` | Called when input focus is removed from the UI control. | - |
+| `rf-change` | Called when the user changes the component state. | `{checked: boolean, indeterminate: false}` |
+| `rf-focus` | Called when input focus is moved to the UI control. |
 
 ## Methods
 
-| Name | Description |
-| --- | --- |
-| `focus()` | Focus on inner `input` element |
+| Name | Description | Arguments |
+| --- | --- | --- |
+| `focus()` | Sets input focus onto the UI control. | - |
 
 ## Parts
 
@@ -63,10 +55,11 @@ Checkboxes enable users to turn an option on or off.
 | `box` | Rectangle representing the box |
 | `check` | Line representing the check mark |
 | `description` | Holder for description content |
+| `input` | Internal `input` element |
 | `interdeterminate` | Line representing unknown state |
 | `label` | Holder for label content |
 | `vector` | SVG area for drawing state |
 
 ## Dependencies
 
-- `rf-box`
+None
