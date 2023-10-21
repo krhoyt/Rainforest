@@ -13,9 +13,12 @@
   </head>
   <body>
 
-    <rf-checkbox>Expire</rf-checkbox><br>
+    <rf-checkbox>
+      Expire
+
+    </rf-checkbox><br>
     <rf-checkbox checked>Transition to standard access storage class</rf-checkbox><br>    
-    <rf-checkbox disabled>Delete</rf-checkbox><br>        
+    <rf-checkbox disabled>Delete      <rf-box slot="description">Description</rf-box></rf-checkbox><br>        
     <rf-checkbox checked disabled>Archive to the Glacier Storage Class</rf-checkbox><br>
 
     <pre>
@@ -25,6 +28,7 @@
 &lt;rf-checkbox checked disabled&gt;Archive to the Glacier Storage Class&lt;/rf-checkbox&gt;
     </pre>
 
+    <script src="../components/box.js" type="module"></script>
     <script src="../components/checkbox.js" type="module"></script>
 
   </body>

@@ -108,9 +108,7 @@ export default class RainforestCheckbox extends HTMLElement {
         <div part="label">
           <slot></slot>
         </div>
-        <div part="description">
-          <slot name="description"></slot>
-        </div>
+        <slot name="description"></slot>
       </label>
     `;
 
