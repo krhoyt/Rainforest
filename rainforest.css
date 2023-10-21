@@ -166,75 +166,75 @@ h3,
 h4,
 h5,
 p {
-  color: var( --color-primary );
-  font-family: var( --font-family-base );
+  color: #000716;
+  font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
   margin: 0;      
   padding: 4px 0 4px 0;  
   text-rendering: optimizeLegibility;  
 }
 
 h1 {
-  font-size: var( --font-size-heading-xl );
-  font-weight: var( --font-weight-heading-xl );
-  line-height: var( --line-height-heading-xl );
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;          
 }
 
 h2 {
-  font-size: var( --font-size-heading-l );
-  font-weight: var( --font-weight-heading-l );
-  line-height: var( --line-height-heading-l );
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 h3 {
-  font-size: var( --font-size-heading-m );
-  font-weight: var( --font-weight-heading-m );
-  line-height: var( --line-height-heading-m );
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
 }
 
 h4 {
-  font-size: var( --font-size-heading-s );
-  font-weight: var( --font-weight-heading-s );
-  line-height: var( --line-height-heading-s );
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
   margin: 4px 0 0 0;
 }
 
 h5 {
-  font-size: var( --font-size-heading-xs );
-  font-weight: var( --font-weight-heading-xs );
-  line-height: var( --line-height-heading-xs );
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
 }
 
 p {
-  font-size: var( --font-size-body-m );
+  font-size: 14px;
   font-weight: 400;
-  line-height: var( --line-height-body-m );    
+  line-height: 20px;    
 }
 
 p a {
-  color: var( --color-link );
+  color: #0972d3;
   text-decoration: underline;
 }
 
 p a:hover {
-  color: var( --color-primary-hover );
+  color: #033160;
 }
 
 p code {
-  color: var( --color-primary );
-  font-family: var( --font-family-monospace );
-  font-size: var( --font-size-body-s );
-  line-height: var( --line-height-body-s );
+  color: #000716;
+  font-family: Monaco, Menlo, Consolas, 'Courier Prime', Courier, 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 p small {
-  color: var( --color-inactive );
-  font-size: var( --font-size-body-s );
-  line-height: var( --line-height-body-s );
+  color: #5f6b7a;
+  font-size: 12px;
+  line-height: 16px;
   padding: 0;
 }
 
 p strong {
-  font-weight: var( --font-weight-heading-m );
+  font-weight: 700;
 }
 
 ol,
@@ -249,14 +249,14 @@ ol {
 
 ol li,
 ul li {
-  color: var( --color-primary );
-  font-family: var( --font-family-base );
-  font-size: var( --font-size-body-m );
+  color: #000716;
+  font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: var( --line-height-body-m );
+  line-height: 20px;
   margin: 0;
   padding: 4px 0 0 0;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;          
 }
 
 ol li:first-of-type,
