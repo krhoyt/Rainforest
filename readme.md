@@ -72,6 +72,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 - [Spinner](./docs/spinner.md)
 - [Status Indicator](./docs/status-indicator.md)
 - [Text Content](./docs/text-content.md)
+- [Toggle](./docs/toggle.md)
 
 ## Some Differences to Consider
 
