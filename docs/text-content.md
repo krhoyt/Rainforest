@@ -2,12 +2,14 @@
 
 Use to style chunks of HTML by applying default typographical styles to the content.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/text-content.js" type="module"></script>
 ```
+
+## Examples
 
 ``` html
 <rf-text-content>
@@ -36,20 +38,11 @@ Use to style chunks of HTML by applying default typographical styles to the cont
 
 | Name | Description |
 | --- | --- |
-| (`content`) | Used for text content |
-
-## Properties
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
+| (`default`) | Content of the component. |
 
 ## Attributes
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `hidden` | `boolean` | Do not show in DOM |      
+None
 
 ## Events
 
