@@ -11,23 +11,16 @@ export default class RainforestInput extends HTMLElement {
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
-
-        :host( [hidden] ) {
-          display: none;
-        }        
-
         input {
           border: solid 2px #7d8998;
           border-radius: 8px;
           box-sizing: border-box;
           color: #000716;
-          font-family: var( --font-family-base );
-          font-size: var( font-size-body-m );
+          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
           font-weight: 400;
           height: 32px;
+          line-height: 20px;
           margin: 0;
           outline: none;
           padding: 4px 12px 4px 12px;
@@ -44,7 +37,7 @@ export default class RainforestInput extends HTMLElement {
           font-style: italic;
         }
 
-        input[readonly] {
+        input[read-only] {
           border: solid 2px #e9ebed;
         }
 
@@ -66,11 +59,8 @@ export default class RainforestInput extends HTMLElement {
           padding: 4px 12px 4px 8px;
         }
       </style>
-      <input part="input">
+      <input part="input" />
     `;
-
-    // Properties
-    this._data = null;
 
     // Root
     this.attachShadow( {mode: 'open'} );
@@ -126,11 +116,8 @@ export default class RainforestInput extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'autoComplete' );         
     this._upgrade( 'autoFocus' );        
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'data' );            
     this._upgrade( 'disabled' );        
     this._upgrade( 'disableBrowserAutocorrect' );        
-    this._upgrade( 'hidden' );    
     this._upgrade( 'inputMode' );       
     this._upgrade( 'invalid' );    
     this._upgrade( 'name' );        
@@ -149,13 +136,13 @@ export default class RainforestInput extends HTMLElement {
       'auto-complete',
       'auto-focus',
       'concealed',
-      'disablebrowserautocorrect',
+      'disable-browser-autocorrect',
       'hidden',
-      'inputmode',      
+      'input-mode',      
       'invalid',
       'name',
       'placeholder',
-      'readonly',
+      'read-only',
       'spellcheck',
       'step',
       'type',
@@ -167,17 +154,6 @@ export default class RainforestInput extends HTMLElement {
   // Update render
   attributeChangedCallback( name, old, value ) {
     this._render();
-  }
-
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
   }
 
   // Attributes
@@ -219,26 +195,6 @@ export default class RainforestInput extends HTMLElement {
     }
   }  
 
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
   get disabled() {
     return this.hasAttribute( 'disabled' );
   }
@@ -260,7 +216,7 @@ export default class RainforestInput extends HTMLElement {
   }  
 
   get disableBrowserAutocorrect() {
-    return this.hasAttribute( 'disablebrowserautocorrect' );
+    return this.hasAttribute( 'disable-browser-autocorrect' );
   }
 
   set disableBrowserAutocorrect( value ) {
@@ -270,38 +226,18 @@ export default class RainforestInput extends HTMLElement {
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'disablebrowserautocorrect' );
+        this.removeAttribute( 'disable-browser-autocorrect' );
       } else {
-        this.setAttribute( 'disablebrowserautocorrect', '' );
+        this.setAttribute( 'disable-browser-autocorrect', '' );
       }
     } else {
-      this.removeAttribute( 'disablebrowserautocorrect' );
+      this.removeAttribute( 'disable-browser-autocorrect' );
     }
   }  
 
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }
-
   get inputMode() {
-    if( this.hasAttribute( 'inputmode' ) ) {
-      return this.getAttribute( 'inputmode' );
+    if( this.hasAttribute( 'input-mode' ) ) {
+      return this.getAttribute( 'input-mode' );
     }
 
     return null;
@@ -309,9 +245,9 @@ export default class RainforestInput extends HTMLElement {
 
   set inputMode( value ) {
     if( value !== null ) {
-      this.setAttribute( 'inputmode', value );
+      this.setAttribute( 'input-mode', value );
     } else {
-      this.removeAttribute( 'inputmode' );
+      this.removeAttribute( 'inpu-tmode' );
     }
   }      
 
@@ -352,7 +288,7 @@ export default class RainforestInput extends HTMLElement {
   } 
 
   get readOnly() {
-    return this.hasAttribute( 'readonly' );
+    return this.hasAttribute( 'read-only' );
   }
 
   set readOnly( value ) {
@@ -362,12 +298,12 @@ export default class RainforestInput extends HTMLElement {
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'readonly' );
+        this.removeAttribute( 'read-only' );
       } else {
-        this.setAttribute( 'readonly', '' );
+        this.setAttribute( 'read-only', '' );
       }
     } else {
-      this.removeAttribute( 'readonly' );
+      this.removeAttribute( 'read-only' );
     }
   }  
 
