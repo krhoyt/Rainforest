@@ -1,4 +1,4 @@
-export default class RainforestSegmentedControlOption extends HTMLElement {
+export default class RainforestOption extends HTMLElement {
   constructor() {
     super();
 
@@ -298,4 +298,4 @@ export default class RainforestSegmentedControlOption extends HTMLElement {
   }        
 }
 
-window.customElements.define( 'rf-segmented-control-option', RainforestSegmentedControlOption );
+window.customElements.define( 'rf-option', RainforestOption );

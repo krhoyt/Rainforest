@@ -1,4 +1,4 @@
-import RainforestSegmentedControlOption from "./segmented-control-option.js";
+import RainforestOption from "./option.js";
 
 export default class RainforestSegmentedControl extends HTMLElement {
   constructor() {
@@ -21,20 +21,20 @@ export default class RainforestSegmentedControl extends HTMLElement {
           padding: 0;
         }
 
-        rf-segmented-control-option {
+        rf-option {
           border-left: solid 1px #414d5c;
           border-top: solid 2px #414d5c;          
           border-bottom: solid 2px #414d5c;          
           border-right: solid 1px #414d5c;    
         }
 
-        rf-segmented-control-option:first-of-type {
+        rf-option:first-of-type {
           border-bottom-left-radius: 20px;          
           border-top-left-radius: 20px;
           border-left: solid 2px #414d5c;
         }
 
-        rf-segmented-control-option:last-of-type {
+        rf-option:last-of-type {
           border-bottom-right-radius: 20px;          
           border-top-right-radius: 20px;
           border-left: solid 1px #414d5c;          
@@ -124,7 +124,7 @@ export default class RainforestSegmentedControl extends HTMLElement {
     }
 
     while( this.$list.children.length < this._options.length ) {
-      const item = document.createElement( 'rf-segmented-control-option' );
+      const item = document.createElement( 'rf-option' );
       item.addEventListener( 'click', this.onChange );
       this.$list.appendChild( item );
     }    
