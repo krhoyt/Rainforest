@@ -1,6 +1,4 @@
-import RainforestBox from "./box.js";
 import RainforestButton from "./button.js";
-import RainforestIcon from "./icon.js";
 
 export default class RainforestAlert extends HTMLElement {
   constructor() {
@@ -11,16 +9,8 @@ export default class RainforestAlert extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
-          display: none;
+          display: inline-block;
           position: relative;
-        }
-
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
-
-        :host( [hidden] ) {
-          display: none;
         }
 
         div[part=alert] {
@@ -34,6 +24,20 @@ export default class RainforestAlert extends HTMLElement {
           padding: 8px 16px 8px 16px;
         }
 
+        div[part=content] {
+          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+        }
+
+        div[part=header] {
+          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 20px;
+        }
+
         div[part=message] {
           display: flex;
           flex-basis: 0;
@@ -41,10 +45,6 @@ export default class RainforestAlert extends HTMLElement {
           flex-grow: 1;
           margin: 4px;
           padding: 2px 0 2px 0;
-        }
-
-        rf-box::part( box ) {
-          padding: 0;
         }
 
         rf-button[part=button] {
@@ -63,62 +63,78 @@ export default class RainforestAlert extends HTMLElement {
           margin: 0;
         }
 
-        rf-icon {
+        img {
+          filter:
+            brightness( 0 ) 
+            saturate( 100% )                
+            invert( 26% ) 
+            sepia( 98% ) 
+            saturate( 3640% ) 
+            hue-rotate( 196deg ) 
+            brightness( 97% ) 
+            contrast( 93% );            
+          height: 16px;
           margin: 4px 4px 4px 0;
-          padding: 4px 0 4px 0;
+          object-fit: contain;
+          padding: 4px 0 4px 0;          
+          width: 16px;
         }
-
-        rf-icon::part( icon ) {
-          filter: var( --filter-color-link );
-        }
-
-        :host( [buttontext] ) div[part=alert] > div {
-          padding-bottom: 4px;
-        }        
 
         :host( [type=error] ) div[part=alert],
         :host( [variant=error] ) div[part=alert] {
-          background-color: var( --color-background-status-error  );
-          border-color: var( --color-border-status-error );
+          background-color: #fff7f7;
+          border-color: #d91515;
         }
-        :host( [type=error] ) rf-icon::part( icon ),
-        :host( [variant=error] ) rf-icon::part( icon ) {        
-          filter: var( --filter-color-error );
+        :host( [type=error] ) img,
+        :host( [variant=error] ) img {        
+          filter:
+            brightness( 0 ) 
+            saturate( 100% )            
+            invert( 14% ) 
+            sepia( 98% ) 
+            saturate( 3166% ) 
+            hue-rotate( 350deg ) 
+            brightness( 107% ) 
+            contrast( 105% );          
         }
         
         :host( [type=success] ) div[part=alert],
         :host( [variant=success] ) div[part=alert] {
-          background-color: var( --color-background-status-success  );
-          border-color: var( --color-border-status-success );
+          background-color: #f2fcf3;
+          border-color: #037f0c;
         }
-        :host( [type=success] ) rf-icon::part( icon ),
-        :host( [variant=success] ) rf-icon::part( icon ) {        
-          filter: var( --filter-color-success );
+        :host( [type=success] ) img,
+        :host( [variant=success] ) img {    
+          filter:     
+            brightness( 0 ) 
+            saturate( 100% )                          
+            invert( 29% ) 
+            sepia( 72% ) 
+            saturate( 1725% ) 
+            hue-rotate( 103deg ) 
+            brightness( 91% ) 
+            contrast( 98% );
         }        
 
         :host( [type=warning] ) div[part=alert],
         :host( [variant=warning] ) div[part=alert] {
-          background-color: var( --color-background-status-warning  );
-          border-color: var( --color-border-status-warning );
+          background-color: #fffce9;
+          border-color: #8d6605;
         }
-        :host( [type=warning] ) rf-icon::part( icon ),
-        :host( [variant=warning] ) rf-icon::part( icon ) {        
-          filter: var( --filter-color-warning );
-        }
-
-        :host( [visible] ) {
-          display: inline-block;
-        }
-
-        :host( :not( [buttontext] ) ) rf-button[part=button] {
-          display: none;
+        :host( [type=warning] ) img,
+        :host( [variant=warning] ) img {        
+          filter: 
+            brightness( 0 ) 
+            saturate( 100% )                            
+            invert( 34% ) 
+            sepia( 88% ) 
+            saturate( 1021% ) 
+            hue-rotate( 23deg ) 
+            brightness( 90% ) 
+            contrast( 96% );          
         }
 
         :host( :not( [dismissable] ) ) rf-button[part=close] {
-          display: none;
-        }
-
-        :host( :not( [header] ) ) rf-box[part=header] {
           display: none;
         }
 
@@ -128,59 +144,53 @@ export default class RainforestAlert extends HTMLElement {
         }
       </style>
       <div part="alert">
-        <rf-icon name="status-info" part="icon"></rf-icon>   
+        <img part="icon" />
         <div>
           <div part="message">
-            <rf-box part="header" variant="strong"></rf-box>
-            <slot name="header"></slot>
-            <rf-box part="content">
+            <div part="header">
+              <slot name="header"></slot>
+            </div>
+            <div part="content">
               <slot></slot>
-            </rf-box>        
+            </div>
           </div>
-          <rf-button part="button"></rf-button>
           <slot name="action"></slot>          
         </div>
-        <rf-button iconname="close" part="close" variant="icon"></rf-button>      
+        <rf-button icon-name="close" part="close" variant="icon"></rf-button>      
       </div>
     `;
     
-    // Properties
-    this._data = null;
-
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$button = this.shadowRoot.querySelector( 'rf-button[part=button]' );    
-    this.$button.addEventListener( 'click', () => {
-      this.dispatchEvent( new CustomEvent( 'rf-action' ) );
-    } );
+    this.$alert = this.shadowRoot.querySelector( 'div[part=alert]' );
     this.$close = this.shadowRoot.querySelector( 'rf-button[part=close]' );
     this.$close.addEventListener( 'rf-click', () => {
       this.dispatchEvent( new CustomEvent( 'rf-dismiss' ) );
     } );
-    this.$header = this.shadowRoot.querySelector( 'rf-box[part=header]' );
-    this.$icon = this.shadowRoot.querySelector( 'rf-icon' );
-    this.$content = this.shadowRoot.querySelector( 'rf-box[part=content]' );
+    this.$icon = this.shadowRoot.querySelector( 'img[part=icon]' );
+  }
+
+  focus() {
+    this.$alert.focus();
   }
 
   // When things change
   _render() {
-    this.$header.content = this.header === null ? '' : this.header;
-    this.$content.content = this.content === null ? '' : this.content;
-    this.$button.text = this.buttonText === null ? '' : this.buttonText;
-
     switch( this.type ) {
       case 'error':
-        this.$icon.name = 'status-negative';
+        this.$icon.src = '../icons/status-negative.svg';
         break;      
       case 'success':
-        this.$icon.name = 'status-positive';
+        this.$icon.src = '../icons/status-positive.svg';
         break;
       case 'warning':
-        this.$icon.name = 'status-warning';
+        this.$icon.src = '../icons/status-warning.svg';
         break;        
+      default:
+        this.$icon.src = '../icons/status-info.svg';        
     }
   }
 
@@ -196,31 +206,16 @@ export default class RainforestAlert extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'buttonText' );        
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'content' );        
-    this._upgrade( 'data' );            
     this._upgrade( 'dismissable' );                
-    this._upgrade( 'header' );    
-    this._upgrade( 'hidden' );    
-    this._upgrade( 'type' );            
-    this._upgrade( 'variant' );                
-    this._upgrade( 'visible' );        
+    this._upgrade( 'type' );
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'buttontext',
-      'concealed',
-      'content',
       'dismissable',
-      'header',
-      'hidden',
-      'type',
-      'variant',
-      'visible'
+      'type'
     ];
   }
 
@@ -230,72 +225,9 @@ export default class RainforestAlert extends HTMLElement {
     this._render();
   }
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get buttonText() {
-    if( this.hasAttribute( 'buttontext' ) ) {
-      return this.getAttribute( 'buttontext' );
-    }
-
-    return null;
-  }
-
-  set buttonText( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'buttontext', value );
-    } else {
-      this.removeAttribute( 'buttontext' );
-    }
-  }
-
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
-  get content() {
-    if( this.hasAttribute( 'content' ) ) {
-      return this.getAttribute( 'content' );
-    }
-
-    return null;
-  }
-
-  set content( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'content', value );
-    } else {
-      this.removeAttribute( 'content' );
-    }
-  }
-
   get dismissable() {
     return this.hasAttribute( 'dismissable' );
   }
@@ -316,42 +248,6 @@ export default class RainforestAlert extends HTMLElement {
     }
   }  
 
-  get header() {
-    if( this.hasAttribute( 'header' ) ) {
-      return this.getAttribute( 'header' );
-    }
-
-    return null;
-  }
-
-  set header( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'header', value );
-    } else {
-      this.removeAttribute( 'header' );
-    }
-  }
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }
-
   get type() {
     if( this.hasAttribute( 'type' ) ) {
       return this.getAttribute( 'type' );
@@ -367,42 +263,6 @@ export default class RainforestAlert extends HTMLElement {
       this.removeAttribute( 'type' );
     }
   }
-  
-  get variant() {
-    if( this.hasAttribute( 'variant' ) ) {
-      return this.getAttribute( 'variant' );
-    }
-
-    return null;
-  }
-
-  set variant( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'variant', value );
-    } else {
-      this.removeAttribute( 'variant' );
-    }
-  }  
-
-  get visible() {
-    return this.hasAttribute( 'visible' );
-  }
-
-  set visible( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'visible' );
-      } else {
-        this.setAttribute( 'visible', '' );
-      }
-    } else {
-      this.removeAttribute( 'visible' );
-    }
-  }  
 }
 
 window.customElements.define( 'rf-alert', RainforestAlert );
