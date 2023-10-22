@@ -70,4 +70,4 @@ None
 
 ## Dependencies
 
-- `cf-segmented-control-option`
+- `rf-option`
