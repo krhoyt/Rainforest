@@ -25,24 +25,24 @@ export default class RainforestButton extends HTMLElement {
           align-items: center;
           background: none;
           border: none;
-          border-style: solid;
-          border-width: 2px;
-          border-color: #0972d3;
-          border-radius: 20px;
+          border-style: var( --button-border-style, solid );
+          border-width: var( --button-border-width, 2px );
+          border-color: var( --button-border-color, #0972d3 );
+          border-radius: var( --button-border-radius, 20px );
           box-sizing: border-box;
-          color: #0972d3;
-          cursor: pointer;
+          color: var( --button-color, #0972d3 );
+          cursor: var( --button-cursor, pointer );
           display: flex;
           flex-direction: row;
           font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 700;
+          font-size: var( --button-font-size, 14px );
+          font-weight: var( --button-font-weight, 700 );
           height: 32px;
-          line-height: 20px;
-          margin: 0;
+          line-height: var( --button-line-height, 20px );
+          margin: var( --button-margin, 0 );
           outline: none;
           overflow: hidden;          
-          padding: 4px 20px 4px 20px;
+          padding: var( --button-padding, 4px 20px 4px 20px );
           text-overflow: ellipsis;                    
           text-rendering: optimizeLegibility;
           white-space: nowrap;          
@@ -50,25 +50,21 @@ export default class RainforestButton extends HTMLElement {
           -webkit-tap-highlight-color: transparent;
         }
 
-        button span {
-          text-rendering: optimizeLegibility;
-        }
-
         button:not( [disabled] ):hover {
-          background-color: var( --color-secondary-hover );
-          border-color: var( --color-primary-hover );
-          color: var( --color-primary-hover );
+          background-color: var( --button-hover-background-color, #f2f8fd );
+          border-color: var( --button-hover-border-color, #033160 );
+          color: var( --button-hover-color, #033160 );
         }
 
         button[disabled] {
-          border-color: var( --color-secondary-disabled );
-          color: var( --color-secondary-disabled );
+          border-color: #9ba7b6;
+          color: #9ba7b6;
           cursor: not-allowed;
         }
 
         img {
           cursor: pointer;
-          filter: 
+          filter: var( --button-image-filter, 
             brightness( 0 ) 
             saturate( 100% )                
             invert( 26% ) 
@@ -76,7 +72,8 @@ export default class RainforestButton extends HTMLElement {
             saturate( 3640% ) 
             hue-rotate( 196deg ) 
             brightness( 97% ) 
-            contrast( 93% );            
+            contrast( 93% )
+          );            
           height: 16px;
           margin: 0 8px 0 -4px;
           width: 16px;
@@ -260,13 +257,13 @@ export default class RainforestButton extends HTMLElement {
         }                         
 
         :host( [variant=primary] ) button {
-          background-color: #0972d3;
-          border-color: #0972d3;
-          color: #ffffff;        
+          background-color: var( --button-primary-background-color, #0972d3 );
+          border-color: var( --button-primary-border-color, #0972d3 );
+          color: var( --button-primary-color, #ffffff );
         }                
 
         :host( [variant=primary] ) button:not( [disabled ] ) img {
-          filter:
+          filter: var( --button-primary-filter, 
             brightness( 0 ) 
             saturate( 100% )                  
             invert( 100% ) 
@@ -274,12 +271,13 @@ export default class RainforestButton extends HTMLElement {
             saturate( 0% ) 
             hue-rotate( 173deg ) 
             brightness( 103% ) 
-            contrast( 101% );          
+            contrast( 101% )
+          );          
         }
 
         :host( [variant=primary] ) button:hover {
-          background-color: #033160;
-          border-color: #033160;          
+          background-color: var( --button-primary-hover-background-color, #033160 );
+          border-color: var( --button-primary-hover-border-color, #033160 );
         }
 
         :host( [variant=primary] ) button[disabled] {

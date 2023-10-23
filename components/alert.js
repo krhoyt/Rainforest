@@ -141,7 +141,19 @@ export default class RainforestAlert extends HTMLElement {
         ::slotted( rf-button[slot=action] ) {
           align-self: flex-start;
           padding-bottom: 4px;
+          --button-border-color: #414d5c;
+          --button-color: #414d5c;
+          --button-hover-background-color: #0007160d;
+          --button-hover-color: #414d5c;
         }
+
+        ::slotted( rf-button[variant=primary] ) {
+          --button-primary-background-color: #414d5c;
+          --button-primary-border-color: #414d5c;
+          --button-primary-color: #ffffff;
+          --button-primary-hover-background-color: #000716;
+          --button-primary-hover-border-color: #000716;          
+        }        
       </style>
       <div part="alert">
         <img part="icon" />
