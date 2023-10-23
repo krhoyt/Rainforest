@@ -2,19 +2,21 @@
 
 Summarizes the content that's displayed under it and provides a space for optional action buttons.
 
-## Usage
+## Importing
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/header.js" type="module"></script>
 ```
 
+## Examples
+
 ``` html
 <rf-header variant="h1">
   <rf-space-between direction="horizontal" size="xs" slot="actions">
     <rf-button>Secondary button</rf-button>
     <rf-button variant="primary">Primary button</rf-button>
-  </rf-space-between>    
+  </rf-space-between>   
   Page title
 </rf-header>
 <rf-header counter="(3)">
@@ -35,29 +37,18 @@ Summarizes the content that's displayed under it and provides a space for option
 
 | Name | Description |
 | --- | --- |
-| (`title`) | Used for title content |
-| `actions` | Placement of buttons |
-| `info` | Content that follows title content |
-| `description` | Second line adding contextual content |
+| (`default`) | The heading text. |
+| `actions` | Actions for the container. |
+| `info` | Area next to the heading to display an Info link. |
+| `description` | Supplementary text below the heading. |
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `counter` | `string` | Content typically used to show total units |      
-| `description` | `string` | Alternative path to description content |      
-| `headertagoverride` | `h1` \| `h2` \| `h3` \| `h4` \| `h5` | Force specific sizing of title content |      
-| `hidden` | `boolean` | Do not show in DOM |      
-| `info` | `string` | Alternative path to info content |      
-| `title` | `string` | Alternative path to title content |      
-| `variant`  | `h1` \| `h2` \| `h3` \| `awsui-h1-sticky` | Applies combination of font size and weight to title content |
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `counter` | `string` | Specifies secondary text that's displayed to the right of the heading title. | - | `null` | ✅ |
+| `header-tag-override` | `string` | Overrides the default HTML heading tag  provided by the variant. | `h1` \| `h2` \| `h3` \| `h4` \| `h5` | `null` | ✅ |
+| `variant`  | `string` | Specifies the variant of the header. | `h1` \| `h2` \| `h3` \| `awsui-h1-sticky` | `h2` | ✅ |
 
 ## Events
 
@@ -71,10 +62,13 @@ None
 
 | Name | Description |
 | --- | --- |
-| `header` | Inner `header` element |
-| `title` | Inner `rf-box` element |
-| `counter` | Inner `span` element |
+| `actions` | Inner `div` element holder action content. |
+| `counter` | Inner `p` element for counter content. |
+| `header` | Inner `header` element. |
+| `left` | Inner `div` element holding first part of top line of content. |
+| `line` | Inner `div` element holding top line of content. |
+| `title` | Inner `div` element for the title content. |
 
 ## Dependencies
 
-- `rf-box`
+None
