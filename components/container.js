@@ -8,70 +8,93 @@ export default class RainforestContainer extends HTMLElement {
     template.innerHTML = /* template */ `
       <style>
         :host {
-          background: var( --color-background-container-content );
-          border-radius: var( --border-radius-container );
-          box-shadow: var( --shadow-container );
           box-sizing: border-box;
           display: block;
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
+        div[part=container] {
+          background: #ffffff;
+          border-radius: 16px;
+          box-shadow: 
+            0 0 1px 1px #e9ebed,
+            0 1px 8px 2px #0007161f; 
         }
 
-        :host( [hidden] ) {
+        div[part=content],
+        div[part=footer] {
+          color: #000716;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          text-rendering: optimizeLegibility;
+        }
+        div[part=content] { padding: 4px 20px 20px 20px; }                
+        div[part=footer] { 
+          border-top: solid 2px #e9ebed;
           display: none;
-        } 
+          padding: 12px 20px 12px 20px; 
+        }        
 
-        div {
-          padding: 4px 20px 20px 20px;
-        }
-
-        footer {
-          border-top-style: solid;
-          border-top-width: 2px;
-          border-top-color: var( --color-border-divider-default );
-          padding: 12px 20px 12px 20px;
-        }
-
-        :host( :not( [footer] ) ) footer {
-          display: none;
-        }
-
-        :host( :not( [footer] ) ) rf-box[part=footer] {
-          display: none;
-        }
-
-        ::slotted( rf-header ) {
+        div[part=header] {
           padding: 12px 20px 8px 20px;
         }
-      </style>
-      <slot name="header"></slot>
-      <div part="content">
-        <slot></slot>
-      </div>
-      <footer>
-        <rf-box part="footer"></rf-box>
-        <slot name="footer"></slot>
-      </footer>
-    `;
 
-    // Private
-    this._data = null;
+        :host( [disable-content-paddings] ) div[part=content] {
+          padding: 0;
+        }
+
+        :host( [disable-header-paddings] ) div[part=header] {
+          padding: 0;
+        }        
+
+        ::slotted( rf-header ) {
+          padding: 4px 0 0 0;
+        }
+
+        :host( [slot=footer] ) div[part=footer] {
+          display: none;
+        }
+      </style>
+      <div part="container">
+        <div part="header">
+          <slot name="header"></slot>
+        </div>
+        <div part="content">
+          <slot></slot>
+        </div>
+        <div part="footer">
+          <slot name="footer"></slot>
+        </div>        
+      </div>
+    `;
 
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$footer = this.shadowRoot.querySelector( 'rf-box[part=footer]' );
+    // NOTE: ::slotted does not support :has, reverting to manual configuration
+    this.$footer = this.shadowRoot.querySelector( 'slot[name=footer]' );
+    this.$footer.addEventListener( 'slotchange', () => {
+      const footer = this.querySelectorAll( '[slot=footer]' );
+      this.$footer.parentElement.style.display = footer.length > 0 ? 'block' : 'none';
+    } );
+    this.$header = this.shadowRoot.querySelector( 'slot[name=header]' );
+    this.$header.addEventListener( 'slotchange', () => {
+      const actions = this.querySelectorAll( '[slot=actions]' );
+      const header = this.querySelector( 'rf-header[slot=header]' );      
+      if( actions.length > 0 ) {
+        header.style.setProperty( '--header-column-gap', '0' );
+      } else {
+        header.style.setProperty( '--header-column-gap', '2px' );        
+      }
+    } );    
   }
 
    // When attributes change
-  _render() {
-    this.$footer.content = this.footer;
-  }
+  _render() {;}
 
   // Promote properties
   // Values may be set before module load
@@ -85,25 +108,16 @@ export default class RainforestContainer extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'concealed' );        
-    this._upgrade( 'counter' );           
-    this._upgrade( 'data' );    
-    this._upgrade( 'footer' );    
-    this._upgrade( 'headingTagOverride' );       
-    this._upgrade( 'hidden' );    
-    this._upgrade( 'variant' );        
+    this._upgrade( 'disableContentPaddings' );           
+    this._upgrade( 'disableHeaderPaddings' );    
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'concealed',
-      'counter',
-      'footer',
-      'headingtagoverride',
-      'hidden',
-      'variant'
+      'disable-content-paddings',
+      'disable-header-paddings'
     ];
   }
 
@@ -113,123 +127,48 @@ export default class RainforestContainer extends HTMLElement {
     this._render();
   } 
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
+  get disableContentPaddings() {
+    return this.hasAttribute( 'disable-content-paddings' );
   }
 
-  set concealed( value ) {
+  set disableContentPaddings( value ) {
     if( value !== null ) {
       if( typeof value === 'boolean' ) {
         value = value.toString();
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
+        this.removeAttribute( 'disable-content-paddings' );
       } else {
-        this.setAttribute( 'concealed', '' );
+        this.setAttribute( 'disable-content-paddings', '' );
       }
     } else {
-      this.removeAttribute( 'concealed' );
+      this.removeAttribute( 'disable-content-paddings' );
     }
   }
 
-  get counter() {
-    if( this.hasAttribute( 'counter' ) ) {
-      return this.getAttribute( 'counter' );
-    }
-
-    return null;
+  get disableHeaderPaddings() {
+    return this.hasAttribute( 'disable-header-paddings' );
   }
 
-  set counter( value ) {
+  set disableHeaderPaddings( value ) {
     if( value !== null ) {
-      this.setAttribute( 'counter', value );
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'disable-header-paddings' );
+      } else {
+        this.setAttribute( 'disable-header-paddings', '' );
+      }
     } else {
-      this.removeAttribute( 'counter' );
+      this.removeAttribute( 'disable-header-paddings' );
     }
   }  
-  
-  get footer() {
-    if( this.hasAttribute( 'footer' ) ) {
-      return this.getAttribute( 'footer' );
-    }
-
-    return null;
-  }
-
-  set footer( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'footer', value );
-    } else {
-      this.removeAttribute( 'footer' );
-    }
-  }    
-
-  get headingTagOverride() {
-    if( this.hasAttribute( 'headingtagoverride' ) ) {
-      return this.getAttribute( 'headingtagoverride' );
-    }
-
-    return null;
-  }
-
-  set headingTagOverride( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'headingtagoverride', value );
-    } else {
-      this.removeAttribute( 'headingtagoverride' );
-    }
-  }    
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }   
-
-  get variant() {
-    if( this.hasAttribute( 'variant' ) ) {
-      return this.getAttribute( 'variant' );
-    }
-
-    return null;
-  }
-
-  set variant( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'variant', value );
-    } else {
-      this.removeAttribute( 'variant' );
-    }
-  }    
 }
 
 window.customElements.define( 'rf-container', RainforestContainer );

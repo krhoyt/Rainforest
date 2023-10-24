@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
 
-    <title>Rainforest - Container</title>
+    <title>Container - Rainforest</title>
 
     <link href="../rainforest.css" rel="stylesheet">    
 
@@ -14,40 +14,37 @@
   <body>
 
     <rf-container>
-      <rf-header 
-        description="Container description" 
-        slot="header" 
-        variant="h2">
+      <rf-header slot="header" variant="h2">
+        <span slot="description">Container description</span>
         Container title
       </rf-header>
-      <rf-box>Container content</rf-box>
+      Container content
     </rf-container>
-    <br>
-    <rf-container footer="Container footer">
-      <rf-header 
-        description="Container description" 
-        slot="header" 
-        variant="h2">
-          Container title
-      </rf-header>
-      <rf-box>Container content</rf-box>
-    </rf-container>    
     <br>
     <rf-container>
       <rf-header 
-        description="Container description" 
         slot="header" 
         variant="h2">
+          <span slot="description">Container description</span>                
+          Container title
+      </rf-header>
+      Container content
+      <span slot="footer">Container footer</span>              
+    </rf-container>    
+    <br>
+    <rf-container>
+      <rf-header slot="header" variant="h2">
         <rf-space-between
           direction="horizontal"
           size="xs"
           slot="actions">
-            <rf-button>Action</rf-button>
-            <rf-button>Another action</rf-button>
-          </rf-space-between>
-          Container title
+          <rf-button>Action</rf-button>
+          <rf-button>Another action</rf-button>
+        </rf-space-between>
+        <span slot="description">Container description</span>        
+        Container title
       </rf-header>
-      <rf-box>Container content</rf-box>
+      Container content
     </rf-container>     
     <br>
     <rf-container>
