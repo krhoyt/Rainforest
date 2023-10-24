@@ -73,7 +73,7 @@ export default class RainforestTextContent extends HTMLElement {
 
         :slotted( ol li ) {
           color: #000716;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;
@@ -93,7 +93,7 @@ export default class RainforestTextContent extends HTMLElement {
 
         :slotted( ul li ) {
           color: #000716;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;

@@ -56,7 +56,7 @@ export default class RainforestOption extends HTMLElement {
 
         p {
           color: #414d5c;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 700;
           line-height: 20px;

@@ -19,7 +19,7 @@ export default class RainforestStatusIndicator extends HTMLElement {
           box-sizing: border-box;
           color: #037f0c;
           display: inline-block;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;

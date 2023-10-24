@@ -18,7 +18,7 @@ export default class RainforestLink extends HTMLElement {
           cursor: pointer;
           display: flex;
           flex-direction: row;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;

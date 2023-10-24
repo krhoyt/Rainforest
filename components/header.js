@@ -14,14 +14,14 @@ export default class RainforestHeader extends HTMLElement {
         header {
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: var( --header-column-gap, 4px );
         }
 
         div[part=left] {
           align-items: baseline;
           flex-basis: 0;
           flex-grow: 1;
-          gap: 6px;
+          gap: var( --header-row-gap, 6px );
         }        
 
         div[part=line] {
@@ -37,7 +37,7 @@ export default class RainforestHeader extends HTMLElement {
         div[part=title] {
           color: var( --header-color, #000716 );          
           display: inline-block;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --header-font-size, 20px );
           font-weight: var( --header-font-weight, 700 );
           line-height: var( --header-line-height, 24px );
@@ -47,7 +47,7 @@ export default class RainforestHeader extends HTMLElement {
         p {
           color: var( --header-counter-color, #5f6b7a );
           display: inline-block;  
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;                  
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --header-counter-font-size, 20px );
           font-weight: var( --header-counter-font-weight, 400 );
           line-height: var( --header-counter-line-height, 24px );
@@ -97,7 +97,7 @@ export default class RainforestHeader extends HTMLElement {
         ::slotted( p[slot=description] ),
         ::slotted( span[slot=description] ) {          
           color: var( --header-description-color, #414d5c ) !important;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --header-description-font-size, 14px );
           font-weight: var( --header-description-font-weight, 400 );
           line-height: var( --header-description-line-height, 20px );

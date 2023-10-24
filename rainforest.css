@@ -1,30 +1,13 @@
-@import url( './styles/border-radius.css' );
-@import url( './styles/color/light.css' );
-@import url( './styles/spacing.css' );
-@import url( './styles/typography.css' );
-
 @font-face {
-  font-family: 'Amazon Ember';
-  font-weight: 300;
-  src: url( './fonts/AmazonEmber_Lt.ttf' ) format( 'truetype' );
-}
-
-@font-face {
-  font-family: 'Amazon Ember';
+  font-family: 'Open Sans';
   font-weight: 400;
-  src: url( './fonts/AmazonEmber_Rg.ttf' ) format( 'truetype' );
+  src: url( './fonts/OpenSans-Regular.ttf' ) format( 'truetype' );
 }
 
 @font-face {
-  font-family: 'Amazon Ember';
+  font-family: 'Open Sans';
   font-weight: 700;
-  src: url( './fonts/AmazonEmber_Bd.ttf' ) format( 'truetype' );
-}
-
-@font-face {
-  font-family: 'Amazon Ember';
-  font-weight: 900;
-  src: url( './fonts/AmazonEmber_He.ttf' ) format( 'truetype' );
+  src: url( './fonts/OpenSans-Bold.ttf' ) format( 'truetype' );
 }
 
 :root {
@@ -167,7 +150,7 @@ h4,
 h5,
 p {
   color: #000716;
-  font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
   margin: 0;      
   padding: 4px 0 4px 0;  
   text-rendering: optimizeLegibility;  
@@ -250,7 +233,7 @@ ol {
 ol li,
 ul li {
   color: #000716;
-  font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;

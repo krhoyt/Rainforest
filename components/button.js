@@ -34,7 +34,7 @@ export default class RainforestButton extends HTMLElement {
           cursor: var( --button-cursor, pointer );
           display: flex;
           flex-direction: row;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --button-font-size, 14px );
           font-weight: var( --button-font-weight, 700 );
           height: 32px;

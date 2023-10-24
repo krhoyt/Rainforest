@@ -16,7 +16,7 @@ export default class RainforestBox extends HTMLElement {
           color: var( --box-color, #000716 );
           cursor: var( --box-cursor, default );
           display: var( --box-display, block );
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --box-font-size, 14px );
           font-weight: var( --box-font-weight, 400 );
           line-height: var( --box-line-height, 20px );

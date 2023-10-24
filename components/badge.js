@@ -17,7 +17,7 @@ export default class RainforestBadge extends HTMLElement {
           box-sizing: border-box;
           color: var( --badge-color, #fbfbfb );
           cursor: var( --badge-cursor, default );
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: var( --badge-font-size, 12px );
           font-weight: var( --badge-font-weight, 400 );
           line-height: var( --badge-line-height, 20px );

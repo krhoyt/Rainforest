@@ -16,7 +16,7 @@ export default class RainforestInput extends HTMLElement {
           border-radius: 8px;
           box-sizing: border-box;
           color: #000716;
-          font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
