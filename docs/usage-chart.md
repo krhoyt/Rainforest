@@ -59,10 +59,10 @@ chart.addEventListener(
 | `error-text` | `string` | Text that is displayed when the chart is in error state, i.e. when statusType is set to "error". | - | `null` | ✅ |
 | `height` | `number` | An optional pixel value number that fixes the height of the chart area. | - | `60` | ✅ |
 | `hide-legend` | `boolean` | When set to true, the legend beneath the chart is not displayed. | - | `false` | ✅ |
-| `legend-formatter` | `function( object, number )` | Custom formatting of the legend labels. | - | `null` | ❌ |
+| `legend-formatter` | `function( series: object, total: number )` | Custom formatting of the legend labels. | - | `null` | ❌ |
 | `legend-title` | `string` | Optional title for the legend. | - | `null` | ✅ |
 | `loading-text` | `string` | Text that is displayed when the chart is loading, i.e. when statusType is set to "loading". | - | `null` | ✅ |
-| `series` | `array<title: string, data: number>` | Array that represents the source of data for the displayed chart. | - | `null` | ❌ |
+| `series` | `array<{title: string, data: number}>` | Array that represents the source of data for the displayed chart. | - | `null` | ❌ |
 | `status-type` | `string` | Specifies the current status of loading data. | `loading` \| `finished` \| `error` | `finished` | ✅ |
 | `title` | `string` | The title of chart. | - | `null` | ✅ |
 

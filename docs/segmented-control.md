@@ -49,8 +49,8 @@ None
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `options` | `array<{id: string, disabled: boolean, iconName: string, iconAlt: string, iconUrl: string, text: string>` | An array of objects representing options. | - | `null` | ❌ |
-| `selected-id`  | `string` | ID of the selected option. | - | `null` | ✅ |
+| `options` | `array<{id: string, disabled: boolean, iconName: string, iconAlt: string, iconUrl: string, text: string}>` | An array of objects representing options. | - | `null` | ❌ |
+| `selected-id` | `string` | ID of the selected option. | - | `null` | ✅ |
 
 ## Events
 
