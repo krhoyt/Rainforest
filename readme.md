@@ -30,7 +30,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 
 ## Getting Started
 
-You need two parts. First is a CSS file for fonts (Amazon Ember) and a few styles that are used across multiple compoonents. Second is the components themselves. You can load the components in two ways: all at once or a la carte.
+You need two parts. First is a CSS file for fonts (Open Sans) and a few styles that are used across multiple compoonents. Second is the components themselves. You can load the components in two ways: all at once or a la carte.
 
 ### CSS
 
@@ -40,9 +40,13 @@ You need two parts. First is a CSS file for fonts (Amazon Ember) and a few style
 
 ### All At Once
 
+While the overall size of the entire set of components is relatively small compared to most modern web sites, you should be cautious about using this approach. Everything will be loaded. This is great for development, or if you are using a majority of the components. It is not so great if you are only using a few components.
+
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.js" type="module"></script>
 ```
+
+> Rainforest components aim to be as atomic as possible. There are cases where components depend on other components, but this is the exception, not the rule.
 
 ### A La Carte
 
@@ -52,7 +56,7 @@ When loading a la carte, component dependencies are loaded by the components the
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
 ```
 
-That is it! Nope, there is no builder required. Nope, you do not install NPM anything. No cloning any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
+That is it! Nope, there is no builder required. Nope, you do not `npm install` anything. No `git clone` of any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
 
 ## Components
 
