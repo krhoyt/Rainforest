@@ -1,5 +1,3 @@
-import RainforestBox from "./box.js";
-
 export default class RainforestContainer extends HTMLElement {
   constructor() {
     super();
