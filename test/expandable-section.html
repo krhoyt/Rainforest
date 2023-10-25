@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Expandable Section - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+  </head>
+  <body>
+
+    <rf-expandable-section header-description="Test">
+      <span slot="header-text">Static website hosting</span>
+      After you enable your S3 bucket for static website
+      hosting, web browsers can access your content
+      through the Amazon S3 website endpoint for the
+      bucket.
+    </rf-expandable-section>
+    <rf-expandable-section variant="footer">
+      <span slot="header-text">Versioning</span>
+      Versioning provides an additional level of
+      protection by providing a way to recover from
+      accidental overwrites or expirations.
+    </rf-expandable-section>
+    <br>
+    <rf-expandable-section variant="container">
+      <span slot="header-text">Additional configuration</span>
+      Verify or edit the settings below.
+    </rf-expandable-section>    
+    <br>
+    <rf-expandable-section variant="container">
+      <rf-button slot="header-actions">Edit</rf-button>
+      <rf-link slot="header-info" variant="info">Info</rf-link>
+      <span slot="header-text">Additional configuration</span>
+      See your custom configuration here.
+    </rf-expandable-section>        
+    <br>    
+    <pre>
+&lt;rf-expandable-section&gt;
+  &lt;span slot=&quot;header-text&quot;&gt;Static website hosting&lt;/span&gt;
+  After you enable your S3 bucket for static website
+  hosting, web browsers can access your content
+  through the Amazon S3 website endpoint for the
+  bucket.
+&lt;/rf-expandable-section&gt;
+&lt;rf-expandable-section variant=&quot;footer&quot;&gt;
+  &lt;span slot=&quot;header-text&quot;&gt;Versioning&lt;/span&gt;
+  Versioning provides an additional level of
+  protection by providing a way to recover from
+  accidental overwrites or expirations.
+&lt;/rf-expandable-section&gt;
+&lt;rf-expandable-section variant=&quot;container&quot;&gt;
+  &lt;span slot=&quot;header-text&quot;&gt;Additional configuration&lt;/span&gt;
+  Verify or edit the settings below.
+&lt;/rf-expandable-section&gt;    
+&lt;rf-expandable-section variant=&quot;container&quot;&gt;
+  &lt;rf-button slot=&quot;header-actions&quot;&gt;Edit&lt;/rf-button&gt;
+  &lt;rf-link slot=&quot;header-info&quot; variant=&quot;info&quot;&gt;Info&lt;/rf-link&gt;
+  &lt;span slot=&quot;header-text&quot;&gt;Additional configuration&lt;/span&gt;
+  See your custom configuration here.
+&lt;/rf-expandable-section&gt;  
+    </pre>
+
+    <script src="../components/button.js" type="module"></script>
+    <script src="../components/expandable-section.js" type="module"></script>
+    <script src="../components/link.js" type="module"></script>
+
+  </body>
+</html>

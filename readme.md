@@ -55,8 +55,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Button](./docs/button.md)
 - [Checkbox](./docs/checkbox.md)
 - [Container](./docs/container.md)
-- Content Layout 📆
-- Expandable Section ✈️
+- Content Layout ✈️
+- [Expandable Section](./docs/expandable-section.md)
 - Flashbar 📆
 - Form Field ✈️
 - [Header](./docs/header.md)
