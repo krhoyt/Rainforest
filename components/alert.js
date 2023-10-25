@@ -14,10 +14,10 @@ export default class RainforestAlert extends HTMLElement {
         }
 
         div[part=alert] {
-          background-color: var( --color-background-status-info );
-          border-color: var( --color-border-status-info );
+          background-color: #f2f8fd;
+          border-color: #0972d3;
           border-style: solid;
-          border-radius: var( --border-radius-alert );
+          border-radius: 12px;
           border-width: 2px;          
           display: flex;
           flex-direction: row;
