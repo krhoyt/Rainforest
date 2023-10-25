@@ -35,6 +35,7 @@ A link component is an anchor tag that defines a hyperlink, which a user can int
 | `href` | `string` | The URL that the link points to. | - | `null` | ✅ |
 | `rel` | `string` | Adds a `rel` attribute to the link. | - | `null` | ✅ |
 | `target` | `string` | Specifies where to open the linked URL. | - | `null` | ✅ |
+| `title` | `string` | Adds a `title` attribute to the link. | - | `null` | ✅ |
 | `variant` | `string` | Determines the visual style of the link. | `primary` \| `secondary` \| `info` \| `awsui-value-large` | `secondary` | ✅ |
 
 ## Events

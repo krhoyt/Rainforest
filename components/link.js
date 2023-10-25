@@ -165,6 +165,7 @@ export default class RainforestLink extends HTMLElement {
   _render() {
     this.$link.href = this.href === null ? '' : this.href;
     this.$link.target = this.target === null ? '' : this.target;
+    this.$link.title = this.title === null ? '' : this.title;
 
     if( ( this.external || this.target === '_blank' ) && this.rel === null ) {
       this.$link.rel = 'noopener noreferrer';
@@ -191,6 +192,7 @@ export default class RainforestLink extends HTMLElement {
     this._upgrade( 'href' );    
     this._upgrade( 'rel' );        
     this._upgrade( 'target' );        
+    this._upgrade( 'title' );            
     this._upgrade( 'variant' );            
     this._render();
   }
@@ -204,6 +206,7 @@ export default class RainforestLink extends HTMLElement {
       'href',
       'rel',
       'target',
+      'title',
       'variant'
     ];
   }
@@ -316,6 +319,22 @@ export default class RainforestLink extends HTMLElement {
       this.removeAttribute( 'target' );
     }
   }  
+
+  get title() {
+    if( this.hasAttribute( 'title' ) ) {
+      return this.getAttribute( 'title' );
+    }
+
+    return null;
+  }
+
+  set title( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'title', value );
+    } else {
+      this.removeAttribute( 'title' );
+    }
+  }
 
   get variant() {
     if( this.hasAttribute( 'variant' ) ) {
