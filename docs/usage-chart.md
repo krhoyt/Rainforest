@@ -7,6 +7,7 @@ Visualizes one series of data, with an emphasis on the total amount of each data
 ## Importing
 
 ``` html
+<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/usage-chart.js" type="module"></script>
 ```
 
