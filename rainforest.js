@@ -16,3 +16,4 @@ import RainforestSpinner from "./components/spinner.js";
 import RainforestStatusIndicator from "./components/status-indicator.js";
 import RainforestTextContent from "./components/text-content.js";
 import RainforestToggle from "./components/toggle.js";
+import RainforestUsageChart from "./components/usage-chart.js";

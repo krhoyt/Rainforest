@@ -73,6 +73,7 @@ That is it! Nope, there is no builder required. Nope, you do not install NPM any
 - [Status Indicator](./docs/status-indicator.md)
 - [Text Content](./docs/text-content.md)
 - [Toggle](./docs/toggle.md)
+- [Usage Chart](./docs/usage-chart.md)
 
 ## Some Differences to Consider
 
