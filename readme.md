@@ -4,20 +4,6 @@ Set of standards-based web components following the [Cloudscape Design System](h
 
 ## Why?
 
-When I started at Amazon Web Services (AWS), I had ideas for projects I wanted to build. This is in fact a core operational behavior at Amazon called "mechanisms". In order to build a UI for my projects, I wanted to leverage the corporate design system, Cloudscape (previously Polaris). The design system is based on React, which as a web standards purist was a bridge I was just not willing to cross.
-
-I asked the Cloudscape team if they had a web components version planned and if I could contribute to such a project. The response I got was "Why would we ever consider web components?" This is a direct quote, and this response blows my mind. Why would we ever use web standards? 
-
-Why would you ever consider React?
-
-> Trying desperately to avoid a flame war. 🔥
-
-Okay, so the answer was a clear "No". Well, I guess I will just have to do it myself. And here we are. If your skill level includes some HTML and some JavaScript, Rainforest can help you build a Cloudscape-themed application. Or at the very least, get you a bad ass proof of concept. 💥
-
-I have used the Rainforest components to build AWS-internal applications. They work well in the "real world". Where feasible the project aims for feature/API parity (with the occassional exceptions).
-
-## Wait. Why?
-
 - Web standards
 - Minimal barrier to entry
 - Easy to get started
@@ -25,6 +11,7 @@ I have used the Rainforest components to build AWS-internal applications. They w
 - No framework required
 - No build required
 - Works with frameworks
+- Highly customizable
 
 > This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for his internal projects.
 
