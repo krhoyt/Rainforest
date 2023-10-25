@@ -29,6 +29,12 @@
       domain="Total Volume size" 
       height="60"
       title="Volume ID: vol-0faa6deaa256cd275 (name tag)">
+      <rf-box color="text-status-inactive" font-weight="bold" slot="empty">
+        No data available
+      </rf-box>
+      <rf-box color="text-status-inactive" slot="empty">
+        There is no data available
+      </rf-box>
     </rf-usage-chart>
     <br>
     <pre>
@@ -37,6 +43,12 @@
   domain=&quot;Total Volume size&quot; 
   height=&quot;60&quot;
   title=&quot;Volume ID: vol-0faa6deaa256cd275 (name tag)&quot;&gt;
+  &lt;rf-box color=&quot;text-status-inactive&quot; font-weight=&quot;bold&quot; slot=&quot;empty&quot;&gt;
+    No data available
+  &lt;/rf-box&gt;
+  &lt;rf-box color=&quot;text-status-inactive&quot; slot=&quot;empty&quot;&gt;
+    There is no data available
+  &lt;/rf-box&gt;
 &lt;/rf-usage-chart&gt;
     </pre>
     <pre>
@@ -51,8 +63,10 @@ chart.legendFormatter = ( series, total ) => series.title + ' ' + series.data + 
 chart.series = series;
 chart.addEventListener( 'rf-highlight-change', ( evt ) => console.log( evt.detail.highlightedSeries ) );      
     </pre>
-    
+
+    <script src="../components/box.js" type="module"></script>
     <script src="../components/usage-chart.js" type="module"></script>
+    
     <script>
       const series = [
         {title: 'Data (C:)', data: 2},

@@ -19,6 +19,12 @@ Visualizes one series of data, with an emphasis on the total amount of each data
   domain="Total Volume size" 
   height="60"
   title="Volume ID: vol-0faa6deaa256cd275 (name tag)">
+  <rf-box color="text-status-inactive" font-weight="bold" slot="empty">
+    No data available
+  </rf-box>
+  <rf-box color="text-status-inactive" slot="empty">
+    There is no data available
+  </rf-box>
 </rf-usage-chart>
 ```
 
@@ -48,8 +54,17 @@ chart.addEventListener(
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `options` | `array<{id: string, disabled: boolean, iconName: string, iconAlt: string, iconUrl: string, text: string>` | An array of objects representing options. | - | `null` | ❌ |
-| `selected-id`  | `string` | ID of the selected option. | - | `null` | ✅ |
+| `description` | `string` | Further description of the domain title if needed. | - | `null` | ✅ |
+| `domain` | `string` | Determines the domain of the x-axis, i.e. the range of values that will be visible in the chart. | - | `null` | ✅ |
+| `error-text` | `string` | Text that is displayed when the chart is in error state, i.e. when statusType is set to "error". | - | `null` | ✅ |
+| `height` | `number` | An optional pixel value number that fixes the height of the chart area. | - | `60` | ✅ |
+| `hide-legend` | `boolean` | When set to true, the legend beneath the chart is not displayed. | - | `false` | ✅ |
+| `legend-formatter` | `function( object, number )` | Custom formatting of the legend labels. | - | `null` | ❌ |
+| `legend-title` | `string` | Optional title for the legend. | - | `null` | ✅ |
+| `loading-text` | `string` | Text that is displayed when the chart is loading, i.e. when statusType is set to "loading". | - | `null` | ✅ |
+| `series` | `array<title: string, data: number>` | Array that represents the source of data for the displayed chart. | - | `null` | ❌ |
+| `status-type` | `string` | Specifies the current status of loading data. | `loading` \| `finished` \| `error` | `finished` | ✅ |
+| `title` | `string` | The title of chart. | - | `null` | ✅ |
 
 ## Events
 

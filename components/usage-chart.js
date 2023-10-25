@@ -56,10 +56,12 @@ export default class RainforestUsageChart extends HTMLElement {
           line-height: 20px;
         }
 
+        div[part=empty],
         div[part=error],
         div[part=loading] {
           align-items: center;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           margin: 40px 0 40px 0;
         }
@@ -108,6 +110,10 @@ export default class RainforestUsageChart extends HTMLElement {
           padding: 6px 0 0 0;
         }        
 
+        .empty {
+          display: none !important;
+        }
+
         :host( [hide-legend] ) div[part=legend] { display: none; }
         :host( :not( [legend-title] ) ) p[part=legend-title] { display: none; }
         :host( :not( [description] ) ) p[part=description] { display: none; }        
@@ -116,10 +122,12 @@ export default class RainforestUsageChart extends HTMLElement {
         :host( :not( [status-type=loading] ) ) div[part=loading] { display: none; }
         :host( :not( [status-type=error] ) ) div[part=error] { display: none; }
         :host( [status-type=error] ) div[part=chart],
+        :host( [status-type=error] ) div[part=empty],
         :host( [status-type=error] ) div[part=loading],
         :host( [status-type=error] ) div[part=legend],
         :host( [status-type=error] ) p[part=title],
         :host( [status-type=loading] ) div[part=chart],
+        :host( [status-type=loading] ) div[part=empty],        
         :host( [status-type=loading] ) div[part=error],
         :host( [status-type=loading] ) div[part=legend],
         :host( [status-type=loading] ) p[part=title],
@@ -180,8 +188,10 @@ export default class RainforestUsageChart extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
+    this.$chart = this.shadowRoot.querySelector( 'div[part=chart]' );
     this.$description = this.shadowRoot.querySelector( 'p[part=description]' );    
     this.$domain = this.shadowRoot.querySelector( 'p[part=domain]' );
+    this.$empty = this.shadowRoot.querySelector( 'div[part=empty]' );
     this.$error = this.shadowRoot.querySelector( 'rf-status-indicator[type=error]' );
     this.$errorPart = this.shadowRoot.querySelector( 'div[part=error]' );
     this.$legend = this.shadowRoot.querySelector( 'div[part=legend]' );        
@@ -235,6 +245,22 @@ export default class RainforestUsageChart extends HTMLElement {
     this.$loading.innerText = this.loadingText === null ? 'Loading chart' : this.loadingText;
     this.$errorPart.style.height = this.height === null ? '60px' : `${this.height}px`;
     this.$error.innerText = this.errorText === null ? 'The data couldn\'t be fetched. Try again later.' : this.errorText;
+
+    if( this._series.length === 0 ) {
+      this.$empty.classList.remove( 'empty' );
+      this.$chart.classList.add( 'empty' );
+      this.$errorPart.classList.add( 'empty' );
+      this.$legend.classList.add( 'empty' );
+      this.$legendTitle.classList.add( 'empty' );
+      this.$title.classList.add( 'empty' );
+    } else {
+      this.$empty.classList.add( 'empty' );
+      this.$chart.classList.remove( 'empty' );
+      this.$errorPart.classList.remove( 'empty' );
+      this.$legend.classList.remove( 'empty' );
+      this.$legendTitle.classList.remove( 'empty' );
+      this.$title.classList.remove( 'empty' );      
+    }
   }
 
   // Promote properties
