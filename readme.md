@@ -48,6 +48,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 ## Components
 
 - [Alert](./docs/alert.md)
+- Avatar ❓⚠️
 - [Badge](./docs/badge.md)
 - [Box](./docs/box.md)
 - Breadcrumb Group ✈️
@@ -64,6 +65,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Link](./docs/link.md)
 - Multiselect ❓
 - Popover 📆
+- Rating ❓⚠️
 - Radio Group ❓
 - Select ❓
 - [Space Between](./docs/space-between.md)
