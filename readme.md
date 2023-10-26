@@ -56,6 +56,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Checkbox](./docs/checkbox.md)
 - [Container](./docs/container.md)
 - Content Layout ✈️
+- Date Picker ❓
 - [Expandable Section](./docs/expandable-section.md)
 - Flashbar 📆
 - Form Field ✈️
