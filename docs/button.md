@@ -9,6 +9,10 @@ Allows users to initiate actions in the user interface.
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
 ```
 
+<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
+<rf-button variant="primary">Button</rf-button>
+
 ## Examples
 
 ``` html
