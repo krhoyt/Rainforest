@@ -30,7 +30,7 @@ None
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `items` | `Array<{text: string, href: string}>` | Collection of items representing breadcrumbs | - | `null` | X |
+| `items` | `Array<{text: string, href: string}>` | Collection of items representing breadcrumbs | - | `null` | ❌ |
 
 ## Events
 
