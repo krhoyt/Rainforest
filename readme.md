@@ -54,6 +54,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Breadcrumb Group](./docs/breadcrumb-group.md)
 - [Button](./docs/button.md)
 - [Checkbox](./docs/checkbox.md)
+- Calendar ❓
 - [Container](./docs/container.md)
 - Content Layout ✈️
 - Date Picker ❓
