@@ -1,7 +1,3 @@
-import RainforestBox from './box.js';
-import RainforestIcon from './icon.js';
-import RainforestLink from './link.js'
-
 export default class RainforestBreadcrumbGroup extends HTMLElement {
   constructor() {
     super();
@@ -15,13 +11,29 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
           position: relative;
         }
 
-        :host( [concealed] ) {
-          visibility: hidden;
-        }        
+        a {
+          color: #0972d3;
+          display: inline-block;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+        }
 
-        :host( [hidden] ) {
-          display: none;
-        }        
+        a:hover {
+          color: #033160;
+        }
+
+        p {
+          color: #5f6b7a;
+          display: inline-block;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 20px;   
+          margin: 0;
+          padding: 0;       
+        }
 
         ol {
           align-items: center;
@@ -40,15 +52,8 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
           padding: 0;
         }
 
-        rf-box::part( box ) {
-          padding: 0;
-        }
-
-        rf-icon {
-          margin: 0 8px 0 8px;
-        }
-
-        rf-icon::part( icon ) {
+        img {
+          display: inline-block;
           filter:
             brightness( 0 ) 
             saturate( 100% )                    
@@ -57,14 +62,17 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
             saturate( 225% ) 
             hue-rotate( 173deg ) 
             brightness( 92% ) 
-            contrast( 86% );
+            contrast( 86% );          
+          height: 16px;
+          margin: 0 8px 0 8px;
+          object-fit: contain;
+          width: 16px;
         }
       </style>
       <ol part="list"></ol>
     `;
 
     // Properties
-    this._data = null;
     this._items = [];
 
     // Root
@@ -90,19 +98,13 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'concealed' );    
-    this._upgrade( 'data' );            
-    this._upgrade( 'hidden' );    
     this._upgrade( 'items' );       
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
-    return [
-      'concealed',
-      'hidden'
-    ];
+    return [];
   }
 
   // Observed tag attribute has changed
@@ -114,14 +116,6 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
   // Properties
   // Not reflected
   // Array, Date, Object, null 
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
-  }
-
   get items() {
     return this._items.length === 0 ? null : this._items;
   }
@@ -136,71 +130,25 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
       const item = document.createElement( 'li' );
 
       if( i < ( this._items.length - 1 ) ) {
-        const element = document.createElement( 'rf-link' );      
-        element.content = this._items[i].text;
-        element.href = this._items[i].href;
-        element.variant = 'primary';
-        item.appendChild( element );   
+        const anchor = document.createElement( 'a' );      
+        anchor.innerText = this._items[i].hasOwnProperty( 'text' ) ? this._items[i].text : '';
+        anchor.href = this._items[i].hasOwnProperty( 'href' ) ? this._items[i].href : '';
+        item.appendChild( anchor );   
         
-        const icon = document.createElement( 'rf-icon' );
-        icon.name = 'angle-right';
-        item.appendChild( icon );
+        const image = document.createElement( 'img' );
+        image.src = '../icons/angle-right.svg';
+        item.appendChild( image );
 
         this.$list.appendChild( item );                
       } else {
-        const element = document.createElement( 'rf-box' );  
-        element.color = 'text-status-inactive';    
-        element.content = this._items[i].text;
-        element.variant = 'strong';
-        item.appendChild( element );   
+        const paragraph = document.createElement( 'p' );  
+        paragraph.innerText = this._items[i].hasOwnProperty( 'text' ) ? this._items[i].text : '';
+        item.appendChild( paragraph );   
 
         this.$list.appendChild( item );                        
       }
     }
   }  
-
-  // Attributes
-  // Reflected
-  // Boolean, Number, String, null
-  get concealed() {
-    return this.hasAttribute( 'concealed' );
-  }
-
-  set concealed( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'concealed' );
-      } else {
-        this.setAttribute( 'concealed', '' );
-      }
-    } else {
-      this.removeAttribute( 'concealed' );
-    }
-  }
-
-  get hidden() {
-    return this.hasAttribute( 'hidden' );
-  }
-
-  set hidden( value ) {
-    if( value !== null ) {
-      if( typeof value === 'boolean' ) {
-        value = value.toString();
-      }
-
-      if( value === 'false' ) {
-        this.removeAttribute( 'hidden' );
-      } else {
-        this.setAttribute( 'hidden', '' );
-      }
-    } else {
-      this.removeAttribute( 'hidden' );
-    }
-  }
 }
 
 window.customElements.define( 'rf-breadcrumb-group', RainforestBreadcrumbGroup );

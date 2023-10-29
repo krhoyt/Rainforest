@@ -28,24 +28,16 @@ None
 
 ## Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` | Arbitrary data storage |
-| `items` | `Array<{text: String, href: String}>` | Collection of items representing breadcrumbs |
-
-## Attributes
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `concealed` | `boolean` | Do not show, but leave in DOM flow |      
-| `hidden` | `boolean` | Do not show in DOM |
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `items` | `Array<{text: string, href: string}>` | Collection of items representing breadcrumbs | - | `null` | X |
 
 ## Events
 
-| Name | Description |
-| --- | --- |
-| `rf-click` | Clicked on a breadcrumb |
-| `rf-follow` | Clicked on a breadcrumb with modifier |
+| Name | Description | Detail |
+| --- | --- | --- |
+| `rf-click` | Called when the user clicks on a breadcrumb item. | `{external: boolean, href: string, item: object, target: string, text: string}` |
+| `rf-follow` | Called when the user clicks on a breadcrumb item with the left mouse button without pressing modifier keys (that is, CTRL, ALT, SHIFT, META). | `{external: boolean, href: string, item: object, target: string, text: string}` |
 
 ## Methods
 
@@ -59,6 +51,4 @@ None
 
 ## Dependencies
 
-- `rf-box`
-- `rf-icon`
-- `rf-link`
+None
