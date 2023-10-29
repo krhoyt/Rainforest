@@ -51,7 +51,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - Avatar ❓⚠️
 - [Badge](./docs/badge.md)
 - [Box](./docs/box.md)
-- Breadcrumb Group ✈️
+- [Breadcrumb Group](./docs/breadcrumb-group.md)
 - [Button](./docs/button.md)
 - [Checkbox](./docs/checkbox.md)
 - [Container](./docs/container.md)
