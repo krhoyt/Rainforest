@@ -72,6 +72,9 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
       <ol part="list"></ol>
     `;
 
+    // Events
+    this.onClick = this.onClick.bind( this );
+
     // Properties
     this._items = [];
 
@@ -81,6 +84,27 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
 
     // Elements
     this.$list = this.shadowRoot.querySelector( 'ol' );
+  }
+
+  onClick( evt ) {
+    const index = parseInt( evt.currentTarget.getAttribute( 'data-index' ) );
+    const detail = {
+      external: evt.target.href.indexOf( '//' ) ? true : false,
+      href: evt.target.href,
+      item: this._items[index],
+      target: evt.target.target,
+      text: evt.target.innerText
+    }
+
+    if( !evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey ) {
+      this.dispatchEvent( new CustomEvent( 'rf-follow', {
+        detail: detail
+      } ) );
+    }
+
+    this.dispatchEvent( new CustomEvent( 'rf-click', {
+      detail: detail
+    } ) );
   }
 
   // When things change
@@ -128,6 +152,8 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
 
     for( let i = 0; i < this._items.length; i++ ) {
       const item = document.createElement( 'li' );
+      item.setAttribute( 'data-index', i );
+      item.addEventListener( 'click', this.onClick );
 
       if( i < ( this._items.length - 1 ) ) {
         const anchor = document.createElement( 'a' );      
