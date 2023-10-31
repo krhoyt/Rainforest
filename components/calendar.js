@@ -184,6 +184,7 @@ export default class RainforestCalendar extends HTMLElement {
     // Private
     this._displayed = new Date();
     this._enabled = null;
+    this._selected = null;    
 
     // Events
     this.onDateClick = this.onDateClick.bind( this );
@@ -238,11 +239,11 @@ export default class RainforestCalendar extends HTMLElement {
       this._displayed = new Date( selected.getTime() );
     }
 
-    console.log( selected );
+    this._selected = new Date( selected.getTime() );
     this.value = 
-      selected.getFullYear() + '-' +
-      ( selected.getMonth() + 1 ).toString( 10 ).padStart( 2, '0' ) + '-' +
-      selected.getDate().toString( 10 ).padStart( 2, '0' );      
+      this._selected.getFullYear() + '-' +
+      ( this._selected.getMonth() + 1 ).toString( 10 ).padStart( 2, '0' ) + '-' +
+      this._selected.getDate().toString( 10 ).padStart( 2, '0' );      
 
     this.dispatchEvent( new CustomEvent( 'rf-change', {
       detail: {
@@ -259,6 +260,33 @@ export default class RainforestCalendar extends HTMLElement {
       this.$calendar.appendChild( date );
     }
 
+
+    if( this._selected !== null ) {
+      const match = 
+        this._selected.getFullYear() + '-' +
+        ( this._selected.getMonth() + 1 ).toString( 10 ).padStart( 2, '0' ) + '-' +
+        this._selected.getDate().toString( 10 ).padStart( 2, '0' );
+
+      if( this.value !== null ) {
+        if( match !== this.value ) {
+          this._displayed = new Date( Date.UTC( this.value ) );
+          this._selected = new Date( Date.UTC( this.value ) );
+        }
+      }
+    } else {
+      if( this.value !== null ) {
+        this._displayed = new Date( this.value );
+        this._selected = new Date( this.value );
+      }
+    }
+
+    console.log( this._selected );
+
+    const displayed = this._displayed === null ? new Date() : new Date( this._displayed );
+    const selected = this._selected === null ? null : new Date( this._selected.getTime() );
+    const today = new Date();
+
+    /*
     let displayed = this._displayed === null ? new Date() : new Date( this._displayed );
     if( this.value !== null ) {
       this._displayed = new Date( this.value );
@@ -268,6 +296,7 @@ export default class RainforestCalendar extends HTMLElement {
     const selected = this.value === null ? null : new Date( this.value );
     console.log( selected );
     const today = new Date();    
+    */
 
     const formatted = new Intl.DateTimeFormat( navigator.language, {
       month: 'long',
