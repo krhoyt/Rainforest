@@ -42,12 +42,17 @@ export default class RainforestButton extends HTMLElement {
           margin: var( --button-margin, 0 );
           outline: none;
           overflow: hidden;          
-          padding: var( --button-padding, 4px 20px 4px 20px );
+          /* padding: var( --button-padding, 4px 20px 4px 20px ); */
+          padding: var( --button-padding, 4px 6px 4px 6px );
           text-overflow: ellipsis;                    
           text-rendering: optimizeLegibility;
           white-space: nowrap;          
           width: 100%;
           -webkit-tap-highlight-color: transparent;
+        }
+
+        button.content {
+          padding: var( --button-padding, 4px 20px 4px 20px );
         }
 
         button:not( [disabled] ):hover {
@@ -75,8 +80,13 @@ export default class RainforestButton extends HTMLElement {
             contrast( 93% )
           );            
           height: 16px;
-          margin: 0 8px 0 -4px;
+          /* margin: 0 8px 0 -4px; */
+          margin: 0;
           width: 16px;
+        }
+
+        button.content img {
+          margin: 0 8px 0 -4px;          
         }
 
         rf-spinner {
@@ -343,6 +353,14 @@ export default class RainforestButton extends HTMLElement {
       } ) );
     } );
     this.$icon = this.shadowRoot.querySelector( 'img' );  
+    this.$slot = this.shadowRoot.querySelector( 'slot' );
+    this.$slot.addEventListener( 'slotchange', ( evt ) => {
+      if( evt.target.assignedNodes().length === 0 ) {
+        this.$button.classList.remove( 'content' );
+      } else {
+        this.$button.classList.add( 'content' );
+      }
+    } )
   }
 
   // Force focus
