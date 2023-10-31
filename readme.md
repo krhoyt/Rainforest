@@ -60,7 +60,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ❓ Date Picker 
 - ✅ [Expandable Section](./docs/expandable-section.md)
 - 📆 Flashbar
-- ✈️ Form Field
+- ✅ [Form Field](./docs/form-field.md)
 - ✈️ Header
 - ✅ [Icon](./docs/icon.md)
 - ✅ [Input](./docs/input.md)
@@ -80,8 +80,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✅ Implemented (18)   
-✈️ In-flight/progress (3)  
+✅ Implemented (19)   
+✈️ In-flight/progress (2)  
 📆 Planned  (3)   
 ❓ To be determined (8)  
 ⚠️ Not part of Cloudscape (3)
