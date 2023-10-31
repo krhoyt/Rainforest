@@ -88,85 +88,50 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 
 ## Some Differences to Consider
 
-Cloudscape uses the React framework. There are ideomatic ways in which React is used. Some of these constructs do not suit web standards well. There are ideomatic ways that web components are used as well. Where those differences are significant is discussed in the following sections. Otherwise Rainforest aims for feature/API parity.
+Cloudscape uses the React framework. Rainforest uses web components, and is not a framework. There are ideomatic ways in which each is used. 
 
-### A Dash of Prefix
+### Tag Prefix
 
-Web components are required to have a prefix to avoid collision in naming. You might use a `Button` web component from one project, and then a `Calendar` component from another, where the `Calendar` uses a `Button` as well - a button from its own project. Which `Button` should be used where? Prefixing avoids this collision. 
-
-The prefix for Rainforest is `rf-`. Open and close tags are required for web components.
+Web components are required to have a prefix to avoid collision in naming. The prefix for Rainforest is `rf-`. Open and close tags are required for web components.
 
 ``` html
 <rf-button>Button</rf-button> <!-- HTML -->
 <Button>Button</Button> <!-- Cloudscape/React -->
 ```
 
-### Attributes vs Properties
+### Reflection
 
-Attributes are the name/value pairs used in HTML (i.e. `<img src="">`). When an HTML element is accessed from JavaScript however, attributes are properties on that object instance (i.e. `image.src = ""`). HTML attributes have a limited set of data types that are supported. These are `string`, `float`, `integer`, `boolean` and `null`. JavaScript properties by comparison can be whatever data type you need. An `array` of `objects` is a common pattern.
+Attributes are the name/value pairs used in HTML (i.e. `<img src="">`). When an HTML element is accessed from JavaScript however, attributes are properties on that object instance (i.e. `image.src = ""`). Being able to use `src` in both situations is called, reflection. The reflected data types are `string`, `float`, `integer`, `boolean` and `null`. Other types such as `array`, `date`, and `function` are available only as properties.
 
-With web components, for values within the finite set of data types, attributes are "reflected" as properties. Properties exist on the object instances for values where the data type is not appropriate for an attribute (i.e. `array`). These properties are not exposed as attributes.
+### Composition
 
-### Slots
-
-Cloudscape/React exposes slots as properties on any given component. This means that you can supply an inline string such as `footer="This is footer content"` or the structure of an entire component such as `footer="<ExpandableSection ...`. These are two very different things in web components.
-
-Rainforest tries to find a happy middle. The preferred usage is named slots, inline with standards-based web components, for more complex composition. Additionally, slot names are also available as attributes. These attributes take a string value and assign that value to the content of an internal `Box` element.
-
-#### Cloudscape/React
-
-``` JavaScript
-export default () => {
-  return (
-    <Header
-      variant="h1"
-      actions={
-        <SpaceBetween 
-          direction="horizontal" 
-          size="xs">
-          <Button>Secondary button</Button>
-          <Button variant="primary">
-            Primary button
-          </Button>
-        </SpaceBetween>
-      }
-    >
-      Page title
-    </Header>
-  );
-}
-```
-
-#### Web Components
+Slots allow pieces of content to be placed in specific parts of a web component. When there are multiple slots, they will be named. This allows for "composition" of content. In order to specify the slot name, a tag must be used. In the case of a component where there are multiple strings to specify, a `span` element can be used. Content without slot names are placed in the "default" slot.
 
 ``` html
-<rf-header 
-  title="Page title"
-  variant="h1">
-  <rf-space-between 
-    direction="horizontal" 
-    size="xs"
-    slot="actions">
-    <rf-button>Secondary button</rf-button>
-    <rf-button variant="primary">
-      Primary button
-    </rf-button>
-  </rf-space-between>
-  <!-- Title could also go here -->
-<rf-header>
+<rf-form-field>
+  <rf-input></rf-input> <!-- No slot name === default slot -->  
+  Form field label <!-- Where does this go? -->
+  This is a description <!-- Where does this go? -->
+</rf-form-field>
 ```
+
+``` html
+<rf-form-field>
+  <rf-input></rf-input> <!-- Default -->
+  <span slot="label">Form field label</span> <!-- Label -->
+  <span slot="description">This is a description</span> <!-- Description -->
+</rf-form-field>
+```
+
+> When the Cloudscape API calls something a slot, it is implmented as such in Rainforest. It cannot be accessed as a property or attribute as in React.
 
 ### Icons
 
-Cloudscape has many icons available to it. These icons are in SVG format. When the `icon-name` attribute is set on the `Icon` component, that SVG file is loaded, parsed, modified if needed, and placed into the DOM as SVG. This is a common approach for many component libraries due in part for the need to ship only one icon file, but be able to change the icon color to whatever is needed at runtime.
-
-Rainforest takes a different approach by using CSS Filters to change the color of an icon. When the `icon-name` attribute is set on the `RainforestIcon` component, that SVG file is assigned to the `src` attribute of an `Image` element. The image element loads and sizes the file as it would any other SVG file. When the `variant` property is set, a filter is added via CSS to match the color specified in the design system.
-
-This means that Rainforest can support and color **any single color SVG file from any source**. This technique also works on image file format that support a transparent background. The Cloudscape `Icon.svg` slot, and other SVG-related slots, are not necessary with this approach, and not support in Rainforest.
+Cloudscape has many icons available to it. These icons are in SVG format. The same icon set is available in Rainforest. Icon color in Cloudscape is accomplished by parsing the SVG file, and altering it at runtime. Icon color in Rainforest is accomplished through CSS Filters. This means that Rainforest supports **any SVG file from any source**. It even works with transparent raster files such as **GIF and PNG**.
 
 > This approach generally yields an output color *very close* to the original, but not necessarily an exact match. Close enough to where the human eye will not likely notice the difference in practice. A [color utility](./demo/color.html) is included for testing.
 
-### Item Renderers
+### Renderers
 
 There are places in Cloudscape where the API prefers setting an `items` array over composition. This pattern is common in enterprise components. In some of those instances, for example with `Breadcrumb Group` that the `items` can be an array of any object type. This is useful when an API result needs to populate a component and there may be more properties in the response than are needed to populate the component.
 
