@@ -45,7 +45,7 @@ When loading a la carte, component dependencies are loaded by the components the
 
 That is it! Nope, there is no builder required. Nope, you do not `npm install` anything. No `git clone` of any repositories. No command line tools to setup the directories and dependencies in just the right way. All you need is an HTML page; add two tags and you are done. Welcome to web standards. 🤯
 
-## Components
+## Components   
 
 - [Alert](./docs/alert.md)
 - Avatar ❓⚠️
@@ -54,14 +54,14 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Breadcrumb Group](./docs/breadcrumb-group.md)
 - [Button](./docs/button.md)
 - [Checkbox](./docs/checkbox.md)
-- Calendar ❓
+- [Calendar](./docs/calendar.md)
 - [Container](./docs/container.md)
 - Content Layout ✈️
 - Date Picker ❓
 - [Expandable Section](./docs/expandable-section.md)
 - Flashbar 📆
 - Form Field ✈️
-- [Header](./docs/header.md)
+- Header ✈️
 - [Icon](./docs/icon.md)
 - [Input](./docs/input.md)
 - [Link](./docs/link.md)
@@ -80,10 +80,11 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - [Toggle](./docs/toggle.md)
 - [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✈️ In-flight/progress  
-📆 Planned  
-❓ To be determined (TBD)  
-⚠️ Not part of Cloudscape
+✅ Implemented (18)   
+✈️ In-flight/progress (3)  
+📆 Planned  (3)   
+❓ To be determined (8)  
+⚠️ Not part of Cloudscape (3)
 
 ## Some Differences to Consider
 

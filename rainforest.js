@@ -3,6 +3,7 @@ import RainforestBadge from "./components/badge.js";
 import RainforestBox from "./components/box.js";
 import RainforestBreadcrumbGroup from "./components/breadcrumb-group.js";
 import RainforestButton from "./components/button.js";
+import RainforestCalendar from "./components/calendar.js";
 import RainforestCheckbox from "./components/checkbox.js";
 import RainforestContainer from "./components/container.js";
 import RainforestExpandableSection from "./components/expandable-section.js";
