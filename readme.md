@@ -47,38 +47,38 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 
 ## Components   
 
-- [Alert](./docs/alert.md)
-- Avatar ❓⚠️
-- [Badge](./docs/badge.md)
-- [Box](./docs/box.md)
-- [Breadcrumb Group](./docs/breadcrumb-group.md)
-- [Button](./docs/button.md)
-- [Checkbox](./docs/checkbox.md)
-- [Calendar](./docs/calendar.md)
-- [Container](./docs/container.md)
-- Content Layout ✈️
-- Date Picker ❓
-- [Expandable Section](./docs/expandable-section.md)
-- Flashbar 📆
-- Form Field ✈️
-- Header ✈️
-- [Icon](./docs/icon.md)
-- [Input](./docs/input.md)
-- [Link](./docs/link.md)
-- Multiselect ❓
-- Popover 📆
-- Rating ❓⚠️
-- Radio Group ❓
-- Select ❓
-- [Space Between](./docs/space-between.md)
-- [Spinner](./docs/spinner.md)
-- [Status Indicator](./docs/status-indicator.md)
-- Table ❓
-- Tabs ❓
-- Text Area 📆
-- [Text Content](./docs/text-content.md)
-- [Toggle](./docs/toggle.md)
-- [Usage Chart](./docs/usage-chart.md) ⚠️
+- ✅ [Alert](./docs/alert.md)
+- ❓ Avatar ⚠️
+- ✅ [Badge](./docs/badge.md)
+- ✅ [Box](./docs/box.md)
+- ✅ [Breadcrumb Group](./docs/breadcrumb-group.md)
+- ✅ [Button](./docs/button.md)
+- ✅ [Checkbox](./docs/checkbox.md)
+- ✅ [Calendar](./docs/calendar.md)
+- ✅ [Container](./docs/container.md)
+- ✈️ Content Layout 
+- ❓ Date Picker 
+- ✅ [Expandable Section](./docs/expandable-section.md)
+- 📆 Flashbar
+- ✈️ Form Field
+- ✈️ Header
+- ✅ [Icon](./docs/icon.md)
+- ✅ [Input](./docs/input.md)
+- ✅ [Link](./docs/link.md)
+- ❓ Multiselect
+- 📆 Popover
+- ❓ Rating ⚠️
+- ❓ Radio Group
+- ❓ Select
+- ✅ [Space Between](./docs/space-between.md)
+- ✅ [Spinner](./docs/spinner.md)
+- ✅ [Status Indicator](./docs/status-indicator.md)
+- ❓ Table
+- ❓ Tabs
+- 📆 Text Area
+- ✅ [Text Content](./docs/text-content.md)
+- ✅ [Toggle](./docs/toggle.md)
+- ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
 ✅ Implemented (18)   
 ✈️ In-flight/progress (3)  

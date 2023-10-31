@@ -21,6 +21,7 @@ export default class RainforestExpandableSection extends HTMLElement {
           text-rendering: optimizeLegibility;
         }
 
+            saturate( 6363% )
         div[part=left] {
           align-items: baseline;
           cursor: pointer;
