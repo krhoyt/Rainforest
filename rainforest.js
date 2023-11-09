@@ -12,6 +12,7 @@ import RainforestHeader from "./components/header.js";
 import RainforestIcon from "./components/icon.js";
 import RainforestInput from "./components/input.js";
 import RainforestLink from "./components/link.js";
+import RainforestPolarChart from "./components/polar-chart.js";
 import RainforestSegmentedControl from "./components/segmented-control.js";
 import RainforestSpaceBetween from "./components/space-between.js";
 import RainforestSpinner from "./components/spinner.js";
