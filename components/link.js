@@ -26,6 +26,8 @@ export default class RainforestLink extends HTMLElement {
           outline: none;
           padding: 0;
           text-decoration: none;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 0.25em;
           text-rendering: optimizeLegibility;
           -webkit-tap-highlight-color: transparent;          
         }
