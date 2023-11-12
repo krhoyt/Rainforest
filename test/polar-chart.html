@@ -16,23 +16,17 @@
     <rf-polar-chart></rf-polar-chart>
     <br>
     <pre>
-&lt;rf-usage-chart 
-&lt;/rf-usage-chart&gt;
+&lt;rf-polar-chart 
+&lt;/rf-polar-chart&gt;
     </pre>
     <pre>
 const series = [
-  {title: 'Data (C:)', data: [1, 2, 3, 4, 5]},
-  {title: 'Image (D:)', data: [5, 4, 3, 2, 1]},
-  {title: 'Video (D:)', data: [6, 7, 8, 9, 10]},
-  {title: 'Unallocated', data: [10, 9, 8, 7, 6]}
+  {title: 'Data (C:)', data: [2.5, 3, 3.5, 3, 3.25, 2, 3.5]}
 ];
-const chart = document.querySelector( 'rf-usage-chart' );
-chart.legendFormatter = ( series, total ) => series.title + ' ' + series.data + ' GiB';
+const chart = document.querySelector( 'rf-polar-chart' );
 chart.series = series;
-chart.addEventListener( 'rf-highlight-change', ( evt ) => console.log( evt.detail.highlightedSeries ) );      
     </pre>
 
-    <script src="../components/box.js" type="module"></script>
     <script src="../components/polar-chart.js" type="module"></script>
     
     <script>
