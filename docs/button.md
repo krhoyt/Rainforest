@@ -11,47 +11,13 @@ Allows users to initiate actions in the user interface.
 
 ## Examples
 
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
-
-<rf-button variant="primary">Button</rf-button>
 ``` html
 <rf-button variant="primary">Button</rf-button>
-```
-
 <rf-button>Button</rf-button>
-``` html
-<rf-button>Button</rf-button>
-```
-
 <rf-button variant="link">Button</rf-button>
-``` html
-<rf-button variant="link">Button</rf-button>
-```
-
 <rf-button variant="inline-link">Download</rf-button>  
-``` html
-<rf-button variant="inline-link">Download</rf-button>  
-```
-
 <rf-button icon-name="settings" variant="icon"></rf-button>
-``` html
-<rf-button icon-name="settings" variant="icon"></rf-button>
-```
-
 <rf-button icon-name="copy" variant="inline-icon"></rf-button>
-``` html
-<rf-button icon-name="copy" variant="inline-icon"></rf-button>
-```
-
-<rf-button 
-  href="https://example.com" 
-  icon-align="right" 
-  icon-name="external" 
-  target="_blank">
-  Report a bug
-</rf-button>
-``` html
 <rf-button 
   href="https://example.com" 
   icon-align="right" 
