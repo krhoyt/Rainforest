@@ -13,7 +13,7 @@ Set of standards-based web components following the [Cloudscape Design System](h
 - Works with frameworks
 - Highly customizable
 
-> This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for his internal projects.
+> This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for internal projects.
 
 ## Getting Started
 
