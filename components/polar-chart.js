@@ -7,7 +7,7 @@ export default class RainforestPolarChart extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
-          display: inline-block;
+          display: block;
           position: relative;
         }
 
@@ -16,16 +16,58 @@ export default class RainforestPolarChart extends HTMLElement {
             fill 0.60s,
             opacity 0.60s
         }
+
+        g[part=background] circle {
+          display: none;
+        }
+
+        svg {
+          width: 100%;
+        }
+
+        text {
+          color: #414d5c;
+          cursor: pointer;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 12px;
+          line-height: 20px;
+          text-rendering: optimizeLegibility;
+        }
+
+        :host( [hide-labels] ) text.label {
+          display: none;
+        }
+
+        :host( [hide-spokes] ) g.spokes {
+          display: none;
+        }
+
+        :host( [use-circles] ) g[part=background] circle {
+          display: block;
+        }        
+        :host( [use-circles] ) g[part=background] path {
+          display: none;
+        }        
+
+        :host( [hide-levels] ) g[part=background] circle,
+        :host( [hide-levels] ) g[part=background] path {
+          display: none;
+        } 
       </style>
-      <svg part="vector">
+      <svg height="500" part="vector">
         <g part="chart">
           <g part="background"></g>
+          <g part="labels"></g>          
           <g part="series"></g>
         </g>
       </svg>
+      <div part="empty">
+        <slot name="empty"></slot>
+      </div>             
     `;
 
     // Private
+    this._catagories = [];
     this._colors = [
       '#688ae8', '#c33d69', '#2ea597', '#8456ce', 
       '#e07941', '#3759ce', '#962249', '#096f64',
@@ -44,6 +86,8 @@ export default class RainforestPolarChart extends HTMLElement {
     this._series = [];
 
     // Events
+    this.onLabelOver = this.onLabelOver.bind( this );
+    this.onLabelOut = this.onLabelOut.bind( this );            
     this.onPointOver = this.onPointOver.bind( this );
     this.onPointOut = this.onPointOut.bind( this );        
     this.onSeriesOver = this.onSeriesOver.bind( this );
@@ -56,8 +100,24 @@ export default class RainforestPolarChart extends HTMLElement {
     // Elements
     this.$background = this.shadowRoot.querySelector( 'g[part=background]' );
     this.$chart = this.shadowRoot.querySelector( 'g[part=chart]' );
+    this.$empty = this.shadowRoot.querySelector( 'div[part=empty]' );    
+    this.$labels = this.shadowRoot.querySelector( 'g[part=labels]' );    
     this.$series = this.shadowRoot.querySelector( 'g[part=series]' );
     this.$vector = this.shadowRoot.querySelector( 'svg' );    
+  }
+
+  onLabelOut( evt ) {
+    const index = parseInt( evt.currentTarget.getAttribute( 'data-index' ) );
+    for( let s = 0; s < this.$series.children.length; s++ ) {
+      this.$series.children[s].children[index + 1].style.opacity = '0';
+    }
+  }
+
+  onLabelOver( evt ) {
+    const index = parseInt( evt.currentTarget.getAttribute( 'data-index' ) );
+    for( let s = 0; s < this.$series.children.length; s++ ) {
+      this.$series.children[s].children[index + 1].style.opacity = '1.0';
+    }
   }
 
   onPointOut( evt ) {
@@ -139,16 +199,68 @@ export default class RainforestPolarChart extends HTMLElement {
     return group;
   }
 
+  _labels( categories, radius ) {
+    radius = radius + 8;
+    const slice = ( 360 / categories.length ) * ( Math.PI / 180 );
+    for( let c = 0; c < categories.length; c++ ) {
+      const x = radius * Math.sin( slice * c );
+      const y = radius * ( 0 - Math.cos( slice * c ) );
+
+      let anchor = 'middle'
+      let baseline = 'auto';
+      const degrees = ( slice * c ) * ( 180 / Math.PI );
+
+      if( degrees === 0 ) {
+        anchor = 'middle';
+        baseline = 'auto';        
+      } else if( degrees > 0 && degrees < 90 ) {
+        anchor = 'start';
+        baseline = 'auto';        
+      } else if( degrees > 90 && degrees < 180 ) {
+        anchor = 'start';
+        baseline = 'hanging';        
+      } else if( degrees === 180 ) {
+        anchor = 'middle';
+        baseline = 'hanging';                
+      } else if( degrees > 180 && degrees < 270 ) {
+        anchor = 'end';
+        baseline = 'hanging';                        
+      } else {
+        anchor = 'end';
+        baseline = 'auto';                                
+      }
+
+      const label = document.createElementNS( 'http://www.w3.org/2000/svg', 'text' );
+      label.addEventListener( 'mouseover', this.onLabelOver );
+      label.addEventListener( 'mouseout', this.onLabelOut );
+      label.classList.add( 'label' );
+      label.setAttribute( 'data-index', c );
+      label.setAttributeNS( null, 'dominant-baseline', baseline );      
+      label.setAttributeNS( null, 'text-anchor', anchor );
+      label.setAttributeNS( null, 'x', x );
+      label.setAttributeNS( null, 'y', y );      
+      label.textContent = categories[c];
+      this.$labels.appendChild( label );
+    }
+  }
+
   _map( x, in_min, in_max, out_min, out_max ) {
     return ( x - in_min ) * ( out_max - out_min ) / ( in_max - in_min ) + out_min;
   }  
 
-  _polygons( count, radius, stops ) {
+  _levels( count, radius, stops ) {
     const group = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
+    group.classList.add( 'levels' );
     const slice = ( 360 / count ) * ( Math.PI / 180 );
     const levels = radius / stops;    
 
     for( let p = 0; p < 5; p++ ) {
+      const circle = document.createElementNS( 'http://www.w3.org/2000/svg', 'circle' );
+      circle.setAttributeNS( null, 'fill', 'none' );
+      circle.setAttributeNS( null, 'stroke', '#d1d5db' );
+      circle.setAttributeNS( null, 'r', radius - ( levels * p ) );
+      group.appendChild( circle );
+
       const path = document.createElementNS( 'http://www.w3.org/2000/svg', 'path' );
       path.setAttributeNS( null, 'fill', 'none' );
       path.setAttributeNS( null, 'stroke', '#d1d5db' );
@@ -175,6 +287,7 @@ export default class RainforestPolarChart extends HTMLElement {
 
   _spokes( count, radius ) {
     const group = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
+    group.classList.add( 'spokes' );
 
     for( let c = 0; c < count; c++ ) {
       const line = document.createElementNS( 'http://www.w3.org/2000/svg', 'rect' );
@@ -205,14 +318,21 @@ export default class RainforestPolarChart extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'categories' );                                           
+    this._upgrade( 'hideLevels' );                                           
+    this._upgrade( 'hideSpokes' );                                       
     this._upgrade( 'series' );                               
-    this._upgrade( 'domain' );                                   
+    this._upgrade( 'useCircles' );                                   
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
-    return [];
+    return [
+      'hide-levels',
+      'hide-spokes',
+      'use-circles'
+    ];
   }
 
   // Observed attribute has changed
@@ -224,6 +344,14 @@ export default class RainforestPolarChart extends HTMLElement {
   // Properties
   // Not reflected
   // Object, Array, Date, Function
+  get categories() {
+    return this._categories.length === 0 ? [] : this._categories;
+  }
+
+  set categories( value ) {
+    this._categories = value === null ? [] : [... value];
+  }
+
   get series() {
     return this._series.length === 0 ? [] : this._series;
   }
@@ -232,7 +360,7 @@ export default class RainforestPolarChart extends HTMLElement {
     this._series = value === null ? [] : [... value];
 
     if( this._series.length > 0 ) {
-      const count = this._series[0].data.length;
+      const count = this._categories.length === 0 ? this._series[0].data.length : this._categories.length;
       const maximum = this._series.reduce( ( value, current ) => {
         const inner = current.data.reduce( ( previous, current ) => current > previous ? current : previous );
         return inner > value ? inner : value;
@@ -242,13 +370,18 @@ export default class RainforestPolarChart extends HTMLElement {
         return inner < value ? inner : value;
       }, maximum );
       const size = Math.min( this.$vector.clientWidth, this.$vector.clientHeight );
-      const radius = size / 2;
+      let radius = size / 2;
+
+      if( !this.hideLabels ) {
+        radius = radius - 28;
+        this._labels( this._categories, radius );        
+      }
 
       const spokes = this._spokes( count, radius );
       this.$background.appendChild( spokes );      
 
-      const polygons = this._polygons( count, radius, 5 );
-      this.$background.appendChild( polygons );      
+      const levels = this._levels( count, radius, 5 );
+      this.$background.appendChild( levels );      
 
       for( let s = 0; s < this._series.length; s++ ) {
         const area = this._area( radius, count, 0, 5, this._series[s].data, this._colors[s] );
@@ -263,19 +396,83 @@ export default class RainforestPolarChart extends HTMLElement {
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get title() {
-    if( this.hasAttribute( 'title' ) ) {
-      return this.getAttribute( 'title' );
-    }
-
-    return null;
+  get hideLabels() {
+    return this.hasAttribute( 'hide-labels' );
   }
 
-  set title( value ) {
+  set hideLabels( value ) {
     if( value !== null ) {
-      this.setAttribute( 'title', value );
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hide-labels' );
+      } else {
+        this.setAttribute( 'hide-labels', '' );
+      }
     } else {
-      this.removeAttribute( 'title' );
+      this.removeAttribute( 'hide-labels' );
+    }
+  }
+
+  get hideLevels() {
+    return this.hasAttribute( 'hide-levels' );
+  }
+
+  set hideLevels( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hide-levels' );
+      } else {
+        this.setAttribute( 'hide-levels', '' );
+      }
+    } else {
+      this.removeAttribute( 'hide-levels' );
+    }
+  }
+
+  get hideSpokes() {
+    return this.hasAttribute( 'hide-spokes' );
+  }
+
+  set hideSpokes( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hide-spokes' );
+      } else {
+        this.setAttribute( 'hide-spokes', '' );
+      }
+    } else {
+      this.removeAttribute( 'hide-spokes' );
+    }
+  }
+
+  get useCircles() {
+    return this.hasAttribute( 'use-circles' );
+  }
+
+  set useCircles( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'use-circles' );
+      } else {
+        this.setAttribute( 'use-circles', '' );
+      }
+    } else {
+      this.removeAttribute( 'use-circles' );
     }
   }  
 }
