@@ -17,7 +17,7 @@ export default class RainforestPolarChart extends HTMLElement {
             opacity 0.60s
         }
 
-        g[part=background] circle {
+        g[part=shapes] circle {
           display: none;
         }
 
@@ -42,21 +42,24 @@ export default class RainforestPolarChart extends HTMLElement {
           display: none;
         }
 
-        :host( [use-circles] ) g[part=background] circle {
+        :host( [use-circles] ) g[part=shapes] circle {
           display: block;
         }        
-        :host( [use-circles] ) g[part=background] path {
+        :host( [use-circles] ) g[part=shapes] path {
           display: none;
         }        
 
-        :host( [hide-levels] ) g[part=background] circle,
-        :host( [hide-levels] ) g[part=background] path {
+        :host( [hide-metrics] ) g[part=metrics],
+        :host( [hide-levels] ) g[part=shapes] circle,
+        :host( [hide-levels] ) g[part=shapes] path {
           display: none;
         } 
       </style>
       <svg height="500" part="vector">
         <g part="chart">
-          <g part="background"></g>
+          <g part="spokes"></g>
+          <g part="shapes"></g>
+          <g part="metrics"></g>
           <g part="labels"></g>          
           <g part="series"></g>
         </g>
@@ -98,11 +101,13 @@ export default class RainforestPolarChart extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$background = this.shadowRoot.querySelector( 'g[part=background]' );
     this.$chart = this.shadowRoot.querySelector( 'g[part=chart]' );
     this.$empty = this.shadowRoot.querySelector( 'div[part=empty]' );    
     this.$labels = this.shadowRoot.querySelector( 'g[part=labels]' );    
+    this.$metrics = this.shadowRoot.querySelector( 'g[part=metrics]' );
     this.$series = this.shadowRoot.querySelector( 'g[part=series]' );
+    this.$shapes = this.shadowRoot.querySelector( 'g[part=shapes]' );    
+    this.$spokes = this.shadowRoot.querySelector( 'g[part=spokes]' );    
     this.$vector = this.shadowRoot.querySelector( 'svg' );    
   }
 
@@ -151,8 +156,53 @@ export default class RainforestPolarChart extends HTMLElement {
     }
   }
 
+  _plot() {
+    if( this._series.length > 0 ) {
+      const count = this._categories.length === 0 ? this._series[0].data.length : this._categories.length;
+      const maximum = this._series.reduce( ( value, current ) => {
+        const inner = current.data.reduce( ( previous, current ) => current > previous ? current : previous );
+        return inner > value ? inner : value;
+      }, 0 );
+      const minimum = this._series.reduce( ( value, current ) => {
+        const inner = current.data.reduce( ( previous, current ) => current < previous ? current : previous );
+        return inner < value ? inner : value;
+      }, maximum );
+      const size = Math.min( this.$vector.clientWidth, this.$vector.clientHeight );
+      let radius = this.hideLabels ? ( size / 2 ) : ( size / 2 ) - 28;
+
+      this._spokes( count, radius );
+      this._shapes( count, radius, 5 );
+      this._metrics( radius, 5, minimum, maximum );
+      this._labels( this._categories, radius );
+  
+      for( let s = 0; s < this._series.length; s++ ) {
+        const area = this._area( radius, count, 0, 5, this._series[s].data, this._colors[s] );
+        area.setAttribute( 'data-series', s );
+        this.$series.appendChild( area );
+      }
+  
+      this.$chart.setAttributeNS( null, 'transform', `translate( ${this.$vector.clientWidth / 2} ${this.$vector.clientHeight / 2} )` );      
+    }
+  }
+
   _area( radius, count, minimum, maximum, data, color ) {
     const slice = ( 360 / count ) * ( Math.PI / 180 );
+
+    while( this.$series.children.length > 0 ) {
+      this.$series.children[0].removeEventListener( 'mouseover', this.onSeriesOver );
+      this.$series.children[0].removeEventListener( 'mouseout', this.onSeriesOut );
+
+      while( this.$series.children[0].children.length > 0 ) {
+        if( this.$series.children[0].children[0].tagName === 'circle' ) {
+          this.$series.children[0].children[0].removeEventListener( 'mouseover', this.onPointOver );
+          this.$series.children[0].children[0].removeEventListener( 'mouseout', this.onPointOut );                
+        }
+
+        this.$series.children[0].children[0].remove();
+      }
+
+      this.$series.children[0].remove();
+    }
 
     const group = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
     group.style.cursor = 'pointer';
@@ -169,7 +219,7 @@ export default class RainforestPolarChart extends HTMLElement {
     let d = '';
 
     for( let c = 0; c < data.length; c++ ) {
-      const mapped = this._map( data[c], minimum, maximum, 0, radius );
+      const mapped = this._map( data[c], 0, maximum, 0, radius );
       const x = mapped * Math.sin( slice * c );
       const y = mapped * ( 0 - Math.cos( slice * c ) );
 
@@ -200,8 +250,13 @@ export default class RainforestPolarChart extends HTMLElement {
   }
 
   _labels( categories, radius ) {
+    while( this.$labels.children.length > 0 ) 
+      this.$labels.children[0].remove();
+
+    // TODO: Magic number?
     radius = radius + 8;
     const slice = ( 360 / categories.length ) * ( Math.PI / 180 );
+
     for( let c = 0; c < categories.length; c++ ) {
       const x = radius * Math.sin( slice * c );
       const y = radius * ( 0 - Math.cos( slice * c ) );
@@ -248,9 +303,25 @@ export default class RainforestPolarChart extends HTMLElement {
     return ( x - in_min ) * ( out_max - out_min ) / ( in_max - in_min ) + out_min;
   }  
 
-  _levels( count, radius, stops ) {
-    const group = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
-    group.classList.add( 'levels' );
+  // TODO: Iterate and resolve
+  _metrics( radius, stops, minimum, maximum ) {
+    for( let p = 0; p < stops; p++ ) {
+      const y = 0 - ( ( radius / stops ) * ( p + 1 ) );
+      const mapped = ( maximum / stops ) * ( p + 1 );
+
+      const metrics = document.createElementNS( 'http://www.w3.org/2000/svg', 'text' );
+      metrics.setAttributeNS( null, 'dominant-baseline', 'middle' );
+      metrics.setAttributeNS( null, 'text-anchor', 'middle' );
+      metrics.textContent = mapped;
+      metrics.setAttributeNS( null, 'y', y );
+      this.$metrics.appendChild( metrics ); 
+    }
+  }
+
+  _shapes( count, radius, stops ) {
+    while( this.$shapes.children.length > 0 )
+      this.$shapes.children[0].remove();
+
     const slice = ( 360 / count ) * ( Math.PI / 180 );
     const levels = radius / stops;    
 
@@ -259,7 +330,7 @@ export default class RainforestPolarChart extends HTMLElement {
       circle.setAttributeNS( null, 'fill', 'none' );
       circle.setAttributeNS( null, 'stroke', '#d1d5db' );
       circle.setAttributeNS( null, 'r', radius - ( levels * p ) );
-      group.appendChild( circle );
+      this.$shapes.appendChild( circle );
 
       const path = document.createElementNS( 'http://www.w3.org/2000/svg', 'path' );
       path.setAttributeNS( null, 'fill', 'none' );
@@ -279,28 +350,26 @@ export default class RainforestPolarChart extends HTMLElement {
       }
 
       path.setAttributeNS( null, 'd', d + 'Z' );         
-      group.appendChild( path );
+      this.$shapes.appendChild( path );
     }
-
-    return group;
   }  
 
   _spokes( count, radius ) {
-    const group = document.createElementNS( 'http://www.w3.org/2000/svg', 'g' );
-    group.classList.add( 'spokes' );
+    while( this.$spokes.children.length > 0 )
+      this.$spokes.children[0].remove();
 
     for( let c = 0; c < count; c++ ) {
-      const line = document.createElementNS( 'http://www.w3.org/2000/svg', 'rect' );
+      const line = document.createElementNS( 'http://www.w3.org/2000/svg', 'rect' );      
+  
       line.setAttributeNS( null, 'fill', '#d1d5db' );
       line.setAttributeNS( null, 'width', 1 );
       line.setAttributeNS( null, 'height', radius );        
       line.setAttributeNS( null, 'x', -0.50 );
       line.setAttributeNS( null, 'y', 0 - radius );
       line.setAttributeNS( null, 'transform', `rotate( ${( 360 / count ) * c} )` );
-      group.appendChild( line );
-    }
 
-    return group;
+      this.$spokes.appendChild( line );      
+    }
   }  
 
   // When attributes change
@@ -320,6 +389,7 @@ export default class RainforestPolarChart extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'categories' );                                           
     this._upgrade( 'hideLevels' );                                           
+    this._upgrade( 'hideMetrics' );                                            
     this._upgrade( 'hideSpokes' );                                       
     this._upgrade( 'series' );                               
     this._upgrade( 'useCircles' );                                   
@@ -330,6 +400,7 @@ export default class RainforestPolarChart extends HTMLElement {
   static get observedAttributes() {
     return [
       'hide-levels',
+      'hide-metrics',
       'hide-spokes',
       'use-circles'
     ];
@@ -350,6 +421,7 @@ export default class RainforestPolarChart extends HTMLElement {
 
   set categories( value ) {
     this._categories = value === null ? [] : [... value];
+    this._plot();
   }
 
   get series() {
@@ -358,39 +430,7 @@ export default class RainforestPolarChart extends HTMLElement {
 
   set series( value ) {
     this._series = value === null ? [] : [... value];
-
-    if( this._series.length > 0 ) {
-      const count = this._categories.length === 0 ? this._series[0].data.length : this._categories.length;
-      const maximum = this._series.reduce( ( value, current ) => {
-        const inner = current.data.reduce( ( previous, current ) => current > previous ? current : previous );
-        return inner > value ? inner : value;
-      }, 0 );
-      const minimum = this._series.reduce( ( value, current ) => {
-        const inner = current.data.reduce( ( previous, current ) => current < previous ? current : previous );
-        return inner < value ? inner : value;
-      }, maximum );
-      const size = Math.min( this.$vector.clientWidth, this.$vector.clientHeight );
-      let radius = size / 2;
-
-      if( !this.hideLabels ) {
-        radius = radius - 28;
-        this._labels( this._categories, radius );        
-      }
-
-      const spokes = this._spokes( count, radius );
-      this.$background.appendChild( spokes );      
-
-      const levels = this._levels( count, radius, 5 );
-      this.$background.appendChild( levels );      
-
-      for( let s = 0; s < this._series.length; s++ ) {
-        const area = this._area( radius, count, 0, 5, this._series[s].data, this._colors[s] );
-        area.setAttribute( 'data-series', s );
-        this.$series.appendChild( area );
-      }
-
-      this.$chart.setAttributeNS( null, 'transform', `translate( ${this.$vector.clientWidth / 2} ${this.$vector.clientHeight / 2} )` );
-    }
+    this._plot();
   }
 
   // Attributes
@@ -433,6 +473,26 @@ export default class RainforestPolarChart extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'hide-levels' );
+    }
+  }
+
+  get hideMetrics() {
+    return this.hasAttribute( 'hide-metrics' );
+  }
+
+  set hideMetrics( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hide-metrics' );
+      } else {
+        this.setAttribute( 'hide-metrics', '' );
+      }
+    } else {
+      this.removeAttribute( 'hide-metrics' );
     }
   }
 
