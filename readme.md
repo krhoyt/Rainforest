@@ -66,7 +66,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Input](./docs/input.md)
 - ✅ [Link](./docs/link.md)
 - ❓ Multiselect
-- ✈️ Polar Chart ⚠️
+- ✅ [Polar Chart](./docs/polar-chart.md) ⚠️
 - 📆 Popover
 - ❓ Rating ⚠️
 - ❓ Radio Group
