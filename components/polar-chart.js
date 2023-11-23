@@ -156,35 +156,6 @@ export default class RainforestPolarChart extends HTMLElement {
     }
   }
 
-  _plot() {
-    if( this._series.length > 0 ) {
-      const count = this._categories.length === 0 ? this._series[0].data.length : this._categories.length;
-      const maximum = this._series.reduce( ( value, current ) => {
-        const inner = current.data.reduce( ( previous, current ) => current > previous ? current : previous );
-        return inner > value ? inner : value;
-      }, 0 );
-      const minimum = this._series.reduce( ( value, current ) => {
-        const inner = current.data.reduce( ( previous, current ) => current < previous ? current : previous );
-        return inner < value ? inner : value;
-      }, maximum );
-      const size = Math.min( this.$vector.clientWidth, this.$vector.clientHeight );
-      let radius = this.hideLabels ? ( size / 2 ) : ( size / 2 ) - 28;
-
-      this._spokes( count, radius );
-      this._shapes( count, radius, 5 );
-      this._metrics( radius, 5, minimum, maximum );
-      this._labels( this._categories, radius );
-  
-      for( let s = 0; s < this._series.length; s++ ) {
-        const area = this._area( radius, count, 0, 5, this._series[s].data, this._colors[s] );
-        area.setAttribute( 'data-series', s );
-        this.$series.appendChild( area );
-      }
-  
-      this.$chart.setAttributeNS( null, 'transform', `translate( ${this.$vector.clientWidth / 2} ${this.$vector.clientHeight / 2} )` );      
-    }
-  }
-
   _area( radius, count, minimum, maximum, data, color ) {
     const slice = ( 360 / count ) * ( Math.PI / 180 );
 
@@ -259,7 +230,10 @@ export default class RainforestPolarChart extends HTMLElement {
 
     for( let c = 0; c < categories.length; c++ ) {
       const x = radius * Math.sin( slice * c );
-      const y = radius * ( 0 - Math.cos( slice * c ) );
+      let y = radius * ( 0 - Math.cos( slice * c ) );
+
+      if( c === 0 && !this.hideMetrics )
+        y = y - 8;
 
       let anchor = 'middle'
       let baseline = 'auto';
@@ -303,7 +277,6 @@ export default class RainforestPolarChart extends HTMLElement {
     return ( x - in_min ) * ( out_max - out_min ) / ( in_max - in_min ) + out_min;
   }  
 
-  // TODO: Iterate and resolve
   _metrics( radius, stops, minimum, maximum ) {
     for( let p = 0; p < stops; p++ ) {
       const y = 0 - ( ( radius / stops ) * ( p + 1 ) );
@@ -312,7 +285,7 @@ export default class RainforestPolarChart extends HTMLElement {
       const metrics = document.createElementNS( 'http://www.w3.org/2000/svg', 'text' );
       metrics.setAttributeNS( null, 'dominant-baseline', 'middle' );
       metrics.setAttributeNS( null, 'text-anchor', 'middle' );
-      metrics.textContent = mapped;
+      metrics.textContent = Math.round( mapped ) - mapped === 0 ? mapped : mapped.toFixed( 2 );
       metrics.setAttributeNS( null, 'y', y );
       this.$metrics.appendChild( metrics ); 
     }
@@ -373,7 +346,42 @@ export default class RainforestPolarChart extends HTMLElement {
   }  
 
   // When attributes change
-  _render() {;}
+  _render() {
+    if( this._series.length > 0 ) {
+      this.$vector.setAttribute( 'height', this.height === null ? 500 : this.height );
+      const count = this._categories.length === 0 ? this._series[0].data.length : this._categories.length;
+
+      let maximum = this.maximum;
+      if( maximum === null ) {
+        maximum = this._series.reduce( ( value, current ) => {
+          const inner = current.data.reduce( ( previous, current ) => current > previous ? current : previous );
+          return inner > value ? inner : value;
+        }, 0 );
+      }
+      const minimum = this._series.reduce( ( value, current ) => {
+        const inner = current.data.reduce( ( previous, current ) => current < previous ? current : previous );
+        return inner < value ? inner : value;
+      }, maximum );
+
+      const size = Math.min( this.$vector.clientWidth, this.$vector.clientHeight );
+      let radius = this.hideLabels ? ( size / 2 ) : ( size / 2 ) - 28;
+      radius = this.hideMetrics ? radius : radius - 8;
+      radius = this.useCircles ? radius - 8 : radius;
+
+      this._spokes( count, radius );
+      this._shapes( count, radius, 5 );
+      this._metrics( radius, 5, minimum, maximum );
+      this._labels( this._categories, radius );
+  
+      for( let s = 0; s < this._series.length; s++ ) {
+        const area = this._area( radius, count, 0, maximum, this._series[s].data, this._colors[s] );
+        area.setAttribute( 'data-series', s );
+        this.$series.appendChild( area );
+      }
+  
+      this.$chart.setAttributeNS( null, 'transform', `translate( ${this.$vector.clientWidth / 2} ${this.$vector.clientHeight / 2} )` );      
+    }    
+  }
 
   // Promote properties
   // Values may be set before module load
@@ -388,9 +396,11 @@ export default class RainforestPolarChart extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'categories' );                                           
+    this._upgrade( 'height' );
     this._upgrade( 'hideLevels' );                                           
     this._upgrade( 'hideMetrics' );                                            
-    this._upgrade( 'hideSpokes' );                                       
+    this._upgrade( 'hideSpokes' );                           
+    this._upgrade( 'maximum' );                                           
     this._upgrade( 'series' );                               
     this._upgrade( 'useCircles' );                                   
     this._render();
@@ -399,9 +409,11 @@ export default class RainforestPolarChart extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
+      'height',
       'hide-levels',
       'hide-metrics',
       'hide-spokes',
+      'maximum',
       'use-circles'
     ];
   }
@@ -421,7 +433,7 @@ export default class RainforestPolarChart extends HTMLElement {
 
   set categories( value ) {
     this._categories = value === null ? [] : [... value];
-    this._plot();
+    this._render();
   }
 
   get series() {
@@ -430,12 +442,28 @@ export default class RainforestPolarChart extends HTMLElement {
 
   set series( value ) {
     this._series = value === null ? [] : [... value];
-    this._plot();
+    this._render();
   }
 
   // Attributes
   // Reflected
   // Boolean, Number, String, null
+  get height() {
+    if( this.hasAttribute( 'height' ) ) {
+      return parseInt( this.getAttribute( 'height' ) );
+    }
+
+    return null;
+  }
+
+  set height( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'height', value );
+    } else {
+      this.removeAttribute( 'height' );
+    }
+  }
+
   get hideLabels() {
     return this.hasAttribute( 'hide-labels' );
   }
@@ -513,6 +541,22 @@ export default class RainforestPolarChart extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'hide-spokes' );
+    }
+  }
+
+  get maximum() {
+    if( this.hasAttribute( 'maximum' ) ) {
+      return parseInt( this.getAttribute( 'maximum' ) );
+    }
+
+    return null;
+  }
+
+  set maximum( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'maximum', value );
+    } else {
+      this.removeAttribute( 'maximum' );
     }
   }
 
