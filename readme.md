@@ -81,11 +81,11 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✅ Implemented (19)   
-✈️ In-flight/progress (3)  
-📆 Planned  (3)   
+✅ Implemented (21)   
+✈️ In-flight/progress (2)  
+📆 Planned  (2)   
 ❓ To be determined (8)  
-⚠️ Not part of Cloudscape (3)
+⚠️ Not part of Cloudscape (4)
 
 ## Some Differences to Consider
 
