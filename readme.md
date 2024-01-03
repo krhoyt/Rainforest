@@ -76,7 +76,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Status Indicator](./docs/status-indicator.md)
 - ❓ Table
 - ❓ Tabs
-- 📆 Text Area
+- ✅ [Text Area](./docs/textarea.md)
 - ✅ [Text Content](./docs/text-content.md)
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️

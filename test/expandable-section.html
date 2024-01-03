@@ -13,14 +13,16 @@
   </head>
   <body>
 
-    <rf-expandable-section header-description="Test">
+    <rf-expandable-section header-counter="(3)" header-description="Description">
       <span slot="header-text">Static website hosting</span>
+      <rf-link slot="header-info" variant="info">Info</rf-link>
+      <rf-button slot="header-actions">Edit</rf-button>
       After you enable your S3 bucket for static website
       hosting, web browsers can access your content
       through the Amazon S3 website endpoint for the
       bucket.
     </rf-expandable-section>
-    <rf-expandable-section variant="footer">
+    <rf-expandable-section header-description="Test" variant="footer">
       <span slot="header-text">Versioning</span>
       Versioning provides an additional level of
       protection by providing a way to recover from
