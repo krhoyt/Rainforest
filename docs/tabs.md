@@ -29,6 +29,8 @@ With tabs, users can switch between different categories of information in the s
 | --- | --- |
 | (`default`) | Specifies the tab content to display. |
 
+> Tab content can be whatever elements are desired, including components. Tab content must have a `data-id` attribute and a `data-label` attribute. Disabled tabs must have a `data-disabled` attribute.
+
 ## Properties
 
 | Name | Type | Description | Values | Default | Reflects |
