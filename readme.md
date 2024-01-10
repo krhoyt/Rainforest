@@ -56,7 +56,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Checkbox](./docs/checkbox.md)
 - ✅ [Calendar](./docs/calendar.md)
 - ✅ [Container](./docs/container.md)
-- ✈️ Content Layout 
+- ✅ [Content Layout][./docs/content-layout.md]
 - ❓ Date Picker 
 - ✅ [Expandable Section](./docs/expandable-section.md)
 - 📆 Flashbar
@@ -70,21 +70,21 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - 📆 Popover
 - ❓ Rating ⚠️
 - ❓ Radio Group
-- ❓ Select
+- 📆 Select
 - ✅ [Space Between](./docs/space-between.md)
 - ✅ [Spinner](./docs/spinner.md)
 - ✅ [Status Indicator](./docs/status-indicator.md)
 - ❓ Table
-- ❓ Tabs
+- ✅ [Tabs](./docs/tabs.md)
 - ✅ [Text Area](./docs/textarea.md)
 - ✅ [Text Content](./docs/text-content.md)
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✅ Implemented (21)   
-✈️ In-flight/progress (2)  
-📆 Planned  (2)   
-❓ To be determined (8)  
+✅ Implemented (23)   
+✈️ In-flight/progress (1)  
+📆 Planned  (3)   
+❓ To be determined (6)  
 ⚠️ Not part of Cloudscape (4)
 
 ## Some Differences to Consider
