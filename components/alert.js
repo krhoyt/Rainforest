@@ -14,8 +14,8 @@ export default class RainforestAlert extends HTMLElement {
         }
 
         div[part=alert] {
-          background-color: #f2f8fd;
-          border-color: #0972d3;
+          background-color: var( --alert-background-color, #f2f8fd );
+          border-color: var( --alert-border-color, #0972d3 );
           border-style: solid;
           border-radius: 12px;
           border-width: 2px;          
@@ -25,6 +25,7 @@ export default class RainforestAlert extends HTMLElement {
         }
 
         div[part=content] {
+          color: var( --alert-content-color );
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -32,6 +33,7 @@ export default class RainforestAlert extends HTMLElement {
         }
 
         div[part=header] {
+          color: var( --alert-header-color );          
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 700;
@@ -64,7 +66,7 @@ export default class RainforestAlert extends HTMLElement {
         }
 
         img {
-          filter:
+          filter: var( --alert-icon-filter, 
             brightness( 0 ) 
             saturate( 100% )                
             invert( 26% ) 
@@ -72,7 +74,8 @@ export default class RainforestAlert extends HTMLElement {
             saturate( 3640% ) 
             hue-rotate( 196deg ) 
             brightness( 97% ) 
-            contrast( 93% );            
+            contrast( 93% )            
+          );            
           height: 16px;
           margin: 4px 4px 4px 0;
           object-fit: contain;

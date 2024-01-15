@@ -13,7 +13,7 @@ export default class RainforestExpandableSection extends HTMLElement {
 
         div[part=content] {
           color: #000716;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;
@@ -21,7 +21,63 @@ export default class RainforestExpandableSection extends HTMLElement {
           text-rendering: optimizeLegibility;
         }
 
+        img {
+          display: inline-block;
+          filter: 
+            brightness( 0 )
+            saturate( 100% )
+            invert( 9% )
+            sepia( 4% )
             saturate( 6363% )
+            hue-rotate( 170deg )
+            brightness( 100% )
+            contrast( 119% );          
+          height: 16px;
+          width: 16px;
+        }
+
+        div[part=actions],
+        div[part=info],
+        div[part=left],
+        p[part=header] {
+          display: inline-block;
+        }
+
+        p[part=header] {
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 24px;
+          margin: 0;
+          padding: 0;
+        }
+
+        p[part=header-description] {
+          color: #414d5c;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          margin: 0;
+          padding: 0;                    
+        }
+
+        span[part=header-counter] {
+          color: #5f6b7a;
+          font-weight: 400;
+        }
+
+        div[part=content] {
+          color: #000716;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          margin: 0;
+          padding: 8px 0 8px 0;          
+        }
+
+        /*
         div[part=left] {
           align-items: baseline;
           cursor: pointer;
@@ -46,11 +102,9 @@ export default class RainforestExpandableSection extends HTMLElement {
 
         div[part=line] {
           align-items: center;
-          border: solid 2px transparent;
-          border-bottom: solid 2px #e9ebed;
           display: flex;
           flex-direction: row;
-          padding: 4px 4px 4px 4px;
+          padding: 0;
         }
 
         div[part=title] {
@@ -60,6 +114,11 @@ export default class RainforestExpandableSection extends HTMLElement {
           font-weight: 700;
           line-height: 20px;
           text-rendering: optimizeLegibility;
+        }
+
+        header {
+          border: solid 2px transparent;
+          padding: 4px;
         }
 
         img {
@@ -98,9 +157,15 @@ export default class RainforestExpandableSection extends HTMLElement {
           font-weight: 400;
           line-height: 16px;
           margin: 0;
-          padding: 0;
+          padding: 0 0 0 20px;
           text-rendering: optimizeLegibility;          
         }        
+
+        :host( [header-description] ) div[part=line] {
+          border: 0;
+          margin: 0;
+          padding: 0;
+        }
 
         :host( [expanded][default-expanded] ) div[part=content] { display: block; }
         :host( [expanded][default-expanded] ) div[part=line] { border-bottom-color: #e9ebed; }
@@ -166,28 +231,58 @@ export default class RainforestExpandableSection extends HTMLElement {
         :host( :not( [expanded] ):not( [default-expanded] ) ) div[part=line] {        
           border-bottom-color: transparent;
         }
+        */
       </style>
-      <header part="header">
-        <div part="line">
-          <div part="left">
-            <img src="../icons/caret-right-filled.svg" />          
-            <div part="title">
-              <slot name="header-text"></slot>
+
+      <div part="section">
+        <div part="summary">
+          <div part="line">
+            <div part="left">
+              <img src="../icons/caret-right-filled.svg" />                    
+              <p part="header">
+                <slot name="header-text"></slot>
+                <span part="header-counter"></span>
+              </p>
+              <div part="info">
+                <slot name="header-info"></slot>
+              </div>
             </div>
-            <p part="counter"></p>
-            <div part="info">
-              <slot name="header-info"></slot>                                                
+            <div part="actions">
+              <slot name="header-actions"></slot>
             </div>
           </div>
-          <div part="actions">
-            <slot name="header-actions"></slot>
-          </div>
+          <p part="header-description"></p>
         </div>
-        <p part="description"></p>
+        <div part="content">
+          <slot></slot>
+        </div>
+      </div>
+
+      <!--
+      <header part="header">
+        <div part="summary">
+          <div part="line">
+            <div part="left">
+
+              <div part="title">
+                <slot name="header-text"></slot>
+              </div>
+              <p part="counter"></p>
+              <div part="info">
+                <slot name="header-info"></slot>                                                
+              </div>
+            </div>
+            <div part="actions">
+              <slot name="header-actions"></slot>
+            </div>
+          </div>
+          <p part="description"></p>
+        </div>
       </header>
       <div part="content">
         <slot></slot>
       </div>
+      -->
     `;
 
     // Root
@@ -195,8 +290,8 @@ export default class RainforestExpandableSection extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$counter = this.shadowRoot.querySelector( 'p[part=counter]' );
-    this.$description = this.shadowRoot.querySelector( 'p[part=description]' );
+    this.$counter = this.shadowRoot.querySelector( 'span[part=header-counter]' );
+    this.$description = this.shadowRoot.querySelector( 'p[part=header-description]' );
     this.$left = this.shadowRoot.querySelector( 'div[part=left]' );
     this.$left.addEventListener( 'click', () => {
       this.expanded = !this.expanded;

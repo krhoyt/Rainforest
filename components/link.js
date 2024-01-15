@@ -14,7 +14,7 @@ export default class RainforestLink extends HTMLElement {
         a {
           align-items: center;
           border: none;
-          color: #0972d3;
+          color: var( --link-color, #0972d3 );
           cursor: pointer;
           display: flex;
           flex-direction: row;

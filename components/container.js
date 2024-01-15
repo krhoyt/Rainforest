@@ -13,10 +13,11 @@ export default class RainforestContainer extends HTMLElement {
 
         div[part=container] {
           background: #ffffff;
-          border-radius: 16px;
-          box-shadow: 
+          border-radius: var( --container-border-radius, 16px );
+          box-shadow: var( --container-box-shadow, 
             0 0 1px 1px #e9ebed,
-            0 1px 8px 2px #0007161f; 
+            0 1px 8px 2px #0007161f
+          );
         }
 
         div[part=content],

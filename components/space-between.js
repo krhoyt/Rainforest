@@ -37,7 +37,7 @@ export default class RainforestSpaceBetween extends HTMLElement {
         :host( [size=l] ) { gap: 20px }                        
         :host( [size=xl] ) { gap: 24px }                                
         :host( [size=xxl] ) { gap: 32px }                                        
-        :host( [size=xxxl] ) { gap: 40px }                                                
+        :host( [size=xxxl] ) { gap: 40px }      
       </style>
       <slot></slot>
     `;

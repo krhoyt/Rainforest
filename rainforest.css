@@ -246,3 +246,27 @@ ol li:first-of-type,
 ul li:first-of-type {
   padding: 0;
 }
+
+div.select {
+  background-color: #ffffff;
+  border: solid 2px #7d8998;
+  border-radius: 8px;
+  display: none;
+  position: absolute;
+}
+
+div.select ul {
+  box-sizing: border-box;
+  cursor: pointer;
+  list-style-type: none;  
+  margin: 0;
+  padding: 0;
+}
+
+div.select rf-select-option {
+  border-bottom: solid 1px #b5beca;
+}
+
+div.select rf-select-option:last-of-type {
+  border-bottom: none;
+}

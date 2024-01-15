@@ -70,7 +70,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - 📆 Popover
 - ❓ Rating ⚠️
 - ❓ Radio Group
-- 📆 Select
+- ✈️ [Select](./docs/select.md)
 - ✅ [Space Between](./docs/space-between.md)
 - ✅ [Spinner](./docs/spinner.md)
 - ✅ [Status Indicator](./docs/status-indicator.md)
@@ -82,8 +82,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
 ✅ Implemented (23)   
-✈️ In-flight/progress (1)  
-📆 Planned  (3)   
+✈️ In-flight/progress (2)  
+📆 Planned  (2)   
 ❓ To be determined (6)  
 ⚠️ Not part of Cloudscape (4)
 

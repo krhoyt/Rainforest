@@ -35,12 +35,12 @@ export default class RainforestHeader extends HTMLElement {
         }
 
         div[part=title] {
-          color: var( --header-color, #000716 );          
+          color: var( --header-title-color, #000716 );          
           display: inline-block;
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: var( --header-font-size, 20px );
-          font-weight: var( --header-font-weight, 700 );
-          line-height: var( --header-line-height, 24px );
+          font-size: var( --header-title-font-size, 20px );
+          font-weight: var( --header-title-font-weight, 700 );
+          line-height: var( --header-title-line-height, 24px );
           text-rendering: optimizeLegibility;          
         }        
 
@@ -108,6 +108,12 @@ export default class RainforestHeader extends HTMLElement {
         ::slotted( rf-box[slot=description] ) {
           --box-color: #414d5c;
           --box-padding: 0;
+        }
+
+        ::slotted( rf-button[slot=actions] ) {
+          --button-background-color: #539fe5;
+          --button-border-color: #539fe5;          
+          --button-color: #000716;
         }
 
         :host( :not( [counter] ) ) p { display: none; }

@@ -23,7 +23,7 @@ export default class RainforestButton extends HTMLElement {
 
         button {
           align-items: center;
-          background: none;
+          background: var( --button-background-color, none );
           border: none;
           border-style: var( --button-border-style, solid );
           border-width: var( --button-border-width, 2px );

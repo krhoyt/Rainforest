@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Content Layout - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-content-layout > rf-header span[slot=description] {
+        --header-description-color: #8d99a8;
+      }
+
+      rf-link {
+        --link-color: #539fe5;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-content-layout disable-overlap>
+      <rf-header slot="header" variant="h1">
+        Header          
+        <rf-link slot="info">Info</rf-link>          
+        <rf-button slot="actions">Button</rf-button>          
+        <span slot="description">This is a generic description used in the header.</span>
+      </rf-header>
+      <rf-alert slot="header">This is a generic alert.</rf-alert>
+      <rf-container>
+        <rf-header slot="header" variant="h2">
+          Container header
+          <span slot="description">Container description</span>
+        </rf-header>
+        Container content
+      </rf-container>
+    </rf-content-layout>
+
+    <script src="../rainforest.js" type="module"></script>
+
+  </body>
+</html>

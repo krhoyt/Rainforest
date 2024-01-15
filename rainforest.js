@@ -15,6 +15,7 @@ import RainforestInput from "./components/input.js";
 import RainforestLink from "./components/link.js";
 import RainforestPolarChart from "./components/polar-chart.js";
 import RainforestSegmentedControl from "./components/segmented-control.js";
+import RainforestSelect from "./components/select.js";
 import RainforestSpaceBetween from "./components/space-between.js";
 import RainforestSpinner from "./components/spinner.js";
 import RainforestStatusIndicator from "./components/status-indicator.js";
