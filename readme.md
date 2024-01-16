@@ -47,6 +47,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 
 ## Components   
 
+> Most components have feature/behavior parity with Cloudscape implementation... but not all of them (yet).
+
 - ✅ [Alert](./docs/alert.md)
 - ❓ Avatar ⚠️
 - ✅ [Badge](./docs/badge.md)
@@ -70,7 +72,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - 📆 Popover
 - ❓ Rating ⚠️
 - ❓ Radio Group
-- ✈️ [Select](./docs/select.md)
+- ✅ [Select](./docs/select.md)
 - ✅ [Space Between](./docs/space-between.md)
 - ✅ [Spinner](./docs/spinner.md)
 - ✅ [Status Indicator](./docs/status-indicator.md)
@@ -81,8 +83,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✅ Implemented (23)   
-✈️ In-flight/progress (2)  
+✅ Implemented (24)   
+✈️ In-flight/progress (1)  
 📆 Planned  (2)   
 ❓ To be determined (6)  
 ⚠️ Not part of Cloudscape (4)
