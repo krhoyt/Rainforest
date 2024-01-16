@@ -133,6 +133,11 @@ export default class RainforestSelect extends HTMLElement {
           border-left-width: 8px;
         }        
 
+        :host( [invalid] ) p[part=value] {
+          color: #d91515;
+          padding: 0 0 0 7px;
+        }                
+
         :host( [invalid] ) rf-select-option::part( item ) {
           padding: 2px 0 2px 4px;
         }                

@@ -138,6 +138,12 @@ export default class RainforestSelectOption extends HTMLElement {
         :host( :not( [description] ) ) p[part=description],
         :host( :not( [icon-name] ) ) img[part=icon] { display: none; }
 
+        :host( [icon-name]:not( [description] ) ) img[part=icon] {
+          align-self: center;
+          height: 16px;
+          width: 16px;
+        }
+
         :host( [disabled] ) img {
           cursor: not-allowed;
           filter: 
