@@ -51,7 +51,7 @@ export default class RainforestLink extends HTMLElement {
         }        
 
         a:hover {
-          color: #033160;
+          color: var( --link-hover-color, #033160 );
           text-decoration: underline;
         }
 

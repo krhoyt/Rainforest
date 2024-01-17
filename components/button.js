@@ -62,8 +62,8 @@ export default class RainforestButton extends HTMLElement {
         }
 
         button[disabled] {
-          border-color: #9ba7b6;
-          color: #9ba7b6;
+          border-color: var( --button-disabled-border-color, #9ba7b6 );
+          color: var( --button-disabled-color, #9ba7b6 );
           cursor: not-allowed;
         }
 

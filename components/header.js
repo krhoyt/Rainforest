@@ -110,11 +110,13 @@ export default class RainforestHeader extends HTMLElement {
           --box-padding: 0;
         }
 
+        /*
         ::slotted( rf-button[slot=actions] ) {
           --button-background-color: #539fe5;
           --button-border-color: #539fe5;          
           --button-color: #000716;
         }
+        */
 
         :host( :not( [counter] ) ) p { display: none; }
       </style>

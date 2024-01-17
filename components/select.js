@@ -31,6 +31,10 @@ export default class RainforestSelect extends HTMLElement {
           width: 100%;
         }
 
+        button:focus {
+          border: solid 2px #0972d3;          
+        }
+
         img {
           cursor: pointer;
           height: 16px;
@@ -102,7 +106,7 @@ export default class RainforestSelect extends HTMLElement {
 
         p[part=placeholder] {
           color: #5f6b7a;                    
-          font-style: italic;          
+          font-style: italic;   
         }
 
         :host( [disabled] ) button {
@@ -147,6 +151,8 @@ export default class RainforestSelect extends HTMLElement {
           display: none;
         }
 
+
+        :host( [placeholder]:not( [selected-index] ) ) p[part=value],
         :host( [placeholder]:not( [selected-index] ) ) rf-select-option {
           display: none;
         }
@@ -233,7 +239,13 @@ export default class RainforestSelect extends HTMLElement {
 
     const index = parseInt( evt.currentTarget.getAttribute( 'data-index' ) );
     
-    this.selectedIndex = this.selectedIndex === index ? null : index;
+    if( this.toggle ) {
+      this.selectedIndex = this.selectedIndex === index ? null : index;
+    } else {
+      this.selectedIndex = index;
+    }
+
+    this.focus();
     this.dispatchEvent( new CustomEvent( 'rf-change', {
       detail: {
         selectedOption: this.selectedIndex === null ? null : this._options[this.selectedIndex]
@@ -302,6 +314,7 @@ export default class RainforestSelect extends HTMLElement {
     this._upgrade( 'placeholder' ); 
     this._upgrade( 'selectedIndex' );  
     this._upgrade( 'selectedOption' );  
+    this._upgrade( 'toggle' );      
     this._upgrade( 'triggerVariant' );  
     this._render();
   }
@@ -313,6 +326,7 @@ export default class RainforestSelect extends HTMLElement {
       'invalid',
       'placeholder',
       'selected-index',
+      'toggle',
       'trigger-variant'
     ];
   }
@@ -469,6 +483,26 @@ export default class RainforestSelect extends HTMLElement {
       this.setAttribute( 'selected-index', value );
     } else {
       this.removeAttribute( 'selected-index' );
+    }
+  }  
+
+  get toggle() {
+    return this.hasAttribute( 'toggle' );
+  }
+
+  set toggle( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'toggle' );
+      } else {
+        this.setAttribute( 'toggle', '' );
+      }
+    } else {
+      this.removeAttribute( 'toggle' );
     }
   }  
 

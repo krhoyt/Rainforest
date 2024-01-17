@@ -247,6 +247,12 @@ ul li:first-of-type {
   padding: 0;
 }
 
+div.hbox {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
 div.select {
   background-color: #ffffff;
   border: solid 2px #7d8998;
@@ -269,4 +275,10 @@ div.select rf-select-option {
 
 div.select rf-select-option:last-of-type {
   border-bottom: none;
+}
+
+div.vbox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

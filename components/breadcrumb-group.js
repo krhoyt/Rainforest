@@ -12,20 +12,21 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
         }
 
         a {
-          color: #0972d3;
+          color: var( --breadcrumb-link-color, #0972d3 );
           display: inline-block;
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 20px;
+          text-underline-offset: 0.25em;
         }
 
         a:hover {
-          color: #033160;
+          color: var( --breadcrumb-link-hover-color, #033160 );
         }
 
         p {
-          color: #5f6b7a;
+          color: var( --breadcrumb-leaf-color, #5f6b7a );
           display: inline-block;
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;

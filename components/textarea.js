@@ -24,6 +24,7 @@ export default class RainforestTextarea extends HTMLElement {
           margin: 0;
           outline: none;
           padding: 4px 12px 4px 12px;
+          resize: none;          
           text-rendering: optimizeLegibility;
           width: 100%;
         }
@@ -37,8 +38,17 @@ export default class RainforestTextarea extends HTMLElement {
           font-style: italic;
         }
 
+        :host( [resize=horizontal] ) textarea {
+          resize: horizontal;
+        }        
+
+        :host( [resize=vertical] ) textarea {
+          resize: vertical;
+        }                
+
         textarea[readonly] {
           border: solid 2px #e9ebed;
+          resize: none;
         }
 
         textarea[readonly]:focus {
@@ -50,6 +60,7 @@ export default class RainforestTextarea extends HTMLElement {
           border: solid 2px #e9ebed;
           color: #9ba7b6;
           cursor: not-allowed;
+          resize: none;
         }
 
         textarea[disabled]::placeholder {
@@ -124,7 +135,8 @@ export default class RainforestTextarea extends HTMLElement {
     this._upgrade( 'invalid' );    
     this._upgrade( 'name' );        
     this._upgrade( 'placeholder' );   
-    this._upgrade( 'readOnly' );      
+    this._upgrade( 'readOnly' );     
+    this._upgrade( 'resize' );     
     this._upgrade( 'rows' );          
     this._upgrade( 'spellcheck' );      
     this._upgrade( 'value' );       
@@ -144,6 +156,7 @@ export default class RainforestTextarea extends HTMLElement {
       'name',
       'placeholder',
       'read-only',
+      'resize',
       'rows',
       'spellcheck',
       'value'
@@ -310,6 +323,22 @@ export default class RainforestTextarea extends HTMLElement {
       this.removeAttribute( 'read-only' );
     }
   }  
+
+  get resize() {
+    if( this.hasAttribute( 'resize' ) ) {
+      return this.getAttribute( 'resize' );
+    }
+
+    return null;
+  }
+
+  set resize( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'resize', value );
+    } else {
+      this.removeAttribute( 'resize' );
+    }
+  }      
 
   get rows() {
     if( this.hasAttribute( 'rows' ) ) {
