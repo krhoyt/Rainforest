@@ -57,6 +57,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Button](./docs/button.md)
 - ✅ [Checkbox](./docs/checkbox.md)
 - ✅ [Calendar](./docs/calendar.md)
+- ✅ [Cats](./docs/cats.md) 🐈
 - ✅ [Container](./docs/container.md)
 - ✅ [Content Layout](./docs/content-layout.md)
 - ❓ Date Picker 
@@ -83,7 +84,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
-✅ Implemented (24)   
+✅ Implemented (25)   
 ✈️ In-flight/progress (1)  
 📆 Planned  (2)   
 ❓ To be determined (6)  

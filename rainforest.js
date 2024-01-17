@@ -4,6 +4,7 @@ import RainforestBox from "./components/box.js";
 import RainforestBreadcrumbGroup from "./components/breadcrumb-group.js";
 import RainforestButton from "./components/button.js";
 import RainforestCalendar from "./components/calendar.js";
+import RainforestCats from "./components/cats.js";
 import RainforestCheckbox from "./components/checkbox.js";
 import RainforestContainer from "./components/container.js";
 import RainforestContentLayout from "./components/content-layout.js";
