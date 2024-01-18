@@ -282,3 +282,7 @@ div.vbox {
   flex-direction: column;
   gap: 16px;
 }
+
+.hidden {
+  display: none;
+}
