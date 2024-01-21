@@ -253,6 +253,15 @@ div.hbox {
   gap: 16px;
 }
 
+div.popover {
+  background-color: #ffffff;
+  border: solid 2px #9ba7b6;
+  border-radius: 8px;
+  box-shadow: rgba( 0, 7, 22, 0.10 ) 0px 4px 20px 1px;
+  display: none;
+  padding: 12px 16px 12px 16px;
+}
+
 div.select {
   background-color: #ffffff;
   border: solid 2px #7d8998;

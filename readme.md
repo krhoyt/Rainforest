@@ -70,7 +70,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Link](./docs/link.md)
 - ❓ Multiselect
 - ✅ [Polar Chart](./docs/polar-chart.md) ⚠️
-- 📆 Popover
+- ✈️ [Popover](./docs/popover.md)
 - ❓ Rating ⚠️
 - ❓ Radio Group
 - ✅ [Select](./docs/select.md)
@@ -85,8 +85,8 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
 
 ✅ Implemented (25)   
-✈️ In-flight/progress (1)  
-📆 Planned  (2)   
+✈️ In-flight/progress (2)  
+📆 Planned  (1)   
 ❓ To be determined (6)  
 ⚠️ Not part of Cloudscape (4)
 

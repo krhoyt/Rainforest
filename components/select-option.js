@@ -26,6 +26,7 @@ export default class RainforestSelectOption extends HTMLElement {
           flex-basis: 0;
           flex-direction: column;
           flex-grow: 1;
+          min-width: 0;
         }        
 
         img {
@@ -98,7 +99,10 @@ export default class RainforestSelectOption extends HTMLElement {
         p[part=label] {
           flex-basis: 0;
           flex-grow: 1;
+          overflow: hidden;
           text-align: left;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         div[part=tags] p,

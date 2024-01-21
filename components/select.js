@@ -26,6 +26,7 @@ export default class RainforestSelect extends HTMLElement {
           flex-direction: row;
           margin: 0;
           min-height: 32px;
+          min-width: 0;
           padding: 0;
           position: relative;
           width: 100%;
@@ -98,9 +99,12 @@ export default class RainforestSelect extends HTMLElement {
           font-size: 14px;
           line-height: 20px;
           margin: 0;
+          overflow: hidden;
           padding: 0 0 0 12px;
           text-align: left;
           text-rendering: optimizeLegibility;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           width: 100%;
         }
 

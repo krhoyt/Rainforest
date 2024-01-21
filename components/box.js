@@ -25,7 +25,12 @@ export default class RainforestBox extends HTMLElement {
           text-align: var( --box-text-align, left );
           text-decoration: var( --box-text-decoration, none );
           text-rendering: optimizeLegibility;
+          text-wrap: var( --box-text-wrap, none );
           width: 100%;
+        }
+
+        :host( [balanced] ) div {
+          text-wrap: balanced;
         }
 
         :host( [variant=span] ) { display: inline; }
@@ -189,6 +194,7 @@ export default class RainforestBox extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'balanced' );                
     this._upgrade( 'color' );            
     this._upgrade( 'display' );      
     this._upgrade( 'float' );      
@@ -202,6 +208,7 @@ export default class RainforestBox extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
+      'balanced',
       'color',
       'display',
       'float',
@@ -221,6 +228,26 @@ export default class RainforestBox extends HTMLElement {
   // Attributes
   // Reflected
   // Boolean, Number, String, null
+  get balanced() {
+    return this.hasAttribute( 'balanced' );
+  }
+
+  set balanced( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'balanced' );
+      } else {
+        this.setAttribute( 'balanced', '' );
+      }
+    } else {
+      this.removeAttribute( 'balanced' );
+    }
+  }
+
   get color() {
     if( this.hasAttribute( 'color' ) ) {
       return this.getAttribute( 'color' );

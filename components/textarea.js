@@ -38,6 +38,13 @@ export default class RainforestTextarea extends HTMLElement {
           font-style: italic;
         }
 
+        :host( [resize=auto] ) textarea {
+          resize: vertical;
+          min-height: 0;
+          max-height: none;
+          height: auto;
+        }        
+
         :host( [resize=horizontal] ) textarea {
           resize: horizontal;
         }        
@@ -89,8 +96,24 @@ export default class RainforestTextarea extends HTMLElement {
         detail: {
           value: this.value
         }
-      } ) )
+      } ) );
     } );
+    this.$area.addEventListener( 'keypress', ( evt ) => {
+      if( evt.key === 'Enter' && !evt.shiftKey ) {
+        evt.preventDefault();
+        evt.stopImmediatePropagation();
+        this.dispatchEvent( new CustomEvent( 'rf-enter', {
+          detail: {
+            value: this.value
+          }
+        } ) );
+      }
+
+      if( this.resize === 'auto' ) {
+        this.$area.style.height = 'auto';
+        this.$area.style.height = `${this.$area.scrollHeight}px`;
+      }      
+    } );        
   }
 
   focus() {

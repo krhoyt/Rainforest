@@ -42,6 +42,7 @@ With the box component, you can display and style basic elements and containers 
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
+| `balanced` | `boolean` | Controls text wrapping. | `true` \| `false` | `false` | ✅ |
 | `color` | `string` | Overrides the text color. | `text-label` \| `text-body-secondary` \| `text-status-error` \| `text-status-success` \| `text-status-info` \| `text-status-inactive` \| `text-status-warning` | `null` | ✅ |
 | `display` | `string` | Overrides the display of the element. | `block` \| `inline` \| `inline-block` \| `none` | `null` | ✅ |
 | `float` | `string` | Defines the floating behavior. | `left` \| `right` | `null` | ✅ |
