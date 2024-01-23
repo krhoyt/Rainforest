@@ -17,12 +17,6 @@ export default class RainforestContainer extends HTMLElement {
           border-style: solid;
           border-width: 1px;
           border-radius: var( --container-border-radius, 16px );
-          /*
-          box-shadow: var( --container-box-shadow, 
-            0 0 1px 1px #e9ebed,
-            0 1px 8px 2px #0007161f
-          );
-          */
         }
 
         div[part=content],
@@ -52,6 +46,14 @@ export default class RainforestContainer extends HTMLElement {
         :host( [disable-header-paddings] ) div[part=header] {
           padding: 0;
         }        
+
+        :host( [slim-shady] ) div[part=container] {
+          border: none;
+          box-shadow: var( --container-box-shadow, 
+            0 0 1px 1px #e9ebed,
+            0 1px 8px 2px #0007161f
+          );
+        }
 
         ::slotted( rf-header ) {
           padding: 4px 0 0 0;
@@ -114,6 +116,7 @@ export default class RainforestContainer extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'disableContentPaddings' );           
     this._upgrade( 'disableHeaderPaddings' );    
+    this._upgrade( 'slimShady' );        
     this._render();
   }
 
@@ -121,7 +124,8 @@ export default class RainforestContainer extends HTMLElement {
   static get observedAttributes() {
     return [
       'disable-content-paddings',
-      'disable-header-paddings'
+      'disable-header-paddings',
+      'slim-shady'
     ];
   }
 
@@ -171,6 +175,26 @@ export default class RainforestContainer extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'disable-header-paddings' );
+    }
+  }
+  
+  get slimShady() {
+    return this.hasAttribute( 'slim-shady' );
+  }
+
+  set slimShady( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'slim-shady' );
+      } else {
+        this.setAttribute( 'slim-shady', '' );
+      }
+    } else {
+      this.removeAttribute( 'slim-shady' );
     }
   }  
 }
