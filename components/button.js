@@ -79,10 +79,10 @@ export default class RainforestButton extends HTMLElement {
             brightness( 97% ) 
             contrast( 93% )
           );            
-          height: 16px;
+          height: var( --button-image-size, 16px );
           /* margin: 0 8px 0 -4px; */
           margin: 0;
-          width: 16px;
+          width: var( --button-image-size, 16px );
         }
 
         button.content img {

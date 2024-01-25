@@ -214,11 +214,17 @@ export default class RainforestSelect extends HTMLElement {
 
       if( this._list.style.display === 'none' || this._list.style.display === '' ) {
         const bounds = this.$select.getBoundingClientRect();
+        this._list.style.display = 'inline-block';
+
+        if( ( bounds.top + bounds.height + this._list.clientHeight ) > window.innerHeight ) {
+          this._list.style.top = `${bounds.top - this._list.clientHeight - 6}px`;
+        } else {
+          this._list.style.top = `${bounds.top + bounds.height + 2}px`;  
+        }
+
+        this._list.style.width = `${bounds.width - 4}px`;        
         this._list.style.left = `${bounds.x}px`;
-        this._list.style.top = `${bounds.top + bounds.height + 2}px`;  
-        this._list.style.width = `${bounds.width - 4}px`;
-        this._list.style.display = 'inline-block';      
-        this.$caret.classList.add( 'open' );
+        this.$caret.classList.add( 'open' );        
       } else {
         this._list.style.display = 'none';
         this.$caret.classList.remove( 'open' );        

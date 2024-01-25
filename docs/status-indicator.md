@@ -32,7 +32,7 @@ A status indicator communicates the state of a resource — either in its entire
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `color-override` | `string` | Specifies an override for the status indicator color. | `blue` \| `grey` \| `green` \| `red` | `null` | X |
+| `color-override` | `string` | Specifies an override for the status indicator color. | `blue` \| `grey` \| `green` \| `red` \| `white` | `null` | X |
 | `type`  | `string` | Specifies the status type. | `error` \| `warning` \| `success` \| `info` \| `stopped` \| `pending` \| `in-progress` \| `loading` | `success` | X |
 | `wrap-text` | `boolean` | Specifies if the text content should wrap. | - | `true` | X |      
 

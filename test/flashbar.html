@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Flashbar - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-box {
+        --box-color: #ffffff;
+      }
+
+      rf-link {
+        --link-color: #ffffff;
+        --link-font-weight: 700;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-flashbar dismissable>
+      <rf-box>This is an info flash message. It contains</rf-box>
+      <rf-link href="#">a link to another page.</rf-link>
+    </rf-flashbar>
+    <br>
+    <rf-flashbar dismissable type="success">
+      <rf-box>This is a success flash message.</rf-box>
+      <rf-button slot="action">View instance</rf-button>
+    </rf-flashbar>
+    <br>
+    <rf-flashbar dismissable type="error">
+      <rf-box slot="header">Failed to update 4 instances</rf-box>
+      <rf-box>This is a dismissible error message.</rf-box>
+    </rf-flashbar>
+    <br>    
+    <pre>
+&lt;rf-flashbar&gt;Paragraph text&lt;/rf-flashbar&gt;
+    </pre>
+
+    <script src="../components/box.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/flashbar.js" type="module"></script>
+    <script src="../components/link.js" type="module"></script>    
+
+  </body>
+</html>

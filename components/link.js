@@ -20,7 +20,7 @@ export default class RainforestLink extends HTMLElement {
           flex-direction: row;
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: var( --link-font-weight, 400 );
           line-height: 20px;
           margin: 0;
           outline: none;
@@ -52,7 +52,7 @@ export default class RainforestLink extends HTMLElement {
 
         a:hover {
           color: var( --link-hover-color, #033160 );
-          text-decoration: underline;
+          text-decoration: var( --link-hover-text-decoration, underline );
         }
 
         a:hover img {

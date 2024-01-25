@@ -37,9 +37,9 @@ export default class RainforestStatusIndicator extends HTMLElement {
             hue-rotate( 114deg )
             brightness( 94% )
             contrast( 98% );
-          height: 16px;
+          height: var( --status-indicator-size, 16px );
           padding: 0 4px 0 0;
-          width: 16px;
+          width: var( --status-indicator-size, 16px );
         }
 
         rf-spinner { padding: 0 4px 0 0; }
@@ -151,7 +151,21 @@ export default class RainforestStatusIndicator extends HTMLElement {
             brightness( 89% )
             contrast( 90% );          
         }                               
-        :host( [color-override=red] ) rf-spinner::part( circle ) { stroke: #d91515; }                                                            
+        :host( [color-override=red] ) rf-spinner::part( circle ) { stroke: #d91515; }                                                           
+
+        :host( [color-override=white] ) div { color: #ffffff; }
+        :host( [color-override=white] ) img { 
+          filter:
+            brightness( 0 )
+            saturate( 100% )
+            invert( 89% )
+            sepia( 83% )
+            saturate( 0% )
+            hue-rotate( 346deg )
+            brightness( 115% )
+            contrast( 100% );
+        }                               
+        :host( [color-override=white] ) rf-spinner::part( circle ) { stroke: #ffffff; }                                                           
 
         :host( [type=loading] ) img { display: none; }
         :host( :not( [type=loading] ) ) rf-spinner {

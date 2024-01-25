@@ -26,12 +26,14 @@
     <div style="display: flex; flex-direction: row; width: 150px;">
       <rf-select style="width: 100%;"></rf-select>      
     </div>
-    <br>
     <pre>
 &lt;rf-select&gt;&lt;/rf-select&gt;
 &lt;rf-select&gt;&lt;/rf-select&gt;
 &lt;rf-select&gt;&lt;/rf-select&gt;
 &lt;rf-select trigger-variant=&quot;option&quot;&gt;&lt;/rf-select&gt;
+&lt;div style=&quot;display: flex; flex-direction: row; width: 150px;&quot;&gt;
+  &lt;rf-select style=&quot;width: 100%;&quot;&gt;&lt;/rf-select&gt;      
+&lt;/div&gt;
     </pre>
     <pre>
 const selects = document.querySelectorAll( 'rf-select' );
@@ -57,11 +59,15 @@ selects[3].options = [
   {label: 'Option 2', value: 2, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']},
   {label: 'Option 3', value: 3, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']}
 ];
+selects[4].options = [
+  {label: 'This is a really long label'}
+];
 
 selects[0].selectedOption = {label: 'Option 1', value: 1};
 selects[1].selectedOption = {label: 'Option 1', value: 1, iconName: 'settings'};
 selects[2].selectedOption = {label: 'Option 1', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']};
 selects[3].selectedOption = {label: 'Option 1', value: 1, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']};      
+selects[4].selectedIndex = 0;
     </pre>
 
     <script src="../components/select.js" type="module"></script>

@@ -9,6 +9,7 @@ import RainforestCheckbox from "./components/checkbox.js";
 import RainforestContainer from "./components/container.js";
 import RainforestContentLayout from "./components/content-layout.js";
 import RainforestExpandableSection from "./components/expandable-section.js";
+import RainforestFlashbar from "./components/flashbar.js";
 import RainforestFormField from "./components/form-field.js";
 import RainforestHeader from "./components/header.js";
 import RainforestIcon from "./components/icon.js";

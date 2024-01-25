@@ -125,7 +125,7 @@ export default class RainforestTabs extends HTMLElement {
         if( this.activeTabId === null ) {
           if( t === 0 ) {
             this.$tabs.children[t].setAttribute( 'data-selected', true );
-            this.children[t].style.display = 'block';
+            this.children[t].style.display = 'inherit';
           } else {
             this.$tabs.children[t].removeAttribute( 'data-selected' );
             this.children[t].style.display = 'none';            
@@ -133,7 +133,7 @@ export default class RainforestTabs extends HTMLElement {
         } else {
           if( this.activeTabId === this.children[t].getAttribute( 'data-label' ) ) {
             this.$tabs.children[t].setAttribute( 'data-selected', true );
-            this.children[t].style.display = 'block';
+            this.children[t].style.display = 'inherit';
           } else {
             this.$tabs.children[t].removeAttribute( 'data-selected' );
             this.children[t].style.display = 'none';            
@@ -148,7 +148,8 @@ export default class RainforestTabs extends HTMLElement {
     if( this.activeTabId === evt.currentTarget.getAttribute( 'data-id' ) ) return;
 
     this.activeTabId = evt.currentTarget.getAttribute( 'data-id' );
-    
+
+    /*
     for( let t = 0; t < this.children.length; t++ ) {    
       if( this.children[t].hasAttribute( 'data-disabled' ) ) {
         this.$tabs.children[t].disabled = true;
@@ -159,7 +160,7 @@ export default class RainforestTabs extends HTMLElement {
       if( this.activeTabId === null ) {
         if( t === 0 ) {
           this.$tabs.children[t].setAttribute( 'data-selected', true );
-          this.children[t].style.display = 'block';
+          this.children[t].style.display = 'inherit';
         } else {
           this.$tabs.children[t].removeAttribute( 'data-selected' );
           this.children[t].style.display = 'none';            
@@ -167,13 +168,14 @@ export default class RainforestTabs extends HTMLElement {
       } else {
         if( this.activeTabId === this.children[t].getAttribute( 'data-id' ) ) {
           this.$tabs.children[t].setAttribute( 'data-selected', true );
-          this.children[t].style.display = 'block';
+          this.children[t].style.display = 'inherit';
         } else {
           this.$tabs.children[t].removeAttribute( 'data-selected' );
           this.children[t].style.display = 'none';            
         }
       }    
     }
+    */
 
     this.dispatchEvent( new CustomEvent( 'rf-change', {
       detail: {
@@ -183,7 +185,39 @@ export default class RainforestTabs extends HTMLElement {
   }
 
   // When things change
-  _render() {;}
+  _render() {
+    if( this.$tabs.children.length !== this.children.length ) return;
+
+    for( let t = 0; t < this.children.length; t++ ) {
+      /*
+      if( this.children[t].hasAttribute( 'data-disabled' ) ) {
+        this.$tabs.children[t].disabled = true;
+      } else {
+        this.$tabs.children[t].disabled = false;
+      }
+      */
+
+      console.log( this.activeTabId );
+      if( this.activeTabId === null ) {
+        if( t === 0 ) {
+          this.$tabs.children[t].setAttribute( 'data-selected', true );
+          this.children[t].style.display = 'inherit';
+        } else {
+          this.$tabs.children[t].removeAttribute( 'data-selected' );
+          this.children[t].style.display = 'none';            
+        }
+      } else {
+        console.log( this.activeTabId + ': ' + this.children[t].getAttribute( 'data-id' ) );
+        if( this.activeTabId === this.children[t].getAttribute( 'data-id' ) ) {
+          this.$tabs.children[t].setAttribute( 'data-selected', true );
+          this.children[t].style.display = 'inherit';
+        } else {
+          this.$tabs.children[t].removeAttribute( 'data-selected' );
+          this.children[t].style.display = 'none';            
+        }
+      }    
+    }    
+  }
 
   // Promote properties
   // Values may be set before module load
@@ -198,7 +232,7 @@ export default class RainforestTabs extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'activeTabId' );      
-    this._upgrade( 'disableContentPaddings' );          
+    this._upgrade( 'disableContentPaddings' );
     this._upgrade( 'variant' );          
     this._render();
   }
