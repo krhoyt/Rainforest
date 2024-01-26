@@ -39,6 +39,7 @@ Allows users to initiate actions in the user interface.
 | --- | --- | --- | --- | --- | --- |
 | `disabled` | `boolean` | Renders the button as disabled and prevents clicks. | - | `false` | ✅ |
 | `download` | `boolean` \| `string` | Specifies whether the linked URL, when selected, will prompt the user to download instead of navigate. | - | `null` | ✅ |
+| `hidden` | `boolean` | Hides element from DOM. | - | `false` | ✅ |
 | `href` | `string` | Applies button styling to a link. | - | `null` | ✅ | 
 | `icon-align` | `string` | Specifies the alignment of the icon. | `left` \| `right` | `left` | ✅ | 
 | `icon-name` | `string` | Displays an icon next to the text. | Icon names. | `null` | ✅ | 

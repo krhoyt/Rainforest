@@ -57,6 +57,7 @@ None
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
 | `disabled` | `boolean` | Determines whether the whole select component is disabled. | - | `false` | ✅ |
+| `hidden` | `boolean` | Hides element from DOM. | - | `false` | ✅ |
 | `invalid` | `boolean` | Overrides the invalidation state. | - | `false` | ✅ |
 | `options` | `array<{value: string, label: string, description: string, disabled: boolean, labelTag: string, tags: [string], iconName: string}>` | Specifies an array of options that are displayed to the user as a dropdown list.  | - | `null` | ❌ |
 | `placeholder` | `string` | Specifies the hint text that's displayed in the field when no option has been selected. | - | `null` | ✅ |

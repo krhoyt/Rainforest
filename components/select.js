@@ -13,6 +13,10 @@ export default class RainforestSelect extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         button {
           align-items: center;
           background: none;
@@ -203,12 +207,14 @@ export default class RainforestSelect extends HTMLElement {
     this.$caret = this.shadowRoot.querySelector( 'img[part=caret]' );
     this.$placeholder = this.shadowRoot.querySelector( 'p' );
     this.$select = this.shadowRoot.querySelector( 'button' );
-    document.addEventListener( 'click', ( evt ) => {
+    /*
+    document.addEventListener( 'click', ( evt ) => {      
       if( evt.target !== this && evt.target.parentElement !== this._list ) {
         this._list.style.display = 'none';
         this.$caret.classList.remove( 'open' );
       }
     } );
+    */
     this.$select.addEventListener( 'click', () => {
       if( this.disabled ) return;
 
@@ -319,6 +325,7 @@ export default class RainforestSelect extends HTMLElement {
     }
 
     this._upgrade( 'disabled' );
+    this._upgrade( 'hidden' );    
     this._upgrade( 'invalid' );
     this._upgrade( 'options' );
     this._upgrade( 'placeholder' ); 
@@ -333,6 +340,7 @@ export default class RainforestSelect extends HTMLElement {
   static get observedAttributes() {
     return [
       'disabled',
+      'hidden',
       'invalid',
       'placeholder',
       'selected-index',
@@ -441,6 +449,26 @@ export default class RainforestSelect extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'disabled' );
+    }
+  }
+  
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
     }
   }  
 

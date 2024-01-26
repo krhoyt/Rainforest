@@ -14,6 +14,10 @@ export default class RainforestButton extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         a {
           display: none;
           left: 0;
@@ -476,6 +480,26 @@ export default class RainforestButton extends HTMLElement {
       this.removeAttribute( 'download' );
     }
   }  
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }    
 
   get href() {
     if( this.hasAttribute( 'href' ) ) {

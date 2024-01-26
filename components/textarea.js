@@ -90,18 +90,17 @@ export default class RainforestTextarea extends HTMLElement {
 
     // Elements
     this.$area = this.shadowRoot.querySelector( 'textarea' );
-    this.$area.addEventListener( 'input', ( evt ) => {
-      this.value = evt.currentTarget.value;
+    this.$area.addEventListener( 'input', () => {
+      this.value = this.$area.value;
       this.dispatchEvent( new CustomEvent( 'rf-change', {
         detail: {
           value: this.value
         }
       } ) );
     } );
-    this.$area.addEventListener( 'keypress', ( evt ) => {
+    this.$area.addEventListener( 'keydown', ( evt ) => {
       if( evt.key === 'Enter' && !evt.shiftKey ) {
         evt.preventDefault();
-        evt.stopImmediatePropagation();
         this.dispatchEvent( new CustomEvent( 'rf-enter', {
           detail: {
             value: this.value
@@ -113,7 +112,7 @@ export default class RainforestTextarea extends HTMLElement {
         this.$area.style.height = 'auto';
         this.$area.style.height = `${this.$area.scrollHeight}px`;
       }      
-    } );        
+    } );       
   }
 
   focus() {
@@ -135,7 +134,7 @@ export default class RainforestTextarea extends HTMLElement {
     this.$area.readOnly = this.readOnly;
     this.$area.rows = this.rows === null ? '' : this.rows;
     this.$area.spellcheck = this.spellcheck;
-    this.$area.innerText = this.value === null ? '' : this.value;
+    this.$area.value = this.value === null ? '' : this.value;
   }
 
   // Promote properties
