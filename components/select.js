@@ -207,14 +207,13 @@ export default class RainforestSelect extends HTMLElement {
     this.$caret = this.shadowRoot.querySelector( 'img[part=caret]' );
     this.$placeholder = this.shadowRoot.querySelector( 'p' );
     this.$select = this.shadowRoot.querySelector( 'button' );
-    /*
     document.addEventListener( 'click', ( evt ) => {      
-      if( evt.target !== this && evt.target.parentElement !== this._list ) {
+      const path = evt.composedPath();
+      if( this && !path.includes( this ) ) {
         this._list.style.display = 'none';
         this.$caret.classList.remove( 'open' );
       }
     } );
-    */
     this.$select.addEventListener( 'click', () => {
       if( this.disabled ) return;
 
