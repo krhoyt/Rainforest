@@ -222,14 +222,14 @@ export default class RainforestSelect extends HTMLElement {
         const bounds = this.$select.getBoundingClientRect();
         this._list.style.display = 'inline-block';
 
-        if( ( bounds.top + bounds.height + this._list.clientHeight ) > window.innerHeight ) {
-          this._list.style.top = `${bounds.top - this._list.clientHeight - 6}px`;
+        if( ( bounds.top + bounds.height + this._list.clientHeight + window.scrollY ) > window.innerHeight ) {
+          this._list.style.top = `${bounds.top - this._list.clientHeight + window.scrollY - 6}px`;
         } else {
-          this._list.style.top = `${bounds.top + bounds.height + 2}px`;  
+          this._list.style.top = `${bounds.top + bounds.height + window.scrollY + 2}px`;  
         }
 
         this._list.style.width = `${bounds.width - 4}px`;        
-        this._list.style.left = `${bounds.x}px`;
+        this._list.style.left = `${bounds.x + window.scrollX}px`;
         this.$caret.classList.add( 'open' );        
       } else {
         this._list.style.display = 'none';
