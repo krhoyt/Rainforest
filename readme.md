@@ -57,16 +57,18 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Button](./docs/button.md)
 - ✅ [Checkbox](./docs/checkbox.md)
 - ✅ [Calendar](./docs/calendar.md)
-- ✅ [Cats](./docs/cats.md) 🐈
+- ✅ [Cats](./docs/cats.md) 🐈 ⚠️
 - ✅ [Container](./docs/container.md)
 - ✅ [Content Layout](./docs/content-layout.md)
 - ❓ Date Picker 
 - ✅ [Expandable Section](./docs/expandable-section.md)
 - 📆 Flashbar
 - ✅ [Form Field](./docs/form-field.md)
+- ✅ [HBox](./docs/hbox.md) ⚠️
 - ✈️ Header
 - ✅ [Icon](./docs/icon.md)
 - ✅ [Input](./docs/input.md)
+- ✅ [Label](./docs/label.md) ⚠️
 - ✅ [Link](./docs/link.md)
 - ❓ Multiselect
 - ✅ [Polar Chart](./docs/polar-chart.md) ⚠️
@@ -76,6 +78,7 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Select](./docs/select.md)
 - ✅ [Space Between](./docs/space-between.md)
 - ✅ [Spinner](./docs/spinner.md)
+- ✅ [Stack](./docs/stack.md)
 - ✅ [Status Indicator](./docs/status-indicator.md)
 - ❓ Table
 - ✅ [Tabs](./docs/tabs.md)
@@ -83,12 +86,13 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 - ✅ [Text Content](./docs/text-content.md)
 - ✅ [Toggle](./docs/toggle.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
+- ✅ [VBox](./docs/vbox.md) ⚠️
 
-✅ Implemented (25)   
+✅ Implemented (29)   
 ✈️ In-flight/progress (2)  
 📆 Planned  (1)   
 ❓ To be determined (6)  
-⚠️ Not part of Cloudscape (4)
+⚠️ Not part of Cloudscape (7)
 
 ## Some Differences to Consider
 
