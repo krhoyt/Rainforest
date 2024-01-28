@@ -46,6 +46,7 @@ With the container, you can present a group of pieces of content, indicating tha
 | --- | --- | --- | --- | --- | --- |
 | `disable-content-paddings` | `boolean` | Determines whether the container content has padding. | - | `false` | ✅ |
 | `disable-header-paddings` | `boolean` | Determines whether the container header has padding. | - | `false` | ✅ |
+| `hidden` | `boolean` | Remove container from DOM rendering. Equivalent of `display: none`. | - | `false` | ✅ |
 | `slim-shady` | `boolean` | Adds drop shadow of previous version. Because, why not? | - | `false` | ✅ |
 
 ## Events

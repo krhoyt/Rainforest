@@ -141,7 +141,9 @@ export default class RainforestButton extends HTMLElement {
 
         :host( [loading][icon-name] ) button img {
           display: none;
-        }                       
+        }               
+        
+        
 
         :host( [variant=icon] ) button {
           background-color: transparent;
@@ -269,6 +271,25 @@ export default class RainforestButton extends HTMLElement {
         :host( [variant=inline-link] ) button:not( [disabled] ):hover {
           color: #033160;
         }                         
+
+        :host( [variant=content-pane] ) button {
+          background-color: transparent;
+          border-color: #539fe5;
+          color: #539fe5;
+        }                
+
+        :host( [variant=content-pane] ) button:hover {
+          background-color: #192534;
+          border-color: #89bdee;
+          color: #89bdee;
+        }
+
+        :host( [variant=content-pane] ) button[disabled] {
+          background-color: transparent;
+          border-color: #5f6b7a;
+          color: #5f6b7a;
+          cursor: not-allowed;
+        }                  
 
         :host( [variant=primary] ) button {
           background-color: var( --button-primary-background-color, #0972d3 );

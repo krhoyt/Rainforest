@@ -11,6 +11,10 @@ export default class RainforestIcon extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         div {
           display: block;
           height: var( --icon-height, 16px );
@@ -159,10 +163,14 @@ export default class RainforestIcon extends HTMLElement {
     let src = null;
 
     if( this.url === null ) {
-      let name = this.name === null ? '' : this.name + '.svg';
-      let path = this.path === null ? '../icons/' : this.path;
-      path = this.name === null ? '' : path;
-      src = path + name;
+      if( this.cdn ) {
+        src = `https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/icons/${this.name}.svg`;
+      } else {
+        let name = this.name === null ? '' : this.name + '.svg';      
+        let path = this.path === null ? '../icons/' : this.path;
+        path = this.name === null ? '' : path;
+        src = path + name;
+      }
     } else {
       src = this.url;
     }
@@ -182,6 +190,8 @@ export default class RainforestIcon extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'cdn' );    
+    this._upgrade( 'hidden' );        
     this._upgrade( 'name' );
     this._upgrade( 'path' );
     this._upgrade( 'size' );
@@ -193,6 +203,8 @@ export default class RainforestIcon extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
+      'cdn',
+      'hidden',
       'name',
       'path',
       'size',
@@ -210,6 +222,46 @@ export default class RainforestIcon extends HTMLElement {
   // Attributes
   // Reflected
   // Boolean, Number, String, null
+  get cdn() {
+    return this.hasAttribute( 'cdn' );
+  }
+
+  set cdn( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'cdn' );
+      } else {
+        this.setAttribute( 'cdn', '' );
+      }
+    } else {
+      this.removeAttribute( 'cdn' );
+    }
+  }
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }  
+
   get name() {
     if( this.hasAttribute( 'name' ) ) {
       return this.getAttribute( 'name' );

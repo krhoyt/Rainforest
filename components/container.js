@@ -11,6 +11,10 @@ export default class RainforestContainer extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         div[part=container] {
           background: #ffffff;
           border-color: var( --container-border-color, #b6bec9 );
@@ -116,6 +120,7 @@ export default class RainforestContainer extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'disableContentPaddings' );           
     this._upgrade( 'disableHeaderPaddings' );    
+    this._upgrade( 'hidden' );        
     this._upgrade( 'slimShady' );        
     this._render();
   }
@@ -125,6 +130,7 @@ export default class RainforestContainer extends HTMLElement {
     return [
       'disable-content-paddings',
       'disable-header-paddings',
+      'hidden',
       'slim-shady'
     ];
   }
@@ -178,6 +184,26 @@ export default class RainforestContainer extends HTMLElement {
     }
   }
   
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }
+
   get slimShady() {
     return this.hasAttribute( 'slim-shady' );
   }
