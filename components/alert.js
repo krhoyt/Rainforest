@@ -13,6 +13,10 @@ export default class RainforestAlert extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         div[part=alert] {
           background-color: var( --alert-background-color, #f2f8fd );
           border-color: var( --alert-border-color, #0972d3 );
@@ -22,6 +26,10 @@ export default class RainforestAlert extends HTMLElement {
           display: flex;
           flex-direction: row;
           padding: 8px 16px 8px 16px;
+        }
+
+        div[part=alert] > div {
+          width: 100%;
         }
 
         div[part=content] {
@@ -47,6 +55,7 @@ export default class RainforestAlert extends HTMLElement {
           flex-grow: 1;
           margin: 4px;
           padding: 2px 0 2px 0;
+          width: 100%;
         }
 
         rf-button[part=button] {
@@ -222,6 +231,7 @@ export default class RainforestAlert extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'dismissable' );                
+    this._upgrade( 'hidden' );                    
     this._upgrade( 'type' );
     this._render();
   }
@@ -230,6 +240,7 @@ export default class RainforestAlert extends HTMLElement {
   static get observedAttributes() {
     return [
       'dismissable',
+      'hidden',
       'type'
     ];
   }
@@ -260,6 +271,26 @@ export default class RainforestAlert extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'dismissable' );
+    }
+  }
+  
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
     }
   }  
 
