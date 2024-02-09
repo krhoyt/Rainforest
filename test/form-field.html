@@ -13,11 +13,10 @@
   </head>
   <body>
 
-    <rf-form-field>
-      <span slot="label">Form field label</span>      
-      <span slot="description">This is a description</span>
-      <rf-input></rf-input>
+    <rf-form-field label="Form field">
+      <rf-input placeholder="Form field"></rf-input>
     </rf-form-field>
+    <!--
     <br><br>
     <rf-form-field>
       <span slot="label">Form field label <i>- optional</i></span>      
@@ -72,6 +71,7 @@
       </span>
       <rf-checkbox>I agree to the terms and conditions</rf-checkbox>
     </rf-form-field>
+    -->
     <br>
     <pre>
 &lt;rf-box variant="p"&gt;Paragraph text&lt;/rf-box&gt;
@@ -84,13 +84,14 @@
 &lt;rf-box float="right"&gt;Float right&lt;/rf-box&gt;
     </pre>
 
-    <script src="../components/button.js" type="module"></script>
-    <script src="../components/form-field.js" type="module"></script>
-    <script src="../components/input.js" type="module"></script>
-    <script src="../components/link.js" type="module"></script>    
-    <script src="../components/checkbox.js" type="module"></script>    
+    <!-- <script src="../components/button.js" type="module"></script> -->
+    <script src="../components/containers/form-field.js" type="module"></script>
+    <script src="../components/controls/input.js" type="module"></script>
+    <script src="../components/controls/link.js" type="module"></script>    
+    <script src="../components/controls/checkbox.js" type="module"></script>    
 
     <script>
+      /*
       let error = null;
 
       function createError( message ) {
@@ -121,6 +122,7 @@
           }
         }
       } );
+      */
     </script>
 
   </body>

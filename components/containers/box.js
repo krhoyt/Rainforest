@@ -1,4 +1,4 @@
-export default class RainforestSpaceBetween extends HTMLElement {
+export default class RainforestBox extends HTMLElement {
   constructor() {
     super();
 
@@ -13,8 +13,9 @@ export default class RainforestSpaceBetween extends HTMLElement {
           position: relative;
         }
 
-        :host( [align-items=center] ) { align-items: center; }
-        :host( [align-items=end] ) { align-items: flex-end; }
+        :host( [hidden] ) {
+          display: none;
+        }
 
         :host( [direction=horizontal] ),
         :host( [direction=row] ) {
@@ -28,16 +29,6 @@ export default class RainforestSpaceBetween extends HTMLElement {
         :host( [direction=column-reverse] ) {
           flex-direction: column-reverse;
         }         
-
-        :host( [size=xxxs] ) { gap: 2px; }
-        :host( [size=xxs] ) { gap: 4px }
-        :host( [size=xs] ) { gap: 8px }
-        :host( [size=s] ) { gap: 12px }        
-        :host( [size=m] ) { gap: 16px }                
-        :host( [size=l] ) { gap: 20px }                        
-        :host( [size=xl] ) { gap: 24px }                                
-        :host( [size=xxl] ) { gap: 32px }                                        
-        :host( [size=xxxl] ) { gap: 40px }      
       </style>
       <slot></slot>
     `;
@@ -48,7 +39,10 @@ export default class RainforestSpaceBetween extends HTMLElement {
   }
 
   // When things change
-  _render() {;}
+  _render() {
+    const gap = this.gap === null ? 0 : this.gap;
+    this.style.gap = `${gap}px`;    
+  }
 
   // Properties set before module loaded
   _upgrade( property ) {
@@ -61,18 +55,18 @@ export default class RainforestSpaceBetween extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'alignItems' );           
     this._upgrade( 'direction' );                    
-    this._upgrade( 'size' );            
+    this._upgrade( 'gap' );                        
+    this._upgrade( 'hidden' );                        
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'align-items',
       'direction',
-      'size'     
+      'gap',
+      'hidden'   
     ];
   }
 
@@ -85,22 +79,6 @@ export default class RainforestSpaceBetween extends HTMLElement {
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get alignItems() {
-    if( this.hasAttribute( 'align-items' ) ) {
-      return this.getAttribute( 'align-items' );
-    }
-
-    return null;
-  }
-
-  set alignItems( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'align-items', value );
-    } else {
-      this.removeAttribute( 'align-items' );
-    }
-  }
-
   get direction() {
     if( this.hasAttribute( 'direction' ) ) {
       return this.getAttribute( 'direction' );
@@ -117,21 +95,41 @@ export default class RainforestSpaceBetween extends HTMLElement {
     }
   }
 
-  get size() {
-    if( this.hasAttribute( 'size' ) ) {
-      return this.getAttribute( 'size' );
+  get gap() {
+    if( this.hasAttribute( 'gap' ) ) {
+      return parseInt( this.getAttribute( 'gap' ) );
     }
 
     return null;
   }
 
-  set size( value ) {
+  set gap( value ) {
     if( value !== null ) {
-      this.setAttribute( 'size', value );
+      this.setAttribute( 'gap', value );
     } else {
-      this.removeAttribute( 'size' );
+      this.removeAttribute( 'gap' );
     }
-  }  
+  }            
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }   
 }
 
-window.customElements.define( 'rf-space-between', RainforestSpaceBetween );
+window.customElements.define( 'rf-box', RainforestBox );

@@ -13,27 +13,32 @@
   </head>
   <body>
 
-    <rf-status-indicator type="error">Error</rf-status-indicator>
-    <rf-status-indicator type="warning">Warning</rf-status-indicator>
-    <rf-status-indicator>Success</rf-status-indicator>    
-    <rf-status-indicator type="info">Info</rf-status-indicator>    
-    <rf-status-indicator type="stopped">Stopped</rf-status-indicator>        
-    <rf-status-indicator type="pending">Pending</rf-status-indicator>            
-    <rf-status-indicator type="in-progress">In progress</rf-status-indicator>                
-    <rf-status-indicator type="loading">Loading</rf-status-indicator>                
+    <rf-status-indicator label="Error" type="error"></rf-status-indicator><br>
+    <rf-status-indicator label="Warning" type="warning"></rf-status-indicator><br>
+    <rf-status-indicator label="Success"></rf-status-indicator><br> 
+    <rf-status-indicator label="Info" type="info"></rf-status-indicator><br>
+    <rf-status-indicator label="Stopped" type="stopped"></rf-status-indicator><br>
+    <rf-status-indicator label="Pending" type="pending"></rf-status-indicator><br>        
+    <rf-status-indicator label="In progress" type="in-progress"></rf-status-indicator><br>
+    <rf-status-indicator label="Loading" type="loading"></rf-status-indicator><br>
+    <rf-status-indicator color="red" label="Success" type="error"></rf-status-indicator>
+    <div style="width: 200px">
+      <rf-status-indicator label="We got some really long content for you here." truncate></rf-status-indicator>
+    </div>
     <br>
     <pre>
-&lt;rf-status-indicator type="error"&gt;Error&lt;/rf-status-indicator&gt;
-&lt;rf-status-indicator type="warning"&gt;Warning&lt;/rf-status-indicator&gt;
-&lt;rf-status-indicator&gt;Success&lt;/rf-status-indicator&gt;    
-&lt;rf-status-indicator type="info"&gt;Info&lt;/rf-status-indicator&gt;    
-&lt;rf-status-indicator type="stopped"&gt;Stopped&lt;/rf-status-indicator&gt;        
-&lt;rf-status-indicator type="pending"&gt;Pending&lt;/rf-status-indicator&gt;            
-&lt;rf-status-indicator type="in-progress"&gt;In progress&lt/rf-status-indicator&gt;                
-&lt;rf-status-indicator type="loading"&gt;Loading&lt;/rf-status-indicator&gt;              
+&lt;rf-status-indicator label=&quot;Error&quot; type=&quot;error&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Warning&quot; type=&quot;warning&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Success&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Info&quot; type=&quot;info&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Stopped&quot; type=&quot;stopped&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Pending&quot; type=&quot;pending&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;In progress&quot; type=&quot;in-progress&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator label=&quot;Loading&quot; type=&quot;loading&quot;&gt;&lt;/rf-status-indicator&gt;
+&lt;rf-status-indicator color=&quot;red&quot; label=&quot;Success&quot; type=&quot;error&quot;&gt;&lt;/rf-status-indicator&gt;
     </pre>
 
-    <script src="../components/status-indicator.js" type="module"></script>
+    <script src="../components/controls/status-indicator.js" type="module"></script>
 
   </body>
 </html>

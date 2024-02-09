@@ -13,18 +13,18 @@
   </head>
   <body>
 
-    <rf-button variant="primary">Button</rf-button><br>        
-    <rf-button>Button</rf-button><br> 
-    <rf-button variant="link">Button</rf-button><br>
-    <rf-button variant="inline-link">Download</rf-button><br>  
+    <rf-button label="Button" variant="primary"></rf-button><br>        
+    <rf-button label="Button"></rf-button><br> 
+    <rf-button label="Button" variant="link"></rf-button><br>
+    <rf-button label="Download" variant="inline-link"></rf-button><br>  
     <rf-button icon-name="settings" variant="icon"></rf-button><br>  
     <rf-button icon-name="copy" variant="inline-icon"></rf-button><br>  
     <rf-button
       href="https://example.com" 
       icon-align="right" 
       icon-name="external" 
+      label="Report a bug"
       target="_blank">
-      Report a bug
     </rf-button>
     <br>                             
     <pre>
@@ -43,7 +43,7 @@
 &lt;/rf-button&gt;
     </pre>
 
-    <script src="../components/button.js" type="module"></script>
+    <script src="../components/controls/button.js" type="module"></script>
 
   </body>
 </html>

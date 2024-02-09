@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Box - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+  </head>
+  <body>
+
+    <rf-box variant="p">
+      When you launch an instance, the instance class that you specify determines the hardware of the host computer used for your instance. Each instance class offers different compute, memory, and storage capabilities. Choose an instance class based on the requirements of the application or software that you plan to run on your instance.  
+    </rf-box>
+    <rf-box color="text-body-secondary">Secondary text</rf-box>
+    <rf-box variant="h1">Distribution settings</rf-box>
+    <rf-box variant="code">database:instance:application-db</rf-box>
+    <rf-box font-size="display-l" font-weight="bold">Large and bold text</rf-box>
+    <rf-box variant="awsui-key-label">Key label</rf-box>
+    <rf-box text-align="center">Centered text</rf-box>
+    <rf-box float="right">
+      <rf-space-between direction="horizontal" size="xs">
+        <rf-button>Edit</rf-button>
+        <rf-button>Delete</rf-button>
+        <rf-button variant="primary">
+          Create distribution
+        </rf-button>
+      </rf-space-between>
+    </rf-box>
+    <br>
+    <pre>
+&lt;rf-box variant=&quot;p&quot;&gt;
+  When you launch an instance, the instance class that you specify determines the hardware of the host computer used for your instance. Each instance class offers different compute, memory, and storage capabilities. Choose an instance class based on the requirements of the application or software that you plan to run on your instance.  
+&lt;/rf-box&gt;
+&lt;rf-box color=&quot;text-body-secondary&quot;&gt;Secondary text&lt;/rf-box&gt;
+&lt;rf-box variant=&quot;h1&quot;&gt;Distribution settings&lt;/rf-box&gt;
+&lt;rf-box variant=&quot;code&quot;&gt;database:instance:application-db&lt;/rf-box&gt;
+&lt;rf-box font-size=&quot;display-l&quot; font-weight=&quot;bold&quot;&gt;Large and bold text&lt;/rf-box&gt;
+&lt;rf-box variant=&quot;awsui-key-label&quot;&gt;Key label&lt;/rf-box&gt;
+&lt;rf-box text-align=&quot;center&quot;&gt;Centered text&lt;/rf-box&gt;
+&lt;rf-box float=&quot;right&quot;&gt;
+  &lt;rf-space-between direction=&quot;horizontal&quot; size=&quot;xs&quot;&gt;
+    &lt;rf-button&gt;Edit&lt;/rf-button&gt;
+    &lt;rf-button&gt;Delete&lt;/rf-button&gt;
+    &lt;rf-button variant=&quot;primary&quot;&gt;
+      Create distribution
+    &lt;/rf-button&gt;
+  &lt;/rf-space-between&gt;
+&lt;/rf-box&gt;
+    </pre>
+
+    <script src="../components/box.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/space-between.js" type="module"></script>
+
+  </body>
+</html>

@@ -5,7 +5,7 @@
 ## Importing
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/cats.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/controls/cats.js" type="module"></script>
 ```
 
 ## Examples

@@ -21,9 +21,6 @@ export default class RainforestStack extends HTMLElement {
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
-
-    // Elements
-    this.$slot = this.shadowRoot.querySelector( 'slot' );
   }
 
    // When attributes change

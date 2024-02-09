@@ -11,6 +11,10 @@ export default class RainforestInput extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         input {
           border: solid 2px #7d8998;
           border-radius: 8px;
@@ -118,6 +122,7 @@ export default class RainforestInput extends HTMLElement {
     this._upgrade( 'autoFocus' );        
     this._upgrade( 'disabled' );        
     this._upgrade( 'disableBrowserAutocorrect' );        
+    this._upgrade( 'hidden' );
     this._upgrade( 'inputMode' );       
     this._upgrade( 'invalid' );    
     this._upgrade( 'name' );        
@@ -234,6 +239,26 @@ export default class RainforestInput extends HTMLElement {
       this.removeAttribute( 'disable-browser-autocorrect' );
     }
   }  
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  } 
 
   get inputMode() {
     if( this.hasAttribute( 'input-mode' ) ) {

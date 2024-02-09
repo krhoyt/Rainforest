@@ -14,6 +14,10 @@ export default class RainforestFlashbar extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         button {
           align-items: center;
           background: none;
@@ -122,7 +126,7 @@ export default class RainforestFlashbar extends HTMLElement {
         }
       </style>
       <div part="flash">
-        <rf-status-indicator color-override="white"></rf-status-indicator>
+        <rf-status-indicator color-override="white" part="status"></rf-status-indicator>
         <div>
           <div part="header">
             <slot name="header"></slot>
@@ -175,6 +179,7 @@ export default class RainforestFlashbar extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'dismissable' );           
+    this._upgrade( 'hidden' );           
     this._upgrade( 'loading' );           
     this._upgrade( 'type' );           
     this._render();
@@ -184,6 +189,7 @@ export default class RainforestFlashbar extends HTMLElement {
   static get observedAttributes() {
     return [
       'dismissable',
+      'hidden',
       'loading',
       'type'
     ];
@@ -215,6 +221,26 @@ export default class RainforestFlashbar extends HTMLElement {
       }
     } else {
       this.removeAttribute( 'dismissable' );
+    }
+  }
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
     }
   }
 

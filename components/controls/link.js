@@ -21,6 +21,7 @@ export default class RainforestLink extends HTMLElement {
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
           font-size: 14px;
           font-weight: var( --link-font-weight, 400 );
+          gap: 4px;
           line-height: 20px;
           margin: 0;
           outline: none;
@@ -50,34 +51,42 @@ export default class RainforestLink extends HTMLElement {
           width: 16px;
         }        
 
+        line,
+        polyline {
+          fill: none;
+          stroke: #0972d3;
+          stroke-width: 2px;
+        }
+
+        line,
+        polyline:first-of-type {
+          stroke-miterlimit: 10;
+        }
+
+        polyline:last-of-type {
+          stroke-linejoin: round;          
+        }
+
+        svg {
+          display: inline-block;
+          height: 16px;
+          width: 16px;
+        }
+
         a:hover {
           color: var( --link-hover-color, #033160 );
           text-decoration: var( --link-hover-text-decoration, underline );
         }
 
-        a:hover img {
-          filter: 
-            brightness( 0 )
-            saturate( 100% )
-            invert( 11% )
-            sepia( 88% )
-            saturate( 2426% )
-            hue-rotate( 198deg )
-            brightness( 91% )
-            contrast( 98% );
+        a:hover line,
+        a:hover polyline {
+          stroke: #033160;
         }
-        
+
         :host( [color=inverted] ) a { color: #ffffff; }
-        :host( [color=inverted] ) img {
-          filter:
-            brightness( 0 )
-            saturate( 100% )
-            invert( 98% )
-            sepia( 6% )
-            saturate( 122% )
-            hue-rotate( 328deg )
-            brightness( 116% )
-            contrast( 100% );          
+        :host( [color=inverted] ) line, 
+        :host( [color=inverted] ) polyline { 
+          stroke: #ffffff; 
         }        
 
         :host( [variant=awsui-value-large] ) a {
@@ -129,7 +138,7 @@ export default class RainforestLink extends HTMLElement {
           line-height: 48px;                                        
         }                                
 
-        :host( :not( [external] ) ) img {
+        :host( :not( [external] ) ) svg {
           display: none;
         }
 
@@ -137,8 +146,12 @@ export default class RainforestLink extends HTMLElement {
         :host( :not( [href] ) ) a:hover { text-decoration: none; }
       </style>
       <a part="link">
-        <slot></slot>
-        <img part="icon" src="../icons/external.svg" />
+        <span></span>
+        <svg>
+          <polyline points="10 2 14 2 14 6" />
+          <line x1="6" y1="10" x2="14" y2="2" />
+          <polyline points="14 9.048 14 14 2 14 2 2 7 2" />        
+        </svg>
       </a>
     `;
 
@@ -147,6 +160,7 @@ export default class RainforestLink extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
+    this.$label = this.shadowRoot.querySelector( 'span' );
     this.$link = this.shadowRoot.querySelector( 'a' );
     this.$link.addEventListener( 'click', () => {
       this.dispatchEvent( new CustomEvent( 'rf-follow', {
@@ -165,6 +179,7 @@ export default class RainforestLink extends HTMLElement {
 
   // When things change
   _render() {
+    this.$label.innerText = this.label;
     this.$link.href = this.href === null ? '' : this.href;
     this.$link.target = this.target === null ? '' : this.target;
     this.$link.title = this.title === null ? '' : this.title;
@@ -191,7 +206,9 @@ export default class RainforestLink extends HTMLElement {
     this._upgrade( 'color' );    
     this._upgrade( 'external' );    
     this._upgrade( 'fontSize' );                    
+    this._upgrade( 'hidden' );        
     this._upgrade( 'href' );    
+    this._upgrade( 'label' );        
     this._upgrade( 'rel' );        
     this._upgrade( 'target' );        
     this._upgrade( 'title' );            
@@ -205,7 +222,9 @@ export default class RainforestLink extends HTMLElement {
       'color',
       'external',
       'font-size',
+      'hidden',
       'href',
+      'label',
       'rel',
       'target',
       'title',
@@ -274,6 +293,26 @@ export default class RainforestLink extends HTMLElement {
     }
   }  
 
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }  
+
   get href() {
     if( this.hasAttribute( 'href' ) ) {
       return this.getAttribute( 'href' );
@@ -287,6 +326,22 @@ export default class RainforestLink extends HTMLElement {
       this.setAttribute( 'href', value );
     } else {
       this.removeAttribute( 'href' );
+    }
+  }
+
+  get label() {
+    if( this.hasAttribute( 'label' ) ) {
+      return this.getAttribute( 'label' );
+    }
+
+    return null;
+  }
+
+  set label( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'label', value );
+    } else {
+      this.removeAttribute( 'label' );
     }
   }
 

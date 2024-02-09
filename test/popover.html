@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Popover - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <rf-popover>
+      <rf-status-indicator slot="content" type="success">Code snippet copied</rf-status-indicator>
+      <rf-button icon-name="copy">Copy</rf-button>
+    </rf-popover>
+
+    <pre>
+&lt;rf-link href=&quot;#&quot;&gt;Secondary link&lt;/rf-link&gt;
+&lt;rf-link href=&quot;#&quot; variant=&quot;primary&quot;&gt;Primary link&lt;/rf-link&gt;
+&lt;rf-link external href=&quot;https://example.com/&quot;&gt;Learn more&lt;/rf-link&gt;
+&lt;rf-link&gt;Perform action&lt;/rf-link&gt;
+&lt;rf-link variant=&quot;info&quot;&gt;Info&lt;/rf-link&gt;    
+    </pre>
+
+    <script src="../components/status-indicator.js" type="module"></script>    
+    <script src="../components/button.js" type="module"></script>
+    <script src="../components/popover.js" type="module"></script>
+
+  </body>
+</html>

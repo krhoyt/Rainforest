@@ -1,4 +1,4 @@
-import RainforestIcon from "./icon.js";
+import RainforestIcon from "../icon.js";
 import RainforestSpinner from "./spinner.js";
 
 export default class RainforestButton extends HTMLElement {
@@ -46,8 +46,8 @@ export default class RainforestButton extends HTMLElement {
           margin: var( --button-margin, 0 );
           outline: none;
           overflow: hidden;          
-          /* padding: var( --button-padding, 4px 20px 4px 20px ); */
-          padding: var( --button-padding, 4px 6px 4px 6px );
+          padding: var( --button-padding, 4px 20px 4px 20px );
+          /* padding: var( --button-padding, 4px 6px 4px 6px ); */
           text-overflow: ellipsis;                    
           text-rendering: optimizeLegibility;
           white-space: nowrap;          
@@ -142,8 +142,6 @@ export default class RainforestButton extends HTMLElement {
         :host( [loading][icon-name] ) button img {
           display: none;
         }               
-        
-        
 
         :host( [variant=icon] ) button {
           background-color: transparent;
@@ -330,14 +328,15 @@ export default class RainforestButton extends HTMLElement {
           display: none;
         }
 
-        :host( :not( [text] ) ) span {
+        :host( :not( [label] ) ) span {
           display: none;
         }
       </style>
       <button part="button" type="button">
         <rf-spinner exportparts="vector: v" part="spinner" variant="disabled"></rf-spinner>
-        <img part="icon" />
-        <slot></slot>
+        <slot name="prefix"></slot>
+        <span></span>
+        <slot name="suffix"></slot>
       </button>
     `;
 
@@ -377,15 +376,8 @@ export default class RainforestButton extends HTMLElement {
         }
       } ) );
     } );
-    this.$icon = this.shadowRoot.querySelector( 'img' );  
-    this.$slot = this.shadowRoot.querySelector( 'slot' );
-    this.$slot.addEventListener( 'slotchange', ( evt ) => {
-      if( evt.target.assignedNodes().length === 0 ) {
-        this.$button.classList.remove( 'content' );
-      } else {
-        this.$button.classList.add( 'content' );
-      }
-    } )
+    
+    this.$label = this.shadowRoot.querySelector( 'span' );
   }
 
   // Force focus
@@ -400,7 +392,7 @@ export default class RainforestButton extends HTMLElement {
     }
 
     this.$button.disabled = this.disabled;
-    this.$icon.src = this.iconName === null ? '' : `../icons/${this.iconName}.svg`;
+    this.$label.innerText = this.label === null ? '' : this.label;
   }
 
   // Promote properties
@@ -417,9 +409,10 @@ export default class RainforestButton extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'disabled' );    
     this._upgrade( 'download' );    
+    this._upgrade( 'hidden' );     
     this._upgrade( 'href' );    
     this._upgrade( 'iconAlign' );    
-    this._upgrade( 'iconName' );
+    this._upgrade( 'label' );    
     this._upgrade( 'loading' );
     this._upgrade( 'rel' );    
     this._upgrade( 'target' );
@@ -432,9 +425,10 @@ export default class RainforestButton extends HTMLElement {
     return [
       'disabled',
       'download',
+      'hidden',
       'href',
       'icon-align',
-      'icon-name',
+      'label',
       'loading',
       'rel',      
       'target',
@@ -446,17 +440,6 @@ export default class RainforestButton extends HTMLElement {
   // Update render
   attributeChangedCallback( name, old, value ) {
     this._render();
-  }
-
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null
-  get data() {
-    return this._data;
-  }
-
-  set data( value ) {
-    this._data = value;
   }
 
   // Attributes
@@ -554,21 +537,21 @@ export default class RainforestButton extends HTMLElement {
     }
   }
 
-  get iconName() {
-    if( this.hasAttribute( 'icon-name' ) ) {
-      return this.getAttribute( 'icon-name' );
+  get label() {
+    if( this.hasAttribute( 'label' ) ) {
+      return this.getAttribute( 'label' );
     }
 
     return null;
   }
 
-  set iconName( value ) {
+  set label( value ) {
     if( value !== null ) {
-      this.setAttribute( 'icon-name', value );
+      this.setAttribute( 'label', value );
     } else {
-      this.removeAttribute( 'icon-name' );
+      this.removeAttribute( 'label' );
     }
-  }
+  }  
 
   get loading() {
     return this.hasAttribute( 'loading' );

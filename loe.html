@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Level of Effort</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <rf-vbox gap="16">
+      <rf-hbox gap="16">
+        <rf-form-field label="Owner">
+          <rf-select placeholder="Owner"></rf-select>
+        </rf-form-field>
+        <rf-form-field label="Title">
+          <rf-input placeholder="Title"></rf-input>
+        </rf-form-field>
+        <rf-form-field label="Internal ID">
+          <rf-input placeholder="Internal ID"></rf-input>
+        </rf-form-field>      
+        <rf-form-field label="Completed date">
+          <rf-input placeholder="Completed date"></rf-input>
+        </rf-form-field>            
+      </rf-hbox>
+      <rf-hbox gap="16">
+        <rf-form-field label="Service">
+          <rf-select placeholder="Service"></rf-select>
+        </rf-form-field>
+        <rf-form-field label="Project type">
+          <rf-select placeholder="Project type"></rf-select>
+        </rf-form-field>
+        <rf-form-field label="Status">
+          <rf-select placeholder="Status"></rf-select>
+        </rf-form-field>      
+        <rf-form-field label="Priority">
+          <rf-select placeholder="Priority"></rf-select>
+        </rf-form-field>            
+        <rf-form-field label="Effort">
+          <rf-select placeholder="Effort"></rf-select>
+        </rf-form-field>                  
+      </rf-hbox>    
+      <rf-hbox gap="8">
+        <rf-button icon-name="add-plus" label="Add" variant="primary"></rf-button>
+        <rf-button label="Delete" variant="primary"></rf-button>
+        <rf-spacer></rf-spacer>
+        <rf-button label="Cancel" variant="primary"></rf-button>
+        <rf-button label="Save" variant="primary"></rf-button>      
+        <rf-button label="Edit" variant="primary"></rf-button>      
+      </rf-hbox>      
+    </rf-vbox>
+
+    <button popovertarget="my-popover">Open Popover</button>
+    <div popover id="my-popover">Greetings, one and all!</div>
+    
+    <script src="./components/containers/form-field.js" type="module"></script>
+    <script src="./components/containers/hbox.js" type="module"></script>    
+    <script src="./components/controls/button.js" type="module"></script>        
+    <script src="./components/controls/input.js" type="module"></script>    
+    <script src="./components/controls/select.js" type="module"></script>    
+    <script src="./components/controls/spacer.js" type="module"></script>        
+
+  </body>
+</html>

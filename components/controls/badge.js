@@ -1,3 +1,5 @@
+import RainforestLabel from "./label.js";
+
 export default class RainforestBadge extends HTMLElement {
   constructor() {
     super();
@@ -11,45 +13,50 @@ export default class RainforestBadge extends HTMLElement {
           position: relative;
         }
 
-        p {
-          background-color: var( --badge-background-color, #414d5c );
-          border-radius: var( --badge-border-radius, 4px );
-          box-sizing: border-box;
-          color: var( --badge-color, #fbfbfb );
-          cursor: var( --badge-cursor, default );
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: var( --badge-font-size, 12px );
-          font-weight: var( --badge-font-weight, 400 );
-          line-height: var( --badge-line-height, 20px );
-          margin: var( --badge-marge, 0 );
-          padding: var( --badge-padding, 0 8px 0 8px );
-          text-rendering: optimizeLegibility;
+        :host( [hidden] ) {
+          display: none;
         }
 
-        :host( [color=blue] ) p {
+        rf-label {
+          background-color: var( --badge-background-color, #414d5c );
+          border-radius: var( --badge-border-radius, 4px );
+          padding: var( --badge-padding, 0 8px 0 8px );
+          --label-color: var( --badge-color, #fbfbfb );
+          --label-cursor: var( --badge-cursor, default );
+          --label-font-size: var( --badge-font-size, 12px );
+        }
+
+        :host( [color=blue] ) rf-label {
           background-color: #0972d3;
         }
 
-        :host( [color=red] ) p {
+        :host( [color=red] ) rf-label {
           background-color: #d91515;
         }
 
-        :host( [color=green] ) p {
+        :host( [color=green] ) rf-label {
           background-color: #037f0c;
         }
+
+        :host( :not( [label] ) ) {
+          display: none;
+        }
       </style>
-      <p part="badge">
-        <slot></slot>
-      </p>
+      <rf-label exportparts="label: p" part="label"></rf-label>
     `;
 
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
+
+    // Elements
+    this.$label = this.shadowRoot.querySelector( 'rf-label' );
   }
 
   // When things change
-  _render() {;}
+  _render() {
+    this.$label.text = this.label;
+  }
 
   // Promote properties
   // Values may be set before module load
@@ -64,13 +71,17 @@ export default class RainforestBadge extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'color' );                
+    this._upgrade( 'hidden' );                    
+    this._upgrade( 'label' );                    
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'color'
+      'color',
+      'hidden',
+      'label'
     ];
   }
 
@@ -98,6 +109,42 @@ export default class RainforestBadge extends HTMLElement {
       this.removeAttribute( 'color' );
     }
   }
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }  
+
+  get label() {
+    if( this.hasAttribute( 'label' ) ) {
+      return this.getAttribute( 'label' );
+    }
+
+    return null;
+  }
+
+  set label( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'label', value );
+    } else {
+      this.removeAttribute( 'label' );
+    }
+  }  
 }
 
 window.customElements.define( 'rf-badge', RainforestBadge );
