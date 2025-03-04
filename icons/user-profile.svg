@@ -1,13 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#555C66;stroke-width:2;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#555C66;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
-</style>
-<g>
-	<path class="st0" d="M4.61,4.39C4.61,2.52,6.13,1,8,1s3.39,1.52,3.39,3.39S9.87,7.78,8,7.78C6.13,7.78,4.61,6.26,4.61,4.39"/>
-	<path class="st1" d="M2.05,14.08h11.91c0-2.25-1.17-4.23-2.9-5.3C10.16,8.22,9.11,7.91,8,7.91C4.71,7.91,2.05,10.67,2.05,14.08z"/>
-</g>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 7C9.66 7 11 5.66 11 4C11 2.34 9.66 1 8 1C6.34 1 5 2.34 5 4C5 5.66 6.34 7 8 7Z" />
+<path d="M2 16V13C2 11.34 3.34 10 5 10H11C12.66 10 14 11.34 14 13V16" class="stroke-linejoin-round"/>
 </svg>

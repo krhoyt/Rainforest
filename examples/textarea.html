@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Text area - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-textarea { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- With placeholder -->
+    <rf-textarea placeholder="This is a placeholder"></rf-textarea><br>
+
+    <!-- Hidden placeholder -->
+    <rf-textarea value="Non-empty value: Placeholder should be hidden"></rf-textarea><br>
+
+    <!-- Disabled with line wrap -->
+    <rf-textarea disabled value="Long value, enough to line wrap and have scroll bars.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Donec venenatis magna lacus. Sed augue ante, egestas a ultrices condimentum, fringilla in erat. Proin dictum lacus quis metus volutpat viverra. Fusce aliquet leo ut risus venenatis, malesuada pulvinar magna bibendum. Integer pellentesque magna nisl, eget suscipit eros ultrices nec. Proin neque mi, porttitor quis lacinia ut, feugiat nec nulla. Proin sed facilisis leo, quis pharetra massa. Nam congue laoreet eros, eu feugiat metus posuere eget. Quisque accumsan diam a arcu condimentum, ac congue nulla laoreet. Aliquam tempor ligula eu consectetur vehicula. Donec hendrerit purus ligula, ut vulputate enim consectetur eget."></rf-textarea>
+
+    <pre>
+&lt;rf-textarea placeholder=&quot;This is a placeholder&quot;&gt;&lt;/rf-textarea&gt;
+
+&lt;rf-textarea value=&quot;Non-empty value: Placeholder should be hidden&quot;&gt;&lt;/rf-textarea&gt;
+
+&lt;rf-textarea disabled value=&quot;Long value, enough to line wrap and have scroll bars.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Donec venenatis magna lacus. Sed augue ante, egestas a ultrices condimentum, fringilla in erat. Proin dictum lacus quis metus volutpat viverra. Fusce aliquet leo ut risus venenatis, malesuada pulvinar magna bibendum. Integer pellentesque magna nisl, eget suscipit eros ultrices nec. Proin neque mi, porttitor quis lacinia ut, feugiat nec nulla. Proin sed facilisis leo, quis pharetra massa. Nam congue laoreet eros, eu feugiat metus posuere eget. Quisque accumsan diam a arcu condimentum, ac congue nulla laoreet. Aliquam tempor ligula eu consectetur vehicula. Donec hendrerit purus ligula, ut vulputate enim consectetur eget.&quot;&gt;&lt;/rf-textarea&gt;
+    </pre>
+
+    <script src="../components/textarea.js" type="module"></script>
+
+  </body>
+</html>

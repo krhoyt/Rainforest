@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System." />
+
+    <title>Pagination - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+  </head>
+  <body>
+
+    <!-- Simple -->
+    <rf-pagination current-page-index="1" pages-count="5"></rf-pagination><br>
+
+    <!-- Open end -->
+    <rf-pagination current-page-index="1" open-end pages-count="5"></rf-pagination><br>  
+
+    <!-- Disabled -->
+    <rf-pagination current-page-index="1" disabled pages-count="5"></rf-pagination>        
+
+    <pre>
+&lt;rf-pagination current-page-index=&quot;1&quot; pages-count=&quot;5&quot;&gt;&lt;/rf-pagination&gt;
+
+&lt;rf-pagination current-page-index=&quot;1&quot; open-end pages-count=&quot;5&quot;&gt;&lt;/rf-pagination&gt;
+
+&lt;rf-pagination current-page-index=&quot;1&quot; disabled pages-count=&quot;5&quot;&gt;&lt;/rf-pagination&gt;
+    </pre>
+
+    <script src="../components/pagination.js" type="module"></script>
+
+  </body>
+</html>

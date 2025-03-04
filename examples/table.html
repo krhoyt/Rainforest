@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Table - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+  </head>
+  <body>
+
+    <rf-table striped style="width: 100%;">
+      <rf-table-column header-text="Owner" label-field="owner" width="225"></rf-table-column>
+      <rf-table-column header-text="Service/Feature" label-field="service" width="250"></rf-table-column>      
+      <rf-table-column header-text="Description" label-field="description"></rf-table-column>      
+      <rf-table-column header-text="Project type" label-field="type" width="250"></rf-table-column>
+      <rf-table-column header-text="Level of effort" label-field="effort" width="250"></rf-table-column>
+    </rf-table>
+    <br>
+    <pre></pre>
+
+    <script src="../components/controls/table.js" type="module"></script>
+
+    <script>
+      const table = document.querySelector( 'rf-table' );
+      table.items = [
+        {owner: 'Kevin Hoyt', service: 'Automatic Model Tuning (HPO)', description: 'Fix this thing.', type: 'Manager-assigned project/goal', effort: 'XL (> 100 hours, > 4 assets)'},
+        {owner: 'Parsa Shahbodaghi', service: 'Transcribe', description: 'Fix this thing.', type: 'Self-identified', effort: 'S (< 5 hours)'},
+        {owner: 'Heather Johnston-Robinson', service: 'Transcribe', description: 'Fix this thing.', type: 'Self-identified', effort: 'S (< 5 hours)'}                
+      ];
+    </script>
+
+  </body>
+</html>

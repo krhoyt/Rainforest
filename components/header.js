@@ -1,4 +1,4 @@
-export default class RainforestHeader extends HTMLElement {
+export default class RFHeader extends HTMLElement {
   constructor() {
     super();
 
@@ -9,6 +9,10 @@ export default class RainforestHeader extends HTMLElement {
           box-sizing: border-box;
           display: block;
           position: relative;
+        }
+
+        :host( [hidden] ) {
+          display: none;
         }
 
         header {
@@ -34,98 +38,61 @@ export default class RainforestHeader extends HTMLElement {
           flex-direction: row;
         }
 
-        div[part=title] {
-          color: var( --header-title-color, #000716 );          
-          display: inline-block;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: var( --header-title-font-size, 20px );
-          font-weight: var( --header-title-font-weight, 700 );
-          line-height: var( --header-title-line-height, 24px );
-          text-rendering: optimizeLegibility;          
-        }        
-
         p {
-          color: var( --header-counter-color, #5f6b7a );
           display: inline-block;  
           font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: var( --header-counter-font-size, 20px );
-          font-weight: var( --header-counter-font-weight, 400 );
-          line-height: var( --header-counter-line-height, 24px );
           margin: 0;
           padding: 0;
           text-rendering: optimizeLegibility;          
         }                
 
-        :host( [variant=awsui-h1-sticky] ) div[part=title],
-        :host( [variant=awsui-h1-sticky] ) p,
-        :host( [variant=h1] ) div[part=title],
-        :host( [variant=h1] ) p {
-          font-size: 24px;
-          line-height: 30px;
+        p[part=counter] {
+          color: var( --header-counter-color, #5f6b7a );
+          font-size: var( --header-counter-font-size, 20px );
+          font-weight: var( --header-counter-font-weight, 400 );
+          line-height: var( --header-counter-line-height, 24px );          
         }
 
-        :host( [variant=h3] ) div[part=title],
-        :host( [variant=h3] ) p {
-          font-size: 18px;
-          line-height: 22px;
-        }
-
-        /*
-        :host( [heading-tag-override=h1] ) div[part=title] {
-          font-size: var( --font-size-heading-xl );
-          line-height: var( --line-height-heading-xl );
-        }
-        :host( [heading-tag-override=h2] ) div[part=title] {
-          font-size: var( --font-size-heading-l );
-          line-height: var( --line-height-heading-l );
-          margin: 4px 0 0 0;
-        }
-        :host( [heading-tag-override=h3] ) div[part=title] {
-          font-size: var( --font-size-heading-m );
-          line-height: var( --line-height-heading-m );
-        }
-        :host( [heading-tag-override=h4] ) div[part=title] {
-          font-size: var( --font-size-heading-s );
-          line-height: var( --line-height-heading-s );
-        }        
-          :host( [heading-tag-override=h5] ) div[part=title] {
-          font-size: var( --font-size-heading-xs );
-          line-height: var( --line-height-heading-xs );
-        }        
-        */
-
-        ::slotted( p[slot=description] ),
-        ::slotted( span[slot=description] ) {          
-          color: var( --header-description-color, #414d5c ) !important;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+        p[part=description] {
+          color: var( --header-description-color, #414d5c );
           font-size: var( --header-description-font-size, 14px );
           font-weight: var( --header-description-font-weight, 400 );
-          line-height: var( --header-description-line-height, 20px );
-          margin: 0;
-          padding: 0 !important;
+          line-height: var( --header-description-line-height, 20px );          
+        }
+        
+        p[part=title] {
+          color: var( --header-title-color, #000716 );
+          font-size: var( --header-title-font-size, 20px );
+          font-weight: var( --header-title-font-weight, 700 );
+          line-height: var( --header-title-line-height, 24px );          
+        }        
+
+        :host( [variant=h1] ) p[part=counter],
+        :host( [variant=h1] ) p[part=title] {
+          font-size: 24px;
+          line-height: 30px;                    
         }
 
-        ::slotted( rf-box[slot=description] ) {
-          --box-color: #414d5c;
-          --box-padding: 0;
+        :host( [variant=h3] ) p[part=counter],
+        :host( [variant=h3] ) p[part=title] {
+          font-size: 18px;
+          line-height: 22px;                    
+        }        
+
+        ::slotted( rf-link ) {
+          --link-font-size: 12px;
+          --link-line-height: 16px;
         }
 
-        /*
-        ::slotted( rf-button[slot=actions] ) {
-          --button-background-color: #539fe5;
-          --button-border-color: #539fe5;          
-          --button-color: #000716;
-        }
-        */
-
-        :host( :not( [counter] ) ) p { display: none; }
+        :host( :not( [counter] ) ) p[part=counter] { display: none; }
+        :host( :not( [description] ) ) p[part=description] { display: none; } 
       </style>
       <header part="header">
         <div part="line">
           <div part="left">
-            <div part="title">
+            <p part="title">
               <slot></slot>
-            </div>
+            </p>
             <p part="counter"></p>
             <slot name="info"></slot>                                    
           </div>
@@ -133,6 +100,7 @@ export default class RainforestHeader extends HTMLElement {
             <slot name="actions"></slot>
           </div>
         </div>
+        <p part="description"></p>
         <slot name="description"></slot>
       </header>
     `;
@@ -142,12 +110,14 @@ export default class RainforestHeader extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$counter = this.shadowRoot.querySelector( 'p' );
+    this.$counter = this.shadowRoot.querySelector( 'p[part=counter]' );
+    this.$description = this.shadowRoot.querySelector( 'p[part=description]' );
   }
 
    // When attributes change
   _render() {
     this.$counter.innerText = this.counter === null ? '' : this.counter;
+    this.$description.innerText = this.description === null ? '' : this.description;    
   }
 
   // Promote properties
@@ -163,7 +133,9 @@ export default class RainforestHeader extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'counter' );           
-    this._upgrade( 'headingTagOverride' );       
+    this._upgrade( 'description' );               
+    this._upgrade( 'headingTagOverride' );
+    this._upgrade( 'hidden' );                      
     this._upgrade( 'variant' );        
     this._render();
   }
@@ -172,7 +144,9 @@ export default class RainforestHeader extends HTMLElement {
   static get observedAttributes() {
     return [
       'counter',
+      'description',
       'heading-tag-override',
+      'hidden',
       'variant'
     ];
   }
@@ -200,7 +174,23 @@ export default class RainforestHeader extends HTMLElement {
     } else {
       this.removeAttribute( 'counter' );
     }
-  }    
+  } 
+  
+  get description() {
+    if( this.hasAttribute( 'description' ) ) {
+      return this.getAttribute( 'description' );
+    }
+
+    return null;
+  }
+
+  set description( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'description', value );
+    } else {
+      this.removeAttribute( 'description' );
+    }
+  } 
 
   get headingTagOverride() {
     if( this.hasAttribute( 'heading-tag-override' ) ) {
@@ -217,6 +207,26 @@ export default class RainforestHeader extends HTMLElement {
       this.removeAttribute( 'heading-tag-override' );
     }
   }    
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }  
 
   get variant() {
     if( this.hasAttribute( 'variant' ) ) {
@@ -235,4 +245,4 @@ export default class RainforestHeader extends HTMLElement {
   }    
 }
 
-window.customElements.define( 'rf-header', RainforestHeader );
+window.customElements.define( 'rf-header', RFHeader );

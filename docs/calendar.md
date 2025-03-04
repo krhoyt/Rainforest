@@ -1,24 +1,44 @@
 # Calendar
 
+`<rf-calendar>` | `RFCalendar`
+
 With the calendar component, users can select dates.
 
 ## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/calendar.js" type="module"></script>
 ```
 
 ## Examples
 
+### Default
+
 ``` html
 <rf-calendar></rf-calendar>
+```
+
+### With default value
+
+``` html
 <rf-calendar value="2018-01-02"></rf-calendar>
+```
+
+### With disabled weekends
+
+``` html
+<rf-calendar></rf-calendar>
 ```
 
 ``` javascript
 const calendar = document.querySelector( 'rf-calendar' );
 calendar.isDateEnabled = ( value ) => value.getDay() !== 6 && value.getDay() !== 0;
+```
+
+### With month granularity
+
+``` html
+<rf-calendar granularity="month"></rf-calendar>
 ```
 
 ## Slots
@@ -29,9 +49,11 @@ None
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `isDateEnabled` | `( value: Date ) => boolean` | Defines whether a particular date is enabled in the calendar or not | - | `null` | ❌ |
-| `start-of-week` | `number` | Determines the starting day of the week. | - | `null` | ✅ |
+| `granularity` | `string` | Specifies the granularity at which users will be able to select a date. | `day` \| `month` | `day` | ✅ |
+| `hidden` | `boolean` | Removes element from DOM layout. | - | `false` | ✅ |
+| `isDateEnabled` | `( value: Date ) => boolean` | Defines whether a particular date is enabled in the calendar or not. | - | `null` | ❌ |
 | `value` | `string` | The current input value, in YYYY-MM-DD format. | - | `null` | ✅ |
+| `valueAsDate` | `date` | The current input value, as a `Date` object. | - | `null` | ❌ |
 
 ## Events
 
@@ -47,12 +69,17 @@ None
 
 | Name | Description |
 | --- | --- |
-| `calendar` | Days of the month |
-| `controls` | Left, right, and month label |
-| `days` | Days of the week |
-| `left` | Internal `button` for left |
-| `month` | Internal `p` for month label |
-| `right` | Internal `button` for left |
+| `calendar` | The `div` containing the days of the month. |
+| `controls` | The `div` element containing left, right, and month label. |
+| `days` | The `div` for the days of the week. |
+| `label` | Internal `p` to display the month and year. |
+| `left` | Internal `button` for left (previous). |
+| `months` | Internal `div` for month granularity. |
+| `right` | Internal `button` for right (next). |
+
+## Variables
+
+None
 
 ## Dependencies
 

@@ -1,4 +1,6 @@
-export default class RainforestBreadcrumbGroup extends HTMLElement {
+import RFBreadcrumb from "./breadcrumb.js";
+
+export default class RFBreadcrumbGroup extends HTMLElement {
   constructor() {
     super();
 
@@ -7,105 +9,35 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
-          display: inline-block;
+          display: inline-flex;
+          flex-direction: row;
           position: relative;
         }
 
-        a {
-          color: var( --breadcrumb-link-color, #0972d3 );
-          display: inline-block;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-          text-underline-offset: 0.25em;
+        :host( [hidden] ) {
+          display: none;
         }
 
-        a:hover {
-          color: var( --breadcrumb-link-hover-color, #033160 );
-        }
-
-        p {
-          color: var( --breadcrumb-leaf-color, #5f6b7a );
-          display: inline-block;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 20px;   
-          margin: 0;
-          padding: 0;       
-        }
-
-        ol {
+        div {
           align-items: center;
           display: flex;
           flex-direction: row;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        li {
-          align-items: center;
-          display: flex;
-          flex-direction: row;
-          margin: 0;
-          padding: 0;
-        }
-
-        img {
-          display: inline-block;
-          filter:
-            brightness( 0 ) 
-            saturate( 100% )                    
-            invert( 55% ) 
-            sepia( 25% ) 
-            saturate( 225% ) 
-            hue-rotate( 173deg ) 
-            brightness( 92% ) 
-            contrast( 86% );          
-          height: 16px;
-          margin: 0 8px 0 8px;
-          object-fit: contain;
-          width: 16px;
+          gap: 8px;
         }
       </style>
-      <ol part="list"></ol>
+      <slot name="prefix"></slot>
+      <div part="list">
+        <slot></slot>
+      </div>
+      <slot name="suffix"></slot>
     `;
 
-    // Events
-    this.onClick = this.onClick.bind( this );
-
-    // Properties
+    // Private
     this._items = [];
 
     // Root
     this.attachShadow( {mode: 'open'} );
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
-
-    // Elements
-    this.$list = this.shadowRoot.querySelector( 'ol' );
-  }
-
-  onClick( evt ) {
-    const index = parseInt( evt.currentTarget.getAttribute( 'data-index' ) );
-    const detail = {
-      external: evt.target.href.indexOf( '//' ) ? true : false,
-      href: evt.target.href,
-      item: this._items[index],
-      target: evt.target.target,
-      text: evt.target.innerText
-    }
-
-    if( !evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey ) {
-      this.dispatchEvent( new CustomEvent( 'rf-follow', {
-        detail: detail
-      } ) );
-    }
-
-    this.dispatchEvent( new CustomEvent( 'rf-click', {
-      detail: detail
-    } ) );
   }
 
   // When things change
@@ -123,13 +55,16 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'hidden' );       
     this._upgrade( 'items' );       
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
-    return [];
+    return [
+      'hidden'
+    ];
   }
 
   // Observed tag attribute has changed
@@ -140,7 +75,7 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
 
   // Properties
   // Not reflected
-  // Array, Date, Object, null 
+  // Array, Date, Object, null
   get items() {
     return this._items.length === 0 ? null : this._items;
   }
@@ -148,34 +83,43 @@ export default class RainforestBreadcrumbGroup extends HTMLElement {
   set items( value ) {
     this._items = value === null ? [] : [... value];
 
-    while( this.$list.children.length > 0 )
-      this.$list.children[0].remove();
+    while( this.children.length > this._items.length ) {
+      this.children[0].remove();
+    }
 
-    for( let i = 0; i < this._items.length; i++ ) {
-      const item = document.createElement( 'li' );
-      item.setAttribute( 'data-index', i );
-      item.addEventListener( 'click', this.onClick );
+    while( this.children.length < this._items.length ) {
+      const element = document.createElement( 'rf-breadcrumb' );
+      this.appendChild( element );
+    }
 
-      if( i < ( this._items.length - 1 ) ) {
-        const anchor = document.createElement( 'a' );      
-        anchor.innerText = this._items[i].hasOwnProperty( 'text' ) ? this._items[i].text : '';
-        anchor.href = this._items[i].hasOwnProperty( 'href' ) ? this._items[i].href : '';
-        item.appendChild( anchor );   
-        
-        const image = document.createElement( 'img' );
-        image.src = '../icons/angle-right.svg';
-        item.appendChild( image );
+    for( let c = 0; c < this.children.length; c++ ) {
+      this.children[c].href = this._items[c].href;
+      this.children[c].text = this._items[c].text;      
+    }
+  }
 
-        this.$list.appendChild( item );                
-      } else {
-        const paragraph = document.createElement( 'p' );  
-        paragraph.innerText = this._items[i].hasOwnProperty( 'text' ) ? this._items[i].text : '';
-        item.appendChild( paragraph );   
+  // Attributes
+  // Reflected
+  // Boolean, Number, String, null
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
 
-        this.$list.appendChild( item );                        
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
       }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
     }
   }  
 }
 
-window.customElements.define( 'rf-breadcrumb-group', RainforestBreadcrumbGroup );
+window.customElements.define( 'rf-breadcrumb-group', RFBreadcrumbGroup );

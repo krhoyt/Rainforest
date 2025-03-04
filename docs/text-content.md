@@ -1,15 +1,18 @@
 # Text Content
 
+`<rf-text-content>` | `RFTextContent`
+
 Use to style chunks of HTML by applying default typographical styles to the content.
 
 ## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/text-content.js" type="module"></script>
 ```
 
 ## Examples
+
+### Basic typography
 
 ``` html
 <rf-text-content>
@@ -38,11 +41,13 @@ Use to style chunks of HTML by applying default typographical styles to the cont
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Content of the component. |
+| (default) | Content of the component. |
 
-## Attributes
+## Properties
 
-None
+| Name | Type | Description | Values | Default | Reflects |
+| --- | --- | --- | --- | --- | --- |
+| `hidden` | `boolean` | Removes element from DOM layout. | - | `false` | ✅ |
 
 ## Events
 
@@ -53,6 +58,10 @@ None
 None
 
 ## Parts
+
+None
+
+## Variables
 
 None
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Format Date - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-format-date:after { 
+        content: '';
+        height: 16px; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Specified date -->
+    <rf-format-date date="2004-06-04T01:17:00-06:00"></rf-format-date><br>
+
+    <!-- Human-readable date -->
+    <rf-format-date month="long" day="numeric" year="numeric"></rf-format-date><br>
+
+    <!-- Time -->
+    <rf-format-date hour="numeric" minute="numeric"></rf-format-date><br>
+
+    <!-- Weekday -->
+    <rf-format-date weekday="long"></rf-format-date><br>
+
+    <!-- Month -->
+    <rf-format-date month="long"></rf-format-date><br>
+
+    <!-- Year -->
+    <rf-format-date year="numeric"></rf-format-date><br>
+
+    <!-- No formatting options -->
+    <rf-format-date></rf-format-date><br>
+
+    <!-- Hour formatting -->
+    <rf-format-date hour="numeric" minute="numeric" hour-format="12"></rf-format-date><br>
+    <rf-format-date hour="numeric" minute="numeric" hour-format="24"></rf-format-date><br> 
+
+    <!-- Localization -->
+    <p>English: <rf-format-date lang="en"></rf-format-date></p>
+    <p>French: <rf-format-date lang="fr"></rf-format-date></p>
+    <p>Russian: <rf-format-date lang="ru"></rf-format-date></p>
+
+    <pre>
+&lt;rf-format-date date=&quot;2004-06-04T01:17:00-06:00&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date month=&quot;long&quot; day=&quot;numeric&quot; year=&quot;numeric&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date hour=&quot;numeric&quot; minute=&quot;numeric&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date weekday=&quot;long&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date month=&quot;long&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date year=&quot;numeric&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date hour=&quot;numeric&quot; minute=&quot;numeric&quot; hour-format=&quot;12&quot;&gt;&lt;/rf-format-date&gt;
+&lt;rf-format-date hour=&quot;numeric&quot; minute=&quot;numeric&quot; hour-format=&quot;24&quot;&gt;&lt;/rf-format-date&gt; 
+English: &lt;rf-format-date lang=&quot;en&quot;&gt;&lt;/rf-format-date&gt;
+French: &lt;rf-format-date lang=&quot;fr&quot;&gt;&lt;/rf-format-date&gt;
+Russian: &lt;rf-format-date lang=&quot;ru&quot;&gt;&lt;/rf-format-date&gt;
+    </pre>
+
+    <script src="../components/format-date.js" type="module"></script>
+
+  </body>
+</html>

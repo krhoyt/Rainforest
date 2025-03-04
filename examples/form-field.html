@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Form Field - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-form-field { margin: 0 0 16px 0; }
+
+      p {
+        color: #5f6b7a;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0;
+        padding: 0;        
+      }      
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-form-field 
+      description="This is a description." 
+      label="Form field label">
+      <rf-input></rf-input>
+    </rf-form-field>
+
+    <!-- Optional -->
+    <rf-form-field 
+      description="This is a description." 
+      label="Form field label"
+      optional="optional">
+      <rf-textarea></rf-textarea>
+    </rf-form-field>    
+
+    <!-- With constraint text -->
+    <rf-form-field 
+      constraint="Requirements and constraints for the field."
+      label="Form field label">
+      <rf-input></rf-input>
+    </rf-form-field>        
+
+    <!-- With error -->
+    <rf-form-field 
+      constraint="Requirements and constraints for the field."
+      description="This is a description."
+      error="This is an error message."
+      label="Form field label">
+      <rf-input invalid></rf-input>
+    </rf-form-field>        
+
+    <!-- With radio buttons -->
+    <rf-form-field label="Form field label">
+      <rf-radio-group>
+        <rf-radio label="Set the stretch property to true when using radio buttons or checkboxes in a form-field: their label must stretch to 100% of the field width."></rf-radio>
+        <rf-radio label="The same applies to any textual information"></rf-radio>
+        <rf-radio label="Third Choice"></rf-radio>
+      </rf-radio-group>
+    </rf-form-field>
+
+    <!-- With character count -->
+    <rf-form-field 
+      constraint="Name must be 1 to 10 characters. Character count: 0/10"
+      label="Name"
+      optional="optional">
+      <rf-input></rf-input>
+    </rf-form-field>            
+
+    <!-- Terms and conditions -->
+    <rf-form-field label="Terms and conditions">
+      <p slot="description">
+        Please read through our 
+        <rf-link 
+          external 
+          font-size="body-s" 
+          href="#" 
+          label="terms and conditions" 
+          variant="primary">
+        </rf-link> 
+        and agree.
+      </p>
+      <rf-checkbox label="I agree to the terms and conditions"></rf-checkbox>
+    </rf-form-field>                
+
+    <pre>
+&lt;rf-form-field 
+  description=&quot;This is a description.&quot; 
+  label=&quot;Form field label&quot;&gt;
+  &lt;rf-input&gt;&lt;/rf-input&gt;
+&lt;/rf-form-field&gt;
+
+&lt;rf-form-field 
+  description=&quot;This is a description.&quot; 
+  label=&quot;Form field label&quot;
+  optional=&quot;optional&quot;&gt;
+  &lt;rf-textarea&gt;&lt;/rf-textarea&gt;
+&lt;/rf-form-field&gt;    
+
+&lt;rf-form-field 
+  constraint=&quot;Requirements and constraints for the field.&quot;
+  label=&quot;Form field label&quot;&gt;
+  &lt;rf-input&gt;&lt;/rf-input&gt;
+&lt;/rf-form-field&gt;      
+
+&lt;rf-form-field 
+  constraint=&quot;Requirements and constraints for the field.&quot;
+  description=&quot;This is a description.&quot;
+  error=&quot;This is an error message.&quot;
+  label=&quot;Form field label&quot;&gt;
+  &lt;rf-input invalid&gt;&lt;/rf-input&gt;
+&lt;/rf-form-field&gt;        
+
+&lt;rf-form-field label=&quot;Form field label&quot;&gt;
+  &lt;rf-radio-group&gt;
+    &lt;rf-radio label=&quot;Set the stretch property to true when using radio buttons or checkboxes in a form-field: their label must stretch to 100% of the field width.&quot;&gt;&lt;/rf-radio&gt;
+    &lt;rf-radio label=&quot;The same applies to any textual information&quot;&gt;&lt;/rf-radio&gt;
+    &lt;rf-radio label=&quot;Third Choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;/rf-radio-group&gt;
+&lt;/rf-form-field&gt;
+
+&lt;rf-form-field 
+  constraint=&quot;Name must be 1 to 10 characters. Character count: 0/10&quot;
+  label=&quot;Name&quot;
+  optional=&quot;optional&quot;&gt;
+  &lt;rf-input&gt;&lt;/rf-input&gt;
+&lt;/rf-form-field&gt;            
+
+&lt;rf-form-field label=&quot;Terms and conditions&quot;&gt;
+  &lt;p slot=&quot;description&quot;&gt;
+    Please read through our 
+    &lt;rf-link 
+      external 
+      font-size=&quot;body-s&quot; 
+      href=&quot;#&quot; 
+      label=&quot;terms and conditions&quot; 
+      variant=&quot;primary&quot;&gt;
+    &lt;/rf-link&gt; 
+    and agree.
+  &lt;/p&gt;
+  &lt;rf-checkbox label=&quot;I agree to the terms and conditions&quot;&gt;&lt;/rf-checkbox&gt;
+&lt;/rf-form-field&gt;                
+    </pre>
+
+    <pre>
+const field = document.querySelector( 'rf-form-field:nth-of-type( 6 )' );
+const input = field.children[0];
+input.addEventListener( 'rf-change', () =&gt; {
+  field.constraint = `Name must be 1 to 10 characters. Character count: ${input.value.trim().length}/10`;
+
+  if( input.value.trim().length &gt; 10 ) {
+    input.invalid = true;
+    field.error = 'The name has too many characters.';
+  } else {
+    input.invalid = false;
+    field.error = null;
+  }
+} );      
+    </pre>
+
+    <script src="../components/button.js" type="module"></script>
+    <script src="../components/form-field.js" type="module"></script>
+    <script src="../components/input.js" type="module"></script>
+    <script src="../components/link.js" type="module"></script>    
+    <script src="../components/checkbox.js" type="module"></script>    
+    <script src="../components/textarea.js" type="module"></script>    
+    <script src="../components/radio-group.js" type="module"></script>    
+
+    <script>
+      const field = document.querySelector( 'rf-form-field:nth-of-type( 6 )' );
+      const input = field.children[0];
+      input.addEventListener( 'rf-change', () => {
+        field.constraint = `Name must be 1 to 10 characters. Character count: ${input.value.trim().length}/10`;
+
+        if( input.value.trim().length > 10 ) {
+          input.invalid = true;
+          field.error = 'The name has too many characters.';
+        } else {
+          input.invalid = false;
+          field.error = null;
+        }
+      } );
+    </script>
+
+  </body>
+</html>

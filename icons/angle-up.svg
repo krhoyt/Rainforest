@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1{fill:none;stroke:#545b64;stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>angle-up</title><g id="icons"><polyline class="cls-1" points="1 12 8 5 15 12"/></g></svg>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 11L8 5L14 11" class="stroke-linejoin-round"/>
+</svg>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Calendar - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-calendar {
+        margin-bottom: 16px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-calendar></rf-calendar><br>
+
+    <!-- With default value -->
+    <rf-calendar value="2018-01-02"></rf-calendar><br>
+
+    <!-- With disabled weekends -->
+    <rf-calendar></rf-calendar><br>
+
+    <!-- With month granularity -->
+    <rf-calendar granularity="month"></rf-calendar>
+
+    <pre>
+&lt;rf-calendar&gt;&lt;/rf-calendar&gt;
+
+&lt;rf-calendar value=&quot;2018-01-02&quot;&gt;&lt;/rf-calendar&gt;
+
+&lt;rf-calendar&gt;&lt;/rf-calendar&gt;
+
+&lt;rf-calendar granularity=&quot;month&quot;&gt;&lt;/rf-calendar&gt;
+    </pre>
+    <pre>
+const calendar = document.querySelector( 'rf-calendar:nth-of-type( 3 )' );
+calendar.isDateEnabled = ( value ) =&gt; value.getDay() !== 6 &amp;&amp; value.getDay() !== 0;      
+    </pre>
+
+    <script src="../components/calendar.js" type="module"></script>
+
+    <script>
+      const calendar = document.querySelector( 'rf-calendar:nth-of-type( 3 )' );
+      calendar.isDateEnabled = ( value ) => value.getDay() !== 6 && value.getDay() !== 0;
+    </script>
+
+  </body>
+</html>

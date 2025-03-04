@@ -1,4 +1,4 @@
-export default class RainforestBox extends HTMLElement {
+export default class RFBox extends HTMLElement {
   constructor() {
     super();
 
@@ -6,172 +6,76 @@ export default class RainforestBox extends HTMLElement {
     template.innerHTML = /* template */ `
       <style>
         :host {
+          align-items: center;
           box-sizing: border-box;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           position: relative;
         }
 
-        div {
-          box-sizing: border-box;
-          color: var( --box-color, #000716 );
-          cursor: var( --box-cursor, default );
-          display: var( --box-display, block );
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: var( --box-font-size, 14px );
-          font-weight: var( --box-font-weight, 400 );
-          line-height: var( --box-line-height, 20px );
-          margin: var( --box-margin, 0 );
-          padding: var( --box-padding, 0 );
-          text-align: var( --box-text-align, left );
-          text-decoration: var( --box-text-decoration, none );
-          text-rendering: optimizeLegibility;
-          text-wrap: var( --box-text-wrap, none );
-          width: 100%;
+        :host( [hidden] ) {
+          display: none;
         }
 
-        :host( [balanced] ) div {
-          text-wrap: balanced;
-        }
+        :host( [align-items=center] ) { align-items: center; }
+        :host( [align-items=end] ) { align-items: flex-end; }                
+        :host( [align-items=start] ) { align-items: flex-start; }        
 
-        :host( [variant=span] ) { display: inline; }
-        :host( [variant=h1] ) div {
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 30px;
-          padding: 4px 0 4px 0;
+        :host( [direction=horizontal] ),
+        :host( [direction=row] ) {
+          flex-direction: row;
         }
-        :host( [variant=h2] ) div {
-          font-size: 20px;
-          font-weight: 700;
-          line-height: 24px;
-          padding: 4px 0 4px 0;
-        }        
-        :host( [variant=h3] ) div {
-          font-size: 18px;
-          font-weight: 700;
-          line-height: 22px;
-          padding: 4px 0 4px 0;
-        }                
-        :host( [variant=h4] ) div {
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 20px;
-          padding: 4px 0 4px 0;
-        }                        
-        :host( [variant=h5] ) div {
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 18px;
-          padding: 4px 0 4px 0;
-        }            
-        :host( [variant=p] ) div {
-          padding: 4px 0 4px 0;
-        }                
-        :host( [variant=strong] ) { display: inline; }       
-        :host( [variant=strong] ) div {
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 20px;
-        }                         
-        :host( [variant=small] ) { display: inline-block; }
-        :host( [variant=small] ) div {
-          color: #5f6b7a;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 16px;
-        }                                                     
-        :host( [variant=code] ) { display: inline; }
-        :host( [variant=code] ) div {
-          font-family: Monaco, Menlo, Consolas, 'Courier Prime', Courier, 'Courier New', monospace;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 16px;
-        }                                           
-        :host( [variant=pre] ) div {
-          font-family: Monaco, Menlo, Consolas, 'Courier Prime', Courier, 'Courier New', monospace;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-          margin: 14px 0 14px 0;
+        :host( [direction=horizontal-reverse] ),
+        :host( [direction=row-reverse] ) {
+          flex-direction: row-reverse;
         }
-        :host( [variant=samp] ) { display: inline; }        
-        :host( [variant=samp] ) div {
-          font-family: Monaco, Menlo, Consolas, 'Courier Prime', Courier, 'Courier New', monospace;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-        }                                                                  
-        :host( [variant=awsui-key-label] ) div {
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 20px;
-        }
-        :host( [variant=awsui-value-large] ) { display: inline; }
-        :host( [variant=awsui-value-large] ) div {
-          font-size: 42px;
-          font-weight: 700;
-          line-height: 48px;
-        }                                                           
+        :host( [direction=vertical-reverse] ),
+        :host( [direction=column-reverse] ) {
+          flex-direction: column-reverse;
+        }         
 
-        :host( [color=text-body-secondary] ) div { color: #414d5c; }
-        :host( [color=text-status-error] ) div { color: #d91515; }        
-        :host( [color=text-status-success] ) div { color: #037f0c; }                
-        :host( [color=text-status-info] ) div { color: #0972d3; }                        
-        :host( [color=text-status-inactive] ) div { color: #5f6b7a; }                                
-        :host( [color=text-status-warning] ) div { color: #8d6605; }                                        
-
-        :host( [font-size=body-s] ) div { 
-          font-size: 12px;
-          line-height: 16px;
-        }
-        :host( [font-size=body-m] ) div { 
-          font-size: 14px;
-          line-height: 20px;
-        }               
-        :host( [font-size=heading-xs] ) div { 
-          font-size: 14px;
-          line-height: 18px;
-        } 
-        :host( [font-size=heading-s] ) div { 
-          font-size: 16px; 
-          line-height: 20px;
-        }        
-        :host( [font-size=heading-m] ) div { 
-          font-size: 18px; 
-          line-height: 22px;
-        }        
-        :host( [font-size=heading-l] ) div { 
-          font-size: 20px; 
-          line-height: 24px;
-        }        
-        :host( [font-size=heading-xl] ) div { 
-          font-size: 24px; 
-          line-height: 30px;
-        }        
-        :host( [font-size=display-l] ) div { 
-          font-size: 42px; 
-          line-height: 48px;
-        }                                
-
-        :host( [font-weight=light] ) div { font-weight: 300; }                                
-        :host( [font-weight=heavy] ) div { font-weight: 700; }                                                
-        :host( [font-weight=bold] ) div { font-weight: 700; }                                        
-
-        :host( [text-align=center] ) div { text-align: center; }
-        :host( [text-align=left] ) div { text-align: left; }
-        :host( [text-align=right] ) div { text-align: right; }
-        
         :host( [float=left] ) { float: left; }
-        :host( [float=right] ) { float: right; }
+        :host( [float=right] ) { float: right; }      
+        
+        :host( [justify-content=center] ) { justify-content: center; }
+        :host( [justify-content=end] ) { justify-content: flex-end; }                
+        :host( [justify-content=start] ) { justify-content: flex-start; }                
 
-        :host( [display=block] ) { display: block; }
-        :host( [display=inline] ) { display: inline; }
-        :host( [display=inline-block] ) { display: inline-block; }        
-        :host( [display=none] ) { display: none; }        
+        :host( [size=n] ), :host( [gap=n] ) { gap: 0; }        
+        :host( [size=xxxs] ), :host( [gap=xxxs] ) { gap: 2px; }
+        :host( [size=xxs] ), :host( [gap=xxs] ) { gap: 4px }
+        :host( [size=xs] ), :host( [gap=xs] ) { gap: 8px }
+        :host( [size=s] ), :host( [gap=s] ) { gap: 12px }        
+        :host( [size=m] ), :host( [gap=m] ) { gap: 16px }                
+        :host( [size=l] ), :host( [gap=l] ) { gap: 20px }                        
+        :host( [size=xl] ), :host( [gap=xl] ) { gap: 24px }                                
+        :host( [size=xxl] ), :host( [gap=xxl] ) { gap: 32px }                                        
+        :host( [size=xxxl] ), :host( [gap=xxxl] ) { gap: 40px }      
+
+        :host( [margin=xxx] ) { margin: 0; }        
+        :host( [margin=xxl] ) { margin: 32px; }
+        :host( [margin=xl] ) { margin: 24px; }        
+        :host( [margin=l] ) { margin: 20px; }                
+        :host( [margin=m] ) { margin: 16px; }                        
+        :host( [margin=s] ) { margin: 12px; }                                
+        :host( [margin=xs] ) { margin: 8px; }                    
+        :host( [margin=xxs] ) { margin: 4px; }                            
+        :host( [margin=xxxs] ) { margin: 2px; }                            
+        :host( [margin=n] ) { margin: 0; }    
+        
+        :host( [padding=xxx] ) { padding: 0; }        
+        :host( [padding=xxl] ) { padding: 32px; }
+        :host( [padding=xl] ) { padding: 24px; }        
+        :host( [padding=l] ) { padding: 20px; }                
+        :host( [padding=m] ) { padding: 16px; }                        
+        :host( [padding=s] ) { padding: 12px; }                                
+        :host( [padding=xs] ) { padding: 8px; }                    
+        :host( [padding=xxs] ) { padding: 4px; }                            
+        :host( [padding=xxxs] ) { padding: 2px; }                            
+        :host( [padding=n] ) { padding: 0; }                                                   
       </style>
-      <div part="box">
-        <slot></slot>
-      </div>
+      <slot></slot>
     `;
 
     // Root
@@ -179,170 +83,203 @@ export default class RainforestBox extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
   }
 
-   // When attributes change
+  // When things change
   _render() {;}
 
-  // Promote properties
-  // Values may be set before module load
+  // Properties set before module loaded
   _upgrade( property ) {
     if( this.hasOwnProperty( property ) ) {
       const value = this[property];
       delete this[property];
       this[property] = value;
-    }
-  }
+    }    
+  }    
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'balanced' );                
-    this._upgrade( 'color' );            
-    this._upgrade( 'display' );      
-    this._upgrade( 'float' );      
-    this._upgrade( 'fontSize' );                        
-    this._upgrade( 'fontWeight' );                            
-    this._upgrade( 'textAlign' );        
-    this._upgrade( 'variant' );        
+    this._upgrade( 'alignItems' );    
+    this._upgrade( 'direction' );
+    this._upgrade( 'float' );
+    this._upgrade( 'gap' );                        
+    this._upgrade( 'hidden' );                        
+    this._upgrade( 'justifyContent' );                            
+    this._upgrade( 'margin' );                            
+    this._upgrade( 'padding' );                        
+    this._upgrade( 'size' );                            
     this._render();
   }
 
   // Watched attributes
   static get observedAttributes() {
     return [
-      'balanced',
-      'color',
-      'display',
+      'align-items',
+      'direction',
       'float',
-      'font-size',
-      'font-weight',
-      'text-align',
-      'variant'
+      'gap',
+      'hidden',
+      'justify-content',
+      'margin',
+      'padding',
+      'size'
     ];
   }
 
-  // Observed attribute has changed
+  // Observed tag attribute has changed
   // Update render
   attributeChangedCallback( name, old, value ) {
     this._render();
-  } 
+  }
 
   // Attributes
   // Reflected
   // Boolean, Number, String, null
-  get balanced() {
-    return this.hasAttribute( 'balanced' );
+  get alignItems() {
+    if( this.hasAttribute( 'align-items' ) ) {
+      return this.getAttribute( 'align-items' );
+    }
+
+    return null;
   }
 
-  set balanced( value ) {
+  set alignItems( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'align-items', value );
+    } else {
+      this.removeAttribute( 'align-items' );
+    }
+  }
+
+  get direction() {
+    if( this.hasAttribute( 'direction' ) ) {
+      return this.getAttribute( 'direction' );
+    }
+
+    return null;
+  }
+
+  set direction( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'direction', value );
+    } else {
+      this.removeAttribute( 'direction' );
+    }
+  }  
+  
+  get float() {
+    if( this.hasAttribute( 'float' ) ) {
+      return this.getAttribute( 'float' );
+    }
+
+    return null;
+  }
+
+  set float( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'float', value );
+    } else {
+      this.removeAttribute( 'float' );
+    }
+  }    
+
+  get gap() {
+    if( this.hasAttribute( 'gap' ) ) {
+      return this.getAttribute( 'gap' );
+    }
+
+    return null;
+  }
+
+  set gap( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'gap', value );
+    } else {
+      this.removeAttribute( 'gap' );
+    }
+  }    
+
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
     if( value !== null ) {
       if( typeof value === 'boolean' ) {
         value = value.toString();
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'balanced' );
+        this.removeAttribute( 'hidden' );
       } else {
-        this.setAttribute( 'balanced', '' );
+        this.setAttribute( 'hidden', '' );
       }
     } else {
-      this.removeAttribute( 'balanced' );
-    }
-  }
-
-  get color() {
-    if( this.hasAttribute( 'color' ) ) {
-      return this.getAttribute( 'color' );
-    }
-
-    return null;
-  }
-
-  set color( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'color', value );
-    } else {
-      this.removeAttribute( 'color' );
-    }
-  }
-
-  get display() {
-    if( this.hasAttribute( 'display' ) ) {
-      return this.getAttribute( 'display' );
-    }
-
-    return null;
-  }
-
-  set display( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'display', value );
-    } else {
-      this.removeAttribute( 'display' );
-    }
-  }
-
-  get fontSize() {
-    if( this.hasAttribute( 'font-size' ) ) {
-      return this.getAttribute( 'font-size' );
-    }
-
-    return null;
-  }
-
-  set fontSize( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'font-size', value );
-    } else {
-      this.removeAttribute( 'font-size' );
-    }
-  }
-
-  get fontWeight() {
-    if( this.hasAttribute( 'font-weight' ) ) {
-      return this.getAttribute( 'font-weight' );
-    }
-
-    return null;
-  }
-
-  set fontWeight( value ) {
-    if( value !== null ) {
-      this.setAttribute( 'font-weight', value );
-    } else {
-      this.removeAttribute( 'font-weight' );
+      this.removeAttribute( 'hidden' );
     }
   }  
 
-  get textAlign() {
-    if( this.hasAttribute( 'text-align' ) ) {
-      return this.getAttribute( 'text-align' );
+  get justifyContent() {
+    if( this.hasAttribute( 'justify-content' ) ) {
+      return this.getAttribute( 'justify-content' );
     }
 
     return null;
   }
 
-  set textAlign( value ) {
+  set justifyContent( value ) {
     if( value !== null ) {
-      this.setAttribute( 'text-align', value );
+      this.setAttribute( 'justify-content', value );
     } else {
-      this.removeAttribute( 'text-align' );
+      this.removeAttribute( 'justify-content' );
     }
-  }       
-  
-  get variant() {
-    if( this.hasAttribute( 'variant' ) ) {
-      return this.getAttribute( 'variant' );
+  }  
+
+  get margin() {
+    if( this.hasAttribute( 'margin' ) ) {
+      return this.getAttribute( 'margin' );
     }
 
     return null;
   }
 
-  set variant( value ) {
+  set margin( value ) {
     if( value !== null ) {
-      this.setAttribute( 'variant', value );
+      this.setAttribute( 'margin', value );
     } else {
-      this.removeAttribute( 'variant' );
+      this.removeAttribute( 'margin' );
+    }
+  }
+
+  get padding() {
+    if( this.hasAttribute( 'padding' ) ) {
+      return this.getAttribute( 'padding' );
+    }
+
+    return null;
+  }
+
+  set padding( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'padding', value );
+    } else {
+      this.removeAttribute( 'padding' );
+    }
+  }  
+
+  get size() {
+    if( this.hasAttribute( 'size' ) ) {
+      return this.getAttribute( 'size' );
+    }
+
+    return null;
+  }
+
+  set size( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'size', value );
+    } else {
+      this.removeAttribute( 'size' );
     }
   }  
 }
 
-window.customElements.define( 'rf-box', RainforestBox );
+window.customElements.define( 'rf-box', RFBox );

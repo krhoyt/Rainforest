@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>File Token - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-file-token-group { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-file-token-group    
+      show-file-last-modified
+      show-file-size>
+    </rf-file-token-group><br>
+
+    <!-- With horizontal alignment -->
+    <rf-file-token-group   
+      alignment="horizontal" 
+      show-file-last-modified
+      show-file-size
+      style="width: 50%">
+    </rf-file-token-group><br>    
+
+    <!-- With errors, warnings, and loading -->
+    <rf-file-token-group   
+      show-file-last-modified
+      show-file-size>
+    </rf-file-token-group><br>        
+
+    <!-- With hidden tokens -->
+    <rf-file-token-group   
+      alignment="horizontal"
+      limit="3"
+      show-file-last-modified
+      show-file-size
+      style="width: 50%;">
+    </rf-file-token-group><br>            
+
+    <pre>
+&lt;rf-file-input&gt;Choose file&lt;/rf-file-input&gt;
+    </pre>
+
+    <script src="../components/file-token-group.js" type="module"></script>
+
+    <script>
+      const normal = [{
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-1.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-2.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-3.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }];
+      
+      const messages = [{
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-1.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }
+        ),
+        errorText: 'This is an error message related to this file'
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-2.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        ),
+        warningText: 'This is a warning message related to this file'
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-3.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        ),
+        loading: true
+      }];
+
+      const limit = [{
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-1.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-2.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-3.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-4.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }, {
+        file: new File(
+          [new Blob( ['Test Content'] )],
+          'file-5.pdf',
+          {
+            type: 'application/pdf',
+            lastModified: 1590962400000
+          }          
+        )
+      }];
+
+      const groups = document.querySelectorAll( 'rf-file-token-group' );
+      groups[0].items = normal;
+      groups[1].items = normal;      
+      groups[2].items = messages;
+      groups[3].items = limit;
+    </script>
+
+  </body>
+</html>

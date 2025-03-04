@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Select - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-select { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-select selected-index="0">
+      <rf-option label="Option 1" value="1"></rf-option>
+      <rf-option label="Option 2" value="2"></rf-option>
+      <rf-option label="Option 3" value="3"></rf-option>
+      <rf-option label="Option 4" value="4"></rf-option>
+      <rf-option label="Option 5" value="5"></rf-option>      
+    </rf-select>
+
+    <!-- With icons -->
+    <rf-select selected-index="0">
+      <rf-option icon-name="settings" label="Option 1" value="1"></rf-option>
+      <rf-option icon-name="unlocked" label="Option 2" value="2"></rf-option>
+      <rf-option icon-name="share" label="Option 3" value="3"></rf-option>
+    </rf-select>    
+
+    <!-- With tags -->
+
+    <!-- With features -->
+    <rf-select selected-index="0" variant="option">
+      <rf-option label="Option 1" value="1"></rf-option>
+      <rf-option label="Option 2" value="2"></rf-option>
+      <rf-option label="Option 3" value="3"></rf-option>
+      <rf-option label="Option 4" value="4"></rf-option>
+      <rf-option label="Option 5" value="5"></rf-option>      
+    </rf-select>
+
+    <pre>
+&lt;rf-select&gt;&lt;/rf-select&gt;
+    </pre>
+
+    <script src="../components/select.js" type="module"></script>
+
+  </body>
+</html>

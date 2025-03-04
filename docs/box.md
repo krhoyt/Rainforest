@@ -1,34 +1,66 @@
 # Box
 
-With the box component, you can display and style basic elements and containers in compliance with Cloudscape's typography and spacing strategy.
+`<rf-box>` | `RFBox`
+
+Flexbox container for elements spacing and alignment.
+
+> Rainforest breaks up the Cloudscape `Box` component into two components; one component `RFBox` as a container for other elements, and `RFLabel` for text fragments.
 
 ## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/box.js" type="module"></script>
 ```
 
 ## Examples
 
+### Gap
+
 ``` html
-<rf-box variant="p">
-  When you launch an instance, the instance class that you specify determines the hardware of the host computer used for your instance. Each instance class offers different compute, memory, and storage capabilities. Choose an instance class based on the requirements of the application or software that you plan to run on your instance.  
+<rf-box gap="m">
+  <p>One</p>
+  <p>Two</p>
+  <p>Three</p>            
 </rf-box>
-<rf-box color="text-body-secondary">Secondary text</rf-box>
-<rf-box variant="h1">Distribution settings</rf-box>
-<rf-box variant="code">database:instance:application-db</rf-box>
-<rf-box font-size="display-l" font-weight="bold">Large and bold text</rf-box>
-<rf-box variant="awsui-key-label">Key label</rf-box>
-<rf-box text-align="center">Centered text</rf-box>
+```
+
+### Direction
+
+``` html
+<rf-box direction="horizontal">
+  <p>One</p>
+  <p>Two</p>
+  <p>Three</p>            
+</rf-box>    
+```
+
+### Margins and paddings - all sides
+
+``` html
+<rf-box margin="xxl" padding="xxl">
+  <p>One</p>
+  <p>Two</p>
+  <p>Three</p>            
+</rf-box>    
+```
+
+### Margins and paddings - one side
+
+``` html
+<rf-box style="margin: 0 0 0 32px; padding: 0 0 0 32px;">
+  <p>One</p>
+  <p>Two</p>
+  <p>Three</p>            
+</rf-box>    
+```
+
+### Float right
+
+``` html
 <rf-box float="right">
-  <rf-space-between direction="horizontal" size="xs">
-    <rf-button>Edit</rf-button>
-    <rf-button>Delete</rf-button>
-    <rf-button variant="primary">
-      Create distribution
-    </rf-button>
-  </rf-space-between>
+  <p>One</p>
+  <p>Two</p>
+  <p>Three</p>            
 </rf-box>
 ```
 
@@ -36,20 +68,20 @@ With the box component, you can display and style basic elements and containers 
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Content of the box. |
+| (default) | Elements to layout in specified direction. |
 
 ## Attributes
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `balanced` | `boolean` | Controls text wrapping. | `true` \| `false` | `false` | ✅ |
-| `color` | `string` | Overrides the text color. | `text-label` \| `text-body-secondary` \| `text-status-error` \| `text-status-success` \| `text-status-info` \| `text-status-inactive` \| `text-status-warning` | `null` | ✅ |
-| `display` | `string` | Overrides the display of the element. | `block` \| `inline` \| `inline-block` \| `none` | `null` | ✅ |
+| `align-items` | `string` | Determines how the child elements will be aligned. | `center` \| `end` \| `start` | `null` | ✅ |
+| `direction` | `string` | CSS value specifying layout. | `column` \| `column-reverse` \| `horizontal` \| `horizontal-reverse` \| `row` \| `row-reverse` \| `vertical` \| `vertical-reverse` | `vertical` | ✅ |
 | `float` | `string` | Defines the floating behavior. | `left` \| `right` | `null` | ✅ |
-| `font-size` | `string` | Overrides the font size and line height. | `body-s` \| `body-m` \| `heading-xs` \| `heading-s` \| `heading-m` \| `heading-l` \| `heading-xl` \| `display-l` | `null` | ✅ |
-| `font-weight` | `string` | Overrides the font weight. | `light` \| `normal` \| `bold` \| `heavy` | `null` | ✅ |
-| `text-align` | `string` | Defines the text alignment within the element. | `left` \| `center` \| `right` | `null` | ✅ |
-| `variant`  | `string` | Defines the style of element to display. | `div` \| `span` \| `h1` \| `h2` \| `h3` \| `h4` \| `h5` \| `p` \| `strong` \| `small` \| `code` \| `pre` \| `samp` \| `awsui-key-label` \| `awsui-value-large` | `div` | ✅ |
+| `gap` | `string` | Distance in pixels between contained elements. | `n` \| `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl`  | `null` | ✅ |
+| `hidden` | `boolean` | Removes element from DOM layout. | - | `false` | ✅ |
+| `margin` | `string` | Adds margins to the element. | `n` \| `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl` | `null` | ✅ |
+| `padding` | `string` | Adds paddings to the element. | `n` \| `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl` | `null` | ✅ |
+| `size` | `string` | Distance in pixels between contained elements. | `n` \| `xxxs` \| `xxs` \| `xs` \| `s` \| `m` \| `l` \| `xl` \| `xxl` \| `xxxl`  | `null` | ✅ |
 
 ## Events
 
@@ -61,9 +93,11 @@ None
 
 ## Parts
 
-| Name | Description |
-| --- | --- |
-| `box` | Inner `div` element. |
+None
+
+## Variables
+
+None
 
 ## Dependencies
 

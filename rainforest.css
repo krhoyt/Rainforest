@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
   font-family: 'Open Sans';
   font-weight: 400;
@@ -10,139 +11,7 @@
   src: url( './fonts/OpenSans-Bold.ttf' ) format( 'truetype' );
 }
 
-:root {
-  --shadow-container:     
-    0 0 1px 1px #e9ebed,
-    0 1px 8px 2px #0007161f;  
-  --shadow-container-active: 
-    0px 1px 1px 1px #e9ebed, 
-    0px 6px 36px #0007161a;
-
-  --color-primary: #000716;
-  --color-primary-disabled: #e9ebed;
-  --color-primary-hover: #033160;
-  --color-error: #d91515;
-  --color-inactive: #5f6b7a;
-  --color-link: #0972d3;  
-  --color-inverted: #ffffff;    
-  --color-secondary: #414d5c;
-  --color-secondary-disabled: #9ba7b6;  
-  --color-secondary-hover: #f2f8fd;  
-  --color-success: #037f0c;
-  --color-warning: #8d6605;
-
-  /* Convert black to color via filter */
-  /* https://codepen.io/sosuke/pen/Pjoqqp */  
-  --filter-color-primary:
-    brightness( 0 ) 
-    saturate( 100% )          
-    invert( 4% ) 
-    sepia( 24% ) 
-    saturate( 4129% ) 
-    hue-rotate( 186deg ) 
-    brightness( 102% ) 
-    contrast( 107% );
-  --filter-color-primary-disabled:
-    brightness( 0 ) 
-    saturate( 100% )          
-    invert( 100% ) 
-    sepia( 1% ) 
-    saturate( 3425% ) 
-    hue-rotate( 176deg ) 
-    brightness( 99% ) 
-    contrast( 87% );
-  --filter-color-primary-hover:
-    brightness( 0 ) 
-    saturate( 100% )          
-    invert( 17% ) 
-    sepia( 57% ) 
-    saturate( 1418% ) 
-    hue-rotate( 183deg ) 
-    brightness( 90% ) 
-    contrast( 107% );
-  --filter-color-error:
-    brightness( 0 ) 
-    saturate( 100% )            
-    invert( 14% ) 
-    sepia( 98% ) 
-    saturate( 3166% ) 
-    hue-rotate( 350deg ) 
-    brightness( 107% ) 
-    contrast( 105% );
-  --filter-color-inactive:
-    brightness( 0 ) 
-    saturate( 100% )              
-    invert( 46% ) 
-    sepia( 2% ) 
-    saturate( 3672% ) 
-    hue-rotate( 174deg ) 
-    brightness( 87% ) 
-    contrast( 91% );
-  --filter-color-link:
-    brightness( 0 ) 
-    saturate( 100% )                
-    invert( 26% ) 
-    sepia( 98% ) 
-    saturate( 3640% ) 
-    hue-rotate( 196deg ) 
-    brightness( 97% ) 
-    contrast( 93% );  
-  --filter-color-inverted:
-    brightness( 0 ) 
-    saturate( 100% )                  
-    invert( 100% ) 
-    sepia( 2% ) 
-    saturate( 0% ) 
-    hue-rotate( 173deg ) 
-    brightness( 103% ) 
-    contrast( 101% );
-  --filter-color-secondary:
-    brightness( 0 ) 
-    saturate( 100% )                    
-    invert( 25% ) 
-    sepia( 43% ) 
-    saturate( 260% ) 
-    hue-rotate( 173deg ) 
-    brightness( 98% ) 
-    contrast( 89% );
-  --filter-color-secondary-disabled:
-    brightness( 0 ) 
-    saturate( 100% )                      
-    invert( 74% ) 
-    sepia( 4% ) 
-    saturate( 1016% ) 
-    hue-rotate( 173deg ) 
-    brightness( 90% ) 
-    contrast( 85% );
-  --filter-color-secondary-hover:
-    brightness( 0 ) 
-    saturate( 100% )                        
-    invert( 88% ) 
-    sepia( 40% ) 
-    saturate( 36% ) 
-    hue-rotate( 181deg ) 
-    brightness( 103% ) 
-    contrast( 99% );
-  --filter-color-success:
-    brightness( 0 ) 
-    saturate( 100% )                          
-    invert( 29% ) 
-    sepia( 72% ) 
-    saturate( 1725% ) 
-    hue-rotate( 103deg ) 
-    brightness( 91% ) 
-    contrast( 98% );
-  --filter-color-warning:
-    brightness( 0 ) 
-    saturate( 100% )                            
-    invert( 34% ) 
-    sepia( 88% ) 
-    saturate( 1021% ) 
-    hue-rotate( 23deg ) 
-    brightness( 90% ) 
-    contrast( 96% );
-}
-
+/* Text content styles */
 h1,
 h2,
 h3,
@@ -247,21 +116,259 @@ ul li:first-of-type {
   padding: 0;
 }
 
-div.hbox {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-}
-
+/* Popover */
 div.popover {
   background-color: #ffffff;
   border: solid 2px #9ba7b6;
   border-radius: 8px;
   box-shadow: rgba( 0, 7, 22, 0.10 ) 0px 4px 20px 1px;
   display: none;
-  padding: 12px 16px 12px 16px;
+  position: absolute;
 }
 
+/* Slotted */
+rf-alert rf-button {
+  align-self: flex-start;
+  padding-bottom: 4px;
+  --button-active-background-color: #0007161a;
+  --button-border-color: #414d5c;
+  --button-color: #414d5c;
+  --button-hover-background-color: #0007160d;
+  --button-hover-color: #414d5c;
+}
+
+rf-alert rf-button[variant=primary] {
+  --button-primary-background-color: #414d5c;
+  --button-primary-border-color: #414d5c;
+  --button-primary-color: #ffffff;
+  --button-primary-hover-background-color: #000716;
+  --button-primary-hover-border-color: #000716;          
+}        
+
+rf-avatar {
+  --icon-color: #ffffff;
+}
+
+rf-avatar rf-icon {
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )            
+    invert( 100% ) 
+    sepia( 0% ) 
+    saturate( 2273% ) 
+    hue-rotate( 241deg ) 
+    brightness( 117% ) 
+    contrast( 100% );  
+}
+
+rf-avatar:not( :empty )::part( ai ),
+rf-avatar:not( :empty )::part( profile ) {
+  display: none;
+}
+
+rf-breadcrumb-group rf-breadcrumb:last-of-type::part( href ),
+rf-breadcrumb-group rf-breadcrumb:last-of-type::part( icon ) {
+  display: none;
+}
+
+rf-breadcrumb-group rf-breadcrumb:not( :last-of-type )::part( text ) {
+  display: none;
+}
+
+rf-button:has( [slot=icon] ) {
+  margin: 0 8px 0 -4px;
+  --icon-color: red;
+  --icon-cursor: pointer;  
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )          
+    invert( 44% ) 
+    sepia( 86% ) 
+    saturate( 6077% ) 
+    hue-rotate( 195deg ) 
+    brightness( 93% ) 
+    contrast( 93% );
+}
+
+rf-button:hover:has( [slot=icon] ) {
+  --icon-color: green;
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )            
+    invert( 13% ) 
+    sepia( 33% ) 
+    saturate( 4885% ) 
+    hue-rotate( 197deg ) 
+    brightness( 94% ) 
+    contrast( 98% );
+}
+
+rf-button[disabled] rf-icon {
+  --icon-cursor: not-allowed;
+  --icon-filter:  
+    brightness( 0 ) 
+    saturate( 100% )              
+    invert( 70% ) 
+    sepia( 10% ) 
+    saturate( 426% ) 
+    hue-rotate( 173deg ) 
+    brightness( 93% ) 
+    contrast( 90% );  
+}
+
+rf-button[loading] rf-icon {
+  display: none;
+}
+
+rf-button[variant=primary]:not( [disabled] ) rf-icon {
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )                
+    invert( 100% ) 
+    sepia( 4% ) 
+    saturate( 257% ) 
+    hue-rotate( 233deg ) 
+    brightness( 120% ) 
+    contrast( 100% );  
+}
+
+rf-button[variant=link]:hover rf-icon {
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )            
+    invert( 11% ) 
+    sepia( 68% ) 
+    saturate( 3102% ) 
+    hue-rotate( 203deg ) 
+    brightness( 99% ) 
+    contrast( 105% );
+}
+
+rf-button[variant=inline-link] rf-icon {
+  margin: 0 8px 0 0;
+}
+
+rf-button[variant=icon] rf-icon {
+  margin: 0;
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )  
+    invert( 23% ) 
+    sepia( 3% ) 
+    saturate( 3050% ) 
+    hue-rotate( 185deg ) 
+    brightness( 94% ) 
+    contrast( 81% );               
+}
+
+rf-button[variant=icon]:hover rf-icon {
+  --icon-filter: 
+    brightness( 0 ) 
+    saturate( 100% )  
+    invert( 4% ) 
+    sepia( 4% ) 
+    saturate( 6959% ) 
+    hue-rotate( 173deg ) 
+    brightness( 97% ) 
+    contrast( 91% );              
+}
+
+rf-button[disabled][variant=icon] rf-icon {
+  --icon-cursor: not-allowed;
+  --icon-filter:  
+    brightness( 0 ) 
+    saturate( 100% )              
+    invert( 70% ) 
+    sepia( 10% ) 
+    saturate( 426% ) 
+    hue-rotate( 173deg ) 
+    brightness( 93% ) 
+    contrast( 90% );  
+}
+
+rf-button[variant=inline-icon] rf-icon {
+  margin: 0;
+}
+
+rf-button[icon-align=right] rf-icon {
+  margin: 0 -4px 0 8px;
+}
+
+rf-chat-bubble:has( [slot=actions] )::part( actions ) {
+  display: flex;
+}
+
+rf-checkbox p[slot=description] {
+  color: #656871;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 0 4px 24px;
+}
+
+rf-checkbox[disabled] p[slot=description] {
+  color: #9ba7b6;
+}
+
+rf-flashbar p {
+  color: #ffffff;
+  line-height: 20px;
+  margin: 2px 0 2px 0;          
+  padding: 4px;      
+}
+
+rf-flashbar p[slot=header] {
+  font-weight: 700;
+  margin: 2px 0 0 0;
+  padding: 4px 0 0 0;
+}
+
+rf-flashbar p[slot=header] ~p:not( [slot=header] ) {
+  margin: 0 0 2px 0;
+  padding: 0 0 4px 0;
+}
+
+rf-flashbar rf-link {
+  --link-color: #ffffff;
+  --link-font-weight: 400;
+  --link-hover-color: #ffffff;
+  --link-text-decoration: underline;
+  --link-hover-text-decoration: underline;  
+}
+
+rf-flashbar rf-button[slot=action] {
+  margin: 0 0 4px 0;
+  --button-border-color: #ffffff;
+  --button-color: #ffffff;
+  --button-hover-background-color: #00071626;
+  --button-hover-border-color: #ffffff;
+  --button-hover-color: #ffffff;  
+}
+
+rf-flashbar rf-message[type=warning] p {
+  color: #000716;
+}
+
+rf-segmented-control rf-segment {
+  border-left: solid 1px #414d5c;
+  border-top: solid 2px #414d5c;          
+  border-bottom: solid 2px #414d5c;          
+  border-right: solid 1px #414d5c;    
+}
+
+rf-segmented-control rf-segment:first-of-type {
+  border-bottom-left-radius: 20px;          
+  border-top-left-radius: 20px;
+  border-left: solid 2px #414d5c;
+}
+
+rf-segmented-control rf-segment:last-of-type {
+  border-bottom-right-radius: 20px;          
+  border-top-right-radius: 20px;
+  border-left: solid 1px #414d5c;          
+  border-right: solid 2px #414d5c;          
+}
+
+/*
 div.select {
   background-color: #ffffff;
   border: solid 2px #7d8998;
@@ -285,9 +392,4 @@ div.select rf-select-option {
 div.select rf-select-option:last-of-type {
   border-bottom: none;
 }
-
-div.vbox {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+*/

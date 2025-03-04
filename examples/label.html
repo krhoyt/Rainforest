@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Label - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-label { 
+        display: block; 
+        margin: 0 0 16px 0; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Paragraph text -->
+    <div style="padding: 0 0 16px 0; width: 640px;">
+      <rf-label variant="p">
+        When you launch an instance, the instance class that you specify determines the hardware of the host computer used for your instance. Each instance class offers different compute, memory, and storage capabilities. Choose an instance class based on the requirements of the application or software that you plan to run on your instance.        
+      </rf-label>      
+    </div>    
+
+    <!-- Secondary text -->
+    <rf-label color="text-body-secondary">Secondary text</rf-label><br>
+
+    <!-- H1 text -->
+    <rf-label variant="h1">Distribution settings</rf-label><br>
+
+    <!-- Code -->
+    <rf-label variant="code">database:instance:application-db</rf-label><br>       
+
+    <!-- Large bold text -->
+    <rf-label font-size="display-l" font-weight="bold">Large and bold text</rf-label><br>
+
+    <!-- Key label text -->
+    <rf-label variant="key-label">Key label</rf-label><br>     
+
+    <!-- Centered text -->
+    <rf-label text-align="center" style="width: 100%;">Centered text</rf-label><br>         
+
+    <!-- Margins and paddings - all sides-->
+    <rf-label margin="xxl" padding="xxl">All sides</rf-label><br>
+
+    <!-- Margins and paddings - one side-->
+    <rf-label style="margin: 0 0 0 32px; padding: 0 0 0 32px;">One side</rf-label><br>
+
+    <!-- Float right -->
+    <rf-label float="right">Float right</rf-label><br>
+
+    <pre>
+&lt;div style=&quot;width: 640px;&quot;&gt;
+  &lt;rf-label variant=&quot;p&quot;&gt;
+    When you launch an instance, the instance class that you specify determines the hardware of the host computer used for your instance. Each instance class offers different compute, memory, and storage capabilities. Choose an instance class based on the requirements of the application or software that you plan to run on your instance.  
+  &lt;/rf-label&gt;      
+&lt;/div&gt;    
+
+&lt;rf-label color=&quot;text-body-secondary&quot;&gt;Secondary text&lt;/rf-label&gt;
+
+&lt;rf-label variant=&quot;h1&quot;&gt;Distribution settings&lt;/rf-label&gt;
+
+&lt;rf-label variant=&quot;code&quot;&gt;database:instance:application-db&lt;/rf-label&gt;
+
+&lt;rf-label font-size=&quot;display-l&quot; font-weight=&quot;bold&quot;&gt;Large and bold text&lt;/rf-label&gt;
+
+&lt;rf-label variant=&quot;key-label&quot;&gt;Key label&lt;/rf-label&gt;
+
+&lt;rf-label text-align=&quot;center&quot; style=&quot;width: 100%;&quot;&gt;Centered text&lt;/rf-label&gt;
+
+&lt;rf-label margin=&quot;xxl&quot; padding=&quot;xxl&quot;&gt;All sides&lt;/rf-label&gt;
+
+&lt;rf-label style=&quot;margin: 0 0 0 32px; padding: 0 0 0 32px;&quot;&gt;One side&lt;/rf-label&gt;    
+
+&lt;rf-label float=&quot;right&quot;&gt;Float right&lt;/rf-label&gt;
+    </pre>
+
+    <script src="../components/label.js" type="module"></script>
+
+  </body>
+</html>

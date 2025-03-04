@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System." />
+
+    <title>Polar Chart - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+    
+    <style>
+      rf-polar-chart {
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-polar-chart maximum="5"></rf-polar-chart>
+
+    <pre>
+&lt;rf-polar-chart height="300"&gt; 
+&lt;/rf-polar-chart&gt;
+    </pre>
+    <pre>
+const chart = document.querySelector( 'rf-polar-chart' );
+chart.categories = [
+  "General Security",
+  "Data Protection", 
+  "Infrastructure Security",
+  "IAM",
+  "Detective Controls",
+  "Incident Response",
+  "AWS Services"
+];
+chart.series = [
+  {title: 'Data (C:)', data: [2.5, 3, 3.5, 3, 3.25, 2, 3.5]}
+];
+    </pre>
+
+    <script src="../components/polar-chart.js" type="module"></script>
+    
+    <script>
+      const chart = document.querySelector( 'rf-polar-chart' );
+      chart.categories = [
+        "General Security",
+        "Data Protection", 
+        "Infrastructure Security",
+        "IAM",
+        "Detective Controls",
+        "Incident Response",
+        "AWS Services"
+      ];
+      chart.series = [
+        {title: 'Data (C:)', data: [2.5, 3, 3.5, 3, 3.25, 2, 3.5]}
+      ];
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>File Upload - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-form-field { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Single file upload -->
+    <rf-form-field 
+      description="Description" 
+      label="Form field label">
+      <rf-file-upload 
+        hint="Hint text for file requirements" 
+        label="Choose file"
+        show-file-last-modified
+        show-file-size
+        show-file-thumbnail
+        token-limit="3">
+      </rf-file-upload>
+    </rf-form-field>
+
+    <!-- Multiple files upload -->
+    <rf-form-field 
+      description="Description" 
+      label="Form field label">
+      <rf-file-upload 
+        hint="Hint text for file requirements" 
+        label="Choose files" 
+        multiple>
+      </rf-file-upload>
+    </rf-form-field>    
+
+    <pre>
+&lt;rf-radio-group&gt;
+  &lt;rf-radio label=&quot;First choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio checked label=&quot;Second choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio label=&quot;Third choice&quot;&gt;&lt;/rf-radio&gt;
+&lt;/rf-radio-group&gt;
+    </pre>
+
+    <script src="../components/file-upload.js" type="module"></script>
+    <script src="../components/form-field.js" type="module"></script>
+
+  </body>
+</html>

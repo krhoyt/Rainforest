@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Content Layout - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-content-layout { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-content-layout>
+      <rf-header 
+        description="This is a generic description used in the header." 
+        slot="header" 
+        title="Header" 
+        variant="h1">
+        <rf-link label="Info" slot="info"></rf-link>          
+        <rf-button label="Button" slot="actions" variant="primary"></rf-button>          
+      </rf-header>
+      <rf-alert content="This is a generic alert." slot="header"></rf-alert>
+      <rf-container>
+        <rf-header 
+          description="Container description" 
+          slot="header" 
+          title="Container header" 
+          variant="h2">
+        </rf-header>
+        <rf-label text="Container content"></rf-label>
+      </rf-container>
+    </rf-content-layout>
+
+    <!-- Disable overlap -->
+    <rf-content-layout disable-overlap>
+      <rf-header 
+        description="This is a generic description used in the header." 
+        slot="header" 
+        title="Header" 
+        variant="h1">
+        <rf-link label="Info" slot="info"></rf-link>          
+        <rf-button label="Button" slot="actions" variant="primary"></rf-button>          
+      </rf-header>
+      <rf-alert content="This is a generic alert." slot="header"></rf-alert>
+      <rf-container>
+        <rf-header 
+          description="Container description" 
+          slot="header" 
+          title="Container header" 
+          variant="h2">
+        </rf-header>
+        <rf-label text="Container content"></rf-label>
+      </rf-container>
+    </rf-content-layout>    
+
+    <script src="../components/alert.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>
+    <script src="../components/container.js" type="module"></script>
+    <script src="../components/content-layout.js" type="module"></script>
+    <script src="../components/header.js" type="module"></script>
+    <script src="../components/label.js" type="module"></script>
+    <script src="../components/link.js" type="module"></script>
+
+  </body>
+</html>

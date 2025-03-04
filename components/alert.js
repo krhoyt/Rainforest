@@ -1,6 +1,11 @@
-import RainforestButton from "./button.js";
+import RFIconClose from "./icons/close.js";
+import RFIconStatusInfo from "./icons/status-info.js";
+import RFIconStatusNegative from "./icons/status-negative.js";
+import RFIconStatusPositive from "./icons/status-positive.js";
+import RFIconStatusWarning from "./icons/status-warning.js";
+import RFStatusIndicator from "./status-indicator.js";
 
-export default class RainforestAlert extends HTMLElement {
+export default class RFAlert extends HTMLElement {
   constructor() {
     super();
 
@@ -9,12 +14,23 @@ export default class RainforestAlert extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
-          display: inline-block;
+          display: block;
           position: relative;
         }
 
         :host( [hidden] ) {
           display: none;
+        }
+
+        button {
+          align-self: flex-start;
+          background: none;
+          border: none;
+          border: solid 2px transparent;
+          border-radius: 20px;
+          cursor: pointer;
+          margin: 0;
+          padding: 4px 4px 0 4px;
         }
 
         div[part=alert] {
@@ -28,25 +44,15 @@ export default class RainforestAlert extends HTMLElement {
           padding: 8px 16px 8px 16px;
         }
 
-        div[part=alert] > div {
-          width: 100%;
+        div[part=alert] > div:last-of-type {
+          flex-basis: 0;
+          flex-grow: 1;
         }
 
-        div[part=content] {
-          color: var( --alert-content-color );
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-        }
-
-        div[part=header] {
-          color: var( --alert-header-color );          
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 20px;
-        }
+        div[part=icons] {
+          align-self: flex-start;
+          margin: 8px 4px 2px 0;
+        }        
 
         div[part=message] {
           display: flex;
@@ -56,131 +62,96 @@ export default class RainforestAlert extends HTMLElement {
           margin: 4px;
           padding: 2px 0 2px 0;
           width: 100%;
-        }
+        }        
 
-        rf-button[part=button] {
-          align-self: flex-start;
-        }
-
-        rf-button[part=close] {
-          margin: 0 -4px 0 12px;
-        }
-
-        rf-button[part=close]::part( button ) {
-          width: 28px;
-        }
-
-        rf-button[part=close]::part( icon ) {
+        p {
+          color: var( --alert-color, #000716 );
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
           margin: 0;
+          padding: 0;
+          text-rendering: optimizeLegibility;
         }
 
-        img {
-          filter: var( --alert-icon-filter, 
-            brightness( 0 ) 
-            saturate( 100% )                
-            invert( 26% ) 
-            sepia( 98% ) 
-            saturate( 3640% ) 
-            hue-rotate( 196deg ) 
-            brightness( 97% ) 
-            contrast( 93% )            
-          );            
-          height: 16px;
-          margin: 4px 4px 4px 0;
-          object-fit: contain;
-          padding: 4px 0 4px 0;          
-          width: 16px;
+        p[part=content] {
+          width: 100%;
         }
 
-        :host( [type=error] ) div[part=alert],
-        :host( [variant=error] ) div[part=alert] {
+        p[part=header] {
+          color: var( --alert-header-color, #000716 );
+          font-weight: 700;
+        }        
+
+        rf-icon-close {
+          margin: 2px 0 2px 0;
+          --icon-color: #414d5c;
+        }
+
+        rf-icon-status-info { 
+          --icon-color: #006ce0;
+        }
+
+        rf-icon-status-negative { 
+          display: none;
+          --icon-color: #db0000;
+        }        
+
+        rf-icon-status-positive { 
+          display: none;
+          --icon-color: #00802f;
+        }        
+
+        rf-icon-status-warning { 
+          display: none;
+          --icon-color: #855900;
+        }                
+
+        :host( [type=error] ) div[part=alert] {
           background-color: #fff7f7;
           border-color: #d91515;
         }
-        :host( [type=error] ) img,
-        :host( [variant=error] ) img {        
-          filter:
-            brightness( 0 ) 
-            saturate( 100% )            
-            invert( 14% ) 
-            sepia( 98% ) 
-            saturate( 3166% ) 
-            hue-rotate( 350deg ) 
-            brightness( 107% ) 
-            contrast( 105% );          
-        }
+        :host( [type=error] ) rf-icon-status-info { display: none; }                
+        :host( [type=error] ) rf-icon-status-negative { display: inline; }            
         
-        :host( [type=success] ) div[part=alert],
-        :host( [variant=success] ) div[part=alert] {
+        :host( [type=success] ) div[part=alert] {
           background-color: #f2fcf3;
           border-color: #037f0c;
         }
-        :host( [type=success] ) img,
-        :host( [variant=success] ) img {    
-          filter:     
-            brightness( 0 ) 
-            saturate( 100% )                          
-            invert( 29% ) 
-            sepia( 72% ) 
-            saturate( 1725% ) 
-            hue-rotate( 103deg ) 
-            brightness( 91% ) 
-            contrast( 98% );
-        }        
+        :host( [type=success] ) rf-icon-status-info { display: none; }                
+        :host( [type=success] ) rf-icon-status-positive { display: inline; }        
 
-        :host( [type=warning] ) div[part=alert],
-        :host( [variant=warning] ) div[part=alert] {
+        :host( [type=warning] ) div[part=alert] {
           background-color: #fffce9;
           border-color: #8d6605;
         }
-        :host( [type=warning] ) img,
-        :host( [variant=warning] ) img {        
-          filter: 
-            brightness( 0 ) 
-            saturate( 100% )                            
-            invert( 34% ) 
-            sepia( 88% ) 
-            saturate( 1021% ) 
-            hue-rotate( 23deg ) 
-            brightness( 90% ) 
-            contrast( 96% );          
-        }
+        :host( [type=warning] ) rf-icon-status-info { display: none; }                
+        :host( [type=warning] ) rf-icon-status-warning { display: inline; }            
 
-        :host( :not( [dismissable] ) ) rf-button[part=close] {
+        :host( :not( [dismissable] ) ) button {
           display: none;
         }
-
-        ::slotted( rf-button[slot=action] ) {
-          align-self: flex-start;
-          padding-bottom: 4px;
-          --button-border-color: #414d5c;
-          --button-color: #414d5c;
-          --button-hover-background-color: #0007160d;
-          --button-hover-color: #414d5c;
-        }
-
-        ::slotted( rf-button[variant=primary] ) {
-          --button-primary-background-color: #414d5c;
-          --button-primary-border-color: #414d5c;
-          --button-primary-color: #ffffff;
-          --button-primary-hover-background-color: #000716;
-          --button-primary-hover-border-color: #000716;          
-        }        
       </style>
       <div part="alert">
-        <img part="icon" />
+        <div part="icons">
+          <rf-icon-status-info></rf-icon-status-info>
+          <rf-icon-status-positive></rf-icon-status-positive>        
+          <rf-icon-status-negative></rf-icon-status-negative>
+          <rf-icon-status-warning></rf-icon-status-warning>         
+        </div>
         <div>
           <div part="message">
-            <div part="header">
-              <slot name="header"></slot>
-            </div>
-            <div part="content">
+            <p part="header"></p>
+            <p part="content">
               <slot></slot>
-            </div>
+            </p>
           </div>
           <slot name="action"></slot>          
         </div>
-        <rf-button icon-name="close" part="close" variant="icon"></rf-button>      
+        <button part="close" type="button">
+          <rf-icon-close></rf-icon-close>
+        </button>  
       </div>
     `;
     
@@ -189,12 +160,12 @@ export default class RainforestAlert extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
-    this.$alert = this.shadowRoot.querySelector( 'div[part=alert]' );
-    this.$close = this.shadowRoot.querySelector( 'rf-button[part=close]' );
+    this.$alert = this.shadowRoot.querySelector( 'div[part=message]' );
+    this.$close = this.shadowRoot.querySelector( 'button' );
     this.$close.addEventListener( 'rf-click', () => {
       this.dispatchEvent( new CustomEvent( 'rf-dismiss' ) );
     } );
-    this.$icon = this.shadowRoot.querySelector( 'img[part=icon]' );
+    this.$header = this.shadowRoot.querySelector( 'p[part=header]' );
   }
 
   focus() {
@@ -203,19 +174,7 @@ export default class RainforestAlert extends HTMLElement {
 
   // When things change
   _render() {
-    switch( this.type ) {
-      case 'error':
-        this.$icon.src = '../icons/status-negative.svg';
-        break;      
-      case 'success':
-        this.$icon.src = '../icons/status-positive.svg';
-        break;
-      case 'warning':
-        this.$icon.src = '../icons/status-warning.svg';
-        break;        
-      default:
-        this.$icon.src = '../icons/status-info.svg';        
-    }
+    this.$header.innerText = this.header === null ? '' : this.header;
   }
 
   // Promote properties
@@ -230,7 +189,8 @@ export default class RainforestAlert extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'dismissable' );                
+    this._upgrade( 'dismissable' );               
+    this._upgrade( 'header' );                         
     this._upgrade( 'hidden' );                    
     this._upgrade( 'type' );
     this._render();
@@ -240,6 +200,7 @@ export default class RainforestAlert extends HTMLElement {
   static get observedAttributes() {
     return [
       'dismissable',
+      'header',      
       'hidden',
       'type'
     ];
@@ -273,6 +234,22 @@ export default class RainforestAlert extends HTMLElement {
       this.removeAttribute( 'dismissable' );
     }
   }
+
+  get header() {
+    if( this.hasAttribute( 'header' ) ) {
+      return this.getAttribute( 'header' );
+    }
+
+    return null;
+  }
+
+  set header( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'header', value );
+    } else {
+      this.removeAttribute( 'header' );
+    }
+  }  
   
   get hidden() {
     return this.hasAttribute( 'hidden' );
@@ -292,7 +269,7 @@ export default class RainforestAlert extends HTMLElement {
     } else {
       this.removeAttribute( 'hidden' );
     }
-  }  
+  }    
 
   get type() {
     if( this.hasAttribute( 'type' ) ) {
@@ -311,4 +288,4 @@ export default class RainforestAlert extends HTMLElement {
   }
 }
 
-window.customElements.define( 'rf-alert', RainforestAlert );
+window.customElements.define( 'rf-alert', RFAlert );

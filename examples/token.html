@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Token - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-token-group { margin: 0 0 16px 0; }
+    </style>
+    
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-token-group>
+      <rf-token label="Item 1"></rf-token>
+      <rf-token label="Item 2"></rf-token>
+      <rf-token label="Item 3"></rf-token>
+    </rf-token-group>
+
+    <!-- With vertical alignment -->
+    <rf-token-group alignment="vertical">
+      <rf-token label="Item 1"></rf-token>
+      <rf-token label="Item 2"></rf-token>
+      <rf-token label="Item 3"></rf-token>      
+    </rf-token-group>
+
+    <!-- With disabled items -->
+    <rf-token-group>
+      <rf-token description="This is a description for item 1" disabled label="Item 1"></rf-token>
+      <rf-token description="This is a description for item 2" disabled label="Item 2"></rf-token>
+      <rf-token description="This is a description for item 3" disabled label="Item 3"></rf-token>      
+    </rf-token-group>
+
+    <!-- With features -->
+    <rf-token-group>
+      <rf-token 
+        description="This is a description for item 1" 
+        icon-name="share"
+        label="Item 1"
+        label-tag="Label tag 1">
+        <option>Tag 1</option>
+        <option>Tag 2</option>
+      </rf-token>      
+      <rf-token 
+        description="This is a description for item 2" 
+        icon-name="settings"
+        label="Item 2"
+        label-tag="Label tag 2">
+        <option>Tag 1</option>
+        <option>Tag 2</option>
+      </rf-token>            
+      <rf-token 
+        description="This is a description for item 3" 
+        icon-name="key"
+        label="Item 3"
+        label-tag="Label tag 3">
+        <option>Tag 1</option>
+        <option>Tag 2</option>
+      </rf-token>            
+    </rf-token-group>
+
+    <pre>
+&lt;rf-token-group&gt;
+  &lt;rf-token label=&quot;Item 1&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token label=&quot;Item 2&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token label=&quot;Item 3&quot;&gt;&lt;/rf-token&gt;
+&lt;/rf-token-group&gt;
+
+&lt;rf-token-group alignment=&quot;vertical&quot;&gt;
+  &lt;rf-token label=&quot;Item 1&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token label=&quot;Item 2&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token label=&quot;Item 3&quot;&gt;&lt;/rf-token&gt;      
+&lt;/rf-token-group&gt;
+
+&lt;rf-token-group&gt;
+  &lt;rf-token description=&quot;This is a description for item 1&quot; disabled label=&quot;Item 1&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token description=&quot;This is a description for item 2&quot; disabled label=&quot;Item 2&quot;&gt;&lt;/rf-token&gt;
+  &lt;rf-token description=&quot;This is a description for item 3&quot; disabled label=&quot;Item 3&quot;&gt;&lt;/rf-token&gt;      
+&lt;/rf-token-group&gt;
+
+&lt;rf-token-group&gt;
+  &lt;rf-token 
+    description=&quot;This is a description for item 1&quot; 
+    icon-name=&quot;share&quot;
+    label=&quot;Item 1&quot;
+    label-tag=&quot;Label tag 1&quot;&gt;
+    &lt;option&gt;Tag 1&lt;/option&gt;
+    &lt;option&gt;Tag 2&lt;/option&gt;
+  &lt;/rf-token&gt;      
+  &lt;rf-token 
+    description=&quot;This is a description for item 2&quot; 
+    icon-name=&quot;settings&quot;
+    label=&quot;Item 2&quot;
+    label-tag=&quot;Label tag 2&quot;&gt;
+    &lt;option&gt;Tag 1&lt;/option&gt;
+    &lt;option&gt;Tag 2&lt;/option&gt;
+  &lt;/rf-token&gt;            
+  &lt;rf-token 
+    description=&quot;This is a description for item 3&quot; 
+    icon-name=&quot;key&quot;
+    label=&quot;Item 3&quot;
+    label-tag=&quot;Label tag 3&quot;&gt;
+    &lt;option&gt;Tag 1&lt;/option&gt;
+    &lt;option&gt;Tag 2&lt;/option&gt;
+  &lt;/rf-token&gt;            
+&lt;/rf-token-group&gt;
+    </pre>
+
+    <script src="../components/token-group.js" type="module"></script>
+
+  </body>
+</html>

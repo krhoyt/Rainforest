@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Checkbox - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-checkbox {
+        display: flex;
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Unchecked -->
+    <rf-checkbox>Expire</rf-checkbox>
+
+    <!-- Checked -->
+    <rf-checkbox checked>Transition to standard access storage class</rf-checkbox>   
+
+    <!-- Disabled -->
+    <rf-checkbox disabled>Delete</rf-checkbox>
+
+    <!-- Checked and disabled -->
+    <rf-checkbox checked disabled>Archive to the Glacier Storage Class</rf-checkbox>
+
+    <!-- Read-only -->
+    <rf-checkbox read-only>Archive to the Glacier Storage Class</rf-checkbox>
+
+    <!-- Checked and read-only -->
+    <rf-checkbox checked read-only>Archive to the Glacier Storage Class</rf-checkbox>
+
+    <pre>
+&lt;rf-checkbox&gt;Expire&lt;/rf-checkbox&gt;
+
+&lt;rf-checkbox checked&gt;Transition to standard access storage class&lt;/rf-checkbox&gt;
+
+&lt;rf-checkbox disabled &gt;Delete&lt;/rf-checkbox&gt;
+
+&lt;rf-checkbox checked disabled&gt;Archive to the Glacier Storage Class&lt;/rf-checkbox&gt;
+
+&lt;rf-checkbox read-only&gt;Archive to the Glacier Storage Class&lt;/rf-checkbox&gt;
+
+&lt;rf-checkbox checked read-only&gt;Archive to the Glacier Storage Class&lt;/rf-checkbox&gt;
+    </pre>
+
+    <script src="../components/checkbox.js" type="module"></script>
+
+  </body>
+</html>

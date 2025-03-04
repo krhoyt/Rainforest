@@ -1,4 +1,4 @@
-export default class RainforestTextarea extends HTMLElement {
+export default class RFTextarea extends HTMLElement {
   constructor() {
     super();
 
@@ -9,6 +9,10 @@ export default class RainforestTextarea extends HTMLElement {
           box-sizing: border-box;
           display: inline-block;
           position: relative;
+        }
+
+        :host( [hidden] ) {
+          display: none;
         }
 
         textarea {
@@ -90,6 +94,12 @@ export default class RainforestTextarea extends HTMLElement {
 
     // Elements
     this.$area = this.shadowRoot.querySelector( 'textarea' );
+    this.$area.addEventListener( 'blur', () => {
+      this.dispatchEvent( new CustomEvent( 'rf-blur' ) );
+    } );
+    this.$area.addEventListener( 'focus', () => {
+      this.dispatchEvent( new CustomEvent( 'rf-focus' ) );
+    } );    
     this.$area.addEventListener( 'input', () => {
       this.value = this.$area.value;
       this.dispatchEvent( new CustomEvent( 'rf-change', {
@@ -274,6 +284,26 @@ export default class RainforestTextarea extends HTMLElement {
     }
   }    
 
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }   
+
   get invalid() {
     return this.hasAttribute( 'invalid' );
   }
@@ -415,4 +445,4 @@ export default class RainforestTextarea extends HTMLElement {
   }    
 }
 
-window.customElements.define( 'rf-textarea', RainforestTextarea );
+window.customElements.define( 'rf-textarea', RFTextarea );

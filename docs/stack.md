@@ -1,5 +1,7 @@
 # Stack
 
+`<rf-stack>` | `RFStack`
+
 Shows a single child at a time.
 
 ## Importing
@@ -10,25 +12,38 @@ Shows a single child at a time.
 
 ## Examples
 
+### Default
+
 ``` html
 <rf-stack>
-  <p>One</p>
-  <p>Two</p>
-  <p>Three</p>            
+  <rf-label text="One"></rf-label>
+  <rf-label text="Two"></rf-label>
+  <rf-label text="Three"></rf-label>
 </rf-stack>
+```
+
+### With selected index
+
+``` html
+<rf-stack selected-index="1">
+  <rf-label text="One"></rf-label>
+  <rf-label text="Two"></rf-label>
+  <rf-label text="Three"></rf-label>
+</rf-stack>    
 ```
 
 ## Slots
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Children elements to be stacked. |
+| (default) | Children elements to be stacked. |
 
 ## Attributes
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `hidden` | `boolean` | Hides that nonsense. | `true` \| `false` | `false` | ✅ |
+| `hidden` | `boolean` | Removes element from DOM layout. | - | `false` | ✅ |
+| `selected-index` | `number` | Index of child element to show. | - | `0` | ✅ |
 
 ## Events
 
@@ -39,6 +54,10 @@ None
 None
 
 ## Parts
+
+None
+
+## Variables
 
 None
 

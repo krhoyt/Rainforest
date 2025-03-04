@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Radio Group - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-radio-group { 
+        display: flex;
+        margin: 0 0 16px 0; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-radio-group>
+      <rf-radio label="First choice"></rf-radio>
+      <rf-radio checked label="Second choice"></rf-radio>
+      <rf-radio label="Third choice"></rf-radio>
+    </rf-radio-group>
+
+    <!-- With labels and descriptions -->
+    <rf-radio-group>
+      <rf-radio description="This is the first option" label="First choice"></rf-radio>
+      <rf-radio checked description="This is the second option" label="Second choice"></rf-radio>
+      <rf-radio description="This is the third option" label="Third choice"></rf-radio>
+    </rf-radio-group>
+
+    <!-- Disabled -->
+    <rf-radio-group>
+      <rf-radio description="This option is disabled" disabled label="First choice"></rf-radio>
+      <rf-radio checked label="Second choice"></rf-radio>
+      <rf-radio label="Third choice"></rf-radio>
+    </rf-radio-group>
+
+    <pre>
+&lt;rf-radio-group&gt;
+  &lt;rf-radio label=&quot;First choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio checked label=&quot;Second choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio label=&quot;Third choice&quot;&gt;&lt;/rf-radio&gt;
+&lt;/rf-radio-group&gt;
+
+&lt;rf-radio-group&gt;
+  &lt;rf-radio description=&quot;This is the first option&quot; label=&quot;First choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio checked description=&quot;This is the second option&quot; label=&quot;Second choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio description=&quot;This is the third option&quot; label=&quot;Third choice&quot;&gt;&lt;/rf-radio&gt;
+&lt;/rf-radio-group&gt;
+
+&lt;rf-radio-group&gt;
+  &lt;rf-radio description=&quot;This option is disabled&quot; disabled label=&quot;First choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio checked label=&quot;Second choice&quot;&gt;&lt;/rf-radio&gt;
+  &lt;rf-radio label=&quot;Third choice&quot;&gt;&lt;/rf-radio&gt;
+&lt;/rf-radio-group&gt;
+    </pre>
+
+    <script src="../components/radio-group.js" type="module"></script>
+    <script src="../components/radio.js" type="module"></script>
+
+  </body>
+</html>

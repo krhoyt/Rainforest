@@ -1,11 +1,15 @@
 # Cats
 
-<a href="https://thecatapi.com/">Cats as a Service</a>. Because everyday is a Caturday.
+`<rf-cats>` | `RFCats`
+
+Displays a random photo of a cat.
+
+> Cats provided by <a href="https://thecatapi.com/">Cats as a Service</a>. Because everyday is a Caturday.
 
 ## Importing
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/controls/cats.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/cats.js" type="module"></script>
 ```
 
 ## Examples
@@ -35,6 +39,10 @@ None
 | Name | Description |
 | --- | --- |
 | `image` | Inner `img` element. |
+
+## Variables
+
+None
 
 ## Dependencies
 

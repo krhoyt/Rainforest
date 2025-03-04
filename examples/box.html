@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Box - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-box:after { 
+        content: '';
+        height: 16px; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Gap -->
+    <rf-box gap="m">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>            
+    </rf-box>
+    
+    <!-- Direction -->
+    <rf-box direction="horizontal">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>            
+    </rf-box>    
+
+    <!-- Margins and paddings - all sides -->
+    <rf-box margin="xxl" padding="xxl">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>            
+    </rf-box>    
+
+    <!-- Margins and paddings - one side -->
+    <rf-box style="margin: 0 0 0 32px; padding: 0 0 0 32px;">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>            
+    </rf-box>    
+
+    <!-- Float right -->
+    <rf-box float="right">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>            
+    </rf-box>
+
+    <pre>
+&lt;rf-box gap=&quot;m&quot;&gt;
+  &lt;p&gt;One&lt;/p&gt;
+  &lt;p&gt;Two&lt;/p&gt;
+  &lt;p&gt;Three&lt;/p&gt;            
+&lt;/rf-box&gt;
+
+&lt;rf-box direction=&quot;horizontal&quot;&gt;
+  &lt;p&gt;One&lt;/p&gt;
+  &lt;p&gt;Two&lt;/p&gt;
+  &lt;p&gt;Three&lt;/p&gt;            
+&lt;/rf-box&gt;
+
+&lt;rf-box margin=&quot;xxl&quot; padding=&quot;xxl&quot;&gt;
+  &lt;p&gt;One&lt;/p&gt;
+  &lt;p&gt;Two&lt;/p&gt;
+  &lt;p&gt;Three&lt;/p&gt;            
+&lt;/rf-box&gt;    
+
+&lt;rf-box style=&quot;margin: 0 0 0 32px; padding: 0 0 0 32px;&quot;&gt;
+  &lt;p&gt;One&lt;/p&gt;
+  &lt;p&gt;Two&lt;/p&gt;
+  &lt;p&gt;Three&lt;/p&gt;            
+&lt;/rf-box&gt;    
+
+&lt;rf-box float=&quot;right&quot;&gt;
+  &lt;p&gt;One&lt;/p&gt;
+  &lt;p&gt;Two&lt;/p&gt;
+  &lt;p&gt;Three&lt;/p&gt;            
+&lt;/rf-box&gt;
+    </pre>
+
+    <script src="../components/box.js" type="module"></script>
+
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Avatar - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+    <style>
+      rf-avatar { 
+        display: flex;
+        margin: 0 0 16px 0; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-avatar></rf-avatar>
+
+    <rf-avatar initials="JD"></rf-avatar>    
+
+    <rf-avatar initials="JD" loading></rf-avatar>        
+
+    <rf-avatar loading></rf-avatar>            
+
+    <rf-avatar>
+      <!-- <rf-icon name="settings"></rf-icon> -->
+      <rf-icon-settings></rf-icon-settings>      
+    </rf-avatar>            
+
+    <rf-avatar loading>
+      <rf-icon name="settings"></rf-icon>
+    </rf-avatar>                
+
+    <!-- AI -->
+    <rf-avatar color="gen-ai"></rf-avatar>
+
+    <rf-avatar color="gen-ai" initials="JD"></rf-avatar>        
+
+    <rf-avatar color="gen-ai" initials="JD" loading></rf-avatar>
+    
+    <rf-avatar color="gen-ai" loading></rf-avatar>            
+
+    <rf-avatar color="gen-ai">
+      <!-- <rf-icon name="settings"></rf-icon> -->
+      <rf-icon-settings></rf-icon-settings>            
+    </rf-avatar>        
+
+    <rf-avatar color="gen-ai" loading>
+      <rf-icon name="settings"></rf-icon>
+    </rf-avatar>        
+
+    <pre>
+&lt;rf-avatar&gt;&lt;/rf-avatar&gt;
+
+&lt;rf-avatar initials=&quot;JD&quot;&gt;&lt;/rf-avatar&gt;    
+
+&lt;rf-avatar initials=&quot;JD&quot; loading&gt;&lt;/rf-avatar&gt;        
+
+&lt;rf-avatar loading&gt;&lt;/rf-avatar&gt;            
+
+&lt;rf-avatar&gt;
+  &lt;rf-icon name=&quot;settings&quot;&gt;&lt;/rf-icon&gt;
+&lt;/rf-avatar&gt;            
+
+&lt;rf-avatar loading&gt;
+  &lt;rf-icon name=&quot;settings&quot;&gt;&lt;/rf-icon&gt;
+&lt;/rf-avatar&gt;                
+
+&lt;!-- AI --&gt;
+&lt;rf-avatar color=&quot;gen-ai&quot;&gt;&lt;/rf-avatar&gt;
+
+&lt;rf-avatar color=&quot;gen-ai&quot; initials=&quot;JD&quot;&gt;&lt;/rf-avatar&gt;        
+
+&lt;rf-avatar color=&quot;gen-ai&quot; initials=&quot;JD&quot; loading&gt;&lt;/rf-avatar&gt;
+
+&lt;rf-avatar color=&quot;gen-ai&quot; loading&gt;&lt;/rf-avatar&gt;            
+
+&lt;rf-avatar color=&quot;gen-ai&quot;&gt;
+  &lt;rf-icon name=&quot;settings&quot;&gt;&lt;/rf-icon&gt;
+&lt;/rf-avatar&gt;        
+
+&lt;rf-avatar color=&quot;gen-ai&quot; loading&gt;
+  &lt;rf-icon name=&quot;settings&quot;&gt;&lt;/rf-icon&gt;
+&lt;/rf-avatar&gt;
+    </pre>
+
+    <script src="../components/avatar.js" type="module"></script>
+    <script src="../components/icon.js" type="module"></script>    
+    <script src="../components/icons/settings.js" type="module"></script>        
+
+  </body>
+</html>

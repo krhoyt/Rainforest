@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Container - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-container { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Simple -->
+    <rf-container>
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+        Container title
+      </rf-header>
+      <rf-label>Container content</rf-label>
+    </rf-container>
+    
+    <!-- With footer -->
+    <rf-container>
+      <rf-header 
+        description="Container description"
+        slot="header" 
+        variant="h2">
+        Container title
+      </rf-header>
+      <rf-label>Content content</rf-label>
+      <rf-label slot="footer">Container footer</rf-label>
+    </rf-container>    
+
+    <!-- With actions -->
+    <rf-container>
+      <rf-header 
+        description="Container description" 
+        slot="header" 
+        variant="h2">
+        Container title
+        <rf-space-between
+          direction="horizontal"
+          size="xs"
+          slot="actions">
+          <rf-button>Action</rf-button>
+          <rf-button>Another action</rf-button>
+        </rf-space-between>
+      </rf-header>
+      <rf-label>Container content</rf-label>
+    </rf-container>     
+
+    <pre>
+&lt;rf-container&gt;
+  &lt;rf-header 
+    description=&quot;Container description&quot; 
+    slot=&quot;header&quot; 
+    title=&quot;Container title&quot; 
+    variant=&quot;h2&quot;&gt;
+  &lt;/rf-header&gt;
+  &lt;rf-label text=&quot;Container content&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-container&gt;
+
+&lt;rf-container&gt;
+  &lt;rf-header 
+    description=&quot;Container description&quot;
+    slot=&quot;header&quot; 
+    title=&quot;Container title&quot;
+    variant=&quot;h2&quot;&gt;
+  &lt;/rf-header&gt;
+  &lt;rf-label text=&quot;Content content&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-label slot=&quot;footer&quot; text=&quot;Container footer&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-container&gt;    
+
+&lt;rf-container&gt;
+  &lt;rf-header 
+    description=&quot;Container description&quot; 
+    slot=&quot;header&quot; 
+    title=&quot;Container title&quot; 
+    variant=&quot;h2&quot;&gt;
+    &lt;rf-space-between
+      direction=&quot;horizontal&quot;
+      size=&quot;xs&quot;
+      slot=&quot;actions&quot;&gt;
+      &lt;rf-button label=&quot;Action&quot;&gt;&lt;/rf-button&gt;
+      &lt;rf-button label=&quot;Another action&quot;&gt;&lt;/rf-button&gt;
+    &lt;/rf-space-between&gt;
+  &lt;/rf-header&gt;
+  &lt;rf-label text=&quot;Container content&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-container&gt;
+    </pre>
+
+    <script src="../components/container.js" type="module"></script>
+    <script src="../components/space-between.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/label.js" type="module"></script>    
+    <script src="../components/header.js" type="module"></script>
+
+  </body>
+</html>

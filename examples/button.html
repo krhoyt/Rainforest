@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Button - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+    <style>
+      rf-button {
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Primary -->
+    <rf-button variant="primary">Button</rf-button><br>
+    <rf-button variant="primary">
+      <rf-icon-settings slot="icon"></rf-icon-settings>
+    </rf-button><br>
+    <rf-button>Button</rf-button><br>
+    <rf-button variant="link">Button</rf-button><br>
+    <rf-button variant="inline-link">Download</rf-button><br>
+    <rf-button variant="icon">
+      <rf-icon-settings slot="icon"></rf-icon-settings>
+    </rf-button><br>          
+    <rf-button variant="inline-icon">
+      <rf-icon name="copy" slot="icon"></rf-icon>
+    </rf-button><br>     
+    <rf-button
+      external
+      href="https://example.com" 
+      target="_blank">
+      Report a bug
+    </rf-button><br>
+    
+    <pre>
+&lt;rf-button variant="primary"&gt;Button&lt;/rf-button&gt;
+
+&lt;rf-button&gt;Button&lt;/rf-button&gt; 
+
+&lt;rf-button variant="link"&gt;Button&lt;/rf-button&gt;
+
+&lt;rf-button variant="inline-link"&gt;Download&lt;/rf-button&gt;
+
+&lt;rf-button variant="icon"&gt;
+  &lt;rf-icon name="settings" slot="icon"&gt;&lt;rf-icon&gt;
+&lt;/rf-button&gt;
+
+&lt;rf-button variant="inline-icon"&gt;
+  &lt;rf-icon name="copy" slot="icon"&gt;&lt;rf-icon&gt;
+&lt;/rf-button&gt;
+
+&lt;rf-button 
+  external
+  href="https://example.com" 
+  target="_blank">
+  Report a bug
+&lt;/rf-button&gt;
+    </pre>
+
+    <script src="../components/button.js" type="module"></script>
+    <script src="../components/icon.js" type="module"></script>    
+    <script src="../components/icons/settings.js" type="module"></script>    
+
+  </body>
+</html>

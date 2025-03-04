@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Breadcrumb - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-breadcrumb-group {
+        display: flex;
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-breadcrumb-group>
+      <rf-breadcrumb text="System" href="#"></rf-breadcrumb>
+      <rf-breadcrumb text="Components" href="#components"></rf-breadcrumb>
+      <rf-breadcrumb text="Breadcrumb group" href="#components/breadcrumb-group"></rf-breadcrumb>      
+    </rf-breadcrumb-group>
+
+    <!-- Short example -->
+    <rf-breadcrumb-group>
+      <rf-breadcrumb text="System" href="#"></rf-breadcrumb>
+      <rf-breadcrumb text="Components" href="#components"></rf-breadcrumb>
+    </rf-breadcrumb-group>   
+    
+    <!-- Long example -->
+    <rf-breadcrumb-group>
+      <rf-breadcrumb text="Service name" href="#"></rf-breadcrumb>
+      <rf-breadcrumb text="Sub-service" href="#sub-service"></rf-breadcrumb>
+      <rf-breadcrumb text="Main category with a long name" href="#main-category"></rf-breadcrumb>
+      <rf-breadcrumb text="Secondary category with a long name" href="#secondary-category"></rf-breadcrumb>
+      <rf-breadcrumb text="Resource type" href="#resource-type"></rf-breadcrumb>
+      <rf-breadcrumb text="Resource sub-type" href="#resource-sub-type"></rf-breadcrumb>      
+      <rf-breadcrumb text="resource-name-7880-l09mdsdnebh-1894398823" href="#resource-name-7880-l09mdsdnebh-1894398823"></rf-breadcrumb>            
+    </rf-breadcrumb-group>       
+
+    <pre>
+&lt;rf-breadcrumb-group&gt;
+  &lt;rf-breadcrumb text=&quot;System&quot; href=&quot;#&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Components&quot; href=&quot;#components&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Breadcrumb group&quot; href=&quot;#components/breadcrumb-group&quot;&gt;&lt;/rf-breadcrumb&gt;      
+&lt;/rf-breadcrumb-group&gt;
+
+&lt;rf-breadcrumb-group&gt;
+  &lt;rf-breadcrumb text=&quot;System&quot; href=&quot;#&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Components&quot; href=&quot;#components&quot;&gt;&lt;/rf-breadcrumb&gt;
+&lt;/rf-breadcrumb-group&gt;    
+
+&lt;rf-breadcrumb-group&gt;
+  &lt;rf-breadcrumb text=&quot;Service name&quot; href=&quot;#&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Sub-service&quot; href=&quot;#sub-service&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Main category with a long name&quot; href=&quot;#main-category&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Secondary category with a long name&quot; href=&quot;#secondary-category&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Resource type&quot; href=&quot;#resource-type&quot;&gt;&lt;/rf-breadcrumb&gt;
+  &lt;rf-breadcrumb text=&quot;Resource sub-type&quot; href=&quot;#resource-sub-type&quot;&gt;&lt;/rf-breadcrumb&gt;      
+  &lt;rf-breadcrumb text=&quot;resource-name-7880-l09mdsdnebh-1894398823&quot; href=&quot;#resource-name-7880-l09mdsdnebh-1894398823&quot;&gt;&lt;/rf-breadcrumb&gt;
+&lt;/rf-breadcrumb-group&gt;
+    </pre>
+
+    <script src="../components/breadcrumb-group.js" type="module"></script>
+
+  </body>
+</html>

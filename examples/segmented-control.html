@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Segmented Control - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-segmented-control { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-segmented-control>
+      <rf-segment id="seg-1" text="Segment 1"></rf-segment>
+      <rf-segment id="seg-2" text="Segment 2"></rf-segment>
+      <rf-segment id="seg-3" text="Segment 3"></rf-segment>            
+    </rf-segmented-control><br>
+
+    <!-- With a disabled segment -->
+    <rf-segmented-control selected-id="seg-1">
+      <rf-segment id="seg-1" text="Segment 1"></rf-segment>
+      <rf-segment disabled id="seg-2" text="Segment 2"></rf-segment>
+      <rf-segment id="seg-3" text="Segment 3"></rf-segment>            
+    </rf-segmented-control><br>
+
+    <!-- With icons and text -->
+    <rf-segmented-control selected-id="seg-1">
+      <rf-segment icon-name="view-full" id="seg-1" text="Segment 1"></rf-segment>
+      <rf-segment icon-name="view-horizontal" id="seg-2" text="Segment 2"></rf-segment>
+      <rf-segment icon-name="view-vertical" id="seg-3" text="Segment 3"></rf-segment>            
+    </rf-segmented-control><br>    
+
+    <!-- Icons only -->
+    <rf-segmented-control selected-id="seg-1">
+      <rf-segment icon-name="view-full" id="seg-1"></rf-segment>
+      <rf-segment icon-name="view-horizontal" id="seg-2"></rf-segment>
+      <rf-segment icon-name="view-vertical" id="seg-3"></rf-segment>            
+    </rf-segmented-control>
+
+    <pre>
+&lt;rf-segmented-control selected-id=&quot;seg-1&quot;&gt;
+  &lt;rf-segment id=&quot;seg-1&quot; text=&quot;Segment 1&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment disabled id=&quot;seg-2&quot; text=&quot;Segment 2&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment id=&quot;seg-3&quot; text=&quot;Segment 3&quot;&gt;&lt;/rf-segment&gt;            
+&lt;/rf-segmented-control&gt;
+
+&lt;rf-segmented-control selected-id=&quot;seg-1&quot;&gt;
+  &lt;rf-segment id=&quot;seg-1&quot; text=&quot;Segment 1&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment disabled id=&quot;seg-2&quot; text=&quot;Segment 2&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment id=&quot;seg-3&quot; text=&quot;Segment 3&quot;&gt;&lt;/rf-segment&gt;            
+&lt;/rf-segmented-control&gt;
+
+&lt;rf-segmented-control selected-id=&quot;seg-1&quot;&gt;
+  &lt;rf-segment icon-name=&quot;view-full&quot; id=&quot;seg-1&quot; text=&quot;Segment 1&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment icon-name=&quot;view-horizontal&quot; id=&quot;seg-2&quot; text=&quot;Segment 2&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment icon-name=&quot;view-vertical&quot; id=&quot;seg-3&quot; text=&quot;Segment 3&quot;&gt;&lt;/rf-segment&gt;            
+&lt;/rf-segmented-control&gt;
+
+&lt;rf-segmented-control selected-id=&quot;seg-1&quot;&gt;
+  &lt;rf-segment icon-name=&quot;view-full&quot; id=&quot;seg-1&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment icon-name=&quot;view-horizontal&quot; id=&quot;seg-2&quot;&gt;&lt;/rf-segment&gt;
+  &lt;rf-segment icon-name=&quot;view-vertical&quot; id=&quot;seg-3&quot;&gt;&lt;/rf-segment&gt;            
+&lt;/rf-segmented-control&gt;
+    </pre>
+
+    <script src="../components/segmented-control.js" type="module"></script>
+
+  </body>
+</html>

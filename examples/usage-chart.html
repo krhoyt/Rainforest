@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System." />
+
+    <title>Usage Chart - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+    
+    <style>
+      rf-usage-chart {
+        display: block;
+        margin: 0 0 16px 0;
+      }
+
+      rf-usage-chart::part( legend ) {
+        justify-content: flex-end;
+        padding: 6px 0 0 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-usage-chart 
+      description="10 GiB"
+      domain="Total Volume size" 
+      height="60"
+      title="Volume ID: vol-0faa6deaa256cd275 (name tag)">
+      <rf-object title="Data (C:)" value="2"></rf-object>
+      <rf-object title="Image (D:)" value="1"></rf-object>      
+      <rf-object title="Video (E:)" value="7"></rf-object>      
+      <rf-object title="Unallocated" value="0"></rf-object>   
+      <rf-label 
+        color="text-status-inactive" 
+        font-weight="bold" 
+        slot="empty" 
+        text="No data available">
+      </rf-label>
+      <rf-label 
+        color="text-status-inactive" 
+        slot="empty" 
+        text="There is no data available">
+      </rf-label>
+    </rf-usage-chart>
+
+    <pre>
+&lt;rf-usage-chart 
+  description=&quot;10 GiB&quot;
+  domain=&quot;Total Volume size&quot; 
+  height=&quot;60&quot;
+  title=&quot;Volume ID: vol-0faa6deaa256cd275 (name tag)&quot;&gt;
+  &lt;rf-object title=&quot;Data (C:)&quot; value=&quot;2&quot;&gt;&lt;/rf-object&gt;
+  &lt;rf-object title=&quot;Image (D:)&quot; value=&quot;1&quot;&gt;&lt;/rf-object&gt;      
+  &lt;rf-object title=&quot;Video (E:)&quot; value=&quot;7&quot;&gt;&lt;/rf-object&gt;      
+  &lt;rf-object title=&quot;Unallocated&quot; value=&quot;0&quot;&gt;&lt;/rf-object&gt;   
+  &lt;rf-label 
+    color=&quot;text-status-inactive&quot; 
+    font-weight=&quot;bold&quot; 
+    slot=&quot;empty&quot; 
+    text=&quot;No data available&quot;&gt;
+  &lt;/rf-label&gt;
+  &lt;rf-label 
+    color=&quot;text-status-inactive&quot; 
+    slot=&quot;empty&quot; 
+    text=&quot;There is no data available&quot;&gt;
+  &lt;/rf-label&gt;
+&lt;/rf-usage-chart&gt;
+    </pre>
+    
+    <pre>
+const chart = document.querySelector( 'rf-usage-chart' );
+chart.legendFormatter = ( series, total ) => series.title + ' ' + series.value + ' GiB'; 
+    </pre>
+
+    <script src="../components/label.js" type="module"></script>
+    <script src="../components/usage-chart.js" type="module"></script>
+    
+    <script>
+      const chart = document.querySelector( 'rf-usage-chart' );
+      chart.legendFormatter = ( series, total ) => series.title + ' ' + series.value + ' GiB';
+    </script>
+
+  </body>
+</html>

@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1,.cls-2{fill:none;stroke:#545b64;stroke-width:2px;}.cls-1{stroke-linejoin:round;}.cls-2{stroke-miterlimit:10;}</style></defs><title>download</title><g id="icons"><polyline class="cls-1" points="11 2 14 2 14 14 2 14 2 2 5 2"/><polyline class="cls-2" points="4 6 8 10 12 6"/><line class="cls-2" x1="8" y1="1" x2="8" y2="10"/></g></svg>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 15H15" class="stroke-linejoin-round"/>
+<path d="M13 6L8 11L3 6" class="stroke-linejoin-round"/>
+<path d="M8 10V1" class="stroke-linejoin-round"/>
+</svg>

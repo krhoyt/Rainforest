@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System." />
+
+    <title>Pie and Donut Charts - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-pie-chart {
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Pie chart -->
+    <rf-pie-chart>
+      <rf-object title="Running" value="60"></rf-object>
+      <rf-object title="Failed" value="30"></rf-object>      
+      <rf-object title="In-progress" value="10"></rf-object>
+      <rf-object title="Pending" value="0"></rf-object>
+    </rf-pie-chart>
+
+    <!-- Donut chart -->
+    <rf-pie-chart
+      inner-description="total units"
+      inner-value="100"
+      size="large"
+      variant="donut">
+      <rf-object title="Item A" value="40"></rf-object>
+      <rf-object title="Item B" value="25"></rf-object>      
+      <rf-object title="Item C" value="20"></rf-object>            
+      <rf-object title="Item D" value="10"></rf-object>                  
+      <rf-object title="Item E" value="5"></rf-object>                        
+    </rf-pie-chart>    
+
+    <!-- Small donut chart -->
+    <rf-pie-chart
+      hide-legend
+      inner-value="80%"
+      size="small"
+      variant="donut">
+      <rf-object title="Complete" value="160"></rf-object>
+      <rf-object title="Incomplete" value="40"></rf-object>      
+    </rf-pie-chart>        
+
+    <pre>
+&lt;rf-pie-chart&gt;
+  &lt;rf-object title=&quot;Running&quot; value=&quot;60&quot;&gt;&lt;/rf-object&gt;
+  &lt;rf-object title=&quot;Failed&quot; value=&quot;30&quot;&gt;&lt;/rf-object&gt;      
+  &lt;rf-object title=&quot;In-progress&quot; value=&quot;10&quot;&gt;&lt;/rf-object&gt;
+  &lt;rf-object title=&quot;Pending&quot; value=&quot;0&quot;&gt;&lt;/rf-object&gt;
+&lt;/rf-pie-chart&gt;
+
+&lt;rf-pie-chart
+  inner-description=&quot;total units&quot;
+  inner-value=&quot;100&quot;
+  size=&quot;large&quot;
+  variant=&quot;donut&quot;&gt;
+  &lt;rf-object title=&quot;Item A&quot; value=&quot;40&quot;&gt;&lt;/rf-object&gt;
+  &lt;rf-object title=&quot;Item B&quot; value=&quot;25&quot;&gt;&lt;/rf-object&gt;      
+  &lt;rf-object title=&quot;Item C&quot; value=&quot;20&quot;&gt;&lt;/rf-object&gt;            
+  &lt;rf-object title=&quot;Item D&quot; value=&quot;10&quot;&gt;&lt;/rf-object&gt;                  
+  &lt;rf-object title=&quot;Item E&quot; value=&quot;5&quot;&gt;&lt;/rf-object&gt;                        
+&lt;/rf-pie-chart&gt;    
+
+&lt;rf-pie-chart
+  hide-legend
+  inner-value=&quot;80%&quot;
+  size=&quot;small&quot;
+  variant=&quot;donut&quot;&gt;
+  &lt;rf-object title=&quot;Complete&quot; value=&quot;160&quot;&gt;&lt;/rf-object&gt;
+  &lt;rf-object title=&quot;Incomplete&quot; value=&quot;40&quot;&gt;&lt;/rf-object&gt;      
+&lt;/rf-pie-chart&gt;
+    </pre>
+
+    <script src="../components/pie-chart.js" type="module"></script>
+    <script src="../components/label.js" type="module"></script>
+
+    <script>
+      const chart = document.querySelector( 'rf-pie-chart' );
+      /*
+      chart.data = [ 
+        {title: 'Running', value: 60, lastUpdate: 'Dec 7, 2020'},
+        {title: 'Failed', value: 30, lastUpdate: 'Dec 6, 2020'},
+        {title: 'In-progress', value: 10, lastUpdate: 'Dec 6, 2020'},
+        {title: 'Pending', value: 0, lastUpdate: 'Dec 7, 2020'}         
+      ];
+      */
+    </script>
+
+  </body>
+</html>

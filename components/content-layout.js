@@ -1,4 +1,4 @@
-export default class RainforestContentLayout extends HTMLElement {
+export default class RFContentLayout extends HTMLElement {
   constructor() {
     super();
 
@@ -7,7 +7,8 @@ export default class RainforestContentLayout extends HTMLElement {
       <style>
         :host {
           box-sizing: border-box;
-          display: block;
+          display: flex;
+          flex-direction: column;
           position: relative;
         }
 
@@ -15,29 +16,33 @@ export default class RainforestContentLayout extends HTMLElement {
           background-color: #000716;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 0;
           padding-bottom: 56px;
           margin-bottom: -40px;
         }
 
         ::slotted( rf-alert ) {
-          --alert-background-color: transparent;
+          padding: 16px 0 0 0;                    
+          --alert-background-color: #00142b; 
           --alert-border-color: #539fe5;
-          --alert-content-color: #b6bec9;
-          --alert-header-color: #b6bec9;       
-          --alert-icon-filter: 
-            brightness( 0 )
-            saturate( 100% )
-            invert( 66% )
-            sepia( 42% )
-            saturate( 3536% )
-            hue-rotate( 183deg )
-            brightness( 95% )
-            contrast( 88% );            
+          --alert-color: #b6bec9;          
         }       
         
         ::slotted( rf-header ) {
-          --header-title-color: #b6bec9;
+          --button-primary-background-color: #539fe5;
+          --button-primary-border-color: #539fe5;
+          --button-primary-color: #000716;
+          --button-primary-hover-background-color: #89bdee;
+          --button-primary-hover-border-color: #89bdee;
+          --header-description-color: #8d99a8;          
+          --header-title-color: #d1d5db;
+          --link-color: #539fe5;
+          --link-hover-color: #89bdee;          
+        }
+
+        :host( [disable-overlap] ) {
+          --container-border-color: transparent;
+          --container-border-radius: 0;
         }
 
         :host( [disable-overlap] ) div[part=header] {
@@ -112,4 +117,4 @@ export default class RainforestContentLayout extends HTMLElement {
   }
 }
 
-window.customElements.define( 'rf-content-layout', RainforestContentLayout );
+window.customElements.define( 'rf-content-layout', RFContentLayout );

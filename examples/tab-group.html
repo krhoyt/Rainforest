@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Tab Group - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">  
+
+    <style>
+      rf-tab-group { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-tab-group>
+      <rf-tab-panel label="First tab label" name="first">
+        <rf-label text="First tab content area"></rf-label>
+      </rf-tab-panel>
+      <rf-tab-panel label="Second tab label" name="second">
+        <rf-label text="Second tab content area"></rf-label>
+      </rf-tab-panel>
+      <rf-tab-panel disabled label="Third tab label" name="third">
+        <rf-label text="Third tab content area"></rf-label>
+      </rf-tab-panel>            
+    </rf-tab-group>
+
+    <!-- With container -->
+    <rf-tab-group variant="container">
+      <rf-tab-panel label="First tab label" name="first">
+        <rf-label text="First tab content area"></rf-label>
+      </rf-tab-panel>
+      <rf-tab-panel label="Second tab label" name="second">
+        <rf-label text="Second tab content area"></rf-label>
+      </rf-tab-panel>
+      <rf-tab-panel disabled label="Third tab label" name="third">
+        <rf-label text="Third tab content area"></rf-label>
+      </rf-tab-panel>            
+    </rf-tab-group>    
+
+    <pre>
+&lt;rf-tab-group&gt;
+  &lt;rf-tab-panel label=&quot;First tab label&quot; name=&quot;first&quot;&gt;
+    &lt;rf-label text=&quot;First tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;
+  &lt;rf-tab-panel label=&quot;Second tab label&quot; name=&quot;second&quot;&gt;
+    &lt;rf-label text=&quot;Second tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;
+  &lt;rf-tab-panel disabled label=&quot;Third tab label&quot; name=&quot;third&quot;&gt;
+    &lt;rf-label text=&quot;Third tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;            
+&lt;/rf-tab-group&gt;
+
+&lt;rf-tab-group variant=&quot;container&quot;&gt;
+  &lt;rf-tab-panel label=&quot;First tab label&quot; name=&quot;first&quot;&gt;
+    &lt;rf-label text=&quot;First tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;
+  &lt;rf-tab-panel label=&quot;Second tab label&quot; name=&quot;second&quot;&gt;
+    &lt;rf-label text=&quot;Second tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;
+  &lt;rf-tab-panel disabled label=&quot;Third tab label&quot; name=&quot;third&quot;&gt;
+    &lt;rf-label text=&quot;Third tab content area&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-tab-panel&gt;            
+&lt;/rf-tab-group&gt;   
+    </pre>
+
+    <script src="../components/label.js" type="module"></script>
+    <script src="../components/tab-group.js" type="module"></script>
+
+  </body>
+</html>

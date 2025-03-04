@@ -1,4 +1,4 @@
-export default class RainforestToggle extends HTMLElement {
+export default class RFToggle extends HTMLElement {
   constructor() {
     super();
 
@@ -11,18 +11,12 @@ export default class RainforestToggle extends HTMLElement {
           position: relative;
         }
 
-        div[part=label] {
-          color: #000716;
-          display: inline-block;
-          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-          text-rendering: optimizeLegibility;
+        :host( [hidden] ) {
+          display: none;
         }
 
         div[part=toggle] {
-          background-color: #414d5c;
+          background-color: var( --toggle-track-background-color, #414d5c );
           border-radius: 8px;
           box-sizing: border-box;
           display: inline-block;
@@ -33,7 +27,7 @@ export default class RainforestToggle extends HTMLElement {
         }
 
         div[part=toggle] div {     
-          background-color: #ffffff;
+          background-color: var( --toggle-handle-background-color, #ffffff );
           border-radius: 8px;
           box-sizing: border-box;
           display: inline-block;
@@ -43,6 +37,11 @@ export default class RainforestToggle extends HTMLElement {
           top: 2px;
           width: 12px;     
         }   
+
+        div:not( [part] ) {
+          display: flex;
+          flex-direction: column;
+        }
 
         input {
           box-sizing: border-box;
@@ -58,46 +57,62 @@ export default class RainforestToggle extends HTMLElement {
           z-index: 1;
         }
 
-        label {
-          display: flex;
-          flex-direction: column;
-          padding: 0 0 0 8px;
+        p {
+          box-sizing: border-box;
+          color: var( --toggle-color, #000716 );
+          cursor: var( --toggle-cursor, default );
+          display: inline;
+          font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
+          font-size: var( --toggle-font-size, 14px );
+          font-style: var( --toggle-font-style );
+          font-weight: var( --toggle-font-weight, 400 );
+          line-height: var( --toggle-line-height, 20px );
+          margin: var( --toggle-margin, 0 );
+          padding: var( --toggle-padding, 0 0 0 8px );
+          text-align: var( --toggle-text-align, left );
+          text-decoration: var( --toggle-text-decoration, none );
+          text-rendering: optimizeLegibility;
+          width: 100%;
         }        
 
-        :host( [checked] ) div[part=toggle] { background-color: #0972d3; }
+        p[part=description] {
+          color: #5f6b7a;
+          font-size: 12px;
+          line-height: 16px;          
+          padding: 0 0 4px 8px;          
+        }        
+
+        :host( [checked] ) div[part=toggle] { background-color: var( --toggle-track-checked-background-color, #0972d3 ); }
         :host( [checked] ) div[part=toggle] div { left: 10px; }        
 
-        ::slotted( rf-box ) {
-          --box-color: #000716;
-          --box-font-size: 14px;
-          --box-line-height: 20px;
-          --box-padding: 0;
+        :host( :not( [description ] ) ) p[part=description] {
+          display: none;
         }
 
-        ::slotted( rf-box[slot=description] ) {
-          padding: 0 0 4px 0;          
-          --box-color: #5f6b7a;
-          --box-font-size: 12px;
-          --box-line-height: 16px;
+        :host( :not( [label ] ) ) p[part=label] {
+          display: none;
+        }        
+
+        :host( :not( [label] ):not( [description] ) ) div[part=toggle] {
+          margin: 0;
         }
 
         :host( [disabled] ) input { cursor: not-allowed; }        
-        :host( [disabled] ) div[part=toggle] { background-color: #d1d5db; }
-        :host( [checked][disabled] ) div[part=toggle] { background-color: #b5d6f4; }
-        :host( [disabled] ) label { cursor: not-allowed; }
-        :host( [disabled] ) div[part=label] { color: #9ba7b6; }
-        :host( [disabled] ) ::slotted( rf-box ) { --box-color: #9ba7b6; }
+        :host( [disabled] ) div[part=toggle] { background-color: var( --toggle-track-disabled-background-color, #d1d5db ); }
+        :host( [checked][disabled] ) div[part=toggle] { background-color: var( --toggle-track-disabled-checked-background-color, #b5d6f4 ); }
+        :host( [disabled] ) p { 
+          color: var( --toggle-disabled-color, #9ba7b6 ); 
+          cursor: not-allowed;
+        }
       </style>
       <div part="toggle">
         <div part="check"></div>
       </div>
       <input part="input" type="checkbox" />
-      <label>
-        <div part="label">
-          <slot></slot>
-        </div>
-        <slot name="description"></slot>
-      </label>
+      <div>
+        <p part="label"></p>
+        <p part="description"></p>
+      </div>
     `;
 
     // Root
@@ -105,6 +120,7 @@ export default class RainforestToggle extends HTMLElement {
     this.shadowRoot.appendChild( template.content.cloneNode( true ) );
 
     // Elements
+    this.$description = this.shadowRoot.querySelector( 'p[part=description]' );
     this.$input = this.shadowRoot.querySelector( 'input' );
     this.$input.addEventListener( 'blur', () => this.dispatchEvent( new CustomEvent( 'rf-blur' ) ) );
     this.$input.addEventListener( 'focus', () => this.dispatchEvent( new CustomEvent( 'rf-focus' ) ) );
@@ -118,6 +134,7 @@ export default class RainforestToggle extends HTMLElement {
         }
       } ) );
     } );
+    this.$label = this.shadowRoot.querySelector( 'p[part=label]' );
   }
 
   focus() {
@@ -128,6 +145,8 @@ export default class RainforestToggle extends HTMLElement {
   _render() {
     this.$input.checked = this.checked;
     this.$input.disabled = this.disabled;
+    this.$label.innerText = this.label === null ? '' : this.label;
+    this.$description.innerText = this.description === null ? '' : this.description;
   }
 
   // Promote properties
@@ -143,7 +162,10 @@ export default class RainforestToggle extends HTMLElement {
   // Setup
   connectedCallback() {
     this._upgrade( 'checked' );        
+    this._upgrade( 'description' );         
     this._upgrade( 'disabled' );         
+    this._upgrade( 'hidden' );         
+    this._upgrade( 'label' );             
     this._upgrade( 'name' );        
     this._upgrade( 'value' );        
     this._render();
@@ -153,8 +175,10 @@ export default class RainforestToggle extends HTMLElement {
   static get observedAttributes() {
     return [
       'checked',
+      'description',
       'disabled',
-      'indeterminate',
+      'hidden',
+      'label',
       'name',
       'value'
     ];
@@ -189,6 +213,22 @@ export default class RainforestToggle extends HTMLElement {
     }
   }
 
+  get description() {
+    if( this.hasAttribute( 'description' ) ) {
+      return this.getAttribute( 'description' );
+    }
+
+    return null;
+  }
+
+  set description( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'description', value );
+    } else {
+      this.removeAttribute( 'description' );
+    }
+  }  
+
   get disabled() {
     return this.hasAttribute( 'disabled' );
   }
@@ -209,26 +249,42 @@ export default class RainforestToggle extends HTMLElement {
     }
   }  
 
-  get indeterminate() {
-    return this.hasAttribute( 'indeterminate' );
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
   }
 
-  set indeterminate( value ) {
+  set hidden( value ) {
     if( value !== null ) {
       if( typeof value === 'boolean' ) {
         value = value.toString();
       }
 
       if( value === 'false' ) {
-        this.removeAttribute( 'indeterminate' );
+        this.removeAttribute( 'hidden' );
       } else {
-        this.setAttribute( 'indeterminate', '' );
+        this.setAttribute( 'hidden', '' );
       }
     } else {
-      this.removeAttribute( 'indeterminate' );
+      this.removeAttribute( 'hidden' );
     }
   }
-  
+
+  get label() {
+    if( this.hasAttribute( 'label' ) ) {
+      return this.getAttribute( 'label' );
+    }
+
+    return null;
+  }
+
+  set label( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'label', value );
+    } else {
+      this.removeAttribute( 'label' );
+    }
+  }  
+
   get name() {
     if( this.hasAttribute( 'name' ) ) {
       return this.getAttribute( 'name' );
@@ -266,4 +322,4 @@ export default class RainforestToggle extends HTMLElement {
   }  
 }
 
-window.customElements.define( 'rf-toggle', RainforestToggle );
+window.customElements.define( 'rf-toggle', RFToggle );

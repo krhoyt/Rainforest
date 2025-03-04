@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/krhoyt/Rainforest/issues"
   },
-  "homepage": "https://github.com/krhoyt/Rainforest#readme"
+  "homepage": "https://github.com/krhoyt/Rainforest#readme",
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "markdown-it": "^14.1.0"
+  }
 }

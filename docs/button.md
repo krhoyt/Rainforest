@@ -1,27 +1,63 @@
 # Button
 
+`<rf-button>` | `RFButton`
+
 Allows users to initiate actions in the user interface.
 
 ## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/button.js" type="module"></script>
 ```
 
 ## Examples
 
+### Primary button
+
 ``` html
 <rf-button variant="primary">Button</rf-button>
+```
+
+### Normal button
+
+``` html
 <rf-button>Button</rf-button>
+```
+
+### Link button
+
+``` html
 <rf-button variant="link">Button</rf-button>
+```
+
+### Inline link button
+
+``` html
 <rf-button variant="inline-link">Download</rf-button>  
-<rf-button icon-name="settings" variant="icon"></rf-button>
-<rf-button icon-name="copy" variant="inline-icon"></rf-button>
+```
+
+### Icon button
+
+``` html
+<rf-button variant="icon">
+  <rf-icon name="settings" slot="icon"></rf-icon>
+</rf-button>
+```
+
+### Inline icon button
+
+``` html
+<rf-button variant="inline-icon">
+  <rf-icon name="copy" slot="icon"></rf-icon>  
+</rf-button>
+```
+
+### External link button
+
+``` html
 <rf-button 
+  external
   href="https://example.com" 
-  icon-align="right" 
-  icon-name="external" 
   target="_blank">
   Report a bug
 </rf-button>
@@ -31,7 +67,8 @@ Allows users to initiate actions in the user interface.
 
 | Name | Description |
 | --- | --- |
-| (`default`) | Text displayed in the button element. |
+| (default) | Text displayed in the button element. |
+| `icon` | Specifies a custom icon. |
 
 ## Properties
 
@@ -42,7 +79,6 @@ Allows users to initiate actions in the user interface.
 | `hidden` | `boolean` | Hides element from DOM. | - | `false` | ✅ |
 | `href` | `string` | Applies button styling to a link. | - | `null` | ✅ | 
 | `icon-align` | `string` | Specifies the alignment of the icon. | `left` \| `right` | `left` | ✅ | 
-| `icon-name` | `string` | Displays an icon next to the text. | Icon names. | `null` | ✅ | 
 | `loading` | `boolean` | Renders the button as being in a loading state. | - | `false` | ✅ |
 | `rel` | `string` | Adds a rel attribute to the link. | - | `null` | ✅ |
 | `target` | `string` | Specifies where to open the linked URL (for example, to open in a new browser window or tab use _blank). | - | `null` | ✅ |
@@ -52,8 +88,8 @@ Allows users to initiate actions in the user interface.
 
 | Name | Description | Detail |
 | --- | --- | --- |
-| `rf-click` | Called when the user clicks on the button and the button is not disabled or in loading state. | - |
-| `rf-follow` | Called when the user clicks on the button with the left mouse button without pressing modifier keys (that is, CTRL, ALT, SHIFT, META), and the button has an href set. | `{external: boolean, href: string, target: string}` |
+| `rf-click` | Called when the user clicks on the button and the button is not disabled or in loading state. | `{altKey: boolean, ctrlKey: boolean, metaKey: boolean, shiftKey: boolean}` |
+| `rf-follow` | Called when the user clicks on the button with the left mouse button without pressing modifier keys (that is, CTRL, ALT, SHIFT, META), and the button has an href set. | `{href: string, target: string}` |
 
 ## Methods
 
@@ -65,10 +101,33 @@ Allows users to initiate actions in the user interface.
 
 | Name | Description |
 | --- | --- |
-| `button` | Inner `button` element |
-| `icon` | Inner `img` element |
-| `loading` | Inner `rf-spinner` element |
+| `button` | Inner `button` element. |
+| `external` | SVG containing external icon. |
+| `label` | Inner `span` element used for the label. |
+| `spinner` | Inner `rf-spinner` element used for loading indicator. |
+| `svg` | The `svg` use for the icon of the inner `rf-spinner` element. |
+
+## Variables
+
+| Name | Description | Default |
+| --- | --- | --- |
+| `--button-background-color` | The background color of the enclosed button. | `none` |
+| `--button-border-color` | Color of the button border. | `#0972d3` |
+| `--button-border-radius` | Corner radius of the button border. | `20px` |
+| `--button-border-style` | How to draw the button border. | `solid` |
+| `--button-border-width` | The width of the button border. | `2px` |
+| `--button-color` | Color of the label used for the button. | `#0972d3` |
+| `--button-cursor` | Style of cursor to use when mouse is over button. | `pointer` |
+| `--button-font-size` | Size of the label used on the button. | `14px` |
+| `--button-font-weight` | Weight of the label used on the button. | `700` |
+| `--button-height` | Height of the button. | `32px` |
+| `--button-hover-background-color` | Background color used when the mouse is over the button. | `#f2f8fd` |
+| `--button-hover-border-color` | Border color used when the mouse is over the button. | `#033160` |
+| `--button-hover-color` | Color for the label when the mouse is over the button. | `#033160` |
+| `--button-line-height` | Line height of the label used on the button. | `20px` |
+| `--button-margin` | Margins to be applied to the button. | `0` |
+| `--button-padding` | Padding to be applied to the button. | `4px 20px 4px 20px` |
 
 ## Dependencies
 
-- `rf-spinner`
+- `<rf-spinner>`

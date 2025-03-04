@@ -1,6 +1,6 @@
-import RainforestOption from "./option.js";
+import RFSegment from "./segment.js";
 
-export default class RainforestSegmentedControl extends HTMLElement {
+export default class RFSegmentedControl extends HTMLElement {
   constructor() {
     super();
 
@@ -13,39 +13,22 @@ export default class RainforestSegmentedControl extends HTMLElement {
           position: relative;
         }
 
+        :host( [hidden] ) {
+          display: none;
+        }
+
         ul {
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           margin: 0;
           padding: 0;
-        }
-
-        rf-option {
-          border-left: solid 1px #414d5c;
-          border-top: solid 2px #414d5c;          
-          border-bottom: solid 2px #414d5c;          
-          border-right: solid 1px #414d5c;    
-        }
-
-        rf-option:first-of-type {
-          border-bottom-left-radius: 20px;          
-          border-top-left-radius: 20px;
-          border-left: solid 2px #414d5c;
-        }
-
-        rf-option:last-of-type {
-          border-bottom-right-radius: 20px;          
-          border-top-right-radius: 20px;
-          border-left: solid 1px #414d5c;          
-          border-right: solid 2px #414d5c;          
         }        
       </style>
-      <ul part="control"></ul>
+      <ul part="control">
+        <slot></slot>
+      </ul>
     `;
-
-    // Properties
-    this._options = [];
 
     // Events
     this.onChange = this.onChange.bind( this );
@@ -56,6 +39,13 @@ export default class RainforestSegmentedControl extends HTMLElement {
 
     // Elements
     this.$list = this.shadowRoot.querySelector( 'ul' );
+    this.$slot = this.shadowRoot.querySelector( 'slot' );
+    this.$slot.addEventListener( 'slotchange', () => {
+      for( let c = 0; c < this.children.length; c++ ) {
+        this.children[c].removeEventListener( 'click', this.onChange );
+        this.children[c].addEventListener( 'click', this.onChange );
+      }
+    } );
   }
 
   onChange( evt ) {
@@ -73,8 +63,8 @@ export default class RainforestSegmentedControl extends HTMLElement {
 
   // When things change
   _render() {
-    for( let c = 0; c < this.$list.children.length; c++ ) {
-      this.$list.children[c].selected = this.$list.children[c].id === this.selectedId ? true : false;
+    for( let c = 0; c < this.children.length; c++ ) {
+      this.children[c].selected = this.children[c].id === this.selectedId ? true : false;
     }
   }
 
@@ -90,7 +80,8 @@ export default class RainforestSegmentedControl extends HTMLElement {
 
   // Setup
   connectedCallback() {
-    this._upgrade( 'options' );       
+    this._upgrade( 'hidden' );                   
+    this._upgrade( 'label' );               
     this._upgrade( 'selectedId' );           
     this._render();
   }
@@ -98,6 +89,8 @@ export default class RainforestSegmentedControl extends HTMLElement {
   // Watched attributes
   static get observedAttributes() {
     return [
+      'hidden',
+      'label',
       'selected-id'
     ];
   }
@@ -108,40 +101,45 @@ export default class RainforestSegmentedControl extends HTMLElement {
     this._render();
   }
 
-  // Properties
-  // Not reflected
-  // Array, Date, Object, null 
-  get options() {
-    return this._options.length === 0 ? null : this._options;
-  }
-
-  set options( value ) {
-    this._options = value === null ? [] : [... value];
-
-    while( this.$list.children.length > this._options.length ) {
-      this.$list.children[0].removeEventListener( 'click', this.onChange );
-      this.$list.children[0].remove();
-    }
-
-    while( this.$list.children.length < this._options.length ) {
-      const item = document.createElement( 'rf-option' );
-      item.addEventListener( 'click', this.onChange );
-      this.$list.appendChild( item );
-    }    
-
-    for( let c = 0; c < this.$list.children.length; c++ ) {
-      this.$list.children[c].id = this._options[c].hasOwnProperty( 'id' ) ? this._options[c].id : '';
-      this.$list.children[c].disabled = this._options[c].hasOwnProperty( 'disabled' ) ? this._options[c].disabled : false;      
-      this.$list.children[c].text = this._options[c].hasOwnProperty( 'text' ) ? this._options[c].text : null;      
-      this.$list.children[c].iconName = this._options[c].hasOwnProperty( 'iconName' ) ? this._options[c].iconName : null;            
-      this.$list.children[c].iconAlt = this._options[c].hasOwnProperty( 'iconAlt' ) ? this._options[c].iconAlt : null;            
-      this.$list.children[c].iconUrl = this._options[c].hasOwnProperty( 'iconUrl' ) ? this._options[c].iconUrl : null;                  
-    }
-  }  
-
   // Attributes
   // Reflected
   // Boolean, Number, String, null
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }
+
+  get label() {
+    if( this.hasAttribute( 'label' ) ) {
+      return this.getAttribute( 'label' );
+    }
+
+    return null;
+  }
+
+  set label( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'label', value );
+    } else {
+      this.removeAttribute( 'label' );
+    }
+  }    
+
   get selectedId() {
     if( this.hasAttribute( 'selected-id' ) ) {
       return this.getAttribute( 'selected-id' );
@@ -159,4 +157,4 @@ export default class RainforestSegmentedControl extends HTMLElement {
   }    
 }
 
-window.customElements.define( 'rf-segmented-control', RainforestSegmentedControl );
+window.customElements.define( 'rf-segmented-control', RFSegmentedControl );

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Alert - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">  
+    
+    <style>
+      rf-alert {
+        margin-bottom: 16px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Info -->
+    <rf-alert header="Known issues/limitations">
+      Review the documentation to learn about potential compatibility issues with specific database versions.
+    </rf-alert>
+
+    <!-- Success -->
+    <rf-alert dismissable type="success">
+      Your instance has been created successfully.      
+    </rf-alert>
+
+    <!-- Error -->
+    <rf-alert 
+      header="Your instances could not be stopped" 
+      type="error">
+      Remove the instance from the load balancer before stopping it.      
+    </rf-alert>
+    
+    <!-- Warning -->
+    <rf-alert type="warning">
+      Changing the configuration might require stopping the instance.      
+    </rf-alert>    
+
+    <!-- With button -->
+    <rf-alert header="Versioning is not enabled">
+      Versioning is not enabled for objects in bucket [IAM-user].      
+      <rf-button slot="action">
+        Enable versioning
+      </rf-button>
+    </rf-alert>    
+
+    <pre>
+&lt;rf-alert header=&quot;Known issues/limitations&quot;&gt;
+  Review the documentation to learn about potential
+  compatibility issues with specific database
+  versions.
+&lt;/rf-alert&gt;
+
+&lt;rf-alert 
+  dismissable 
+  type=&quot;success&quot;&gt;
+  Your instance has been created successfully.  
+&lt;/rf-alert&gt;
+
+&lt;rf-alert 
+  header=&quot;Your instances could not be stopped&quot;
+  type=&quot;error&quot;&gt;
+  Remove the instance from the load balancer before stopping it.  
+&lt;/rf-alert&gt;
+
+&lt;rf-alert 
+  type=&quot;warning&quot;&gt;
+  Changing the configuration might require stopping the instance.  
+&lt;/rf-alert&gt;    
+
+&lt;rf-alert
+  header=&quot;Versioning is not enabled&quot;&gt;
+  Versioning is not enabled for objects in bucket [IAM-user].  
+  &lt;rf-button slot=&quot;action&quot;&gt;Enable versioning&lt;/rf-button&gt;
+&lt;/rf-alert&gt;
+    </pre>
+
+    <script src="../components/alert.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>
+
+  </body>
+</html>

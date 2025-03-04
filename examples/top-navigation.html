@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Top Navigation - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-top-navigation {
+        margin: 0 0 16px 0;
+        width: 100%;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- With utility controls -->
+    <rf-top-navigation 
+      href="#"
+      logo="/img/logo-small-top-navigation.svg" 
+      title="Service">    
+      <rf-link external label="Link"></rf-link>      
+      <rf-button badge variant="icon">
+        <rf-icon name="notification" slot="prefix"></rf-icon>
+      </rf-button>
+      <rf-button variant="icon">
+        <rf-icon name="settings" slot="prefix"></rf-icon>
+      </rf-button>      
+      <rf-button caret label="Customer Name">
+        <rf-icon name="user-profile" slot="prefix"></rf-icon>
+      </rf-button>            
+    </rf-top-navigation>    
+
+    <!-- With search -->
+    <rf-top-navigation 
+      href="#"
+      logo="/img/logo-small-top-navigation.svg" 
+      title="Service">    
+      <rf-input placeholder="Search" slot="search"></rf-input>  
+      <rf-button badge variant="icon">
+        <rf-icon name="notification" slot="prefix"></rf-icon>
+      </rf-button>
+      <rf-button variant="icon">
+        <rf-icon name="settings" slot="prefix"></rf-icon>
+      </rf-button>      
+      <rf-button caret label="Customer Name">
+        <rf-icon name="user-profile" slot="prefix"></rf-icon>
+      </rf-button>            
+    </rf-top-navigation>    
+
+    <pre>
+&lt;rf-top-navigation 
+  href=&quot;#&quot;
+  logo=&quot;/img/logo-small-top-navigation.svg&quot; 
+  title=&quot;Service&quot;&gt;    
+  &lt;rf-link external label=&quot;Link&quot;&gt;&lt;/rf-link&gt;      
+  &lt;rf-button variant=&quot;icon&quot;&gt;
+    &lt;rf-icon name=&quot;notification&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;
+  &lt;rf-button variant=&quot;icon&quot;&gt;
+    &lt;rf-icon name=&quot;settings&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;      
+  &lt;rf-button caret label=&quot;Customer Name&quot;&gt;
+    &lt;rf-icon name=&quot;user-profile&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;            
+&lt;/rf-top-navigation&gt;    
+
+&lt;rf-top-navigation 
+  href=&quot;#&quot;
+  logo=&quot;/img/logo-small-top-navigation.svg&quot; 
+  title=&quot;Service&quot;&gt;    
+  &lt;rf-input placeholder=&quot;Search&quot; slot=&quot;search&quot;&gt;&lt;/rf-input&gt;  
+  &lt;rf-button variant=&quot;icon&quot;&gt;
+    &lt;rf-icon name=&quot;notification&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;
+  &lt;rf-button variant=&quot;icon&quot;&gt;
+    &lt;rf-icon name=&quot;settings&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;      
+  &lt;rf-button caret label=&quot;Customer Name&quot;&gt;
+    &lt;rf-icon name=&quot;user-profile&quot; slot=&quot;prefix&quot;&gt;&lt;/rf-icon&gt;
+  &lt;/rf-button&gt;            
+&lt;/rf-top-navigation&gt;    
+    </pre>
+
+    <script src="../components/top-navigation.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>        
+    <script src="../components/icon.js" type="module"></script>    
+    <script src="../components/controls/input.js" type="module"></script>        
+    <script src="../components/link.js" type="module"></script>    
+
+  </body>
+</html>

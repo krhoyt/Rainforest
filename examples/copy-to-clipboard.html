@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Copy to Clipboard - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">
+
+    <style>
+      rf-copy-to-clipboard { 
+        margin: 0 0 16px 0; 
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Button variant -->
+    <rf-copy-to-clipboard 
+      copy-button-text="Copy" 
+      text-to-copy="SLCCSMWOHOFUY0">
+    </rf-copy-to-clipboard><br>
+
+    <!-- Inline variant -->
+    <rf-copy-to-clipboard   
+      text-to-copy="SLCCSMWOHOFUY0"
+      variant="inline">
+    </rf-copy-to-clipboard><br>
+
+    <!-- Icon variant -->
+    <rf-copy-to-clipboard   
+      text-to-copy="SLCCSMWOHOFUY0"
+      variant="icon">
+    </rf-copy-to-clipboard>        
+
+    <pre>
+&lt;rf-copy-to-clipboard 
+  copy-button-text=&quot;Copy&quot; 
+  text-to-copy=&quot;SLCCSMWOHOFUY0&quot;&gt;
+&lt;/rf-copy-to-clipboard&gt;
+
+&lt;rf-copy-to-clipboard   
+  text-to-copy=&quot;SLCCSMWOHOFUY0&quot;
+  variant=&quot;inline&quot;&gt;
+&lt;/rf-copy-to-clipboard&gt;
+
+&lt;rf-copy-to-clipboard   
+  text-to-copy=&quot;SLCCSMWOHOFUY0&quot;
+  variant=&quot;icon&quot;&gt;
+&lt;/rf-copy-to-clipboard&gt;      
+    </pre>
+
+    <script src="../components/copy-to-clipboard.js" type="module"></script>
+
+  </body>
+</html>

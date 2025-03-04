@@ -1,6 +1,7 @@
-import RainforestStatusIndicator from "../components/status-indicator.js";
+import RFObject from "./object.js";
+import RFStatusIndicator from "./status-indicator.js";
 
-export default class RainforestUsageChart extends HTMLElement {
+export default class RFUsageChart extends HTMLElement {
   constructor() {
     super();
 
@@ -18,6 +19,10 @@ export default class RainforestUsageChart extends HTMLElement {
           display: flex;
           flex-direction: row;
           gap: 12px;
+        }
+
+        div[part=data] {
+          display: none;
         }
 
         div[part=group] {
@@ -156,6 +161,9 @@ export default class RainforestUsageChart extends HTMLElement {
       <div part="empty">
         <slot name="empty"></slot>
       </div>       
+      <div part="data">
+        <slot></slot>
+      </div>
     `;
 
     // Private
@@ -189,6 +197,18 @@ export default class RainforestUsageChart extends HTMLElement {
 
     // Elements
     this.$chart = this.shadowRoot.querySelector( 'div[part=chart]' );
+    this.$data = this.shadowRoot.querySelector( 'slot:not( [name] )' );
+    this.$data.addEventListener( 'slotchange', () => {
+      const objects = this.querySelectorAll( 'rf-object' );
+      const data = [];
+      for( let c = 0; c < objects.length; c++ ) {
+        data.push( {
+          title: objects[c].title,
+          value: objects[c].valueAsFloat
+        } );
+      }
+      this.series = data;
+    } );
     this.$description = this.shadowRoot.querySelector( 'p[part=description]' );    
     this.$domain = this.shadowRoot.querySelector( 'p[part=domain]' );
     this.$empty = this.shadowRoot.querySelector( 'div[part=empty]' );
@@ -275,6 +295,7 @@ export default class RainforestUsageChart extends HTMLElement {
 
   // Setup
   connectedCallback() {
+    this._upgrade( 'data' );                               
     this._upgrade( 'description' );                           
     this._upgrade( 'domain' );
     this._upgrade( 'errorText' );
@@ -313,6 +334,15 @@ export default class RainforestUsageChart extends HTMLElement {
   // Properties
   // Not reflected
   // Object, Array, Date, Function
+  get data() {
+    return this._data.length === 0 ? [] : this._data;
+  }
+
+  set data( value ) {
+    this._data = value === null ? [] : [... value];
+    this._render();
+  }
+
   get legendFormatter() {
     return this._legend;
   }
@@ -351,15 +381,16 @@ export default class RainforestUsageChart extends HTMLElement {
     }
 
     const total = this._series.reduce( ( previous, current ) => {
-      if( current.hasOwnProperty( 'data' ) ) {
-        previous = previous + current.data;
+      if( current.hasOwnProperty( 'value' ) ) {
+        previous = previous + parseFloat( current.value );
       }
       
       return previous;
     }, 0 );
 
     for( let s = 0; s < this._series.length; s++ ) {
-      const percent = this._series[s].hasOwnProperty( 'data' ) ? ( ( this._series[s].data / total ) * 100 ) : 0;
+      const value = parseFloat( this._series[s].value );
+      const percent = this._series[s].hasOwnProperty( 'value' ) ? ( ( value / total ) * 100 ) : 0;
       this.$series.children[s].setAttribute( 'data-index', s );
       this.$series.children[s].style.backgroundColor = this._colors[s % this._colors.length];
       this.$series.children[s].style.width = `${percent}%`;
@@ -367,6 +398,8 @@ export default class RainforestUsageChart extends HTMLElement {
       this.$legend.children[s].children[0].style.backgroundColor = this._colors[s % this._colors.length];
       this.$legend.children[s].children[1].innerText = this._legend === null ? this._series[s].title : this._legend( this._series[s], total );      
     }
+
+    this._render();
   }
 
   // Attributes
@@ -521,4 +554,4 @@ export default class RainforestUsageChart extends HTMLElement {
   }  
 }
 
-window.customElements.define( 'rf-usage-chart', RainforestUsageChart );
+window.customElements.define( 'rf-usage-chart', RFUsageChart );

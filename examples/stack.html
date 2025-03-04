@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Stack - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-stack { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Default -->
+    <rf-stack>
+      <rf-label text="One"></rf-label>
+      <rf-label text="Two"></rf-label>
+      <rf-label text="Three"></rf-label>
+    </rf-stack>
+    
+    <!-- With selected index -->
+    <rf-stack selected-index="1">
+      <rf-label text="One"></rf-label>
+      <rf-label text="Two"></rf-label>
+      <rf-label text="Three"></rf-label>
+    </rf-stack>    
+
+    <pre>
+&lt;rf-stack&gt;
+  &lt;rf-label text=&quot;One&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-label text=&quot;Two&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-label text=&quot;Three&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-stack&gt;
+
+&lt;rf-stack selected-index=&quot;1&quot;&gt;
+  &lt;rf-label text=&quot;One&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-label text=&quot;Two&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-label text=&quot;Three&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-stack&gt;    
+    </pre>
+
+    <script src="../components/label.js" type="module"></script>
+    <script src="../components/stack.js" type="module"></script>
+
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Flashbar - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">   
+    
+    <style>
+      rf-flashbar { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Info -->
+    <rf-flashbar>
+      <rf-message dismissable>
+        <p>
+          This is an info flash message. It contains
+          <rf-link href="#">a link to another page</rf-link>.
+        </p>
+      </rf-message>
+    </rf-flashbar>
+    
+    <!-- Success -->
+    <rf-flashbar>
+      <rf-message dismissable type="success">
+        <p>This is a success flash message.</p>
+        <rf-button slot="action">View instance</rf-button>
+      </rf-message>
+    </rf-flashbar>
+
+    <!-- Error -->
+    <rf-flashbar dismissable type="error">
+      <rf-message dismissable type="error">
+        <p slot="header">Failed to update 4 instances</p>
+        <p>This is a dismissible error message.</p>
+      </rf-message>
+    </rf-flashbar>
+
+    <!-- Warning -->
+    <rf-flashbar>
+      <rf-message dismissable type="warning">
+        <p>This is a warning flash message.</p>
+      </rf-message>
+    </rf-flashbar>    
+
+    <!-- Loading state -->
+    <rf-flashbar>
+      <rf-message dismissable loading type="info">
+        <p>This is an in progress flash message.</p>
+      </rf-message>
+    </rf-flashbar>
+
+    <pre>
+&lt;rf-flashbar dismissable&gt;
+  &lt;p&gt;
+    This is an info flash message. It contains
+    &lt;rf-link href=&quot;#&quot; label=&quot;a link to another page&quot;&gt;&lt;/rf-link&gt;.
+  &lt;/p&gt;
+&lt;/rf-flashbar&gt;
+
+&lt;rf-flashbar dismissable type=&quot;success&quot;&gt;
+  &lt;rf-label text=&quot;This is a success flash message.&quot;&gt;&lt;/rf-label&gt;
+  &lt;rf-button label=&quot;View instance&quot; slot=&quot;action&quot;&gt;&lt;/rf-button&gt;
+&lt;/rf-flashbar&gt;
+
+&lt;rf-flashbar dismissable header=&quot;Failed to update 4 instances&quot; type=&quot;error&quot;&gt;
+  &lt;rf-label text=&quot;This is a dismissible error message.&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-flashbar&gt;
+
+&lt;rf-flashbar dismissable type=&quot;warning&quot;&gt;
+  &lt;rf-label text=&quot;This is a wanring flash message.&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-flashbar&gt;    
+
+&lt;rf-flashbar dismissable loading type=&quot;info&quot;&gt;
+  &lt;rf-label text=&quot;This is an in progress flash message.&quot;&gt;&lt;/rf-label&gt;
+&lt;/rf-flashbar&gt;
+    </pre>
+
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/flashbar.js" type="module"></script>
+    <script src="../components/link.js" type="module"></script>    
+
+  </body>
+</html>

@@ -1,4 +1,4 @@
-export default class RainforestPolarChart extends HTMLElement {
+export default class RFPolarChart extends HTMLElement {
   constructor() {
     super();
 
@@ -581,4 +581,4 @@ export default class RainforestPolarChart extends HTMLElement {
   }  
 }
 
-window.customElements.define( 'rf-polar-chart', RainforestPolarChart );
+window.customElements.define( 'rf-polar-chart', RFPolarChart );

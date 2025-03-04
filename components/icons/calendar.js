@@ -1,0 +1,116 @@
+export default class RFIconCalendar extends HTMLElement {
+  constructor() {
+    super();
+
+    const template = document.createElement( 'template' )
+    template.innerHTML = /* template */ `
+      <style>
+        :host {
+          box-sizing: border-box;
+          display: inline-block;
+          position: relative;
+        }
+
+        :host( [hidden] ) {
+          display: none;
+        }
+
+        svg {
+          box-sizing: border-box;
+          display: block;
+          fill: none;
+          height: 16px;
+          stroke: var( --icon-color, #000000 );
+          stroke-width: var( --icon-stroke-width, 2px );
+          width: 16px;
+        }
+
+        .filled {
+          fill: var( --icon-color, #000000 );
+        }
+
+        .no-stroke {
+          stroke: none;
+          stroke-width: none;
+        }
+
+        .stroke-linejoin-round {
+          stroke-linejoin: round;
+        }
+      </style>
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 2H2V14H14V2Z" class="stroke-linejoin-round"/>
+<path d="M4 6V4H6V6H4Z" class="filled no-stroke"/>
+<path d="M7 6V4H9V6H7Z" class="filled no-stroke"/>
+<path d="M10 6V4H12V6H10Z" class="filled no-stroke"/>
+<path d="M4 9V7H6V9H4Z" class="filled no-stroke"/>
+<path d="M7 9V7H9V9H7Z" class="filled no-stroke"/>
+<path d="M4 12V10H6V12H4Z" class="filled no-stroke"/>
+<path d="M7 12V10H9V12H7Z" class="filled no-stroke"/>
+<path d="M10 9V7H12V9H10Z" class="filled no-stroke"/>
+</svg>
+
+    `;
+
+    // Root
+    this.attachShadow( {mode: 'open'} );
+    this.shadowRoot.appendChild( template.content.cloneNode( true ) );
+  }
+
+  // When things change
+  _render() {;}
+
+  // Promote properties
+  // Values may be set before module load
+  _upgrade( property ) {
+    if( this.hasOwnProperty( property ) ) {
+      const value = this[property];
+      delete this[property];
+      this[property] = value;
+    }
+  }
+
+  // Setup
+  connectedCallback() {
+    this._upgrade( 'hidden' );        
+    this._render();
+  }
+
+  // Watched attributes
+  static get observedAttributes() {
+    return [
+      'hidden'
+    ];
+  }
+
+  // Observed tag attribute has changed
+  // Update render
+  attributeChangedCallback( name, old, value ) {
+    this._render();
+  }
+
+  // Attributes
+  // Reflected
+  // Boolean, Number, String, null
+  get hidden() {
+    return this.hasAttribute( 'hidden' );
+  }
+
+  set hidden( value ) {
+    if( value !== null ) {
+      if( typeof value === 'boolean' ) {
+        value = value.toString();
+      }
+
+      if( value === 'false' ) {
+        this.removeAttribute( 'hidden' );
+      } else {
+        this.setAttribute( 'hidden', '' );
+      }
+    } else {
+      this.removeAttribute( 'hidden' );
+    }
+  }  
+}
+
+window.customElements.define( 'rf-icon-calendar', RFIconCalendar );

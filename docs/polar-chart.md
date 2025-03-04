@@ -1,5 +1,7 @@
 # Polar Chart
 
+`<rf-polar-chart>` | `RFPolarChart`
+
 The polar chart is similar to a usual pie chart, except sectors have equal angles and differ rather in how far each sector extends from the center of the circle.
 
 > This is not a standard part of Cloudscape. It is a derivative of the Cloudscape Area Chart style, applied for a specific purpose.
@@ -7,7 +9,6 @@ The polar chart is similar to a usual pie chart, except sectors have equal angle
 ## Importing
 
 ``` html
-<link href="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/rainforest.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/rainforest-web-components@latest/components/polar-chart.js" type="module"></script>
 ```
 
@@ -85,6 +86,10 @@ None
 | `series` | Inner `div` element representing the series data. |
 | `title` | Inner `p` element representing the chart title. |
 | `usage` | Inner `div` element representing the series chart. |
+
+## Variables
+
+None
 
 ## Dependencies
 

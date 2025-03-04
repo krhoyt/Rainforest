@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Dropdown - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-dropdown {
+        margin: 0 0 16px 0;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-dropdown></rf-dropdown><br>
+    <rf-dropdown></rf-dropdown><br>
+    <rf-dropdown></rf-dropdown><br>
+    <rf-dropdown variant="option"></rf-dropdown><br>
+    <div style="display: flex; flex-direction: row; width: 150px;">
+      <rf-dropdown style="width: 100%;"></rf-dropdown>      
+    </div>
+    <pre>
+&lt;rf-select&gt;&lt;/rf-select&gt;
+&lt;rf-select&gt;&lt;/rf-select&gt;
+&lt;rf-select&gt;&lt;/rf-select&gt;
+&lt;rf-select variant=&quot;option&quot;&gt;&lt;/rf-select&gt;
+&lt;div style=&quot;display: flex; flex-direction: row; width: 150px;&quot;&gt;
+  &lt;rf-select style=&quot;width: 100%;&quot;&gt;&lt;/rf-select&gt;      
+&lt;/div&gt;
+    </pre>
+    <pre>
+const selects = document.querySelectorAll( 'rf-select' );
+
+selects[0].options = [
+  {label: 'Option 1', value: 1},
+  {label: 'Option 2', value: 2},
+  {label: 'Option 3', value: 3},
+  {label: 'Option 4', value: 4},
+  {label: 'Option 5', value: 5}                               
+];
+selects[1].options = [
+  {label: 'Option 1', value: 1, iconName: 'settings'},
+  {label: 'Option 2', value: 1, iconName: 'unlock'},
+  {label: 'Option 3', value: 1, iconName: 'share'}
+];      
+selects[2].options = [
+  {label: 'Option 1', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']},
+  {label: 'Option 2', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']}
+];
+selects[3].options = [
+  {label: 'Option 1', value: 1, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']},
+  {label: 'Option 2', value: 2, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']},
+  {label: 'Option 3', value: 3, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']}
+];
+selects[4].options = [
+  {label: 'This is a really long label'}
+];
+
+selects[0].selectedOption = {label: 'Option 1', value: 1};
+selects[1].selectedOption = {label: 'Option 1', value: 1, iconName: 'settings'};
+selects[2].selectedOption = {label: 'Option 1', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']};
+selects[3].selectedOption = {label: 'Option 1', value: 1, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']};      
+selects[4].selectedIndex = 0;
+    </pre>
+
+    <script src="../components/controls/dropdown.js" type="module"></script>
+    <script>
+      const combos = document.querySelectorAll( 'rf-dropdown' );
+
+      combos[0].options = [
+        {label: 'Option 1', value: 1},
+        {label: 'Option 2', value: 2},
+        {label: 'Option 3', value: 3},
+        {label: 'Option 4', value: 4},
+        {label: 'Option 5', value: 5}                               
+      ];
+      combos[1].options = [
+        {label: 'Option 1', value: 1, iconName: 'settings'},
+        {label: 'Option 2', value: 1, iconName: 'unlock'},
+        {label: 'Option 3', value: 1, iconName: 'share'}
+      ];      
+      combos[2].options = [
+        {label: 'Option 1', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']},
+        {label: 'Option 2', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']}
+      ];
+      combos[3].options = [
+        {label: 'Option 1', value: 1, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']},
+        {label: 'Option 2', value: 2, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']},
+        {label: 'Option 3', value: 3, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']}
+      ];
+      combos[4].options = [
+        {label: 'This is a really long label'}
+      ];
+
+      combos[0].selectedOption = {label: 'Option 1', value: 1};
+      combos[1].selectedOption = {label: 'Option 1', value: 1, iconName: 'settings'};
+      combos[2].selectedOption = {label: 'Option 1', value: 1, tags: ['OptionTag1', 'Tag2', 'Tag3']};
+      combos[3].selectedOption = {label: 'Option 1', value: 1, labelTag: '128Gb', iconName: 'settings', description: 'sub value', tags: ['CPU-v2', '2Gb RAM']};
+      combos[4].selectedIndex = 0;
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Chat Bubble - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-chat-bubble {
+        margin-bottom: 16px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <rf-chat-bubble>
+      <rf-avatar initials="JD" slot="avatar"></rf-avatar>
+      What can I do with Amazon S3?
+    </rf-chat-bubble>
+
+    <rf-chat-bubble type="incoming">
+      <rf-avatar color="gen-ai" slot="avatar"></rf-avatar>      
+      Amazon S3 is built using AWS's highly available and reliable infrastructure. Our distributed DNS servers ensure that you can consistently route your end users to your application.
+      <rf-buttons slot="actions" variant="icon">
+        <rf-icon name="copy"></rf-icon>
+      </rf-button>
+    </rf-chat-bubble>
+    
+    <rf-chat-bubble type="incoming">
+      <rf-avatar color="gen-ai" loading slot="avatar"></rf-avatar>
+      <rf-label color="text-status-inactive">Generating response</rf-label>
+    </rf-chat-bubble>
+
+    <pre>
+&lt;rf-chat-bubble&gt;&lt;/rf-chat-bubble&gt;
+    </pre>
+
+    <script src="../components/avatar.js" type="module"></script>
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/chat-bubble.js" type="module"></script>
+    <script src="../components/icon.js" type="module"></script>    
+    <script src="../components/label.js" type="module"></script>    
+
+  </body>
+</html>

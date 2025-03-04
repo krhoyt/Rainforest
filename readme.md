@@ -2,6 +2,8 @@
 
 Set of standards-based web components following the [Cloudscape Design System](https://cloudscape.design).
 
+> Each component is lovingly crafted and maintained by hand from scratch. No code from Cloudscape is part of this project.
+
 ## Why?
 
 - Web standards
@@ -13,7 +15,7 @@ Set of standards-based web components following the [Cloudscape Design System](h
 - Works with frameworks
 - Highly customizable
 
-> This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a web components version of the Cloudscape components for internal projects.
+> This is a personal passion project. ❤️ It is not sponsored by Amazon. It is not sanctioned by Amazon. It is not affiliated with Amazon. I just happen to be an Amazon employee that wanted a standards-based version of the Cloudscape components for my own projects.
 
 ## Getting Started
 
@@ -47,63 +49,86 @@ That is it! Nope, there is no builder required. Nope, you do not `npm install` a
 
 ## Components   
 
-> Most components have feature/behavior parity with Cloudscape implementation... but not all of them (yet).
+> Most components offer feature parity with their Cloudscape counterparts, but will surface those features in ways most ideomatic to web standards.
 
 - ✅ [Alert](./docs/alert.md)
-- ❓ Avatar ⚠️
+- ✅ [Avatar](./docs/avatar.md)
 - ✅ [Badge](./docs/badge.md)
 - ✅ [Box](./docs/box.md)
+- ✅ [Breadcrumb](./docs/breadcrumb.md)
 - ✅ [Breadcrumb Group](./docs/breadcrumb-group.md)
 - ✅ [Button](./docs/button.md)
-- ✅ [Checkbox](./docs/checkbox.md)
+- ❓ Button Dropdown
+- ❓ Button Group
 - ✅ [Calendar](./docs/calendar.md)
 - ✅ [Cats](./docs/cats.md) 🐈 ⚠️
+- ✅ [Chat Bubble](./docs/chat-bubble.md)
+- ✅ [Checkbox](./docs/checkbox.md)
 - ✅ [Container](./docs/container.md)
 - ✅ [Content Layout](./docs/content-layout.md)
-- ❓ Date Picker 
+- ✅ [Copy to Clipboard](./docs/copy-to-clipboard.md)
+- ✈️ Date Picker
 - ✅ [Expandable Section](./docs/expandable-section.md)
-- 📆 Flashbar
+- ✅ [Flashbar](./docs/flashbar.md)
+- ✅ [File Dropzone](./docs/file-dropzone.md)
+- ✅ [File Input](./docs/file-input.md)
+- ✅ [File Token](./docs/file-token.md)
+- ✅ [File Token Group](./docs/file-token-group.md)
+- ✅ [File Upload](./docs/file-upload.md)
 - ✅ [Form Field](./docs/form-field.md)
-- ✅ [HBox](./docs/hbox.md) ⚠️
-- ✈️ Header
+- ✅ [Format Date](./docs/format-date.md) ⚠️
+- ✅ [Header](./docs/header.md)
 - ✅ [Icon](./docs/icon.md)
 - ✅ [Input](./docs/input.md)
 - ✅ [Label](./docs/label.md) ⚠️
 - ✅ [Link](./docs/link.md)
 - ❓ Multiselect
+- ✅ [Object](./docs/object.md) ⚠️
+- ✅ [Option](./docs/option.md) ⚠️
+- ✅ [Pagination](./docs/pagination.md)
+- ✈️ [Pie and Donut Charts](./docs/pie-chart.md)
 - ✅ [Polar Chart](./docs/polar-chart.md) ⚠️
-- ✈️ [Popover](./docs/popover.md)
+- ❓ Popover
 - ❓ Rating ⚠️
-- ❓ Radio Group
+- ✅ [Radio](./docs/radio.md) ⚠️
+- ✅ [Radio Group](./docs/radio-group.md)
+- ✅ [Segment](./docs/segment.md) ⚠️
+- ✅ [Segmented Control](./docs/segmented-control.md)
 - ✅ [Select](./docs/select.md)
 - ✅ [Space Between](./docs/space-between.md)
+- ✅ [Spacer](./docs/spacer.md) ⚠️
 - ✅ [Spinner](./docs/spinner.md)
-- ✅ [Stack](./docs/stack.md)
+- ✅ [Stack](./docs/stack.md) ⚠️
 - ✅ [Status Indicator](./docs/status-indicator.md)
-- ❓ Table
-- ✅ [Tabs](./docs/tabs.md)
+- ✈️ Table
+- ✈️ Table Column
+- ✅ [Tab](./docs/tab.md) ⚠️
+- ✅ [Tab Group](./docs/tab-group.md)
+- ✅ [Tab Panel](./docs/tab-panel.md) ⚠️
 - ✅ [Text Area](./docs/textarea.md)
 - ✅ [Text Content](./docs/text-content.md)
 - ✅ [Toggle](./docs/toggle.md)
+- ✅ [Token](./docs/token.md) ⚠️
+- ✅ [Token Group](./docs/token-group.md)
+- ✅ [Top Navigation](./docs/top-navigation.md)
 - ✅ [Usage Chart](./docs/usage-chart.md) ⚠️
-- ✅ [VBox](./docs/vbox.md) ⚠️
 
-✅ Implemented (29)   
-✈️ In-flight/progress (2)  
+✅ Implemented (35)   
+✈️ In-flight/progress (3)  
 📆 Planned  (1)   
-❓ To be determined (6)  
-⚠️ Not part of Cloudscape (7)
+❓ To be determined (4)  
+⚠️ Not part of Cloudscape (11)
 
 ## Some Differences to Consider
 
-Cloudscape uses the React framework. Rainforest uses web components, and is not a framework. There are ideomatic ways in which each is used. 
+Cloudscape uses the React framework. Rainforest uses web standards, and is not a framework. There are ideomatic ways in which each is used. 
 
 ### Tag Prefix
 
 Web components are required to have a prefix to avoid collision in naming. The prefix for Rainforest is `rf-`. Open and close tags are required for web components.
 
 ``` html
-<rf-button>Button</rf-button> <!-- HTML -->
+<rf-button label="Button"></rf-button> <!-- HTML -->
 <Button>Button</Button> <!-- Cloudscape/React -->
 ```
 
@@ -111,9 +136,29 @@ Web components are required to have a prefix to avoid collision in naming. The p
 
 Attributes are the name/value pairs used in HTML (i.e. `<img src="">`). When an HTML element is accessed from JavaScript however, attributes are properties on that object instance (i.e. `image.src = ""`). Being able to use `src` in both situations is called, reflection. The reflected data types are `string`, `float`, `integer`, `boolean` and `null`. Other types such as `array`, `date`, and `function` are available only as properties.
 
+``` html
+<rf-icon name="settings"></rf-icon>
+```
+
+Is the same as...
+
+``` javascript
+const icon = new RFIcon();
+icon.name = 'settings';
+document.body.appendChild( icon );
+```
+
+Is the same as...
+
+``` javascript
+const icon = document.createElement( 'rf-icon' );
+icon.name = 'settings';
+document.body.appendChild( icon );
+```
+
 ### Composition
 
-Slots allow pieces of content to be placed in specific parts of a web component. When there are multiple slots, they will be named. This allows for "composition" of content. In order to specify the slot name, a tag must be used. In the case of a component where there are multiple strings to specify, a `span` element can be used. Content without slot names are placed in the "default" slot.
+Slots allow pieces of content to be placed in specific parts of a web component. When there are multiple slots, they need to be named. This allows for "composition" of content. In order to specify the slot name, a tag must be used. Content without slot names are placed in the "default" slot.
 
 ``` html
 <rf-form-field>
@@ -127,24 +172,38 @@ Slots allow pieces of content to be placed in specific parts of a web component.
 <rf-form-field>
   <rf-input></rf-input> <!-- Default -->
   <span slot="label">Form field label</span> <!-- Label -->
-  <span slot="description">This is a description</span> <!-- Description -->
+  <rf-label 
+    text="This is a description" 
+    slot="description">
+  </rf-label> <!-- Description -->
 </rf-form-field>
 ```
 
-> When the Cloudscape API calls something a slot, it is implmented as such in Rainforest. It cannot be accessed as a property or attribute as in React.
+> Rainforest emphasizes attributes over composition wherever strings are the content that is being slotted. 
+
+### Styling
+
+Styling web components can take a few different forms. CSS Parts allows a component to expose elements that are internal to CSS styling. CSS Variables expose component-specific styles. These are prefixed with the name of the component. Some styles are exposed as attributes on a component and use common notation to specify the value. 
+
+``` css
+rf-label::part( label ) {
+  font-size: 2em;
+}
+```
+
+``` css
+rf-label {
+  --label-font-size: 2em;
+}
+
+``` html
+<rf-label font-size="xl" text="Hello world!"></rf-label>
+```
 
 ### Icons
 
-Cloudscape has many icons available to it. These icons are in SVG format. The same icon set is available in Rainforest. Icon color in Cloudscape is accomplished by parsing the SVG file, and altering it at runtime. Icon color in Rainforest is accomplished through CSS Filters. This means that Rainforest supports **any SVG file from any source**. It even works with transparent raster files such as **GIF and PNG**.
+The icons included with Cloudscape are all present in Rainforest. If you need to use the icons, then you have two choices. 
 
-> This approach generally yields an output color *very close* to the original, but not necessarily an exact match. Close enough to where the human eye will not likely notice the difference in practice. A [color utility](./demo/color.html) is included for testing.
+The first option is to use an `img` element and specify the path to the desired icon as the `src` attribute. Depending on what content is being served up from what domain, this can cause problems with loading. The get around this, the `rf-icon` element includes a `cdn` attribute, which tells the component to always pull from the absolute URL for the CDN hosting the Rainforest project. The `rf-icon` element also includes a `path` attribute should you want to specify a specific location to use for the icon SVG files.
 
-### Renderers
-
-There are places in Cloudscape where the API prefers setting an `items` array over composition. This pattern is common in enterprise components. In some of those instances, for example with `Breadcrumb Group` that the `items` can be an array of any object type. This is useful when an API result needs to populate a component and there may be more properties in the response than are needed to populate the component.
-
-There are other areas in the Cloudscape API however, where there is preference given to a specific data type. An example here is `Radio Group` where the `items` property expects an array of `RadioButtonDefinition` which has specific properties needed to build the radio buttons that populate the group. In these instances, Rainforest uses item renderers. The data passed to `items` is still an array of whatever data type is prescribed by the Cloudscape API (not that JavaScript cares), and populating the group still works the same, with the difference being that the renderer is exposed to the developer for further customization if needed.
-
-An item renderer in Rainforest takes a data property, which is of type `Object`. The implementation of that renderer then can in turn place the pieces of data on that `Object` wherever it is needed. There are default item renderers provided by Rainforest which mirror the Cloudscape design patterns. There is also an `itemrenderer` property on these components where you can specify your own implementation.
-
-> Think of the pain scale you may have seen in medical settings. There is an emoji face next to each value. The higher up on the pain scale you go, the more anguished the face appears. You could write a custom item renderer to show a similar graphical representation, and use it in the `RadioGroup` component.
+The second option is to use MOAR web components. Every one of the SVG icons included with Cloudscape, are also included in Rainforest as self-contained web components. The naming scheme here follows `rf-` and then the file name of the desired SVG icon without the file extension. As an example, the `user-profile.svg` icon becomes `<rf-icon-user-profile></rf-icon-user-profile>`. This is how the Rainforest components load any necessary icons.

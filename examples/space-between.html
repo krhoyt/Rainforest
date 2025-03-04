@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Space Between - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-space-between { margin: 0 0 16px 0; }
+
+      rf-space-between:last-of-type rf-label {
+        background-color: #ffffff;
+        border: solid 1px #7d8998;
+        padding: 10px;
+      }
+
+      rf-space-between:last-of-type rf-space-between {
+        background-color: #f2f8fd;
+        border: solid 1px #0972d3;
+        padding: 10px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- With buttons -->
+    <rf-space-between direction="horizontal" size="xs">
+      <rf-button label="Edit"></rf-button>
+      <rf-button label="Delete"></rf-button>      
+      <rf-button label="Create distribution" variant="primary"></rf-button>      
+    </rf-space-between>
+
+    <!-- With containers -->
+    <rf-space-between size="l">
+      <rf-container>
+        <rf-header slot="header" title="Distribution settings" variant="h2"></rf-header>
+        <rf-label text="Container content"></rf-label>
+      </rf-container>
+      <rf-container>
+        <rf-header slot="header" title="Cache behaviour settings" variant="h2"></rf-header>
+        <rf-label text="Container content"></rf-label>
+      </rf-container>      
+      <rf-container>
+        <rf-header slot="header" title="Container title" variant="h2"></rf-header>
+        <rf-label text="Container content"></rf-label>
+      </rf-container>            
+    </rf-space-between>
+
+    <!-- With form fields -->
+    <rf-space-between size="l">
+      <rf-form-field 
+        description="The Amazon S3 bucket that you want CloudFront to store your access logs in." 
+        label="S3 bucket for logs">
+        <rf-input placeholder="Choose an S3 bucket"></rf-input>
+      </rf-form-field>
+      <rf-form-field
+        description="Specify the date and time when the certificate should expire."
+        label="Certificate expiry">
+        <rf-space-between direction="horizontal" size="s">
+          <rf-form-field>
+            <rf-input placeholder="YYYY/MM/DD"></rf-input>  
+          </rf-form-field>
+          <rf-form-field constraint="Use 24-hour format.">
+            <rf-input placeholder="hh:mm:ss"></rf-input>
+          </rf-form-field>
+        </rf-space-between>
+      </rf-form-field>
+    </rf-space-between>
+
+    <!-- Nested -->
+    <rf-space-between direction="horizontal" size="l">
+      <rf-space-between size="xs">
+        <rf-label text="Content one"></rf-label>
+        <rf-label text="Content two"></rf-label>
+        <rf-label text="Content three"></rf-label>        
+      </rf-space-between>
+      <rf-space-between size="s">
+        <rf-label text="Content four"></rf-label>
+        <rf-label text="Content five"></rf-label>        
+      </rf-space-between>      
+      <rf-space-between size="m">
+        <rf-label text="Content six"></rf-label>
+        <rf-label text="Content seven"></rf-label>
+        <rf-label text="Content eight"></rf-label>        
+      </rf-space-between>      
+    </rf-space-between>
+
+    <pre>
+&lt;rf-space-between direction=&quot;horizontal&quot; size=&quot;xs&quot;&gt;
+  &lt;rf-button label=&quot;Edit&quot;&gt;&lt;/rf-button&gt;
+  &lt;rf-button label=&quot;Delete&quot;&gt;&lt;/rf-button&gt;      
+  &lt;rf-button label=&quot;Create distribution&quot; variant=&quot;primary&quot;&gt;&lt;/rf-button&gt;      
+&lt;/rf-space-between&gt;
+
+&lt;rf-space-between size=&quot;l&quot;&gt;
+  &lt;rf-container&gt;
+    &lt;rf-header slot=&quot;header&quot; title=&quot;Distribution settings&quot; variant=&quot;h2&quot;&gt;&lt;/rf-header&gt;
+    &lt;rf-label text=&quot;Container content&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-container&gt;
+  &lt;rf-container&gt;
+    &lt;rf-header slot=&quot;header&quot; title=&quot;Cache behaviour settings&quot; variant=&quot;h2&quot;&gt;&lt;/rf-header&gt;
+    &lt;rf-label text=&quot;Container content&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-container&gt;      
+  &lt;rf-container&gt;
+    &lt;rf-header slot=&quot;header&quot; title=&quot;Container title&quot; variant=&quot;h2&quot;&gt;&lt;/rf-header&gt;
+    &lt;rf-label text=&quot;Container content&quot;&gt;&lt;/rf-label&gt;
+  &lt;/rf-container&gt;            
+&lt;/rf-space-between&gt;
+
+&lt;rf-space-between size=&quot;l&quot;&gt;
+  &lt;rf-form-field 
+    description=&quot;The Amazon S3 bucket that you want CloudFront to store your access logs in.&quot; 
+    label=&quot;S3 bucket for logs&quot;&gt;
+    &lt;rf-input placeholder=&quot;Choose an S3 bucket&quot;&gt;&lt;/rf-input&gt;
+  &lt;/rf-form-field&gt;
+  &lt;rf-form-field
+    description=&quot;Specify the date and time when the certificate should expire.&quot;
+    label=&quot;Certificate expiry&quot;&gt;
+    &lt;rf-space-between direction=&quot;horizontal&quot; size=&quot;s&quot;&gt;
+      &lt;rf-form-field&gt;
+        &lt;rf-input placeholder=&quot;YYYY/MM/DD&quot;&gt;&lt;/rf-input&gt;  
+      &lt;/rf-form-field&gt;
+      &lt;rf-form-field constraint=&quot;Use 24-hour format.&quot;&gt;
+        &lt;rf-input placeholder=&quot;hh:mm:ss&quot;&gt;&lt;/rf-input&gt;
+      &lt;/rf-form-field&gt;
+    &lt;/rf-space-between&gt;
+  &lt;/rf-form-field&gt;
+&lt;/rf-space-between&gt;
+
+&lt;rf-space-between direction=&quot;horizontal&quot; size=&quot;l&quot;&gt;
+  &lt;rf-space-between size=&quot;xs&quot;&gt;
+    &lt;rf-label text=&quot;Content one&quot;&gt;&lt;/rf-label&gt;
+    &lt;rf-label text=&quot;Content two&quot;&gt;&lt;/rf-label&gt;
+    &lt;rf-label text=&quot;Content three&quot;&gt;&lt;/rf-label&gt;        
+  &lt;/rf-space-between&gt;
+  &lt;rf-space-between size=&quot;s&quot;&gt;
+    &lt;rf-label text=&quot;Content four&quot;&gt;&lt;/rf-label&gt;
+    &lt;rf-label text=&quot;Content five&quot;&gt;&lt;/rf-label&gt;        
+  &lt;/rf-space-between&gt;      
+  &lt;rf-space-between size=&quot;m&quot;&gt;
+    &lt;rf-label text=&quot;Content six&quot;&gt;&lt;/rf-label&gt;
+    &lt;rf-label text=&quot;Content seven&quot;&gt;&lt;/rf-label&gt;
+    &lt;rf-label text=&quot;Content eight&quot;&gt;&lt;/rf-label&gt;        
+  &lt;/rf-space-between&gt;      
+&lt;/rf-space-between&gt;
+    </pre>
+
+    <script src="../components/button.js" type="module"></script>    
+    <script src="../components/container.js" type="module"></script> 
+    <script src="../components/containers/form-field.js" type="module"></script>        
+    <script src="../components/header.js" type="module"></script>           
+    <script src="../components/controls/input.js" type="module"></script>    
+    <script src="../components/label.js" type="module"></script>    
+    <script src="../components/space-between.js" type="module"></script>
+
+  </body>
+</html>

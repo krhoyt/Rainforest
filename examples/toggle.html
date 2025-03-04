@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Set of standard web components (Vanilla) based on the Cloudscape Design System.">
+
+    <title>Toggle - Rainforest</title>
+
+    <link href="../rainforest.css" rel="stylesheet">    
+
+    <style>
+      rf-toggle { margin: 0 0 16px 0; }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Unchecked with label -->
+    <rf-toggle label="Toggle"></rf-toggle><br>
+
+    <!-- Checked without label -->
+    <rf-toggle checked></rf-toggle><br>    
+
+    <!-- Checked disabled -->
+    <rf-toggle checked disabled label="This toggle is disabled"></rf-toggle><br>
+
+    <!-- Unchecked disabled -->
+    <rf-toggle disabled label="This toggle is also disabled"></rf-toggle><br>    
+
+    <pre>
+&lt;rf-toggle label=&quot;Toggle&quot;&gt;&lt;/rf-toggle&gt;
+
+&lt;rf-toggle checked&gt;&lt;/rf-toggle&gt;
+
+&lt;rf-toggle checked disabled label=&quot;This toggle is disabled&quot;&gt;&lt;/rf-toggle&gt;
+
+&lt;rf-toggle disabled label=&quot;This toggle is also disabled&quot;&gt;&lt;/rf-toggle&gt;
+    </pre>
+
+    <script src="../components/toggle.js" type="module"></script>
+
+  </body>
+</html>

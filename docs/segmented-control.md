@@ -1,5 +1,7 @@
 # Segmented Control
 
+`<rf-segmented-control>` | `RFSegmentedControl`
+
 With a segmented control, users can toggle between different ways of formatting a piece of content or data.
 
 ## Importing
@@ -10,46 +12,58 @@ With a segmented control, users can toggle between different ways of formatting 
 
 ## Examples
 
+### Default
+
 ``` html
-<rf-segmented-control selected-id="seg-1"></rf-segmented-control>
-<rf-segmented-control selected-id="seg-1"></rf-segmented-control>    
-<rf-segmented-control selected-id="seg-1"></rf-segmented-control>       
-<rf-segmented-control selected-id="seg-1"></rf-segmented-control>            
+<rf-segmented-control>
+  <rf-segment id="seg-1" text="Segment 1"></rf-segment>
+  <rf-segment id="seg-2" text="Segment 2"></rf-segment>
+  <rf-segment id="seg-3" text="Segment 3"></rf-segment>            
+</rf-segmented-control>
 ```
 
-``` javascript
-const controls = document.querySelectorAll( 'rf-segmented-control' );
-controls[0].options = [
-  {text: 'Segment 1', id: 'seg-1'},
-  {text: 'Segment 2', id: 'seg-2'},
-  {text: 'Segment 3', id: 'seg-3'}
-];
-controls[1].options = [
-  {text: 'Segment 1', id: 'seg-1'},
-  {disabled: true, text: 'Segment 2', id: 'seg-2'},
-  {text: 'Segment 3', id: 'seg-3'}
-];      
-controls[2].options = [
-  {iconName: 'view-full', text: 'Segment 1', id: 'seg-1'},
-  {iconName: 'view-horizontal', text: 'Segment 2', id: 'seg-2'},
-  {iconName: 'view-vertical', text: 'Segment 3', id: 'seg-3'}
-];            
-controls[3].options = [
-  {iconName: 'view-full', iconAlt: 'Segment 1', id: 'seg-1'},
-  {iconName: 'view-horizontal', iconAlt: 'Segment 2', id: 'seg-2'},
-  {iconName: 'view-vertical', iconAlt: 'Segment 3', id: 'seg-3'}
-];                  
+### With a disabled segment
+
+``` html
+<rf-segmented-control selected-id="seg-1">
+  <rf-segment id="seg-1" text="Segment 1"></rf-segment>
+  <rf-segment disabled id="seg-2" text="Segment 2"></rf-segment>
+  <rf-segment id="seg-3" text="Segment 3"></rf-segment>            
+</rf-segmented-control>
+```
+
+### With icons and text
+
+``` html
+<rf-segmented-control selected-id="seg-1">
+  <rf-segment icon-name="view-full" id="seg-1" text="Segment 1"></rf-segment>
+  <rf-segment icon-name="view-horizontal" id="seg-2" text="Segment 2"></rf-segment>
+  <rf-segment icon-name="view-vertical" id="seg-3" text="Segment 3"></rf-segment>            
+</rf-segmented-control>
+```
+
+### With icons only
+
+``` html
+<rf-segmented-control selected-id="seg-1">
+  <rf-segment icon-name="view-full" id="seg-1"></rf-segment>
+  <rf-segment icon-name="view-horizontal" id="seg-2"></rf-segment>
+  <rf-segment icon-name="view-vertical" id="seg-3"></rf-segment>            
+</rf-segmented-control>
 ```
 
 ## Slots
 
-None
+| Name | Description |
+| --- | --- |
+| (default) | Segmented options to display. |
 
 ## Properties
 
 | Name | Type | Description | Values | Default | Reflects |
 | --- | --- | --- | --- | --- | --- |
-| `options` | `array<{id: string, disabled: boolean, iconName: string, iconAlt: string, iconUrl: string, text: string}>` | An array of objects representing options. | - | `null` | ❌ |
+| `hidden` | `boolean` | Removes element from DOM layout. | - | `false` | ✅ |
+| `label` | `string` | Defines the label of the entire segmented control. | - | `null` | ✅ |
 | `selected-id` | `string` | ID of the selected option. | - | `null` | ✅ |
 
 ## Events
@@ -66,8 +80,12 @@ None
 
 | Name | Description |
 | --- | --- |
-| `list` | Inner `ul` element. |
+| `control` | Inner `ul` element. |
+
+## Variables
+
+None
 
 ## Dependencies
 
-- `rf-option`
+- `<rf-segment>`
